@@ -1,12 +1,14 @@
 ## resolve #issue number
 
-## 작업내용
-- 내용을 적어주세요.
-- 프론트의 경우 화면 작업일때 스크린샷을 포함하기.
 
-## 기타
-- 내용을 적어주세요.
+## What is this PR? :mag:
 
+
+## Changes :memo:
+
+
+## Screenshot :camera:
 <br/>
 
 Close #{이슈_번호}
+
