@@ -1,7 +1,7 @@
 ---
-name: Bug Report
-about: 버그 관련 이슈
-title: ''
+name: 'Bug Report'
+about: '버그 관련 이슈'
+title: '[{fix or hotfix}/{branch_name}] 버그를 해결한다.'
 labels: 버그
 assignees: ''
 
