@@ -1,5 +1,5 @@
 ---
-name: document Request
+name: Document Request
 about: 문서 추가/수정 관련 템플릿
 title: '[docs/{branch_name}] 문서를 추가/수정한다.'
 labels: ':memo:documentation'
@@ -16,3 +16,6 @@ assignees: ''
 
 ## 주의사항
 - 내용을 적어주세요.
+
+
+
