@@ -1,7 +1,7 @@
 ---
 name: Chore Template
 about: 기타 수정사항을 이슈에 등록한다.
-title: "[{chore}/{branch_name}] 기능을 리팩토링한다."
+title: "[{chore}/{branch_name}] 자잘한 내용을 수정한다."
 labels: ':art:chore'
 assignees: ''
 
