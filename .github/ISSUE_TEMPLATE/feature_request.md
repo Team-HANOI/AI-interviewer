@@ -1,8 +1,8 @@
 ---
 name: Feature Request
 about: 기능 개선 사항 관련 템플릿
-title: ''
-labels: ''
+title: '[feature/{branch_name}] 기능을 구현한다.'
+labels: ':sparkles:feature'
 assignees: ''
 
 ---
