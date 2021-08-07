@@ -71,6 +71,6 @@ chore: gitmodules 변경
 ## 프로젝트 관리
 
 - **issue**로 관리
-- Slcak과 연동
+- Slack과 연동
     - 푸시하면 Slack에 알림이 간다
         - 팀원들이 확인하고 코드 리뷰 후 merge
