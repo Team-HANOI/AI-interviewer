@@ -79,6 +79,6 @@ chore: gitmodules 변경
 
 branch 스윽..... 스윽
 
-branch 사악....
+branch 사악.... 스윽
 
 이번엔 성공적인 커미이잇
