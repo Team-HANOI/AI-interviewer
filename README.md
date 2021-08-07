@@ -74,3 +74,5 @@ chore: gitmodules 변경
 - Slack과 연동
     - 푸시하면 Slack에 알림이 간다
         - 팀원들이 확인하고 코드 리뷰 후 merge
+  
+  현식 테스트
