@@ -1,7 +1,6 @@
 package com.alpaca.app.persistence;
 
-import com.alpaca.app.mapper.HRMapper;
-import com.alpaca.app.mapper.TimeMapper;
+import com.alpaca.app.sample.mapper.TimeMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

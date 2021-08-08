@@ -1,4 +1,4 @@
-package com.alpaca.app.mapper;
+package com.alpaca.app.sample.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

@@ -1,12 +1,8 @@
-package com.alpaca.app.mapper;
+package com.alpaca.app.sample.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Stream;
 
 @Mapper
 @Repository

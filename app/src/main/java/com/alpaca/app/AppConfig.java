@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 // basePackages 지정하지 않더라도 com.alpaca.app.* 를 탐색하며 스프링 빈 등록
 @Configuration
 @ComponentScan(basePackages = "com.alpaca.app")
-// @MapperScan(value = {"com.alpaca.app.mapper"})
+@MapperScan(value = {"com.alpaca.app.sample.mapper"})
 public class AppConfig {
 
 }
