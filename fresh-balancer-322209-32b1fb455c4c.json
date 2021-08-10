@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "fresh-balancer-322209",
+  "private_key_id": "32b1fb455c4ccbfcb4a59fb5ff21c741d9e1a8ba",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCmOpzfDc3x13mw\ndbJ5v4/ojLzOwgd23ApzWMVVKBKn0QVa1oHu8C8xJoH4g/K7jw4vz6Ht6jEEF7pA\nnUyyseVS1cYb6kxZpUqcb9qXM98MhYw5PABUKLVI2LEovsDbJahgfCXL3yJjyIE+\n99NS0DPLLPyqkaUgMHHlvCmV9Ey2S3yvu1FEZLwFP8WHh4UxO+cvvQMDUw0HCyrb\ndZQ3WdO1CDGUhLIzQBG3WlTxJIKGG9uJY962gMc6X/HRuHRzCa2JN1A1j8+KQYqr\nhfCr8o0ukLYHNneOXcil1FB/XPw6iaYYezZQfdgfTYBZWTVLm23ycIekbm/gfv5V\n0OKVg/x9AgMBAAECggEADqBQpkW6LcHmaLLqedDzsiQUBuNGsdwppT2V22jTv2Vi\nYbxHIYWLuXjobbv6cytita1A08TL/E60KjRNB9okUfYSYOlsP2UOXBZxduVvBlSH\n4o9XfhA450h9yhaCtKWrG5ZA4x/mkD4XtTksJHjCXem+76kyDNOGag7038dnqpB0\ngiToPwirrICOSo6MN3eXmmws3Gen8fPzmFTQNEQqXLgtAxHN7ttPPIt3G946L8Gc\nc2xDtvHvV1d8EfD+hdBVcPHZTeRN/yo3Ez5GAuMcAw1sfzsm9yYGqEDShyX+UyW5\naW0bD5gOwETnnsVCm6axI3WAUxL0wqryQZsUv8+HdwKBgQDPMomvAbJw1etF3hm4\nvrxRBBkQb59ifMn4Gj4jRDFeszwe0MGAhnhRoJJvsS76fbTzJMfukbqxla5O70G2\nXfbOMte652AlllxMMRYfND/d6EIUBAcvMiMbmaM972jQp76jomAKsx3aV0kj04q4\nOmH+Fwes4Y/vsxOMevXSpm/ZJwKBgQDNYci8H3N3aoq8TKyPYdY4E3SQ80KIqY6q\nDVADDFAvLgjREoa05b/pHacriJLGExwpJAF76PIcbGMsVTK7Yf5IyKdbmrHr/ZvC\nwMlOUc1TZLKsXyQWKLttni7ziC8PfNwqV85kE1NS2TwxNU2Bk8Zam5B2wnUG7lN/\nU4baRBTbuwKBgQCl5FjIfhtYrG4LKqB9gnlUhGts9XIvcKpkst49bkP5BpiEM7A6\nL2/2KxITy1FJzYwrgK9zG8rWlHlTSczbLrCEt8ByLP6WGaUce9CyeysHiQYe8Hqw\nFvx1BLXmyOCq7yN78G3lIzQrtOcigCT5DAWZYucKTC7qQ/7K40geuJOk0QKBgQCe\n8EZk9z3nMwcsU3XS/BbIjJ3PssFRe04RYX4C7dt7t3dRPLIMeiP65lzBPs6/BHjt\niZSwbIQ45NQWsdQx2NLtRoLlTCDWjQumOoVO29U27R2scXA+ycTKPvj8s+4fYTQM\nfKkXHzGDUuPW/PX/CfodknfIwBHKjFMHnP8mGDvAEwKBgBRB04R0a2MS1JPdtEKR\ngCpTBhCTQQl9XAZrJliugTzt2SHs8mnph6YrOKhclGI0ggD5/r+Jx87G8tj/+to+\nRMOcM+yJHQGoFho05hhom517Oz8s6np8bw1Ce0ALcGNobE990+vvz+c9jVbV6KWp\niPdf/SMRAVQ16MgGL91dJQLb\n-----END PRIVATE KEY-----\n",
+  "client_email": "tts-service@fresh-balancer-322209.iam.gserviceaccount.com",
+  "client_id": "107817051484288673402",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tts-service%40fresh-balancer-322209.iam.gserviceaccount.com"
+}
