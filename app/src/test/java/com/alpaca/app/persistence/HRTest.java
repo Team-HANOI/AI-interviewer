@@ -5,7 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+/**
+ * Created by Hyunsik Lee on 2021-08-11
+ * Blog : https://hs95blue.github.io/
+ * Github : https://github.com/hs95blue
+ */
 @Slf4j
 @SpringBootTest
 public class HRTest {

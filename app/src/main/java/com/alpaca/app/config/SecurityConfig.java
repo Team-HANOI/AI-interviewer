@@ -1,4 +1,4 @@
-package com.alpaca.app;
+package com.alpaca.app.config;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
@@ -24,9 +24,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/sample/all").permitAll()
                 .antMatchers("/sample/member").hasRole("USER");
 
-        http.formLogin(); //인가/인증에 문제시 로그인 화면
+        http.formLogin();
         http.csrf().disable();
         http.logout();
+        http.oauth2Login();
     }
 
 
