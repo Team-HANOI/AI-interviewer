@@ -1,0 +1,70 @@
+Slack API	1
+iOS	2
+PyTorch	3
+Docker	4
+MySQL	5
+SQLite	6
+MyBatis	7
+Reactor	8
+JSP	9
+Spring	10
+Apache	11
+JPA(Java Persistent API)	12
+C#	13
+C	14
+Apache Tomcat	15
+STT(Speech to Text)	16
+NoSQL	17
+ASP	18
+Ajax	19
+Java	20
+Google Cloud Platform	21
+Jupyter	22
+Oracle Database	23
+CSS3	24
+flutter	25
+Linux	26
+MongoDB	27
+Zeplin	28
+Raspberry Pi	29
+GitHub	30
+JavaScript	31
+Bootstrap	32
+Oracle	33
+C++	34
+MariaDB	35
+Go	36
+Database	37
+TCP/IP	38
+Thymeleaf	39
+NestJS	40
+Big Data	41
+Java Servlet	42
+Swift	43
+Design Pattern	44
+GCP(Google Cloud Platform)	45
+Kotlin	46
+ReactJS	47
+Django	48
+HTML	49
+Spring Boot	50
+JIRA	51
+Oculus VR	52
+Python	53
+Ubuntu	54
+Node.js	55
+Deep Learning	56
+Android	57
+SQL	58
+Git	59
+Unity	60
+IoT	61
+TypeScript	62
+REST API	63
+CSS	64
+Scala	65
+Apache Maven	66
+jQuery	67
+XML	68
+HTML5	69
+Gradle	70
