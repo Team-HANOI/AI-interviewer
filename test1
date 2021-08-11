@@ -1,0 +1,118 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 수요일-8월-11-2021   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table TBL_TESTPAGE
+--------------------------------------------------------
+
+  CREATE TABLE "HR"."TBL_TESTPAGE" 
+   (	"COMPANY" VARCHAR2(100 BYTE), 
+	"URL" VARCHAR2(100 BYTE), 
+	"LOGOURL" VARCHAR2(500 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into HR.TBL_TESTPAGE
+SET DEFINE OFF;
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('COCONE','https://programmers.co.kr/job_positions/5392','https://grepp-programmers.s3.amazonaws.com/production/company/logo/197/cocone.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('퍼즐벤처스','https://programmers.co.kr/job_positions/6567','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3473/Logo_oilnow_symbolText_blue.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('더블유쇼핑','https://programmers.co.kr/job_positions/5991','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5545/W%EC%87%BC%ED%95%91_%EA%B5%AD%EC%98%81%EB%AC%B8%ED%98%BC%EC%9A%A9.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('이제이엔','https://programmers.co.kr/job_positions/6565','https://grepp-programmers.s3.amazonaws.com/production/company/logo/583/ejn_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('이제이엔','https://programmers.co.kr/job_positions/6055','https://grepp-programmers.s3.amazonaws.com/production/company/logo/583/ejn_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('이제이엔','https://programmers.co.kr/job_positions/5670','https://grepp-programmers.s3.amazonaws.com/production/company/logo/583/ejn_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('메디블록','https://programmers.co.kr/job_positions/3765','https://grepp-programmers.s3.amazonaws.com/production/company/logo/731/%EB%A9%94%EB%94%94%EB%B8%94%EB%A1%9D_b_.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('노타','https://programmers.co.kr/job_positions/6564','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1598/Nota_OndeviceAI_Logo_gray_250px.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('노타','https://programmers.co.kr/job_positions/6562','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1598/Nota_OndeviceAI_Logo_gray_250px.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('OGQ','https://programmers.co.kr/job_positions/3869','https://grepp-programmers.s3.amazonaws.com/production/company/logo/619/Asset_2.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('디케이테크인','https://programmers.co.kr/job_positions/6382','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4687/%EB%A1%9C%EA%B3%A0_%ED%8C%8C%EC%9D%BC.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('애니랙티브','https://programmers.co.kr/job_positions/6557','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5853/img_logotype01.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('이쿠얼키','https://programmers.co.kr/job_positions/6211','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3952/%E1%84%81%E1%85%A2%E1%84%87%E1%85%A9%E1%86%BC_160.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('프리윌린','https://programmers.co.kr/job_positions/6555','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1126/%ED%94%84%EB%A6%AC%EC%9C%8C%EB%A6%B0-%EB%A1%9C%EA%B3%A0_%EC%A0%95%EC%82%AC%EA%B0%81_%ED%88%AC%EB%AA%85.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('핀다(FINDA)','https://programmers.co.kr/job_positions/6554','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1452/Finda_Logo_New-square.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('핀다(FINDA)','https://programmers.co.kr/job_positions/6550','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1452/Finda_Logo_New-square.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('핀다(FINDA)','https://programmers.co.kr/job_positions/6549','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1452/Finda_Logo_New-square.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('핀다(FINDA)','https://programmers.co.kr/job_positions/6552','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1452/Finda_Logo_New-square.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('직뱅크','https://programmers.co.kr/job_positions/6547','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1319/%EA%B7%B8%EB%A6%BC1.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('비씨랩스','https://programmers.co.kr/job_positions/5201','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4591/logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('비씨랩스','https://programmers.co.kr/job_positions/5200','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4591/logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('올룰로','https://programmers.co.kr/job_positions/6535','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2803/%E1%84%8B%E1%85%A9%E1%86%AF%E1%84%85%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A9.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('올룰로','https://programmers.co.kr/job_positions/6546','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2803/%E1%84%8B%E1%85%A9%E1%86%AF%E1%84%85%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A9.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('레모네이드','https://programmers.co.kr/job_positions/6543','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3244/lemonade_logo_%EC%A0%95%EB%B0%A9%ED%98%95.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('프리윌린','https://programmers.co.kr/job_positions/4905','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1126/%ED%94%84%EB%A6%AC%EC%9C%8C%EB%A6%B0-%EB%A1%9C%EA%B3%A0_%EC%A0%95%EC%82%AC%EA%B0%81_%ED%88%AC%EB%AA%85.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('드림어스컴퍼니','https://programmers.co.kr/job_positions/4878','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1039/flo_logo2.PNG');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('세나클소프트','https://programmers.co.kr/job_positions/2445','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2930/cenacle_ci_symbol.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('세나클소프트','https://programmers.co.kr/job_positions/4483','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2930/cenacle_ci_symbol.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('세나클소프트','https://programmers.co.kr/job_positions/4482','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2930/cenacle_ci_symbol.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('RNR','https://programmers.co.kr/job_positions/6537','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5982/RNR_logo_160x160.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('아이나비시스템즈','https://programmers.co.kr/job_positions/6533','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1767/%EC%BA%A1%EC%B2%98.JPG');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('마크애니','https://programmers.co.kr/job_positions/6528','https://grepp-programmers.s3.amazonaws.com/production/company/logo/273/%EB%A7%88%ED%81%AC%EC%95%A0%EB%8B%88.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('데이블','https://programmers.co.kr/job_positions/6519','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2369/Dable_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('아파트너','https://programmers.co.kr/job_positions/6517','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1458/aptner_logo_letter_only.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('데이블','https://programmers.co.kr/job_positions/6518','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2369/Dable_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('씨에이치오컴퍼니','https://programmers.co.kr/job_positions/6221','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1770/chocompany_logo_1521517526.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('CJ올리브영','https://programmers.co.kr/job_positions/6075','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3483/CJOY%EB%A1%9C%EA%B3%A0.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('CJ올리브영','https://programmers.co.kr/job_positions/6137','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3483/CJOY%EB%A1%9C%EA%B3%A0.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('CJ올리브영','https://programmers.co.kr/job_positions/6513','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3483/CJOY%EB%A1%9C%EA%B3%A0.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('CJ올리브영','https://programmers.co.kr/job_positions/6138','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3483/CJOY%EB%A1%9C%EA%B3%A0.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('데이터뱅크','https://programmers.co.kr/job_positions/4754','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2594/logo2.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('데이터뱅크','https://programmers.co.kr/job_positions/4678','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2594/logo2.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('한국축산데이터','https://programmers.co.kr/job_positions/6507','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1888/%ED%95%9C%EC%B6%95%EB%8D%B0_%EC%8B%AC%EB%B3%BC%EB%A1%9C%EA%B3%A0.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('비팩토리','https://programmers.co.kr/job_positions/6372','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5873/logo-bfactory.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('스탠월드코리아','https://programmers.co.kr/job_positions/6460','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2248/Stan_World_Logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('일루미나리안','https://programmers.co.kr/job_positions/6459','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4154/%EC%9D%BC%EB%A3%A8%EB%AF%B8%EB%82%98%EB%A6%AC%EC%95%88_Logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('보이스루','https://programmers.co.kr/job_positions/6437','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3108/voithru_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('넷타겟','https://programmers.co.kr/job_positions/5291','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4237/%EB%84%B7%ED%83%80%EA%B2%9F_%EB%A1%9C%EA%B3%A0.JPG');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('글로컬라이즈','https://programmers.co.kr/job_positions/6432','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5927/Logotype1_BG_White_3x.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('엠플렉스','https://programmers.co.kr/job_positions/6026','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4160/%EC%97%A0%ED%94%8C%EB%A0%89%EC%8A%A4%EB%A1%9C%EA%B3%A01.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('인덴트코퍼레이션','https://programmers.co.kr/job_positions/5535','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2438/Indent_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('인덴트코퍼레이션','https://programmers.co.kr/job_positions/5534','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2438/Indent_logo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('영갑','https://programmers.co.kr/job_positions/6353','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5855/linkedin_tradir_logo_final.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('엠서클','https://programmers.co.kr/job_positions/5271','https://grepp-programmers.s3.amazonaws.com/production/company/logo/798/logo__160x160_.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('엠서클','https://programmers.co.kr/job_positions/5272','https://grepp-programmers.s3.amazonaws.com/production/company/logo/798/logo__160x160_.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('한마음스마트','https://programmers.co.kr/job_positions/6329','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5858/%ED%9A%8C%EC%82%AC_%EB%A1%9C%EA%B3%A0-20.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('코어트러스트','https://programmers.co.kr/job_positions/6348','/assets/img-profile-default@2x-4c89c75db57c26c1b59185e06371abffe3dc9e013e12cf82f04c4bd8b9646f4d.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('티오더','https://programmers.co.kr/job_positions/6017','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5584/%ED%8B%B0%EC%98%A4%EB%8D%94-%EC%82%AC%EA%B0%81%ED%98%95-%EA%B3%A0%ED%99%94%EC%A7%88jpg.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('푸시뉴스','https://programmers.co.kr/job_positions/3998','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1747/%ED%91%B8%EC%8B%9C%EB%89%B4%EC%8A%A4%EB%A1%9C%EA%B3%A0_300x300.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('푸시뉴스','https://programmers.co.kr/job_positions/2729','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1747/%ED%91%B8%EC%8B%9C%EB%89%B4%EC%8A%A4%EB%A1%9C%EA%B3%A0_300x300.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('한스바이오텍','https://programmers.co.kr/job_positions/6320','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5856/%ED%9A%8C%EC%82%AC_%EB%A1%9C%EA%B3%A0-18.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('한스바이오텍','https://programmers.co.kr/job_positions/6319','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5856/%ED%9A%8C%EC%82%AC_%EB%A1%9C%EA%B3%A0-18.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('티빙','https://programmers.co.kr/job_positions/4153','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4002/TVING_CI_160x160.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('한마음스마트','https://programmers.co.kr/job_positions/6324','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5858/%ED%9A%8C%EC%82%AC_%EB%A1%9C%EA%B3%A0-20.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('세컨신드롬','https://programmers.co.kr/job_positions/6161','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2906/160x160.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('NAVER FINANCIAL','https://programmers.co.kr/job_positions/6298','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5846/%EA%B7%B8%EB%A6%BC4.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('두꺼비세상','https://programmers.co.kr/job_positions/2598','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3015/01_symbol_green.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('가비아씨엔에스','https://programmers.co.kr/job_positions/6238','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3114/gabiacns_CI_squre.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('글로컬라이즈','https://programmers.co.kr/job_positions/6430','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5927/Logotype1_BG_White_3x.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('글로컬라이즈','https://programmers.co.kr/job_positions/6428','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5927/Logotype1_BG_White_3x.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('자비스앤빌런즈','https://programmers.co.kr/job_positions/6424','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2952/87379935_2222975584677689_9111005418829643776_n.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('자비스앤빌런즈','https://programmers.co.kr/job_positions/6426','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2952/87379935_2222975584677689_9111005418829643776_n.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('Coupang','https://programmers.co.kr/job_positions/6422','https://grepp-programmers.s3.amazonaws.com/production/company/logo/114/img_ci_coupang_2x_o92duc.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('Coupang','https://programmers.co.kr/job_positions/3344','https://grepp-programmers.s3.amazonaws.com/production/company/logo/114/img_ci_coupang_2x_o92duc.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('푸시뉴스','https://programmers.co.kr/job_positions/3238','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1747/%ED%91%B8%EC%8B%9C%EB%89%B4%EC%8A%A4%EB%A1%9C%EA%B3%A0_300x300.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('큐리오스튜디오','https://programmers.co.kr/job_positions/6416','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4183/qrio__1_.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('마이리얼트립','https://programmers.co.kr/job_positions/5898','https://grepp-programmers.s3.amazonaws.com/production/company/logo/414/iTunesArtwork_1x.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('마이리얼트립','https://programmers.co.kr/job_positions/4494','https://grepp-programmers.s3.amazonaws.com/production/company/logo/414/iTunesArtwork_1x.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('스포카','https://programmers.co.kr/job_positions/4437','https://grepp-programmers.s3.amazonaws.com/production/company/logo/182/spoca.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('버킷플레이스(오늘의집)','https://programmers.co.kr/job_positions/4194','https://grepp-programmers.s3.amazonaws.com/production/company/logo/281/%EB%A1%9C%EA%B3%A0.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('오피지지(OP.GG)','https://programmers.co.kr/job_positions/6239','https://grepp-programmers.s3.amazonaws.com/production/company/logo/675/opgg_profile_basic_blue.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('한국거래소시스템즈','https://programmers.co.kr/job_positions/6365','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5882/kmslogo_type1_%ED%9D%91%EB%B0%B1.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('의식주컴퍼니','https://programmers.co.kr/job_positions/6201','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1572/%EC%9D%98%EC%8B%9D%EC%A3%BC%EC%BB%B4%ED%8D%BC%EB%8B%88_logo.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('그립컴퍼니','https://programmers.co.kr/job_positions/5992','https://grepp-programmers.s3.amazonaws.com/production/company/logo/3838/grip_app_logo_2021ver_.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('트릿지','https://programmers.co.kr/job_positions/6754','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2970/Logo_blue.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('바텍 네트웍스','https://programmers.co.kr/job_positions/2504','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2589/CI_vatech_primary_PNG_180123-02.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('델레오코리아','https://programmers.co.kr/job_positions/6078','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1409/deleo.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('레이언스','https://programmers.co.kr/job_positions/5490','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5258/ry%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_programmers.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('리디','https://programmers.co.kr/job_positions/6751','https://grepp-programmers.s3.amazonaws.com/production/company/logo/168/profile_500_500_%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9__2_.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('리디','https://programmers.co.kr/job_positions/2620','https://grepp-programmers.s3.amazonaws.com/production/company/logo/168/profile_500_500_%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9__2_.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('리디','https://programmers.co.kr/job_positions/4371','https://grepp-programmers.s3.amazonaws.com/production/company/logo/168/profile_500_500_%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9__2_.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('리디','https://programmers.co.kr/job_positions/2619','https://grepp-programmers.s3.amazonaws.com/production/company/logo/168/profile_500_500_%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9__2_.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('벨루가브루어리','https://programmers.co.kr/job_positions/4944','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4186/symbol.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('vingle','https://programmers.co.kr/job_positions/6234','https://grepp-programmers.s3.amazonaws.com/production/company/logo/789/Vingle_icon_RGB_Original.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('AB180','https://programmers.co.kr/job_positions/6182','https://grepp-programmers.s3.amazonaws.com/production/company/logo/4024/AB180%EB%A1%9C%EA%B3%A0.PNG');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('가우디오랩','https://programmers.co.kr/job_positions/6488','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1338/gaudio_logomark_black.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('스포카','https://programmers.co.kr/job_positions/2590','https://grepp-programmers.s3.amazonaws.com/production/company/logo/182/spoca.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('스페이스워크','https://programmers.co.kr/job_positions/6730','https://grepp-programmers.s3.amazonaws.com/production/company/logo/2412/%EC%9E%90%EC%82%B0_1-100.jpg');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('텔스타-홈멜','https://programmers.co.kr/job_positions/6726','https://grepp-programmers.s3.amazonaws.com/production/company/logo/5710/1._Telstar_Hommel_CI.png');
+Insert into HR.TBL_TESTPAGE (COMPANY,URL,LOGOURL) values ('소리를보는통로','https://programmers.co.kr/job_positions/5699','https://grepp-programmers.s3.amazonaws.com/production/company/logo/1978/SOVORO_LOGO_%EB%8F%99%EA%B8%80.png');
