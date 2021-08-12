@@ -1,5 +1,6 @@
 package com.alpaca.app.sample.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,13 @@ import lombok.NoArgsConstructor;
  */
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class AuthVO {
 
     // 아이디
     private String email;
     // 권한
-    private String auth;
+    private MemberRole auth;
 
 }

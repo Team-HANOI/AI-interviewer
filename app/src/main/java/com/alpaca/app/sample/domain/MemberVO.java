@@ -2,9 +2,7 @@ package com.alpaca.app.sample.domain;
 
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Hyunsik Lee on 2021-08-11
@@ -12,7 +10,7 @@ import java.util.List;
  * Github : https://github.com/hs95blue
  */
 @Builder
-@ToString(exclude = "authList")
+@ToString(exclude = "roleSet")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -33,16 +31,24 @@ public class MemberVO {
     // 소셜 여부
     private boolean fromSocial;
     // 권한 목록( 한 아이디가 여러개의 권한 가질 수 있음.)
-    @Builder.Default
-    private List<AuthVO> authList = new ArrayList<>();
+    /*@Builder.Default
+    private List<AuthVO> authList = new ArrayList<>();*/
 
     /**
      *  setter 대신 사용, 조회할 때 쓰면될 듯.
      *  아직은 좀 헷갈림.
      * @param  auth 권한 객체
      */
-    public void addAuthList(AuthVO auth){
+    /*public void addAuthList(AuthVO auth){
         this.authList.add(auth);
+    }*/
+
+
+    @Builder.Default
+    private Set<MemberRole> roleSet = new HashSet<>();
+
+    public void addMemberRole(MemberRole clubMemberRole){
+        roleSet.add(clubMemberRole);
     }
 
 }

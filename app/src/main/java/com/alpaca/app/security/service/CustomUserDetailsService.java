@@ -42,8 +42,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                 memberVO.getPassword(),
                 memberVO.isFromSocial(),
                 memberVO.isEnabled(),
-                memberVO.getAuthList().stream()
-                        .map(auth -> new SimpleGrantedAuthority(auth.getAuth()))
+                memberVO.getRoleSet().stream()
+                        .map(auth -> new SimpleGrantedAuthority("ROLE_"+auth.name()))
                         .collect(Collectors.toList()));
 
 

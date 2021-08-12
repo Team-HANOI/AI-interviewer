@@ -13,7 +13,7 @@
         <result property="updateDate" column="updatedate"/>
         <result property="enabled" column="enabled"/>
         <result property="fromSocial" column="from_social"/>
-        <collection property="authList" resultMap="authMap">
+        <collection property="roleSet" resultMap="authMap">
         </collection>
     </resultMap>
 
