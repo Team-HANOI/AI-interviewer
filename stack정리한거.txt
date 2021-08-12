@@ -1,14 +1,14 @@
 iOS	1180
 PyTorch	1231
 Docker	1147
-MySQL	1214
-SQLite	1272
 MyBatis	1549
-Reactor	3134
 JSP	1518
 Spring	1249
+Apache	356
+JPA(Java Persistent API)	1586
 C#	1128
 C	1274
+Apache Tomcat	1109
 STT(Speech to Text)	3009
 NoSQL	1278
 Ajax	1089
@@ -17,12 +17,12 @@ Google Cloud Platform	1166
 Oracle Database	842
 WordPress	1424
 Linux	1196
-MongoDB	1211
 Raspberry Pi	1273
 GitHub	1161
 JavaScript	1183
 Bootstrap	1126
 Oracle	1223
+Jest	1605
 C++	1275
 MariaDB	1201
 Go	1163
@@ -41,6 +41,7 @@ HTML	1178
 Spring Boot	1250
 JIRA	1317
 Python	1230
+CAD	426
 Node.js	1216
 Deep Learning	1143
 Android	1103
@@ -48,8 +49,8 @@ SQL	1251
 Vue.js	1264
 Git	1160
 Unity	1259
-MVC	1212
 IoT	1181
+TypeScript	1257
 REST API	161
 CSS	1137
 jQuery	1186
