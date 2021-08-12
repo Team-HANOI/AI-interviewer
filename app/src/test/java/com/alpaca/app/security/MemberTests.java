@@ -1,6 +1,7 @@
 package com.alpaca.app.security;
 
 import com.alpaca.app.sample.domain.AuthVO;
+import com.alpaca.app.sample.domain.MemberRole;
 import com.alpaca.app.sample.domain.MemberVO;
 import com.alpaca.app.sample.mapper.MemberMapper;
 import org.junit.jupiter.api.Test;
@@ -42,14 +43,14 @@ public class MemberTests {
         //default role
         AuthVO authVO = new AuthVO();
         authVO.setEmail(member.getEmail());
-        authVO.setAuth("ROLE_USER");
+        authVO.setAuth(MemberRole.USER);
 
         if(i > 80){
-          authVO.setAuth("ROLE_MANAGER");
+          authVO.setAuth(MemberRole.MANAGER);
         }
 
         if(i > 90){
-          authVO.setAuth("ROLE_ADMIN");
+          authVO.setAuth(MemberRole.ADMIN);
         }
 
         mapper.saveMember(member);

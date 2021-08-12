@@ -1,6 +1,7 @@
 package com.alpaca.app.security.service;
 
 import com.alpaca.app.sample.domain.AuthVO;
+import com.alpaca.app.sample.domain.MemberRole;
 import com.alpaca.app.sample.domain.MemberVO;
 import com.alpaca.app.sample.mapper.MemberMapper;
 import com.alpaca.app.security.dto.AuthMemberDTO;
@@ -66,8 +67,8 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
                 memberVO.getPassword(),
                 true,
                 true,
-                memberVO.getAuthList().stream().map(
-                        role -> new SimpleGrantedAuthority("ROLE_"+ role.getAuth()))
+                memberVO.getRoleSet().stream().map(
+                        role -> new SimpleGrantedAuthority("ROLE_"+ role.name()))
                         .collect(Collectors.toList()),
                 oAuth2User.getAttributes()
         );
@@ -89,7 +90,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
                 .fromSocial(true)
                 .build();
 
-        AuthVO authVO = AuthVO.builder().email(email).auth("ROLE_USER").build();
+        AuthVO authVO = AuthVO.builder().email(email).auth(MemberRole.USER).build();
 
         mapper.saveMember(newMember);
         mapper.saveAuth(authVO);
