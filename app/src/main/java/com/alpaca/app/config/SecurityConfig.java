@@ -1,5 +1,6 @@
 package com.alpaca.app.config;
 
+import com.alpaca.app.security.handler.LoginSuccessHandler;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,8 +27,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin();
         http.csrf().disable();
-        http.logout();
-        http.oauth2Login();
+
+        http.oauth2Login().successHandler(successHandler());
+    }
+
+    @Bean
+    public LoginSuccessHandler successHandler(){
+        return new LoginSuccessHandler(passwordEncoder());
     }
 
 

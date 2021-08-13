@@ -47,8 +47,8 @@ public class MemberVO {
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();
 
-    public void addMemberRole(MemberRole clubMemberRole){
-        roleSet.add(clubMemberRole);
+    public void addMemberRole(MemberRole memberRole){
+        roleSet.add(memberRole);
     }
 
 }

@@ -51,7 +51,7 @@
              , password
              , from_social
              , enabled
-             , auth.auth
+             , auth.auth roleSet
              , regdate
              , updatedate
         FROM
