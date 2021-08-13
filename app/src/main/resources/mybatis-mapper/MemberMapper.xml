@@ -18,7 +18,6 @@
     </resultMap>
 
     <resultMap type="com.alpaca.app.sample.domain.AuthVO" id="authMap">
-        <result property="email" column="email"/>
         <result property="auth" column="auth"/>
     </resultMap>
 
