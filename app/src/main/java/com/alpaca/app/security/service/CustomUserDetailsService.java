@@ -44,7 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 memberVO.isEnabled(),
                 memberVO.getRoleSet().stream()
                         .map(auth -> new SimpleGrantedAuthority("ROLE_"+auth.name()))
-                        .collect(Collectors.toList()));
+                        .collect(Collectors.toSet()));
 
 
         authMemberDTO.setName(memberVO.getName());

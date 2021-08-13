@@ -20,7 +20,6 @@ import java.util.stream.IntStream;
 
 @SpringBootTest
 public class MemberTests {
-
     @Autowired
     private MemberMapper mapper;
 
