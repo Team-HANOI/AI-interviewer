@@ -1,5 +1,6 @@
 package com.alpaca.app.security.service;
 
+import com.alpaca.app.sample.domain.MemberRole;
 import com.alpaca.app.sample.domain.MemberVO;
 import com.alpaca.app.sample.mapper.MemberMapper;
 import com.alpaca.app.security.dto.AuthMemberDTO;
@@ -44,8 +45,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 memberVO.isEnabled(),
                 memberVO.getRoleSet().stream()
                         .map(auth -> new SimpleGrantedAuthority("ROLE_"+auth.name()))
-                        .collect(Collectors.toList()));
-
+                        .collect(Collectors.toSet()));
 
         authMemberDTO.setName(memberVO.getName());
         authMemberDTO.setFromSocial(memberVO.isFromSocial());

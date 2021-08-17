@@ -69,7 +69,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
                 true,
                 memberVO.getRoleSet().stream().map(
                         role -> new SimpleGrantedAuthority("ROLE_"+ role.name()))
-                        .collect(Collectors.toList()),
+                        .collect(Collectors.toSet()),
                 oAuth2User.getAttributes()
         );
         authMemberDTO.setName(memberVO.getName());

@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.3'
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'war'
@@ -38,8 +38,16 @@ dependencies {
 // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-java8time
 	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.4.RELEASE'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
 	//thymeleaf 화면구성을 위한 임플..
 	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
+
+
+
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+
+	implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.4.1'
 
 }
 
