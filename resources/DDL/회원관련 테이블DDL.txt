@@ -1,0 +1,25 @@
+-- auto-generated definition
+create table TBL_SEC_MEMBER
+(
+    EMAIL       VARCHAR2(100)        not null
+        constraint TBL_SEC_MEMBER_PK
+            primary key,
+    PASSWORD    VARCHAR2(100)        not null,
+    NAME        VARCHAR2(100)        not null,
+    REGDATE     DATE default sysdate not null,
+    UPDATEDATE  DATE default sysdate not null,
+    ENABLED     CHAR default 1       not null,
+    FROM_SOCIAL CHAR                 not null
+)
+/
+
+-- auto-generated definition
+create table TBL_SEC_MEMBER_AUTH
+(
+    AUTH  VARCHAR2(255),
+    EMAIL VARCHAR2(255) not null
+        constraint TBL_SEC_MEMBER_ROLE_SET_FK1
+            references TBL_SEC_MEMBER
+)
+/
+
