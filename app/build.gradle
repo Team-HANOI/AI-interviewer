@@ -38,6 +38,9 @@ dependencies {
 // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-java8time
 	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.4.RELEASE'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	//thymeleaf 화면구성을 위한 임플..
+	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
+
 }
 
 test {
