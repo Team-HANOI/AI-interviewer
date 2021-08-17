@@ -13,11 +13,11 @@
         <result property="updateDate" column="updatedate"/>
         <result property="enabled" column="enabled"/>
         <result property="fromSocial" column="from_social"/>
-        <collection property="roleSet" resultMap="authMap">
+        <collection property="roleSet" resultMap="MemberRole">
         </collection>
     </resultMap>
 
-    <resultMap type="com.alpaca.app.sample.domain.AuthVO" id="authMap">
+    <resultMap type="com.alpaca.app.sample.domain.MemberRole" id="MemberRole">
         <result property="auth" column="auth"/>
     </resultMap>
 
@@ -50,7 +50,7 @@
              , password
              , from_social
              , enabled
-             , auth.auth roleSet
+             , auth.auth
              , regdate
              , updatedate
         FROM
