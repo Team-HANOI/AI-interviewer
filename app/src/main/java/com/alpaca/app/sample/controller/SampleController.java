@@ -39,4 +39,8 @@ public class SampleController {
         log.info("exAdmin..........");
     }
 
+    @GetMapping("/main")
+    public void exhy() {
+    	
+    }
 }
