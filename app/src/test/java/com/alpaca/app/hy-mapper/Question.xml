@@ -3,9 +3,13 @@
 							"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="??">
 <!-- 전체질문 목록 추천수 10이상만 보이게 해야하는데...-->
-<select id="QuestList" resultType="int">
+<select id="SelectAllQList" resultType="int">
 <![CDATA[
 select * from tbl_q where r_cnt>=10
+
+select q_id, content
+		   (select row_number() over num, A.* from tbl_qh A order by q_id_sq desc)
+	where num between #{startrow} and #{startrow}+10 and r_cnt>=10;
 ]]>
 
 </select>
@@ -22,7 +26,7 @@ select * from tbl_q where r_cnt>=10
 	    select i.file_data, m.email, a.content, a.r_cnt, a.regdate
 	    from TBL_PF_IMG i,TBL_PROFILe p, TBL_MEMBER m,tbl_answer a,tbl_review r
 		where i.pf_img_id=p.pf_img_id and p.pf_id=m.pf_id and m.email=r.email and a.q_id='#{q_id}'
-		order by regdates
+		order by regdate
 	]]>
 	
 	</select>
