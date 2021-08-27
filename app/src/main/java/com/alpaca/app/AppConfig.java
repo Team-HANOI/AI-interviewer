@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = "com.alpaca.app")
 @MapperScan(value = {"com.alpaca.app.sample.mapper"})
+@MapperScan(value = {"com.alpaca.app.board.dao"})
 public class AppConfig {
 
 }
