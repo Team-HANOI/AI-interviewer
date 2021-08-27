@@ -6,5 +6,5 @@ package com.alpaca.app.sample.domain;
  * Github : https://github.com/hs95blue
  */
 public enum MemberRole {
-    USER,MANAGER,ADMIN
+    USER, COMPANY, ADMIN
 }

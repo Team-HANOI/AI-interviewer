@@ -37,15 +37,15 @@ public class MemberTests {
                 .email("user"+i+"@hyunsik.com")
                 .name("사용자"+i)
                 .fromSocial(false)
-                .password(  passwordEncoder.encode("1111") )
+                .pw(  passwordEncoder.encode("1111") )
                 .build();
         //default role
         AuthVO authVO = new AuthVO();
         authVO.setEmail(member.getEmail());
-        authVO.setAuth(MemberRole.USER);
+        authVO.setAuth(MemberRole.USER);//일반 회원
 
         if(i > 80){
-          authVO.setAuth(MemberRole.MANAGER);
+          authVO.setAuth(MemberRole.COMPANY);//기업회원
         }
 
         if(i > 90){

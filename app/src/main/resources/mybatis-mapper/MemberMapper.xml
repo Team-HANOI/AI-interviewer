@@ -7,17 +7,22 @@
     <resultMap type="com.alpaca.app.sample.domain.MemberVO" id="memberMap">
         <id property="email" column="email"/>
         <result property="email" column="email"/>
+        <result property="pfId" column="pfId"/>
+        <result property="pw" column="pw"/>
         <result property="name" column="name"/>
-        <result property="password" column="password"/>
-        <result property="regDate" column="regdate"/>
-        <result property="updateDate" column="updatedate"/>
         <result property="enabled" column="enabled"/>
+        <result property="phoneNum" column="phone_num"/>
+<!--        <result property="type" column="type"/>-->
+        <result property="lockdate" column="lockdate"/>
+        <result property="failureCnt" column="failure_cnt"/>
+        <result property="regdate" column="regdate"/>
+        <result property="updatedate" column="updatedate"/>
         <result property="fromSocial" column="from_social"/>
-        <collection property="roleSet" resultMap="MemberRole">
+        <collection property="roleSet" resultMap="authMap">
         </collection>
     </resultMap>
 
-    <resultMap type="com.alpaca.app.sample.domain.MemberRole" id="MemberRole">
+    <resultMap type="com.alpaca.app.sample.domain.AuthVO" id="authMap">
         <result property="auth" column="auth"/>
     </resultMap>
 
@@ -26,17 +31,17 @@
         <![CDATA[
         INSERT
         INTO
-            tbl_sec_member
+            tbl_member
         (
             email
             , name
-            , password
+            , pw
             , from_social
         )
         VALUES
             (   #{email}
                 ,#{name}
-                ,#{password}
+                ,#{pw}
                 ,#{fromSocial}
             )
         ]]>
@@ -46,17 +51,21 @@
       <![CDATA[
         SELECT
             mem.email
+             , pf_id
+             , pw
              , name
-             , password
-             , from_social
-             , enabled
-             , auth.auth
              , regdate
              , updatedate
+             , enabled
+             , from_social
+             , phone_num
+             , lockdate
+             , failure_cnt
+             , auth.auth
         FROM
-            tbl_sec_member mem
+            tbl_member mem
                 LEFT OUTER JOIN
-            tbl_sec_member_auth auth
+            tbl_auth auth
             on mem.email = auth.email
         WHERE mem.email = #{email} and from_social = #{fromSocial}
         ]]>
