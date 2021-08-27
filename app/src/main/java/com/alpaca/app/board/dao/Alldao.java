@@ -15,7 +15,7 @@ import com.alpaca.app.board.vo.Quest;
 public interface Alldao {
    
    List<Quest> SelectAllQList(int startrow) throws Exception;
-   List<Quest> Querykw(String keyword) throws Exception;
+   List<Quest> Querykw(String keyword, int startrow) throws Exception;
    Profile SelectProfile(int iRecordId) throws Exception;
    Answer SelectAnswer(int qId) throws Exception;
    Answer SelectAnswerRCnt(int qId) throws Exception;

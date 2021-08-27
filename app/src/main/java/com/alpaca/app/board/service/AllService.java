@@ -8,5 +8,5 @@ import com.alpaca.app.board.vo.Quest;
 
 public interface AllService {
     List<Quest> getAllQList(int pg, PgInfo pgInfo) throws Exception;
-    
+    List<Quest> getkwQList(String keyword,int pg, PgInfo pgInfo) throws Exception;
 }

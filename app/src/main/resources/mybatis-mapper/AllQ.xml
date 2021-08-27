@@ -17,16 +17,15 @@
 		]]>		
 	
 	</select>
-<!-- 	
-	<select id="Querykw" resultType="quest" parameterType="int">
+	
+	<select id="Querykw" resultType="quest">
 		<![CDATA[
-		select q_id,content from TBL_Q where KW_LIST like '%#{kw}%'  (select row_number() over num, A.* from tbl_qh A order by q_id_sq desc)
+		select q_id,content from TBL_Qh where KW_LIST like '%#{kw}%'  (select row_number() over num, A.* from tbl_qh A order by q_id_sq desc)
 		where num between #{startrow} and #{startrow}+10 and r_cnt>=10;
 		]]>
 	</select>
-	전체질문게시판 답변 최신순 정렬
-	클릭하면 q_id를 가지고 넘어가는건가
-
+	
+<!-- 
 	답변 프로필정보 불러오기
 	<select id="SelectProfile" resultType="profile" parameterType="int" >
 	<![CDATA[
@@ -120,4 +119,5 @@
 
 
  -->
+ 
 </mapper>

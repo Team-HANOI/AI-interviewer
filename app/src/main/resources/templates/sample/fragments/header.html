@@ -1,6 +1,27 @@
-
 <html lang="en" xmlns="http://www.thymleaf.org">
 <header th:fragment="header">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Alpaca</title>
+    <link rel="shortcut icon" href="favicon/favicon1.ico">
+    <!-- font awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+       <!-- custom styles -->
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+
+       <!-- java script -->
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+    <!-- custom styles
+    <link rel="stylesheet" href="style/main.css">
+
+    <!-- java script -->
+    <!-- <script defer src="js/index.js"></script> --> -->
+</head>
+
+
         <nav class="nav">
             <!-- 사이트 명 -->
             <ul class="nav-sub nav-title">
@@ -56,7 +77,7 @@
         </nav>
     </header>
     
-
+</html>
 <!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="headerFragment">

@@ -5,4 +5,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface AllQController{
 	ModelAndView AllQList(@RequestParam(value="pg", required=false, defaultValue="1") int pg);
+	ModelAndView AllkwQList(@RequestParam(value="keyword") String keyword, @RequestParam(value="pg", required=false, defaultValue="1")int pg); 
+	
 }

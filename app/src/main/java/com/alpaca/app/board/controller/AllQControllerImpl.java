@@ -40,6 +40,27 @@ public class AllQControllerImpl implements AllQController {
 		return mv;
 	}
 
+	@Override
+	@RequestMapping(value="/allkwqlist", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView AllkwQList(@RequestParam(value="keyword") String keyword,@RequestParam(value="pg", required=false, defaultValue="1") int pg) {
+		PgInfo pgInfo = new PgInfo();
+		ModelAndView mv = new ModelAndView();
+		System.out.println("aa");
+		try {
+			List<Quest> articleList = allService.getkwQList(keyword,pg,pgInfo);
+			mv.addObject("pgInfo",pgInfo);
+			mv.addObject("articleList",articleList);
+			//mv.addObject("page","Qlistform");
+			mv.setViewName("board_total");
+		}catch(Exception e) {
+			e.printStackTrace();
+			mv.addObject("err",e.getMessage());
+			mv.addObject("page","/err");
+			mv.setViewName("main");
+		}
+		return mv;		
+	}
+
 	
 
 	}
