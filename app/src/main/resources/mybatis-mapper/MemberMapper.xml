@@ -54,8 +54,8 @@
              , pf_id
              , pw
              , name
-             , regdate
-             , updatedate
+             , mem.regdate
+             , mem.updatedate
              , enabled
              , from_social
              , phone_num
