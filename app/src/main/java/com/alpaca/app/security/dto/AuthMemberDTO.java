@@ -119,10 +119,15 @@ public class AuthMemberDTO extends User implements OAuth2User {
             Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
         this.email = username;
+        this.pw = password;
         this.fromSocial = fromSocial;
         this.enabled = enabled;
     }
 
+    @Override
+    public String getPassword() {
+        return this.getPw();
+    }
 
     @Override
     public Map<String, Object> getAttributes() {
