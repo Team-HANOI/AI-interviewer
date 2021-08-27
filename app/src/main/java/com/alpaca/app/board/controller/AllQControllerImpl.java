@@ -30,7 +30,7 @@ public class AllQControllerImpl implements AllQController {
 			mv.addObject("pgInfo",pgInfo);
 			mv.addObject("articleList",articleList);
 			//mv.addObject("page","Qlistform");
-			mv.setViewName("Qlistform");
+			mv.setViewName("board_total");
 		}catch(Exception e) {
 			e.printStackTrace();
 			mv.addObject("err",e.getMessage());
