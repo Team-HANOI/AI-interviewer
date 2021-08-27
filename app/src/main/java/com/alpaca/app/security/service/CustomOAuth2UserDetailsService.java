@@ -64,11 +64,16 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         MemberVO memberVO = saveSocialMember(email);
         AuthMemberDTO authMemberDTO = new AuthMemberDTO(
                 memberVO.getEmail(),
-                memberVO.getPassword(),
+                memberVO.getPw(),
+                memberVO.getPfId(),
+                memberVO.getName(),
+                memberVO.getPhoneNum(),
+                memberVO.getLockdate(),
+                0,
                 true,
-                true,
+                'E',
                 memberVO.getRoleSet().stream().map(
-                        role -> new SimpleGrantedAuthority("ROLE_"+ role.name()))
+                        role -> new SimpleGrantedAuthority("ROLE_"+ role.getAuth()))
                         .collect(Collectors.toSet()),
                 oAuth2User.getAttributes()
         );
@@ -83,10 +88,13 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         if(memberVO != null) {
             return memberVO;
         }
-
+        //int pfId = mapper.selectPfId();
         MemberVO newMember = MemberVO.builder().email(email)
                 .name(email)
-                .password(passwordEncoder.encode("1111"))
+                .pw(passwordEncoder.encode("1111"))
+                .name("user"+ Math.random())//처음엔 임의값
+                .phoneNum("01012345678")//처음엔 임의값
+                //.type('M')//소셜로그인은 일반회원으로만 가입가능
                 .fromSocial(true)
                 .build();
 

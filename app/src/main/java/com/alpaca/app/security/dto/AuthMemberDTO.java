@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import java.util.*;
 import java.util.Collection;
 import java.util.Map;
 
@@ -33,13 +34,31 @@ public class AuthMemberDTO extends User implements OAuth2User {
     // 몰라.. 이게뭐야?
     private static final long serialVersionUID = 1L;
     //
+    //이메일
     private String email;
-
+    //프로필id
+    private String pfId;
+    //패스워드
+    private String pw;
+    //이름
     private String name;
-
+    //회원상태 / 활성화:E 비활성화(탈퇴):D 잠금:L 비활성화(휴면):S
+    private char enabled;
+    //소셜로그인 여부 true:1 false:0
     private boolean fromSocial;
+    //전화번호(핸드폰)
+    private String phoneNum;
+    //회원구분  일반:M 기업:C
+    private char type;
+    //잠금날짜 (몇시간 잠금했는지 판단할때 사용)
+    private Date lockdate;
+    //비밀번호 실패횟수
+    private int failureCnt;
 
-    private boolean enabled;
+    //등록일
+    private Date regdate;
+    //수정일
+    private Date updatedate;
 
     private Map<String, Object> attr;
     //  private MemberVO member;
@@ -64,11 +83,17 @@ public class AuthMemberDTO extends User implements OAuth2User {
     public AuthMemberDTO(
             String username,
             String password,
+            int pfId,
+            String name,
+            String phoneNum,
+//            char type,
+            Date lockdate,
+            int failureCnt,
             boolean fromSocial,
-            boolean enabled,
+            char enabled,
             Collection<? extends GrantedAuthority> authorities,
             Map<String, Object> attr) {
-            this(username, password, fromSocial, enabled, authorities);
+            this(username, password, pfId, name, phoneNum, lockdate, failureCnt, fromSocial, enabled, authorities);
             this.attr = attr;
     }
 
@@ -83,8 +108,14 @@ public class AuthMemberDTO extends User implements OAuth2User {
     public AuthMemberDTO(
             String username,
             String password,
+            int pfId,
+            String name,
+            String phoneNum,
+           // char type,
+            Date lockdate,
+            int failureCnt,
             boolean fromSocial,
-            boolean enabled,
+            char enabled,
             Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
         this.email = username;
