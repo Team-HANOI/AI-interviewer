@@ -21,6 +21,15 @@ public class SampleController {
     }
 
     /**
+     *  회원 비회원 모두 접근 가능
+     */
+    @GetMapping("/test")
+    public String test(){
+        log.info("exAll..........");
+        return "home";
+    }
+
+    /**
      *  회원만 접근 가능
      * @param authMemberDTO
      */
