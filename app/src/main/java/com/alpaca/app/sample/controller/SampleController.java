@@ -1,9 +1,13 @@
 package com.alpaca.app.sample.controller;
 
+import com.alpaca.app.sample.domain.MemberVO;
+import com.alpaca.app.sample.service.MemberService;
 import com.alpaca.app.security.dto.AuthMemberDTO;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,12 +16,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/sample/")
 public class SampleController {
 
+
+    @Autowired
+    MemberService service;
     /**
      *  회원 비회원 모두 접근 가능
      */
     @GetMapping("/all")
     public void exAll(){
         log.info("exAll..........");
+    }
+   /**
+     *  회원 비회원 모두 접근 가능
+     */
+    @GetMapping("/test")
+    public String test(Model model, MemberVO memberVO){
+        log.info("exAll..........");
+        memberVO = service.findByEmail("user4@hyunsik.com", false);
+        model.addAttribute("test",memberVO);
+        return "home";
     }
 
     /**
