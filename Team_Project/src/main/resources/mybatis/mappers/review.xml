@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+							"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mulcam.alpaca.dao.ReviewDAO">
+	
+	
+	<!-- 글쓰기 -->
+	
+	<select id="selectRImgNextval" resultType="int">
+		<![CDATA[
+		select r_img_sq.nextval from dual
+		]]>	
+	</select>
+
+	<insert id="insertRImg" parameterType="FileVO">
+		<![CDATA[
+		insert into tbl_r_img
+		(r_img_id, file_name, file_size, file_content_type, file_upload_date, file_data, regdate, updatedate)
+		values(#{fileId}, #{fileName}, #{fileSize}, #{fileContentType}, current_timestamp, #{fileData}, sysdate, sysdate)
+		]]>	
+	</insert>
+	
+	<insert id="insertReviewTemp" parameterType="ReviewVO">
+		<![CDATA[
+		insert into tbl_review
+		(review_id, r_img_id, email, pos, company, title, content, comm_cnt, like_cnt, view_cnt, regdate, updatedate, temp)
+		values(review_sq.nextval, #{fileId}, 'e@naver.com', #{pos}, #{company}, #{title}, #{content}, #{commCnt}, #{likeCnt}, #{viewCnt}, sysdate, sysdate, '1')
+		]]>	
+	</insert>
+	
+	<insert id="insertReview" parameterType="ReviewVO">
+		<![CDATA[
+ 		insert into tbl_review
+		(review_id, r_img_id, email, pos, company, title, content, comm_cnt, like_cnt, view_cnt, regdate, updatedate, temp)
+		values(review_sq.nextval, #{fileId}, #{email}, #{pos}, #{company}, #{title}, #{content}, #{commCnt}, #{likeCnt}, #{viewCnt}, sysdate, sysdate, '0')
+		
+		]]>	
+	</insert>
+	
+	
+	
+	<!-- 공개 게시판 리스트 -->
+	
+	<select id="selectReviewCount" resultType="int">
+		<![CDATA[
+		select count(*) from tbl_review where temp=0
+		]]>		
+	</select>
+	
+	<select id="selectReviewList" resultType="ReviewVO" parameterType="int">
+		<![CDATA[  
+		select 
+		m.name
+		,r.review_id as "reviewId"
+		,r.r_img_id as "fileId"
+		,r.email
+		,r.pos
+		,r.company
+		,r.title
+		,r.content
+		,r.comm_cnt as "commCnt"
+		,r.like_cnt as "likeCnt"
+		,r.view_cnt as "viewCnt"
+		,r.regdate
+		,r.updatedate
+		,r.temp
+  		  from ((select row_number() over (order by review_id desc) num, A.* from tbl_review A order by review_id desc)) z, tbl_review r, tbl_member m 
+   		 where r.temp=0 and z.num between #{startrow} and #{startrow}+10 and r.email=m.email and r.review_id=z.review_id
+		]]>
+	</select>
+	
+	
+	<!-- 키워드 게시판 리스트 -->
+	
+	<select id="selectReviewKeyCount" parameterType="String" resultType="int">
+		<![CDATA[
+		select count(*) from tbl_review where temp=0 and (pos like '%'||#{keyword}||'%' or company like '%'||#{keyword}||'%' or title like '%'||#{keyword}||'%' or content like '%'||#{keyword}||'%')
+		]]>		
+	</select>
+	
+	<select id="selectReviewKeyList" resultType="ReviewVO">
+		<![CDATA[  
+		select 
+		m.name
+		,r.review_id as "reviewId"
+		,r.r_img_id as "fileId"
+		,r.email
+		,r.pos
+		,r.company
+		,r.title
+		,r.content
+		,r.comm_cnt as "commCnt"
+		,r.like_cnt as "likeCnt"
+		,r.view_cnt as "viewCnt"
+		,r.regdate
+		,r.updatedate
+		,r.temp
+		from tbl_review r, tbl_member m, (select row_number() over (order by review_id desc) num, A.* from tbl_review A order by review_id desc) z
+		where (r.pos like '%'||#{keyword}||'%' or r.company like '%'||#{keyword}||'%' or r.title like '%'||#{keyword}||'%' or r.content like '%'||#{keyword}||'%') and r.temp=0 and z.num between ${startrow} and ${startrow}+10 and r.email=m.email and r.review_id=z.review_id
+		
+		]]>
+	</select>
+	
+	
+	<!-- 이메일로 멤버테이블 셀렉트 -->
+	
+	<select id="selectNameByE" resultType="String" parameterType="String">
+		<![CDATA[  
+		select name from tbl_member where email = #{email}
+		]]>
+	</select>
+
+	
+	<!-- 공개 게시판 상세 -->
+	
+	<update id="updateViewCount" parameterType="int">
+		<![CDATA[
+		update tbl_review set view_cnt=view_cnt+1 where review_id=#{reviewId}
+		]]>		
+	</update>
+	
+	<select id="selectReview" resultType="ReviewVO" parameterType="int">
+		<![CDATA[
+		select 
+		m.name
+		,r.review_id as "reviewId"
+		,r.r_img_id as "fileId"
+		,r.email
+		,r.pos
+		,r.company
+		,r.title
+		,r.content
+		,r.comm_cnt as "commCnt"
+		,r.like_cnt as "likeCnt"
+		,r.view_cnt as "viewCnt"
+		,r.regdate
+		,r.updatedate
+		,r.temp
+    	from tbl_review r, tbl_member m 
+    	where review_id=#{reviewId} and r.email=m.email
+		]]>		
+	</select>
+	
+	
+	<!-- 이전글 / 공개 게시판 상세 -->
+		
+	<update id="updateViewCountPre" parameterType="int">
+		<![CDATA[
+		update tbl_review set view_cnt=view_cnt+1 where review_id=#{reviewId}-1
+		]]>		
+	</update>
+	
+	<select id="selectReviewPre" resultType="ReviewVO" parameterType="int">
+		<![CDATA[
+		select 
+		m.name
+		,r.review_id as "reviewId"
+		,r.r_img_id as "fileId"
+		,r.email
+		,r.pos
+		,r.company
+		,r.title
+		,r.content
+		,r.comm_cnt as "commCnt"
+		,r.like_cnt as "likeCnt"
+		,r.view_cnt as "viewCnt"
+		,r.regdate
+		,r.updatedate
+		,r.temp
+    	from tbl_review r, tbl_member m 
+    	where review_id=#{reviewId}-1 and r.email=m.email
+		]]>		
+	</select>
+	
+	
+	<!-- 다음글 / 공개 게시판 상세 -->
+		
+	<update id="updateViewCountNext" parameterType="int">
+		<![CDATA[
+		update tbl_review set view_cnt=view_cnt+1 where review_id=#{reviewId}+1
+		]]>		
+	</update>
+	
+	<select id="selectReviewNext" resultType="ReviewVO" parameterType="int">
+		<![CDATA[
+		select 
+		m.name
+		,r.review_id as "reviewId"
+		,r.r_img_id as "fileId"
+		,r.email
+		,r.pos
+		,r.company
+		,r.title
+		,r.content
+		,r.comm_cnt as "commCnt"
+		,r.like_cnt as "likeCnt"
+		,r.view_cnt as "viewCnt"
+		,r.regdate
+		,r.updatedate
+		,r.temp
+    	from tbl_review r, tbl_member m 
+    	where review_id=#{reviewId}+1 and r.email=m.email
+		]]>		
+	</select>
+	
+
+	
+	<!-- 게시판 상세 > 첨부파일 -->
+	
+	<select id="getFile" parameterType="int" resultType="fileVO">
+	<![CDATA[
+	select 
+		r_img_id as "fileId"
+		,file_name as "fileName"
+		,file_size as "fileSize"
+		,file_content_type as "fileContentType"
+		,file_upload_date as "fileUploadDate"
+		,file_data as "fileData"
+		,regdate as "regdate"
+		,updatedate as "updatedate"
+        from tbl_r_img
+        where r_img_id=#{fileId}
+	]]>
+	</select>
+	
+
+	
+<!-- 	<delete id="deleteFile" parameterType="int">
+		<![CDATA[
+		delete from upload_file where file_id=#{fileId}
+		]]>
+	</delete> -->
+	
+	
+	<!-- 게시글 상세 > 좋아요 -->
+	
+	<select id="selectLikeCount" parameterType="String" resultType="int">
+		<![CDATA[
+		select nvl(like_cnt,0) from tbl_review where review_id=#{reviewId}
+		]]>		
+	</select>
+
+	<update id="updateLikeCount" parameterType="String">
+		<![CDATA[
+		update tbl_review set like_cnt=nvl(like_cnt,0)+1 where review_id=#{reviewId}
+		]]>		
+	</update>
+	
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteReview" parameterType="int">
+		<![CDATA[
+		delete from tbl_review where review_id=#{reviewId}
+		]]>
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- insert 본댓글 -->
+	<insert id="insertRComm" parameterType="RCommVO">
+		<![CDATA[
+		insert into tbl_r_comm
+		(com_id, review_id, email, content, prt_com_id, seq, lev, regdate, updatedate)
+		values(r_comm_sq.nextval, #{reviewId}, #{email}, #{content}, r_comm_sq.currval, 0, 0, sysdate, sysdate)
+		]]>	
+	</insert>
+	
+	<!-- update 댓글수 (게시글 넘버) -->
+	<update id="updateCommCnt" parameterType="int">
+		<![CDATA[
+		update tbl_review set comm_cnt=(select count(*) from tbl_r_comm) where review_id=#{reviewId}
+		]]>		
+	</update>
+	
+	
+	<!-- 대댓글 전작업 select seq max -->
+	<select id="selectSeqMax" parameterType="int" resultType="int">
+		<![CDATA[
+		select max(seq) from tbl_r_comm where prt_com_id=#{prtComId}
+		]]>	
+	</select>
+	
+	<!-- insert 대댓글 -->
+	<insert id="insertRCommChild" parameterType="RCommVO">
+		<![CDATA[
+		insert into tbl_r_comm
+		(com_id, review_id, email, content, prt_com_id, seq, lev, regdate, updatedate)
+		values(r_comm_sq.nextval, #{reviewId}, #{email}, #{content}, #{comId}, #{seq}, 1, sysdate, sysdate)
+		]]>	
+	</insert>
+	
+	<!-- select댓글List -->
+	<select id="selectRCommList" parameterType="int" resultType="RCommVO">
+		<![CDATA[  
+		select 
+        m.name
+        ,c.com_id as "comId"
+		,c.review_id as "reviewId"
+        ,c.email
+        ,c.content
+        ,c.prt_com_id as "prtComId"
+        ,c.seq
+        ,c.lev
+        ,c.regdate
+        ,c.updatedate
+		from tbl_r_comm c, tbl_member m
+        where c.review_id=#{reviewId} and  c.email=m.email
+		order by c.prt_com_id asc, c.seq asc
+		]]>
+	</select>
+	
+</mapper>
