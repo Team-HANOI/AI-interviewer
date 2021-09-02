@@ -1,16 +1,27 @@
 package com.team.interview.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import com.team.interview.security.handler.CustomLoginSuccessHandler;
+import com.team.interview.security.service.CustomOAuth2UserDetailsService;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+  @Autowired
+  public AuthenticationFailureHandler authenticationFailureHandler;
+
+  @Autowired
+  public CustomOAuth2UserDetailsService CustomOAuth2UserDetailsService;
 
   @Bean
   PasswordEncoder passwordEncoder(){
@@ -20,11 +31,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
 
-    http.authorizeRequests()
+    http
+    .authorizeRequests()
     .antMatchers("/sample/all").permitAll()
-    .antMatchers("/sample/member").hasRole("USER");
+    .antMatchers("/sample/member").hasAnyRole("USER","ADMIN","COMPANY")
+    .antMatchers("/sample/admin").hasRole("ADMIN")
+    .antMatchers("/all/**").permitAll()
+    .antMatchers("/member/**").hasAnyRole("USER","ADMIN","COMPANY")
+    .antMatchers("/admin/**").hasRole("ADMIN")
 
-    http.formLogin(); //인가/인증에 문제시 로그인 화면
+    .and()
+    .formLogin()
+    .loginPage("/customLogin")                    // controller mapping
+    .loginProcessingUrl("/login_proc")     
+    .defaultSuccessUrl("/")
+    .failureHandler(authenticationFailureHandler)
+    .permitAll()
+
+    .and()
+    .logout()
+    .logoutUrl("/logout")                // default
+    .logoutSuccessUrl("/")
+    .permitAll()
+
+    .and()
+    .oauth2Login()
+    .userInfoEndpoint()
+    .userService(CustomOAuth2UserDetailsService);
+
     http.csrf().disable();
 
     http.oauth2Login().successHandler(successHandler());
@@ -33,6 +67,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Bean
   public AuthenticationSuccessHandler successHandler() {
     return new CustomLoginSuccessHandler(passwordEncoder());
+  }
+
+  @Override
+  // js, css, image 설정은 보안 설정의 영향 밖에 있도록 만들어주는 설정.
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
   }
 
 

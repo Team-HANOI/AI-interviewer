@@ -31,8 +31,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
     AuthMemberDTO authMember = (AuthMemberDTO) authentication.getPrincipal();
     boolean fromSocial = authMember.isFromSocial();
     System.out.println("Need Modify Member?" + fromSocial);
-    boolean passwordResult = passwordEncoder.matches("1111", authMember.getPassword());
-
+    boolean passwordResult = passwordEncoder.matches("1111", authMember.getPw());
     if(fromSocial && passwordResult) {
       redirectStrategy.sendRedirect(request, response, "/member/modify?from=social");
     }

@@ -1,108 +1,61 @@
 package com.team.interview.test;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import javax.sql.DataSource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.team.interview.dao.MemberDAO;
+import com.team.interview.vo.AuthVO;
 import com.team.interview.vo.MemberVO;
 
 @SpringBootTest
 public class MemberTests {
 
   @Autowired
-  private PasswordEncoder pwencoder;
+  private MemberDAO memberDAO;
 
   @Autowired
-  private DataSource ds;
-
-  @Autowired
-  private MemberDAO md;
+  private PasswordEncoder passwordEncoder;
 
   //  @Test
-  public void testInsertMember() {
+  public void insertDummies() {
+    //1 - 80까지는 USER만 지정
+    //81- 90까지는 USER,COMPANY
+    //91- 100까지는 USER,COMPANY,ADMIN
 
-    String sql = "insert into tbl_member(email, name, password) values (?,?,?)";
+    for (int i = 1; i <= 100; i++) {
+      MemberVO memberVO = new MemberVO();
+      memberVO.setEmail("user" + i + "@alpaca.com");
+      memberVO.setPw(passwordEncoder.encode("1111"));
+      memberVO.setName("사용자" + i);
+      memberVO.setFromSocial(false);
+      memberVO.setType('M');
+      //default role
+      AuthVO authVO = new AuthVO();
+      authVO.setEmail(memberVO.getEmail());
+      authVO.setAuth("ROLE_USER");//일반 회원
 
-    for(int i = 0; i < 100; i++) {
-
-      Connection con = null;
-      PreparedStatement pstmt = null;
-
-      try {
-        con = ds.getConnection();
-        pstmt = con.prepareStatement(sql);
-
-        pstmt.setString(3, pwencoder.encode("1111"));
-
-
-        pstmt.setString(1, "user"+i+"@cgkim449.com");
-        pstmt.setString(2,"사용자"+i);
-
-        pstmt.executeUpdate();
-
-      }catch(Exception e) {
-        e.printStackTrace();
-      }finally {
-        if(pstmt != null) { try { pstmt.close();  } catch(Exception e) {} }
-        if(con != null) { try { con.close();  } catch(Exception e) {} }
-
+      if (i > 80) {
+        authVO.setAuth("ROLE_COMPANY");//기업회원
       }
-    }//end for
-  }
 
-  //  @Test
-  public void testInsertAuth() {
-
-
-    String sql = "insert into tbl_member_auth (email, auth) values (?,?)";
-
-    for(int i = 0; i < 100; i++) {
-
-      Connection con = null;
-      PreparedStatement pstmt = null;
-
-      try {
-        con = ds.getConnection();
-        pstmt = con.prepareStatement(sql);
-
-
-        if(i <80) {
-
-          pstmt.setString(1, "user"+i+"@cgkim449.com");
-          pstmt.setString(2,"ROLE_USER");
-
-        }else if (i <90) {
-
-          pstmt.setString(1, "user"+i+"@cgkim449.com");
-          pstmt.setString(2,"ROLE_MEMBER");
-
-        }else {
-
-          pstmt.setString(1, "user"+i+"@cgkim449.com");
-          pstmt.setString(2,"ROLE_ADMIN");
-
-        }
-
-        pstmt.executeUpdate();
-
-      }catch(Exception e) {
-        e.printStackTrace();
-      }finally {
-        if(pstmt != null) { try { pstmt.close();  } catch(Exception e) {} }
-        if(con != null) { try { con.close();  } catch(Exception e) {} }
-
+      if (i > 90) {
+        authVO.setAuth("ROLE_ADMIN");
       }
-    }//end for
+
+      memberDAO.insertMember(memberVO);
+      memberDAO.insertAuth(authVO);
+    }
+
   }
 
   @Test
-  public void testFindByEmail() {
-    MemberVO memberVO = md.findByEmail("user90@cgkim449.com", false);
-    System.out.println(memberVO);
+  public void testRead() {
+
+    MemberVO result = memberDAO.findByEmail("user95@alpaca.com", false);
+
+    System.out.println(result);
+
   }
 
 

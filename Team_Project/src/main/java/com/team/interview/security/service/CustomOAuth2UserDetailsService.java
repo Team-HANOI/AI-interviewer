@@ -19,11 +19,11 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
   private final MemberDAO memberDAO;
   private final PasswordEncoder passwordEncoder;
-  
+
   public CustomOAuth2UserDetailsService(final MemberDAO memberDAO, final PasswordEncoder passwordEncoder) {
     this.memberDAO = memberDAO;
     this.passwordEncoder = passwordEncoder;
-}
+  }
 
   @Override
   public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -53,18 +53,24 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
     //
     //        return oAuth2User;
 
-    MemberVO member = saveSocialMember(email);
+    MemberVO memberVO = saveSocialMember(email);
     AuthMemberDTO authMember = new AuthMemberDTO(
-        member.getEmail(),
-        member.getPassword(),
+        memberVO.getEmail(),
+        memberVO.getPw(),
+        memberVO.getPfId(),
+        memberVO.getName(),
+        memberVO.getPhoneNum(),
+        memberVO.getType(),
+        memberVO.getLockdate(),
+        0,
         true,
-        member.isEnabled(),
-        member.getAuthList().stream().map(
+        'E',
+        memberVO.getAuthList().stream().map(
             authVO -> new SimpleGrantedAuthority(authVO.getAuth()))
         .collect(Collectors.toList()),
         oAuth2User.getAttributes()
         );
-    authMember.setName(member.getName()); // 왜 생성자로 안넣고 세터로 넣는가?
+    authMember.setName(memberVO.getName()); // 왜 생성자로 안넣고 세터로 넣는가?
 
     return authMember;
   }
@@ -81,7 +87,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
     MemberVO memberVO1 = new MemberVO();
     memberVO1.setEmail(email);
     memberVO1.setName(email);
-    memberVO1.setPassword(passwordEncoder.encode("1111"));
+    memberVO1.setPw(passwordEncoder.encode("1111"));
     memberVO1.setFromSocial(true);
 
     memberDAO.insertMember(memberVO1);

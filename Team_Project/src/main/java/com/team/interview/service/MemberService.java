@@ -1,5 +1,7 @@
 package com.team.interview.service;
 
-public interface MemberService {
+import com.team.interview.vo.MemberVO;
 
+public interface MemberService {
+  MemberVO findByEmail(String email, boolean fromSocial);
 }
