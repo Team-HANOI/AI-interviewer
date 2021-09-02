@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.interview.dao.MemberDAO">
+
+<resultMap type="com.team.interview.vo.MemberVO" id="memberMap">
+    <id property="email" column="email"/>
+    <result property="email" column="email"/>
+    <result property="name" column="name"/>
+    <result property="password" column="password"/>
+    <result property="regDate" column="regdate"/>
+    <result property="updateDate" column="updatedate"/>
+    <result property="enabled" column="enabled"/>
+    <result property="fromSocial" column="from_social"/>
+    <collection property="authList" resultMap="authMap">
+    </collection> 
+  </resultMap>
+  
+  <resultMap type="com.team.interview.vo.AuthVO" id="authMap">
+    <result property="email" column="email"/>
+    <result property="auth" column="auth"/>
+  </resultMap>
+
+
+    <insert id="insertMember" parameterType="MemberVO">
+        <![CDATA[
+            INSERT
+            INTO
+                tbl_member
+                (
+                 email,
+                 name,
+                 password,
+                 from_social
+                )
+            VALUES
+                (
+                 #{email},
+                 #{name},
+                 #{password},
+                 #{fromSocial}
+                )
+        ]]>
+    </insert>
+
+    <insert id="insertAuth" parameterType="AuthVO">
+        <![CDATA[
+        INSERT
+        INTO
+            tbl_member_auth
+            (
+             email,
+             auth
+            )
+        VALUES
+            (
+             #{email},
+             #{auth}
+            )
+        ]]>
+    </insert>
+    
+    <select id="findByEmail" resultMap = "memberMap">
+      <![CDATA[
+      SELECT 
+        mem.email
+        , name
+        , password
+        , regdate
+        , updatedate
+        , enabled
+        , from_social
+        , auth.auth
+      FROM 
+        tbl_member mem 
+      LEFT OUTER JOIN 
+        tbl_member_auth auth 
+          on mem.email = auth.email 
+      WHERE mem.email = #{email} and from_social = #{fromSocial}
+      ]]>
+    </select>
+</mapper>
