@@ -1,8 +1,5 @@
-const nav = document.querySelector('.nav')
-
 // 스크롤 다운 효과
-
-
+const nav = document.querySelector('.nav')
 window.addEventListener('scroll', () => {
     // 헤더 색 변환
     if (window.scrollY > nav.getBoundingClientRect().bottom) {
@@ -75,10 +72,6 @@ window.addEventListener('load', () => {
     let url = window.location.href
     let urlParts = url.split('/')
     let fileName = urlParts[4]
-    console.log('url: ', url)
-    console.log('url parts: ', urlParts)
-    console.log('file name: ', fileName)
-    console.log(navMenusSideMy)
     removeActive(navMenusSideMy)
     if (!fileName) {
         navMenusSideMy[0].classList.add('activated')

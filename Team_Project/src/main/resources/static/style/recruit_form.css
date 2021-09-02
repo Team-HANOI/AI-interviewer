@@ -10,24 +10,28 @@
     justify-content: center;
 }
 
+.mentor-form textarea {
+
+}
+
 .join-title {
-    width: 100%;
-    text-align: left;
-    margin-top: 50px;
+	width: 100%;
+	text-align: left;
+	margin-top: 50px;
 }
 
 .post_page-box {
-    width: 60%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+	width: 60%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
 }
 
 .post_page-sub-box {
-    display: flex;
-    width: 60%;
-    margin: 10px;
+	display: flex;
+	width: 60%;
+	margin: 10px;
 }
 
 .post_page-sub-box label {
@@ -36,6 +40,15 @@
 
 .post_page-sub-box input[type=date] {
     width: 40%;
+}
+
+.post_page-sub-box input[type=time] {
+    width: 18.5%;
+}
+
+
+.post_page-sub-box input[type=date] + input[type=time] {
+    margin-left: 10px;
 }
 
 .post_page-sub-box .from-to {
@@ -86,10 +99,12 @@
 }
 
 .join-check {
-    margin: 30px 0 20px;
+	margin: 30px 0 20px;
 }
 
 textarea {
+    height: 250px;
+    width: 100%;
     border-radius: 5px;
     padding: 5px 0 0 10px;
     font-size: 1.2rem;
