@@ -21,29 +21,7 @@
         </div>
         
     	<!-- 팝업 -->
-        <!-- 팝업배경 더미 -->
-        <div class="popup-dummy"></div>
-        
-        <!-- 키워드 카드 팝업 -->
-        <jsp:include page="../common/popups/popup_keyword.jsp"/>
-
-        <!-- 기업회원가입 팝업 -->
-        <jsp:include page="../common/popups/popup_join_com.jsp"/>
-
-        <!-- 일반회원가입 팝업 -->
-        <jsp:include page="../common/popups/popup_join_indv.jsp"/>
-
-        <!-- 일번회원가입 추가입력 폼 팝업 -->
-        <jsp:include page="../common/popups/popup_join_indv_extra.jsp"/>
-
-        <!-- 기업회원 로그인 -->
-        <jsp:include page="../common/popups/popup_login_com.jsp"/>
-
-        <!-- 일반회원 로그인 -->
-        <jsp:include page="../common/popups/popup_login_indv.jsp"/>
-
-        <!-- 신청완료 팝업 -->
-        <jsp:include page="../common/popups/popup_complete.jsp"/>
+        <jsp:include page="../common/popups/popups.jsp"/>
 
         <!-- 본문 타이틀 -->
         <div class="title">
@@ -66,15 +44,13 @@
                             <input id="" class="login-input" type="text" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">날짜</label>
+                            <label for="">일시</label>
                             <input id="" class="login-input" type="date" placeholder="">
-                        </div>
-                        <div class="post_page-sub-box">
-                            <label for="">시작시간</label>
+                        
                             <input id="" class="login-input" type="time" placeholder="">
-                        </div>
-                        <div class="post_page-sub-box">
-                            <label for="">종료시간</label>
+
+                            <p class="from-to"> ~ </p>
+
                             <input id="" class="login-input" type="time" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
@@ -91,7 +67,7 @@
                         </div>
                         <div class="post_page-sub-box">
                             <label for="">멘토 소개</label>
-                            <textarea id="" class="" name="" cols="57" rows="10"></textarea>
+                            <textarea id="" class="mentor-intro" name=""></textarea>
                         </div>
                     </div>
 

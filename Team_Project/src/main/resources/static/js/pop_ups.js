@@ -18,15 +18,16 @@ if (keywordPopups) {
 }
 
 // 비밀번호 찿기 팝업효과
-const pwSearch = document.querySelector('.pw-search')
-if (pwSearch) {
-    pwSearch.addEventListener('click', () => {
-        console.log("clicked")
-        document.body.className = ''
-        setTimeout(() => {
-            document.body.classList.add('show-search-popup')
-        }, 500);
-    })
+const pwSearches = document.querySelectorAll('.pw-search')
+if (pwSearches) {
+    pwSearches.forEach(pwSearch => {
+        pwSearch.addEventListener('click', () => {
+            document.body.className = ''
+            setTimeout(() => {
+                document.body.classList.add('show-search-popup')    
+            }, 500);
+        })
+    });
 }
 
 // 기업회원 가입 팝업효과
