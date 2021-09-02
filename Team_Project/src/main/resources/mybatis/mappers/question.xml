@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.interview.dao.QuestionDAO">
+
+	<select id="backQuestion" resultType="QuestionVO">
+	<![CDATA[
+		SELECT ssml,content FROM(
+		    		SELECT ssml,content 
+		    		FROM TBL_Q
+		    		WHERE q_type='icebreaking'
+		   			ORDER BY DBMS_RANDOM.RANDOM
+		   		 )   		 
+		   	 WHERE rownum < 3 UNION SELECT * FROM(
+		    		SELECT ssml,content
+		    		FROM TBL_Q 
+		    		WHERE q_type ='cs'
+		   			ORDER BY DBMS_RANDOM.RANDOM
+		   		 )	 
+		   	 WHERE rownum < 3 UNION SELECT * FROM(
+		    		SELECT ssml,content
+		    		FROM TBL_Q 
+		    		WHERE q_type='백엔드'
+		   			ORDER BY DBMS_RANDOM.RANDOM
+		   		 )
+		 WHERE rownum < 3
+		]]>
+	</select>
+
+	<select id="frontQuestion" resultType="QuestionVO">
+	<![CDATA[
+		SELECT * FROM(
+		    		SELECT CONTENT,ssml
+		    		FROM TBL_Q
+		    		WHERE q_type='icebreaking'
+		   			ORDER BY DBMS_RANDOM.RANDOM
+		   		 )   		 
+		   	 WHERE rownum < 3 UNION SELECT * FROM(
+		    		SELECT CONTENT,ssml
+		    		FROM TBL_Q 
+		    		WHERE q_type ='cs'
+		   			ORDER BY DBMS_RANDOM.RANDOM
+		   		 )	 
+		   	 WHERE rownum < 3 UNION SELECT * FROM(
+		    		SELECT CONTENT,ssml
+		    		FROM TBL_Q 
+		    		WHERE q_type='프론트엔드'
+		   			ORDER BY DBMS_RANDOM.RANDOM
+		   		 )
+		 WHERE rownum < 3
+		]]>
+	</select>
+
+</mapper>

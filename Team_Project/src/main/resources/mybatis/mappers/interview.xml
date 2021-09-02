@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.interview.dao.InterviewDAO">
+
+	<select id="selectRecruitPosting" parameterType="int"
+		resultType="InterviewVO">
+		<![CDATA[
+			SELECT 
+				post.*
+			FROM	
+				(SELECT
+						ROW_NUMBER() over( order by regdate desc ) num,
+						a.*
+						FROM 
+							(SELECT
+									    posting_id,
+									    url,
+									    c_name as cname,
+									    logo_url as logoUrl,
+									    kw,
+									    pos,
+									    regdate,
+									    updatedate
+								FROM
+								    tbl_posting) a
+						) post
+			WHERE post.num between #{startrow} and #{startrow}+11
+		]]>
+	</select>
+
+	<select id="selectTotPostCnt" resultType="int">
+		<![CDATA[
+			select
+			count(posting_id)
+			from
+			tbl_posting
+		]]>
+	</select>
+
+
+</mapper>
