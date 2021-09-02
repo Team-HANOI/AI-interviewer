@@ -4,5 +4,7 @@
 <configuration>
 <mappers>
   <mapper resource="mybatis/mappers/Member.xml"/>
+  <mapper resource="mybatis/mappers/interview.xml"/>
+  <mapper resource="mybatis/mappers/question.xml"/>
 </mappers>  
 </configuration>

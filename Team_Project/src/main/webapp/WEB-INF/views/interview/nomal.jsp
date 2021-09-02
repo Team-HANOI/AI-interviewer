@@ -23,7 +23,7 @@
 		<!-- 팝업배경 더미 -->
 		<div class="popup-dummy"></div>
 
-		<!-- 키워드 카드 팝업 -->
+		<!-- 키워드 카드 팝업 --> 
 		<jsp:include page="../common/popups/popup_keyword.jsp" />
 
 		<!-- 기업회원가입 팝업 -->
