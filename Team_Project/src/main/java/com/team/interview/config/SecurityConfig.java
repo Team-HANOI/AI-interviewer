@@ -1,5 +1,6 @@
 package com.team.interview.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,11 +9,19 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import com.team.interview.security.handler.CustomLoginSuccessHandler;
+import com.team.interview.security.service.CustomOAuth2UserDetailsService;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+  @Autowired
+  public AuthenticationFailureHandler authenticationFailureHandler;
+
+  @Autowired
+  public CustomOAuth2UserDetailsService CustomOAuth2UserDetailsService;
 
   @Bean
   PasswordEncoder passwordEncoder(){
@@ -22,28 +31,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
 
-    http.authorizeRequests()
+    http
+    .authorizeRequests()
     .antMatchers("/sample/all").permitAll()
-    .antMatchers("/sample/member").hasAnyRole("USER","ADMIN","MANAGER")
+    .antMatchers("/sample/member").hasAnyRole("USER","ADMIN","COMPANY")
     .antMatchers("/sample/admin").hasRole("ADMIN")
     .antMatchers("/all/**").permitAll()
-    .antMatchers("/member/**").hasAnyRole("USER","ADMIN","MANAGER")
-    .antMatchers("/admin/**").hasRole("ADMIN");
+    .antMatchers("/member/**").hasAnyRole("USER","ADMIN","COMPANY")
+    .antMatchers("/admin/**").hasRole("ADMIN")
 
-    http.formLogin();
-    //    .loginPage("/security/loginForm")             // default : /login
-    //    .loginProcessingUrl("/spring_security_check")
-    //    //.failureUrl("/loginForm?error")    // default : /login?error
-    //    //    .failureHandler(authenticationFailureHandler)
-    //    //.defaultSuccessUrl("/")
-    //    .usernameParameter("username")     // default : j_username
-    //    .passwordParameter("password")     // default : j_password
-    //    .permitAll();
-    //
-    //    http.logout()
-    //    .logoutUrl("/logout")                // default
-    //    .logoutSuccessUrl("/")
-    //    .permitAll();
+    .and()
+    .formLogin()
+    .loginPage("/customLogin")                    // controller mapping
+    .loginProcessingUrl("/login_proc")     
+    .defaultSuccessUrl("/")
+    .failureHandler(authenticationFailureHandler)
+    .permitAll()
+
+    .and()
+    .logout()
+    .logoutUrl("/logout")                // default
+    .logoutSuccessUrl("/")
+    .permitAll()
+
+    .and()
+    .oauth2Login()
+    .userInfoEndpoint()
+    .userService(CustomOAuth2UserDetailsService);
 
     http.csrf().disable();
 
