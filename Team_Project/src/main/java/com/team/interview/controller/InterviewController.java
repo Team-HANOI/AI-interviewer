@@ -30,7 +30,7 @@ import com.team.interview.vo.PageInfo;
 
 @Controller
 @RequestMapping(value = "/interview")
-public class InterviewController {
+public class InterviewController { 
 
 	@Autowired
 	InterviewService service;
