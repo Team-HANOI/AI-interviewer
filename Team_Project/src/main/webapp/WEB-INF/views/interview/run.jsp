@@ -5,9 +5,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- google api test -->
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
 <!-- 공통 스타일  -->
+
 <jsp:include page="../common/top.jsp" />
 <!-- 페이지 스타일  -->
+
 <link rel="stylesheet" href="/style/interview_normal.css">
 
 </head>
@@ -48,7 +53,7 @@
 		<div class="interview">
 			<div class="interview-content">
 				<h2>질문:</h2>
-				<div class="interview-question interview-text">ss</div>
+				<div class="interview-question interview-text">${questions[0].ssml}</div>
 
 				<h2>답변:</h2>
 				<textarea name="" id="" class="interview-answer interview-text"></textarea>
@@ -59,10 +64,17 @@
 					</p>
 				</div>
 			</div>
+			
+			<input
+				onclick="responsiveVoice.speak('${questions[0].content}');"
+				type='button' value='🔊 질문 듣기' />
+				
 			<div class="btn-box">
 				<a href=""><button class="btn interview-btn">이전질문</button></a> <a
 					href="interview_result.html"><button class="btn interview-btn">다음질문</button></a>
 			</div>
+
+
 		</div>
 	</main>
 
@@ -73,17 +85,30 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	</script>
 
+
+
+
 	<script>
-	alert("hi");
+	alert("작업중인 페이지 입니다.");
 	
 	$(function(){
 	
-		alert("<c:out value='${questions[0].ssml}'/>");
+		alert( '${questions[0].ssml}' );
 		
+		var request = new XMLHttpRequest();
 		
+		request.responseType = "blob"; 
+		
+		request.onload = function() {
+ 			var audioURL = URL.createObjectURL(this.response);	
+ 			var audio = new Audio();
+			audio.src = audioURL;
+			audio.play();
+ 		}
  		
- 		
-
+		request.open("POST", 'questionvoice');
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send("ssml=" + '${questions[0].ssml}' );
 		
 	});
 </script>
