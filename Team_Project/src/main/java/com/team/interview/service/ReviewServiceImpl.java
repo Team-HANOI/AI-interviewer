@@ -100,10 +100,10 @@ public class ReviewServiceImpl implements ReviewService {
     return reviewDAO.getFile(fileId);
   }
 
-  @Override
-  public FileVO getPfImg(String email) throws Exception {
-    return reviewDAO.selectPfImg(email);
-  }
+  // @Override
+  // public FileVO getPfImg(String email) throws Exception {
+  // return reviewDAO.selectPfImg(email);
+  // }
 
   @Override
   public int getLikeCount(String reviewId) throws Exception {
@@ -150,20 +150,4 @@ public class ReviewServiceImpl implements ReviewService {
   public ArrayList<RCommVO> getRCommList(int reviewId) throws Exception {
     return (ArrayList<RCommVO>) reviewDAO.selectRCommList(reviewId);
   }
-
-
-
 }
-
-
-
-// @Override
-// public void regReply(ReviewVO review) throws Exception {
-// reviewDAO.updateBoardReSeq(review);
-// int boardNum = reviewDAO.selectMaxBoardNum() + 1;
-// review.setBOARD_NUM(boardNum);
-// review.setBOARD_RE_LEV(review.getBOARD_RE_LEV() + 1);
-// review.setBOARD_RE_SEQ(review.getBOARD_RE_SEQ() + 1);
-// reviewDAO.insertBoard(review);
-//
-// }

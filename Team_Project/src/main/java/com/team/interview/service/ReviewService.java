@@ -23,8 +23,6 @@ public interface ReviewService {
 
   FileVO getFile(int fileId) throws Exception;
 
-  FileVO getPfImg(String email) throws Exception;
-
   int getLikeCount(String reviewId) throws Exception;
 
   void updateLikeCount(String reviewId) throws Exception;
@@ -40,10 +38,6 @@ public interface ReviewService {
 
   ArrayList<RCommVO> getRCommList(int reviewId) throws Exception;
 
-  // void regReply(ReviewVO review) throws Exception;
-  //
-  // void modifyBoard(ReviewVO review) throws Exception;
 
-  // List<Map<String, ReviewVO>> getNameList(List<ReviewVO> articleList) throws Exception;
 
 }
