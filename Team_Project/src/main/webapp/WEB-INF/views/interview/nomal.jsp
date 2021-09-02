@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +7,6 @@
 <jsp:include page="../common/top.jsp" />
 <!-- 페이지 스타일  -->
 <link rel="stylesheet" href="/style/interview_normal.css">
-
 </head>
 <body>
 	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
@@ -44,49 +41,20 @@
 		<!-- 일반회원 로그인 -->
 		<jsp:include page="../common/popups/popup_login_indv.jsp" />
 
-		<!--본문 면접모드-->
 		<div class="interview">
-			<div class="interview-content">
-				<h2>질문:</h2>
-				<div class="interview-question interview-text">ss</div>
-
-				<h2>답변:</h2>
-				<textarea name="" id="" class="interview-answer interview-text"></textarea>
-
-				<div class="interview-time">
-					<p>
-						남은시간: <span class="time-left">00:00</span>
-					</p>
-				</div>
-			</div>
+		
 			<div class="btn-box">
-				<a href=""><button class="btn interview-btn">이전질문</button></a> <a
-					href="interview_result.html"><button class="btn interview-btn">다음질문</button></a>
+				<a href="/interview/run"><button class="btn interview-btn">백엔드</button></a> 
+				<a href="/interview/run"><button class="btn interview-btn">프론트</button></a>
 			</div>
+			
 		</div>
+
 	</main>
 
 	<!-- 꼬리 -->
 	<jsp:include page="../common/footer.jsp" />
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-	</script>
-
-	<script>
-	alert("hi");
-	
-	$(function(){
-	
-		alert("<c:out value='${questions[0].ssml}'/>");
-		
-		
- 		
- 		
-
-		
-	});
-</script>
-
 </body>
 </html>
+
+
