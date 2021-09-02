@@ -100,11 +100,11 @@ public class ReviewControllerImpl implements ReviewController {
       List<ReviewVO> articleList = reviewService.getBoardKeyList(page, pageInfo, keyword); // pageInfo_출력해야해_만들어와
       mv.addObject("pageInfo", pageInfo); // 하단 start end page값 넘길게
       mv.addObject("articleList", articleList); // 게시글10개 리스트 넘길게
-      mv.setViewName("/board/review_key"); // 화면에 이걸 띄워줘
+      mv.setViewName("/board/review"); // 화면에 이걸 띄워줘
     } catch (Exception e) {
       e.printStackTrace();
       mv.addObject("err", e.getMessage());
-      mv.setViewName("/review/err");
+      mv.setViewName("/board/err");
     }
     return mv;
   }
