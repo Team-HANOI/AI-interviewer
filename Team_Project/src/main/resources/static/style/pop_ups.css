@@ -1,0 +1,147 @@
+/* 완료 팝업창 */
+body .popup-card {
+    height: 0px;
+    width: 450px;
+    position: fixed;
+    background-color: #fff;
+    border-radius: 15px;
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: .4s ease;
+}
+
+/* 배경 더미 */
+.popup-dummy {
+    height: 0px;
+    width: 0px;
+    position: fixed;
+    background-color: grey;
+    opacity: .3;
+    border-radius: 15px;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: .4s ease;
+}
+
+body.complete .complete-popup {
+    visibility: visible;
+    height: 300px;
+}
+
+body.complete .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}
+
+.popup-btn {
+    height: 30px;
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3DB2FF;
+    color: #fff;
+}
+
+.nav-sub-sub .btn {
+    box-shadow: none;
+}
+
+/* 키워드 팝업창 */
+body.show-keyword-popup .keyword-box {
+    visibility: visible;
+    height: 300px;
+}
+
+body.show-keyword-popup .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 기업회원가입 팝업창 */
+body.show-join-com-popup .join-business-form {
+    visibility: visible;
+    height: 300px;
+}
+
+body.show-join-com-popup .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 개인회원가입 팝업창 */
+body.show-join-indi-popup .join-individual-form {
+    visibility: visible;
+    height: 300px;
+}
+
+body.show-join-indi-popup .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 개인회원가입 추가입력란 팝업창 */
+body.show-join-indi-extra-popup .join-individual-extra-form {
+    visibility: visible;
+    height: 300px;
+}
+
+body.show-join-indi-extra-popup .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 기업회원 로그인 팝업창 */
+body.show-login-com-popup .login-com-form {
+    visibility: visible;
+    height: 300px;
+}
+
+body.show-login-com-popup .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 개인회원 로그인 팝업창 */
+body.show-login-individual-popup .login-individual-form {
+    visibility: visible;
+    height: 300px;
+}
+
+body.show-login-individual-popup .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 비밀번호 수정 팝업창 */
+body.show-search-popup .pw-search-form {
+    visibility: visible;
+    height: 300px;
+}
+
+body.show-search-popup .popup-dummy {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+}

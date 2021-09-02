@@ -1,0 +1,51 @@
+.keyword label {
+  display: inline-block;
+  padding: 0 10px;
+  margin: 10px;
+  background:#94d0cc;
+  color: #000;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.keyword input[type="checkbox"] {
+  display: none;
+}
+
+.keyword input[type="checkbox"]:checked ~ label {
+  background:pink;
+}
+
+.keyword-box {
+  width: 100%;
+  position: sticky;
+  background-color:white;
+  border-radius: 15px;
+  z-index: 2;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.keywords {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.keyword {
+  min-width: 110px;
+}
+
+.keyword-btn {
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+}

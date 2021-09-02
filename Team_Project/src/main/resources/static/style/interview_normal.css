@@ -1,0 +1,62 @@
+/* 메인화면 게시판 스타일 */
+
+.interview {
+    margin: 120px auto;
+    height: 600px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    border-radius: 30px;   
+}
+
+.interview::before {
+    content: "";
+    height: 160vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('https://pngimg.com/uploads/question_mark/question_mark_PNG128.png');
+    opacity: .2;
+    z-index: -1;
+}
+
+.interview-content {
+    position: relative;
+    width: 70%;
+}
+
+.interview-text {
+    height: 150px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #EEEEEE;
+}
+
+.interview-time {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+.interview-btn {
+    width: 100px;
+    height: 40px;
+    border: 2px solid #d63384 #94d0cc;
+    color: #0a81ab;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 20px;
+    font-size: 1.1rem;
+}
+
+

@@ -1,0 +1,104 @@
+/* 모범답안 스타일 */
+
+/* 공통 */
+.recommendations {
+    width: 1000px;
+    margin: 50px auto 0;
+    list-style: none;
+}
+
+.recommendations > li {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.recommendations li .recommendations-user_icon {
+    height: 30px;
+    width: 30px;
+    margin: 0 20px;
+    border-radius: 50%;
+}
+
+.recommendations li .recommendation-keyword {
+    border-radius: 5px;
+    margin-right: 20px;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.recommendations li .question {
+    background-color: #3C5186;
+    color: #fff;
+    height: 30px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.recommedations-sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 질문등록 스타일 */
+.recommendations li .register-question {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 0 10px;
+}
+
+.recommendations li .recommendations-btn, .register-btn {
+    font-size: 1.1rem;
+    height: 30px;
+    width: 180px;
+    margin-right: 20px;
+    background-color: #3C5186;
+    border-radius: 5px;
+    padding: 0 10px;
+    color: #fff;
+}
+
+/* 질문 게시판 스타일 */
+.recommendations li .like {
+    width: 180px;
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: -85%;
+    right: 0;
+    padding: 0 10px;
+    font-size: 1.01rem;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.register-date {
+    position: absolute;
+    bottom: -85%;
+    padding: 0 10px;
+}
+
+/* 게시판 하부 컨트롤 margin 조절 */
+.board-control {
+    margin-top: 50px !important ;
+}
+
+
+
+
+
+

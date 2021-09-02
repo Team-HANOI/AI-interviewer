@@ -1,0 +1,89 @@
+.board-menu::before {
+    height: 100%;
+    background-image: none;
+}
+
+.board-container, .board-menu {
+    margin: 0;
+    padding: 0;
+}
+
+.board-menu ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-menu ul a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.board-menu ul a li {
+    height: 70px;
+    width: 90%;
+
+    margin-bottom: 5px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.board {
+    margin: 0 10px;
+}
+
+.detail-row img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.detail-row {
+    width: 90%;
+    border-radius: 5px;
+}
+
+.detail-row div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.board h2 {
+    height: 100px;
+    line-height: 100px;
+    width: 90%;
+    padding: 0 10px;
+    text-align: left;
+    background-color: lightblue;
+    font-size: 2rem;
+    border-radius: 5px;
+}
+
+.board .answer {
+    width: 60%;
+}
+
+.item {
+    border-radius: 5px;
+}
+
+.result-btn-box {
+    width: 50%;
+}
+
+.result-btn-box .btn {
+    width: 120px !important;
+}
+
+.result-btn-box .btn:last-child {
+    width: 200px !important;
+}

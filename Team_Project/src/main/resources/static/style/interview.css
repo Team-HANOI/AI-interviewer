@@ -1,0 +1,35 @@
+/* 면접 메인 스타일 */
+.mode-box{
+    padding: 20px;
+    height: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    grid-template-rows: 1fr 1fr;
+    color: white;
+    font-family: 'Gowun Dodum','poppins';
+    font-size: 2.2rem;
+    font-display: center;
+}
+
+.mode-box .mode {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-Color:#F29191;
+    border-radius: 10px;
+    transition: .4s ease;
+}
+
+.mode-box .mode:hover {
+    transform: scale(1.05);
+    background-image: url('/screen/image/sky2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-color:  #94D0CC;
+}
+

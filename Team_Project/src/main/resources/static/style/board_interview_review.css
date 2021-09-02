@@ -1,0 +1,18 @@
+/* 면접후기 사이드 게시판 스타일 */
+.interview-review-board-right {
+    width: 350px;
+    margin-left: 100px;
+    border: solid #333;
+}
+
+.interview-review-board {
+    width: 100%;
+}
+
+.interview-review-board th {
+    width: 30%;
+}
+
+.interview-review-board td {
+    width: 70%;
+}

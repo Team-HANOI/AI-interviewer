@@ -1,0 +1,240 @@
+.login {
+    height: 400px;
+    width: 300px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 15px;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-person {
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 15px;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pwreset{
+    height: 300px;
+}
+
+.login-business {
+    height: 440px;
+    width: 500px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 15px;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-sub {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-input {
+    border-width: 1px;
+    border-collapse: collapse;
+    height: 30px;
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 5px 0 0 10px;
+    font-size: 1.2rem;
+}
+
+.login-btn {
+    width: 100%;
+    border: 2px solid #000;
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 5px 0 0 10px;
+    font-size: 1.2rem;
+}
+
+.login-text {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    text-align: center;
+}
+
+.pwReset{
+    float:right;
+    color:blue;
+
+}
+
+.mkAccCheck{
+    width:100%;
+    text-align: center;
+   
+}
+.mkAccText{
+    display: inline-block;
+    font-size: 11px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color:rgb(197, 195, 195);
+}
+.mkAccBtn{
+    display: inline-block;
+    font-size: 11px;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-left:10px;
+    color:#000;
+    text-decoration: none;
+}
+
+/* 비밀번호 오류 기술 */
+.popPwAlertBtn{
+    background-color: #000;
+    border-radius: 10px;
+    border : 1px #000 solid;
+    padding: 4px 10px;
+    float:right;
+}
+
+.popPwAlert{
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.popPwAlertBg{
+    position:relative;
+    width:100%;
+    height:100%;
+    background:rgb(62, 65, 73, 0.8);
+    z-index:99;
+}
+
+.popPwAlertFg{
+    position:absolute;
+    top:calc(50% - 100px);
+    left:calc(50% - 250px);
+    margin: 0 auto;
+    width:500px;
+    height:200px;
+    background:#FFF;
+    border-radius:20px;
+    padding:20px;
+    z-index:9999;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.pwAlertText{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    
+}
+.pwAlertTextRed {
+    font-size: 14px;
+    color:red;
+}
+
+.cookieCfm {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    padding-left:100px;
+    text-align:center;
+}
+
+.cookieCfm input {
+    margin-top: 7px;
+    margin-right: 5px;
+    text-align:center;
+}
+
+.cookieCfm label {
+    text-align:center;
+    color:rgb(112, 110, 110);
+    font-size:11px;
+    font-weight:300;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none;
+}
+
+.pwResetSub{
+    width:100%;
+    padding-left:50px;
+    text-align:left;
+    border-color: red;
+}
+
+.pwResetHolder{
+    width:80%;
+    border-color: fuchsia;
+    font-family: 'Noto Sans KR', sans-serif;
+    color:rgb(112, 110, 110);
+
+}
+
+.pwEmailInput{
+    margin-top:30px;
+}
+
+.pwEmailInput label{
+    font-size:13px;
+    color:#000;
+}
+
+.pwresetTitle {
+    margin-bottom: 10px;
+    font-size:24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight:400;
+    
+}
+
+
+.email-confirm{
+    width: 100%;
+    text-align: center;
+}
+
+.email-btn{
+    display: inline-block;
+    margin-top:20px;
+    width: 100%;
+    padding: 5px 5px 8px 5px;
+    margin-bottom : -10px;
+    border: 0px rgb(168, 166, 166) solid;
+    border-radius : 10px;
+    color:#fff;
+    background-color:rgb(35, 80, 206);
+    font-size: 18px;
+    font-weight:500;
+    font-family: 'Noto Sans KR', sans-serif;
+}

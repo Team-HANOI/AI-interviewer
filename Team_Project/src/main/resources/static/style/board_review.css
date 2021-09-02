@@ -1,0 +1,52 @@
+/* 채용공고 스타일 */
+.board-container {
+    display: flex;
+    height: 124vh;
+    width: 100%;
+    margin-bottom: 0 !important;
+}
+
+.board-menu {
+    height: 100%;
+    width: 250px;
+    border-right: 1px solid #333;
+    border-left: 1px solid #333;
+    padding: 10px;
+    position: relative;
+}
+
+.board-menu::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('https://pngimg.com/uploads/tree/tree_PNG92775.png') center no-repeat;
+    z-index: -10;
+    opacity: .2;
+}
+
+.board-menu ul {
+    list-style: none;
+}
+
+.board-menu ul a {
+    text-decoration: none;
+}
+
+.board-menu ul li {
+    margin: 10px ;
+}
+
+tr th {
+    width: 10%;
+}
+
+tr th:nth-child(3) {
+    min-width: 600px;
+}
+
+tr td:nth-child(3) {
+    text-align: left;
+}

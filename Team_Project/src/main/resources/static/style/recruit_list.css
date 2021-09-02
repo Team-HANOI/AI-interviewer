@@ -1,0 +1,102 @@
+/* 채용공고 스타일 */
+.card-box {
+	margin-top:100px;
+	min-height: 500px;
+	width: 1450px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 20px 0;
+}
+
+.card {
+	position: relative;
+	border-radius: 8px pink;
+	width:700px;
+    height: 200px;
+	margin:10px;
+	box-shadow: 0 10px 15px #94D0CC;
+	transition: .3s ease-in;
+}
+
+.card:hover{
+	transform: scale(0.95);
+}
+
+.text-wrap{
+	padding:24px;
+	text-align: left;
+}
+
+.card-com_url {
+	padding: 24px;
+	width: 100%;
+}
+
+.card-com_url a {
+	font-size: 1.1rem;
+	text-decoration: none;
+	background-color: #BEAEE2;
+	color: #fff;
+	padding: 0 10px;
+	border-radius: 5px;
+}
+
+.text-wrap h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom:8px;
+	color: #0A81AB;
+}
+
+.text-wrap p {
+	color:#0A81AB;
+	line-height: 1.5;
+}
+
+.card-img {
+	position: absolute;
+	right:24px;
+	top:24px;
+	width:60px;
+	height: 60px;
+	border-radius: 50%;
+	background-size: 60px;
+}
+
+.text-wrap button{
+    border-radius: 10px;
+    width:100px;
+    font-size: 22px;
+    margin-top: 15px;
+    background-color:#f29191;
+    color: #fff;
+}
+
+.post {
+	height: 100px;
+	width: 100%;
+	line-height: 100px;
+	text-align: right;
+}
+
+.post .post-btn {
+	height: 50px;
+	width: 150px;
+	background-color: #04a096;
+	border-radius: 10px;
+	margin-right: 50px;
+	border: none;
+	color: #fff;
+	font-size: 1.1rem;
+}
+
+button {
+	cursor: pointer;
+}
+
+button:active {
+	transform: scale(.98);
+}

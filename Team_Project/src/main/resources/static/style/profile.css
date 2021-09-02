@@ -1,0 +1,115 @@
+/* 유저정보 컨테이터 스타일 */
+.profile {
+    height: 800px;
+    width: 1000px;
+    margin: 150px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 30px#94d0cc;
+}
+
+/* 프로필 기본정보 스타일 */
+.profile-intro {
+    height: 350px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.profile-intro .profile-img {
+    border-radius: 70%;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    box-shadow: 0 20px 30px pink;
+}
+
+.profile-intro .profile-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-intro .profile-box .profile-intro-text {
+    height: 100%;
+    width: 300px;
+}
+
+.profile-intro .profile-box .profile-level {
+    position: relative;
+}
+
+.profile-intro .profile-box .profile-icon {
+    position: absolute;
+    right: 10px;
+}
+
+.line{
+    background-color: #94d0cc;
+}
+/* 프로필 알람설정 스타일 */
+.profile-alert {
+    height: 300px;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.profile-alert-title {
+    margin: 10px 0 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.alert-box {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.alert-subbox {
+    height: 100%;
+    width: 120px;
+}
+
+/* 프로필 게시판 스타일 */
+.profile-board {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-board .profile-board-top {
+ 
+}
+
+.profile-board .profile-board-top ul {
+    display: flex;
+}
+
+.profile-board .profile-board-top ul li {
+    list-style: none;
+    margin: 10px 10px;
+    background-color: pink;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.profile-board .profile-board-top ul a {
+    text-decoration: none;
+}
+
+.profile-board .profile-board-content {
+    height: 100%;
+    width: 90%;
+}
+
+
+
+

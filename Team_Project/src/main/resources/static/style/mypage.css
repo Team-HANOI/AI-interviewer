@@ -1,0 +1,443 @@
+/* 프로파일 컨테이터 스타일 */
+a {
+    color : #000;
+}
+
+.mypage {
+    height: 100%;
+    width: 100%;
+    margin: 150px auto 0 auto;
+    display: flex;
+}
+
+/* 프로파일 좌측 메뉴 스타일 */
+.mypage .mypage-left {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+/* .mypage .mypage-left .mypage-left-top {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mypage .mypage-left .mypage-left-top .mypage-level {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.mypage .mypage-left .mypage-left-top .mypage-left-mark-initial {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+} */
+
+.mypage .mypage-left .mypage-left-bottom ul {
+    margin-top:40px;
+    list-style: none;
+}
+
+.mypage .mypage-left .mypage-left-bottom ul li {
+    margin: 0 auto ;
+    padding : 10px 0 10px 20px;
+    border-top: 1px rgb(175, 175, 175) solid;
+    border-right: 1px rgb(175, 175, 175) solid;
+    border-left : 1px rgb(175, 175, 175) solid;
+}
+
+.mypage .mypage-left .mypage-left-bottom ul li:hover {
+    border-left : 5px #333 solid;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.mypage .mypage-left .mypage-left-bottom .activated {
+    border-left : 5px #333 solid;
+}
+
+.mypage .mypage-left .mypage-left-bottom ul:last-child {
+    border-bottom: 1px rgb(175, 175, 175) solid;
+}
+
+.mypage .mypage-left .mypage-left-bottom a {
+    text-decoration: none;
+}
+
+/* 프로파일 우측 정보란 스타일 */
+.mypage-right {
+    width: 100%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; */
+    padding: 0 100px;
+    text-align: left;
+}
+
+.mypage-right .mypage-content-title {
+    width: 100%;
+    text-align: left;
+    border:0px red solid;
+    font-weight: bold;
+}
+
+.mypage-right .mypage-content-title p {
+    display: inline-block;
+    width: 70%;
+    height: 100px;
+    line-height: 100px;
+    border:0px blue solid;
+    font-weight: bold;
+    font-size:30px;
+}
+
+.mypage-right .mypage-content-title button {
+    text-align:center;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border-width: 0px;
+    color:#fff;
+    font-size:20px;
+    font-weight: 600;
+    background-color: rgb(100, 123, 255);
+}
+
+.mypage-right .mypage-content-subtitle {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.mypage-right .mypage-content {
+    height: 100%;
+}
+
+.mypage-right .mypage-content .mypage-content-input {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 10px 0 10px;
+    font-size: 1.3rem;
+    padding-left: 10px;
+}
+
+.mypage-right .mypage-content .mypage-content-btn {
+    height: 50px;
+    width: 80px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: 1px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.mypage-right .mypage-content-list {
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    border:0px red solid;
+    
+}
+.mypage-right .mypage-content-list a{
+    text-decoration: none;
+}
+
+.mypage-right .mypage-content-list ul {
+    margin-top:40px;
+    list-style: none;
+}
+
+.mypage-right .mypage-content-list ul li {
+    margin: 0 auto ;
+    padding : 30px 0 10px 20px;
+    border-bottom : 1px rgb(175, 175, 175) solid;
+}
+
+.mypage-right .mypage-content-profile ul {
+    margin-top:40px;
+    list-style: none;
+}
+
+.mypage-right .mypage-content-profile ul li {
+    margin: 0 auto ;
+    padding : 30px 0 30px 20px;
+    border-top : 1px rgb(175, 175, 175) solid;
+}
+
+.dialyMT{
+    display:block;
+}
+.dateMT{
+    text-align:left;
+    font-size:20px;
+    color:#000;
+    font-weight: 600;
+}
+.mypageTb{
+    display:table;
+    margin: 10px 0;
+    width: 100%;
+    border: 0px red solid;
+    text-align: center;
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.mypageTb td{
+    border-color:black;
+    border-style:solid;
+    border-width:0px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+    text-align: center;
+}
+
+.mypageTb .mypageTb-0lax{
+    text-align:center;
+    vertical-align:middle;
+}
+
+.mypageTb .mypageTb-02ax{
+    text-align:left;
+    vertical-align:middle;
+    border-bottom:1px #333 solid;
+    font-size:16px;
+}
+
+.mypageTb .mypageTb-03ax{
+    text-align:right;
+    vertical-align:middle;
+    border-bottom:1px #333 solid;
+}
+
+.mypageTb .mypageTb-04ax{
+    text-align:right;
+    vertical-align:middle;
+}
+
+.mypageTb .mypageTb-0lax .tbCell{
+    text-align:center;
+    width:100%;
+    padding: 5px 20px;
+    border : 1px rgb(175, 175, 175) solid;
+    border-radius: 10px;
+}
+
+.mypageTb .mypageTb-0lax .mdfBtn, .mypageTb .mypageTb-0lax .dltBtn,  .mypageTb .mypageTb-03ax .playBtn,  .mypageTb .mypageTb-04ax .playBtn{
+    text-align:center;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border-width: 0px;
+    color:#fff;
+    font-weight: 600;
+}
+
+.mypageTb .mypageTb-0lax .mdfBtn{
+    background-color: rgb(100, 123, 255);
+}
+
+.mypageTb .mypageTb-0lax .dltBtn{
+    background-color: rgb(207, 63, 55);
+}
+
+.mypageTb .mypageTb-03ax .playBtn, .mypageTb .mypageTb-04ax .playBtn{
+    border: 1px #333 solid;
+    background-color: #eee;
+    color:#000;
+}
+
+
+.pwResetSub{
+    width:100%;
+    padding-left:50px;
+    text-align:left;
+    border-color: red;
+}
+
+.pwResetHolder{
+    width:80%;
+    border-color: fuchsia;
+    font-family: 'Noto Sans KR', sans-serif;
+    color:rgb(112, 110, 110);
+
+}
+
+.pwEmailInput{
+    margin-top:30px;
+}
+
+.pwEmailInput label{
+    font-size:13px;
+    color:#000;
+}
+
+.pwresetTitle {
+    margin-bottom: 10px;
+    font-size:24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight:400;
+    
+}
+
+
+.pwReset-confirm{
+    width: 100%;
+    text-align: center;
+}
+
+.pwReset-btn{
+    display: inline-block;
+    margin-top:20px;
+    width: 40%;
+    padding: 5px 5px 8px 5px !important;
+    margin-bottom : -10px;
+    border: 0px rgb(168, 166, 166) solid;
+    border-radius : 10px !important;
+    color:#fff;
+    background-color:rgb(35, 80, 206);
+    font-size: 18px !important;
+    font-weight:500;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.pwResetCheck{
+    width:100%;
+    text-align: left;
+   
+}
+.pwResetText{
+    display: inline-block;
+    font-size: 13px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color:rgb(197, 195, 195);
+}
+
+
+.pwreset-input, .join-input {
+    display: inline-block;
+    padding: 0 30px ;
+    margin-bottom : 10px;
+    border: 1px rgb(168, 166, 166) solid;
+    border-radius : 10px;
+    width: 100%;
+}
+
+
+
+.holder{
+    width:100%;
+    text-align:left;
+    padding:10px 5px;
+}
+
+.pfText{
+    font-weight:500;
+}
+
+.pfInfo{
+    display: block;
+    width:100%;
+    color:#333;
+    font-weight:300;
+    font-size:14px;
+
+}
+
+.pfIntro{
+    display:block;
+    width:100%;
+    line-height:30px;
+    margin-top:10px;
+    border: 1px #eee solid;
+}
+.pfTextLight{
+    color:#333;
+    font-weight:300;
+
+}
+
+
+
+.dark{
+    color : #fff;
+    background-color: dimgray;
+    
+}
+
+.lightgrey{
+    color: #000;
+    background-color: #eee;
+}
+
+.sm-grey{
+    padding-left:10px;
+    font-size:10px;
+    font-weight:400;
+    font-family: 'Noto Sans KR', sans-serif;
+    color:dimgray;
+
+}
+
+.pfInfoOuter{
+    width:100%;
+    text-align: center;
+    min-height:200px;
+    border : 0px red solid;
+
+}
+
+.pfInfoInner{
+    display: inline-block;
+    border : 0x blue solid;
+    vertical-align: middle;
+}
+
+.pfInfoInnerLeft{
+    width:30%;
+    float:left;
+    text-align: left;
+    border : 0px green solid;
+
+}
+
+.pfInfoInnerRight{
+    width:60%;
+    height:100px;
+    margin-top:50px;
+    float:right;
+    border : 0px orange solid;
+    vertical-align: middle;
+    text-align: right;
+    
+
+}
+
+.pfExp {
+    width:80%;
+    height:60px;
+    padding-left:10px;
+    margin-top:0px;
+    vertical-align: middle;
+}
+
+.pfExpText{
+
+    padding-right:20px;
+}
