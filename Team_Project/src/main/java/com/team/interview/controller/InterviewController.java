@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/interview")
 public class InterviewController {
 	
-	@RequestMapping(value="/")
+	@RequestMapping(value="/") 
 	public ModelAndView interviewMain() {
 		ModelAndView mav = new ModelAndView("interview/main");
 		mav.addObject("board-total", "board/total");
