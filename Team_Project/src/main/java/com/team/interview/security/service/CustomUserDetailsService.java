@@ -33,9 +33,15 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     AuthMemberDTO authMemberDTO = new AuthMemberDTO(
         memberVO.getEmail(),
-        memberVO.getPassword(),
-        memberVO.isFromSocial(),
-        memberVO.isEnabled(),
+        memberVO.getPw(),
+        memberVO.getPfId(),
+        memberVO.getName(),
+        memberVO.getPhoneNum(),
+        memberVO.getType(),
+        memberVO.getLockdate(),
+        memberVO.getFailureCnt(),
+        true,
+        memberVO.getEnabled(),
         memberVO.getAuthList().stream()
         .map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
     authMemberDTO.setName(memberVO.getName());

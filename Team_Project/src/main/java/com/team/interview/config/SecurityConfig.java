@@ -1,8 +1,10 @@
 package com.team.interview.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,9 +24,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     http.authorizeRequests()
     .antMatchers("/sample/all").permitAll()
-    .antMatchers("/sample/member").hasRole("USER");
+    .antMatchers("/sample/member").hasAnyRole("USER","ADMIN","MANAGER")
+    .antMatchers("/sample/admin").hasRole("ADMIN")
+    .antMatchers("/all/**").permitAll()
+    .antMatchers("/member/**").hasAnyRole("USER","ADMIN","MANAGER")
+    .antMatchers("/admin/**").hasRole("ADMIN");
 
-    http.formLogin(); //인가/인증에 문제시 로그인 화면
+    http.formLogin();
+    //    .loginPage("/security/loginForm")             // default : /login
+    //    .loginProcessingUrl("/spring_security_check")
+    //    //.failureUrl("/loginForm?error")    // default : /login?error
+    //    //    .failureHandler(authenticationFailureHandler)
+    //    //.defaultSuccessUrl("/")
+    //    .usernameParameter("username")     // default : j_username
+    //    .passwordParameter("password")     // default : j_password
+    //    .permitAll();
+    //
+    //    http.logout()
+    //    .logoutUrl("/logout")                // default
+    //    .logoutSuccessUrl("/")
+    //    .permitAll();
+
     http.csrf().disable();
 
     http.oauth2Login().successHandler(successHandler());
@@ -33,6 +53,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Bean
   public AuthenticationSuccessHandler successHandler() {
     return new CustomLoginSuccessHandler(passwordEncoder());
+  }
+
+  @Override
+  // js, css, image 설정은 보안 설정의 영향 밖에 있도록 만들어주는 설정.
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
   }
 
 

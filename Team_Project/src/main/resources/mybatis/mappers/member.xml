@@ -7,11 +7,16 @@
 <resultMap type="com.team.interview.vo.MemberVO" id="memberMap">
     <id property="email" column="email"/>
     <result property="email" column="email"/>
+    <result property="pfId" column="pfId"/>
+    <result property="pw" column="pw"/>
     <result property="name" column="name"/>
-    <result property="password" column="password"/>
-    <result property="regDate" column="regdate"/>
-    <result property="updateDate" column="updatedate"/>
     <result property="enabled" column="enabled"/>
+    <result property="phoneNum" column="phone_num"/>
+    <result property="type" column="type"/>
+    <result property="lockdate" column="lockdate"/>
+    <result property="failureCnt" column="failure_cnt"/>
+    <result property="regdate" column="regdate"/>
+    <result property="updatedate" column="updatedate"/>
     <result property="fromSocial" column="from_social"/>
     <collection property="authList" resultMap="authMap">
     </collection> 
@@ -25,22 +30,20 @@
 
     <insert id="insertMember" parameterType="MemberVO">
         <![CDATA[
-            INSERT
-            INTO
-                tbl_member
-                (
-                 email,
-                 name,
-                 password,
-                 from_social
-                )
-            VALUES
-                (
-                 #{email},
-                 #{name},
-                 #{password},
-                 #{fromSocial}
-                )
+        INSERT INTO tbl_member (
+                 email
+               , pw
+               , name
+               , from_social
+               , type
+        )
+        VALUES(
+                #{email}
+              , #{pw}
+              , #{name}
+              , #{fromSocial}
+              , #{type}
+              )
         ]]>
     </insert>
 
@@ -48,7 +51,7 @@
         <![CDATA[
         INSERT
         INTO
-            tbl_member_auth
+            tbl_auth
             (
              email,
              auth
@@ -65,18 +68,22 @@
       <![CDATA[
       SELECT 
         mem.email
-        , name
-        , password
-        , regdate
-        , updatedate
-        , enabled
-        , from_social
-        , auth.auth
+	       , pf_id
+	       , pw
+	       , name
+	       , mem.regdate
+	       , mem.updatedate
+	       , enabled
+	       , from_social
+	       , phone_num
+	       , lockdate
+	       , failure_cnt
+	       , auth.auth
       FROM 
         tbl_member mem 
-      LEFT OUTER JOIN 
-        tbl_member_auth auth 
-          on mem.email = auth.email 
+          LEFT OUTER JOIN 
+        tbl_auth auth 
+        on mem.email = auth.email 
       WHERE mem.email = #{email} and from_social = #{fromSocial}
       ]]>
     </select>
