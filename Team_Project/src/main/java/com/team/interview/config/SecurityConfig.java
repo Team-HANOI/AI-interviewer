@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -101,6 +102,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   //        + " from tbl_member_auth where email = ?")
   //    .passwordEncoder(new BCryptPasswordEncoder()); // 입력한 비밀번호를 암호화해서 데이터베이스의 암호와 비교를 해서 올바른 값인지를 검증한다
   //  }
-
-
 }
+

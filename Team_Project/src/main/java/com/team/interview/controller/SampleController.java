@@ -30,6 +30,13 @@ public class SampleController {
     System.out.println(authMemberDTO);
 
   }
+  @GetMapping("/company")
+  public void exCompany(@AuthenticationPrincipal AuthMemberDTO authMemberDTO){
+    System.out.println("exCompany..........");
+    System.out.println("--------------------------");
+    System.out.println(authMemberDTO);
+
+  }
 
 
   @GetMapping("/admin")

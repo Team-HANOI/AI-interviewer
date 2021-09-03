@@ -9,7 +9,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>For Member ....................</h1>
+<h1>For Company ....................</h1>
 
 <sec:authorize access="hasRole('USER')">Has USER Role<br></sec:authorize>
 <sec:authorize access="hasRole('COMPANY')">Has COMPANY Role<br></sec:authorize>
