@@ -50,3 +50,16 @@ function addCommentChild(reviewId, prtComId) {
 	$("#commentChild-form").submit();
 
 }
+
+
+
+$(function() {
+	$('form').submit(function(event) {
+		alert("aa"+this.name);
+		if ($('[name='+this.name+'] #prtComId').val() == null || 
+			$('[name='+this.name+'] #prtComId').val() == ""){
+			event.preventDefault();
+		}
+	});
+});
+

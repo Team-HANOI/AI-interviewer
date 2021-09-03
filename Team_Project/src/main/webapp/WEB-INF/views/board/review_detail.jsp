@@ -210,17 +210,15 @@
 
 <!-- 대댓글 달기 -->
 											<div id="comm" class="comm">
-												<form name="commentChild-form" id="commentChild-form"
+												<form name="${comm.comId}" id="commentChild-form"
 													action="/review/addCommChild" method="post">
 
 													<textarea id="${comm.prtComId}" name="content"
 														class="commentChild" rows="3">홍길동</textarea>
 
-													<input type="hidden" name="reviewId" value="${review.reviewId}"> 
-													<input type="hidden" name="prtComId" value="${comm.prtComId}">
-													<button id="comment-btn" type="button" class="comment-btn"
-														onclick="addCommentChild(${review.reviewId}, ${comm.prtComId});">댓글
-														달기</button>
+													<input type="hidden" name="reviewId" id="reviewId" value="${review.reviewId}"> 
+													<input type="hidden" name="prtComId" id="prtComId" value="${comm.prtComId}">
+													<button type="submit" class="comment-btn">댓글달기</button>
 												</form>
 											</div>
 <!-- 대댓글 달기 끝 -->
