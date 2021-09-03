@@ -32,10 +32,25 @@ public class BoardController {
 	private AllService allService;
 
 	@RequestMapping(value = "/")
-	public ModelAndView boardTotal() {
-		ModelAndView mav = new ModelAndView("board/total");
-		mav.addObject("board-total", "board/total");
-		return mav;
+	public ModelAndView boardTotal(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		PageInfo pageInfo = new PageInfo();
+		ModelAndView mv = new ModelAndView();
+		System.out.println("aa");
+		try {
+			List<QuestionVO> articleList = allService.getAllQList(page, pageInfo);
+			mv.addObject("pageInfo", pageInfo);
+			mv.addObject("articleList", articleList);
+			// mv.addObject("page","Qlistform");
+			System.out.println(articleList);
+			mv.setViewName("board/total");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("err", e.getMessage());
+			mv.addObject("page", "/err");
+			mv.setViewName("main");
+		}
+		return mv;
 	}
 
 	@RequestMapping(value = "/total_detail")
@@ -175,7 +190,7 @@ public class BoardController {
 	@PostMapping("/recommend")
 	public String recommend(@RequestParam(value = "answerId", required = true) int answerId,
 			HttpServletResponse response) throws Exception {
-		System.out.println("¿©±â±îÁø¿È");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		String cnt = "";
 		try {
 			allService.recommend(answerId);
