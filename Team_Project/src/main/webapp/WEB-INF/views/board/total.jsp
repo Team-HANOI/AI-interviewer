@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,10 +65,65 @@
                 <!-- 페이지 타이틀 -->
                 <div class="board-edit">
                     <h1 class="page-title-left">전체질문</h1>
-                    <button class="btn total-btn">키워드 검색</button>
+                    <form action="/allkwlist" method="post">
+                    <input type="text" name="kw">
+           			<input type="submit" value="키워드 검색">
+         			</form>
                 </div>
 
                 <!-- 구분선 -->
+                	<c:choose>
+	<c:when test="${articleList!=null && pageInfo.listCount>0 }">
+		<section id="listForm">
+		<table>
+			
+			<c:forEach var="article" items="${articleList}">
+				<tr>
+				<td>${article.qid }</td>
+				<td>
+			
+				<a href="./totaldetail?q_id=${article.qid}">
+					${article.content} 
+				</a>
+				</td>
+				<td>${article.qid }</td>
+			
+			
+				</tr>
+			</c:forEach>
+		</table>
+		</section>
+		<section id="pageList">
+			<c:choose>
+				<c:when test="${pageInfo.pg<=1}">
+					[이전]&nbsp;
+				</c:when>
+				<c:otherwise>
+					<a href="boardlist?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+				<c:choose>
+					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+					<c:otherwise>
+						<a href="boardlist?page=${i}">[${i }]</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+				<c:otherwise>
+					<a href="boardlist?page=${pageInfo.page+1}">[다음]</a>
+				</c:otherwise>
+			</c:choose>
+		</section>
+	</c:when>	
+	<c:otherwise>
+		<section id="emptyArea">등록된 글이 없습니다.</section>
+	</c:otherwise>
+	</c:choose>
                 <div class="line"></div>
 
                 <div class="board-table detail-row">

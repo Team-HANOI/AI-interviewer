@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.interview.dao.RecruitDAO">
+<select id="selectRecruits" resultType="recruit">
+	<![CDATA[
+		select 
+		c.c_name as "cName",
+		r.career,
+		r.url, 
+		r.kw
+		from tbl_com c, tbl_logo_img i, tbl_rec r 
+		where c.email = r.email and c.logo_img_id = i.logo_img_id order by 1
+	]]>
+	</select>
+	
+	<!-- 
+	<select id="selectRecruits" resultType="recruit">
+	<![CDATA[
+		select * from tbl_rec order by R_id
+	]]>
+	</select>
+	 -->
+	
+	<insert id="insertRecruit" parameterType="int">
+	<![CDATA[
+		insert into tbl_rec 
+		values(#{r_id},#{email},#{pos},#{r_startDate},#{r_endDate},#{kw},#{url},#{career},#{regdate},#{updateDate})
+	]]>	
+	</insert>
+	
+	<select id="searchRecruit" resultType="recruit"
+	parameterType="String">
+	<![CDATA[
+		select * from tbl_rec where id=#{r_id}
+	]]>
+	</select>
+	
+	<!--
+	<update id="updateProgrammer" parameterType="programmer">
+	<![CDATA[
+		update zprogrammer set name=#{name},email=#{email},contact=#{contact},address=#{address},specification=#{specification} where id=#{id}
+	]]>	
+	</update>
+	
+	<delete id="deleteProgrammer" parameterType="programmer">
+	<![CDATA[
+		delete from zprogrammer where id=#{id}
+	]]>	
+	</delete>
+	 -->
+</mapper>

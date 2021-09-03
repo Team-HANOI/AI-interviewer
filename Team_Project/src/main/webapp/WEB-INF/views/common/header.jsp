@@ -26,9 +26,9 @@
 				<li class="nav-sub-box">면접하기
 					<ul class="nav-sub-sub">
 						<!-- test class needs to be deleted -->
-						<a href="/interview/run"><li>일반면접모드</li></a>
+						<a href="/interview/nomal"><li>일반면접모드</li></a>
 						<a href="/interview/recruit"><li>채용공고모드</li></a>
-						<a><li class="keyword-popup btn">맞춤모드</li></a>
+						<a href="/interview/custom"><li>맞춤모드</li></a>
 						<a href="/interview/mentor"><li class="sub-last-item">멘토모드</li></a>
 					</ul>
 				</li>
