@@ -42,6 +42,9 @@ public class CustomUserDetailsService implements UserDetailsService{
         memberVO.getFailureCnt(),
         true,
         memberVO.getEnabled(),
+        memberVO.getLogoImgId(),
+        memberVO.getcEmail(),
+        memberVO.getcName(),
         memberVO.getAuthList().stream()
         .map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
     authMemberDTO.setName(memberVO.getName());
