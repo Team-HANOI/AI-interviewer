@@ -50,7 +50,7 @@
 
         <!-- 메인메뉴 -->
         <div class="mode-box">
-            <div class="mode top_left btn" onclick="location.href='/interview/run';">
+            <div class="mode top_left btn" onclick="location.href='/interview/nomal';">
                 일반면접모드
             </div> 
             
