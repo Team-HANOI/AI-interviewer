@@ -57,20 +57,20 @@
 		parameterType="int">
 <![CDATA[
 	   		select q_id as qid,content
-		from (select row_number() over (order by q_id_sq desc) num, A.* from tbl_q A order by q_id_sq desc) 
+		from (select row_number() over (order by q_id_sq desc) num, A.* from tbl_qh A order by q_id_sq desc) 
 		where num between #{startrow} and #{startrow}+10 and r_cnt>10
 		]]>
 
 	</select>
 	<select id="selectAllQCount" resultType="int">
 		<![CDATA[
-		select count(*) from tbl_q
+		select count(*) from tbl_qh
 		]]>
 
 	</select>
 	<select id="selectAllACount" resultType="int">
 	<![CDATA[
-		select count(*) from tbl_answer
+		select count(*) from tbl_answerh
 		]]>
 	</select>
 
