@@ -40,7 +40,7 @@ public class CustomUserDetailsService implements UserDetailsService{
         memberVO.getType(),
         memberVO.getLockdate(),
         memberVO.getFailureCnt(),
-        true,
+        true, // fromSocial
         memberVO.getEnabled(),
         memberVO.getLogoImgId(),
         memberVO.getcEmail(),
