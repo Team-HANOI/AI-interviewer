@@ -22,7 +22,7 @@
         
         <!-- 채용공고 작성 -->
         <h1 class="page-title-left">채용공고 작성하기</h1>
-        <form action="/recruit/form" method="GET" class="form-box">
+        <form action="/recruit/form" method="POST" class="form-box">
 
             <!-- 구분선 -->
             <div class="line"></div>
@@ -30,49 +30,49 @@
             <div class="login-sub">
                 <div class="post_page-box">
                     <div class="post_page-sub-box">
-                        <label for="">회사이름</label>
-                        <input class="login-input" type="text" placeholder="">
+                        <label for="com-name">회사이름</label>
+                        <input id="com-name" name="cName" class="login-input" type="text" placeholder="">
                     </div>
                     <div class="post_page-sub-box">
-                        <label for="">이메일</label>
-                        <input class="login-input" type="email" placeholder="">
+                        <label for="com-email">이메일</label>
+                        <input id="com-email" name="email" class="login-input" type="email" placeholder="">
                     </div>
                     <div class="post_page-sub-box">
-                        <label for="">모집 포지션</label>
-                        <input class="login-input" type="text" placeholder="">
+                        <label for="r-position">모집 포지션</label>
+                        <input id="r-position" name="pos" class="login-input" type="text" placeholder="">
                     </div>
                     <div class="post_page-sub-box">
-                        <label for="">기간</label>
-                        <input class="login-input" type="date" placeholder="">
+                        <label for="r-period">기간</label>
+                        <input id="r-period" name="r_startDate" class="login-input" type="date" placeholder="">
                         <p class="from-to"> ~ </p>
-                        <input class="login-input" type="date" placeholder="">
+                        <input id="" name="r_endDate" class="login-input" type="date" placeholder="">
                     </div>
 
                     <div class="post_page-sub-box">
                         <label>키워드</label>
                         <div class="post-keywords">
                             <div class="post-keyword">
-                                <input id="post-kw1" type="checkbox">
+                                <input id="post-kw1" name="kw" type="checkbox">
                                 <label for="post-kw1">a</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw2" type="checkbox">
+                                <input id="post-kw2" name="kw" type="checkbox">
                                 <label for="post-kw2">b</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw3" type="checkbox">
+                                <input id="post-kw3" name="kw" type="checkbox">
                                 <label for="post-kw3">c</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw4" type="checkbox">
+                                <input id="post-kw4" name="kw" type="checkbox">
                                 <label for="post-kw4">d</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw5" type="checkbox">
+                                <input id="post-kw5" name="kw" type="checkbox">
                                 <label for="post-kw5">e</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw6" type="checkbox">
+                                <input id="post-kw6" name="kw" type="checkbox">
                                 <label for="post-kw6">faaaaaaaaaaa</label>
                             </div>
                         </div>
@@ -80,12 +80,12 @@
 
                     <div class="post_page-sub-box">
                         <label for="">URL</label>
-                        <input class="login-input" type="text" placeholder="">
+                        <input id="" class="login-input" type="text" placeholder="">
                     </div>
 
                     <div class="post_page-sub-box">
                         <label for="">경력</label>
-                        <input class="login-input" type="number" placeholder="ex) 1">
+                        <input id="" class="login-input" type="number" placeholder="ex) 1">
                     </div>
                 </div>
 
