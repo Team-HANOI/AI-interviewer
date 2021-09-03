@@ -52,4 +52,85 @@
 		]]>
 	</select>
 
+	<!-- 전체질문 목록 추천수 10이상만 보이게 해야하는데... -->
+	<select id="SelectAllQList" resultType="QuestionVO"
+		parameterType="int">
+<![CDATA[
+	   		select q_id as qid,content
+		from (select row_number() over (order by q_id_sq desc) num, A.* from tbl_q A order by q_id_sq desc) 
+		where num between #{startrow} and #{startrow}+10 and r_cnt>10
+		]]>
+
+	</select>
+	<select id="selectAllQCount" resultType="int">
+		<![CDATA[
+		select count(*) from tbl_q
+		]]>
+
+	</select>
+	<select id="selectAllACount" resultType="int">
+	<![CDATA[
+		select count(*) from tbl_answer
+		]]>
+	</select>
+
+	<select id="Querykw" resultType="QuestionVO">
+		<![CDATA[
+	select q_id as qid,content from (select row_number() over (order by q_id_sq desc) num, A.* from tbl_q A order by q_id_sq desc)
+		where KW_LIST like '%'||#{kw}||'%' and num between #{startrow} and #{startrow}+10 and r_cnt>=10
+		]]>
+	</select>
+
+	<update id="UpdateRCnt">
+	<![CDATA[
+		update tbl_answer set r_cnt=r_cnt+1 where answer_id=#{answerId}
+		]]>
+
+	</update>
+
+	<select id="QueryRCnt" parameterType="int" resultType="int">
+	<![CDATA[
+		select r_cnt as rCnt from tbl_answer where answer_id=#{answerId}
+	]]>
+	</select>
+
+
+	<select id="SelectProfile" resultType="ProfileVO"
+		parameterType="int">
+	<![CDATA[
+		select p.pf_img_id as pfImgId, m.name as name from tbl_i_record r, tbl_member m, tbl_profile p
+		where r.email=m.email and m.pf_id=p.pf_id and r.i_record_id=#{iRecordId}
+		]]>
+	</select>
+
+	<select id="SelectAnswer" resultType="AnswerVO">
+	<![CDATA[
+		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
+		 from (select row_number() over (order by a_id_sq desc) num, A.* from tbl_answer A order by a_id_sq desc) 
+		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
+		]]>
+	</select>
+
+	<select id="selectAnswerRCnt" resultType="AnswerVO"
+		parameterType="int">
+	<![CDATA[
+		select r_cnt,content,regdate from tbl_answerh where q_id=#{q_id} order by r_cnt
+	]]>
+
+	</select>
+	<select id="getFile" parameterType="int" resultType="fileVO">
+	<![CDATA[
+	select 
+	pf_img_id as "fileId",
+	file_name as "fileName",
+	file_size as "fileSize",
+	file_content_type as "fileContentType",
+	file_data as "fileData"
+	from tbl_pf_imgh
+	where pf_img_id=#{fileId}
+	]]>
+
+	</select>
+
+
 </mapper>

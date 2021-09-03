@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.*"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,31 @@
 	<link rel="stylesheet" href="/style/board_review.css">
 	<link rel="stylesheet" href="/style/interview_result.css">
 </head>
+<script>
+
+        function recommend(answerId) {
+            $.ajax({
+                  type: "POST",
+                  url: "./recommend", //요청 URL 
+                  data: { answerId : answerId  }, //요청과 함께 서버에 보내는 string 또는 json
+                  // 서버에서 내려온 data 형식. ( default : xml, json, script, text, html )
+                  success: function(data, textStatus) { // 요청에 성공하면 함수 실행 data는 응답 데이터가 들어간다
+                    
+                        if (textStatus == 'success') {
+                          $("#"+answerId).text('좋아요: '+ data);
+                      };
+                  },
+                  error: function(response, textStatus) { // 에러가 났을 경우의 작업
+                     alert("오류가 발생했습니다.");
+                  }
+              });
+              return false; // 페이지 리로딩을 막는다. 
+        };
+        
+
+
+
+</script>
 <body>
     <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
     <jsp:include page="../common/header.jsp"/>
@@ -67,18 +95,57 @@
                     <button class="btn">최신순</button>
                     <button class="btn">추천순</button>
                 </div>
-                
+                <c:when test="${articleList!=null && pageInfo.listCount>0 }">
+                  <c:forEach var="article" items="${articleList}"> 
                 <div class="detail-row">
                     <div>
-                        <img class="recommendations-user_icon" src="image/sky.jpg" alt="">
-                        <small>J</small>
+                        <img class="recommendations-user_icon" src="img/${article.pfImgId}">
+                        <small>${article.memberName}</small>
                     </div>
-                    
-                    <p class="item">ID: <span>jjj</span></p>
-                    <p class="answer item">답: <span>왕ㅇㅇㅇㅇㅇ</span></p>
-                    <p class="item">좋아요: <span>11</span></p>
-                    <p class="item">등록일: <span>11.11.</span></p>
+                   <%--  <p class="item">ID: <span>${article.memberName}</span></p> --%>
+                    <p class="answer item">답: <span>${article.content} </span></p>
+               
+                    <button class= "btn" id = "${article.answerId}" class="recommend" data-bs-toggle="modal"
+                    onClick="javascript:recommend(${article.answerId});">좋아요: ${article.rCnt}
+                    </button>
+              
+                    <p>작성일: <span>${article.regdate}</span></p>
+                    <br><br>
+                <br>
                 </div>
+
+                </c:forEach>
+                <section id="pageList">
+			<c:choose>
+				<c:when test="${pageInfo.pg<=1}">
+					[이전]&nbsp;
+				</c:when>
+				<c:otherwise>
+					<a href="boardlist?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+				<c:choose>
+					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+					<c:otherwise>
+						<a href="boardlist?page=${i}">[${i }]</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+				<c:otherwise>
+					<a href="boardlist?page=${pageInfo.page+1}">[다음]</a>
+				</c:otherwise>
+			</c:choose>
+		</section>
+	</c:when>	
+	<c:otherwise>
+		<section id="emptyArea">등록된 글이 없습니다.</section>
+	</c:otherwise>
+	
             </div>
         </div>
     </main>
