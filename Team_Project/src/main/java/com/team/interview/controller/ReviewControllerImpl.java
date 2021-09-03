@@ -271,8 +271,6 @@ public class ReviewControllerImpl implements ReviewController {
   @RequestMapping(value = "/addCommChild", method = RequestMethod.POST)
   public ModelAndView addCommChild(@ModelAttribute RCommVO rComm) {
 
-    System.out.println(rComm.getReviewId());
-    System.out.println(rComm.getComId());
     ModelAndView mv = new ModelAndView();
 
     try {

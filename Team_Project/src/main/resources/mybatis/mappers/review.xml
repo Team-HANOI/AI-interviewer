@@ -267,7 +267,7 @@
 		<![CDATA[
 		insert into tbl_r_comm
 		(com_id, review_id, email, content, prt_com_id, seq, lev, regdate, updatedate)
-		values(r_comm_sq.nextval, #{reviewId}, #{email}, #{content}, r_comm_sq.currval, 0, 0, sysdate, sysdate)
+		values(r_comm_sq.nextval, #{reviewId}, #{email}, #{content}, r_comm_sq.currval, 1, 0, sysdate, sysdate)
 		]]>	
 	</insert>
 	
@@ -291,7 +291,7 @@
 		<![CDATA[
 		insert into tbl_r_comm
 		(com_id, review_id, email, content, prt_com_id, seq, lev, regdate, updatedate)
-		values(r_comm_sq.nextval, #{reviewId}, #{email}, #{content}, #{comId}, #{seq}, 1, sysdate, sysdate)
+		values(r_comm_sq.nextval, #{reviewId}, #{email}, #{content}, #{prtComId}, #{seq}, 1, sysdate, sysdate)
 		]]>	
 	</insert>
 	

@@ -199,35 +199,32 @@
 
 															<button>수정</button>
 															<button>삭제</button>
-
-<!-- 대댓글 달기 -->
+<!-- 대댓글 버튼 -->
 															<button onclick="commentChildFn()">답글 달기</button>
-
-															<div id="comm" class="comm">
-																<form name="commentChild-form" id="commentChild-form"
-																	action="/review/addCommChild" method="post">
-																	<textarea id="content" name="content" type="text"
-																		class="commChildText" rows="3"></textarea>
-																		
-																		
-																		
-																		
-																	<input type="hidden" name="reviewId"
-																		value="${review.reviewId}"> <input
-																		type="hidden" name="comId" value="${comm.comId}">
-																	<button id="comment-btn" type="button"
-																		class="comment-btn"
-																		onclick="addCommentChild(${review.reviewId});">댓글
-																		달기</button>
-																</form>
-															</div>
-
-<!-- 대댓글 달기 끝 -->
+<!-- 대댓글 버튼 끝 -->
 														</div>
 													</div>
 													<div class="comment-content">${comm.content}</div>
 												</div>
 											</div>
+
+<!-- 대댓글 달기 -->
+											<div id="comm" class="comm">
+												<form name="commentChild-form" id="commentChild-form"
+													action="/review/addCommChild" method="post">
+
+													<textarea id="${comm.prtComId}" name="content"
+														class="commentChild" rows="3">홍길동</textarea>
+
+													<input type="hidden" name="reviewId" value="${review.reviewId}"> 
+													<input type="hidden" name="prtComId" value="${comm.prtComId}">
+													<input type="hidden" name="prtComId" value="${comm.prtComId}">
+													<button id="comment-btn" type="button" class="comment-btn"
+														onclick="addCommentChild(${review.reviewId}, ${comm.prtComId});">댓글
+														달기</button>
+												</form>
+											</div>
+<!-- 대댓글 달기 끝 -->
 										</c:when>
 
 

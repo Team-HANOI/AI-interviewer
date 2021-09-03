@@ -33,9 +33,16 @@ function addComment(reviewId) {
 
 
 //대댓글달기
-function addCommentChild(reviewId) {
+
+function commentChildFn() {
+        document.getElementById("comm").style.display = "block";  
+      }
+
+function addCommentChild(reviewId, prtComId) {
 	alert(reviewId);
-	if ($("#content").val() == null || $("#content").val() == "") {
+	alert($("#"+prtComId).val());
+	
+	if ($("#"+prtComId).val() == null || $("#"+prtComId).val() == "") {
 		alert("댓글을 입력하세요");
 		return false;
 	}

@@ -138,7 +138,9 @@ public class ReviewServiceImpl implements ReviewService {
   // 대댓글달기
   @Override
   public void addRCommChild(RCommVO rComm) throws Exception { // 부모의 comId가져오기
+    System.out.println("addRCommChild:" + rComm.getPrtComId());
     int seqMax = reviewDAO.selectSeqMax(rComm.getPrtComId());
+    System.out.println("content:" + rComm.getContent());
     rComm.setEmail("e@naver.com");
     rComm.setSeq(seqMax);
     reviewDAO.insertRCommChild(rComm);
