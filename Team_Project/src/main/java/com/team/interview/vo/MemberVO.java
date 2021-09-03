@@ -32,7 +32,7 @@ public class MemberVO {
   private List<AuthVO> authList;
 
 
-  // 기업 회원 컬럼
+  // 기업 회원 관련 필드
 
   // 로고 이미지Id(fk)
   private String logoImgId;
@@ -40,6 +40,8 @@ public class MemberVO {
   private String cEmail;
   // 회사 이름
   private String cName;
+
+
 
   public MemberVO() {
   }
