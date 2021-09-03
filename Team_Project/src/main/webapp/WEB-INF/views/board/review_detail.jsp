@@ -218,7 +218,6 @@
 
 													<input type="hidden" name="reviewId" value="${review.reviewId}"> 
 													<input type="hidden" name="prtComId" value="${comm.prtComId}">
-													<input type="hidden" name="prtComId" value="${comm.prtComId}">
 													<button id="comment-btn" type="button" class="comment-btn"
 														onclick="addCommentChild(${review.reviewId}, ${comm.prtComId});">댓글
 														달기</button>

@@ -311,7 +311,7 @@
         ,c.updatedate
 		from tbl_r_comm c, tbl_member m
         where c.review_id=#{reviewId} and  c.email=m.email
-		order by c.prt_com_id asc, c.seq asc
+		order by c.prt_com_id asc, c.lev asc, c.seq asc
 		]]>
 	</select>
 	
