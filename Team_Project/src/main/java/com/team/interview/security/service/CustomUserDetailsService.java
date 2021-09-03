@@ -6,17 +6,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import com.team.interview.dao.CompanyDAO;
 import com.team.interview.dao.MemberDAO;
 import com.team.interview.security.dto.AuthMemberDTO;
+import com.team.interview.vo.CompanyVO;
 import com.team.interview.vo.MemberVO;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
 
   private final MemberDAO memberDAO;
+  private final CompanyDAO companyDAO;
 
-  public CustomUserDetailsService(final MemberDAO memberDAO) {
+  public CustomUserDetailsService(final MemberDAO memberDAO, final CompanyDAO companyDAO) {
     this.memberDAO = memberDAO;
+    this.companyDAO = companyDAO;
   }
 
   @Override
@@ -26,6 +30,13 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     if(memberVO == null) {
       throw new UsernameNotFoundException("Check Email or Social ");
+    }
+
+    if(memberVO.getType() == 'C') {
+      CompanyVO companyVO = companyDAO.findByEmail(username);
+      memberVO.setLogoImgId(companyVO.getLogoImgId());
+      memberVO.setcEmail(companyVO.getcEmail());
+      memberVO.setcName(companyVO.getcName());
     }
 
     System.out.println("----------------------------");
@@ -40,8 +51,11 @@ public class CustomUserDetailsService implements UserDetailsService{
         memberVO.getType(),
         memberVO.getLockdate(),
         memberVO.getFailureCnt(),
-        true,
+        true, // fromSocial
         memberVO.getEnabled(),
+        memberVO.getLogoImgId(),
+        memberVO.getcEmail(),
+        memberVO.getcName(),
         memberVO.getAuthList().stream()
         .map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
     authMemberDTO.setName(memberVO.getName());

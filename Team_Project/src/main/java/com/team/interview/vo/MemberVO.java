@@ -18,7 +18,7 @@ public class MemberVO {
   private boolean fromSocial;
   //전화번호(핸드폰)
   private String phoneNum;
-  //회원구분  일반:M 기업:C
+  //회원구분  일반:M 기업:C 관리자:A
   private char type;
   //잠금날짜 (몇시간 잠금했는지 판단할때 사용)
   private Date lockdate;
@@ -31,6 +31,18 @@ public class MemberVO {
 
   private List<AuthVO> authList;
 
+
+  // 기업 회원 관련 필드
+
+  // 로고 이미지Id(fk)
+  private int logoImgId;
+  // 회사 이메일
+  private String cEmail;
+  // 회사 이름
+  private String cName;
+
+
+
   public MemberVO() {
   }
   protected boolean canEqual(Object other) {
@@ -41,11 +53,14 @@ public class MemberVO {
     final int prime = 31;
     int result = 1;
     result = prime * result + ((authList == null) ? 0 : authList.hashCode());
+    result = prime * result + ((cEmail == null) ? 0 : cEmail.hashCode());
+    result = prime * result + ((cName == null) ? 0 : cName.hashCode());
     result = prime * result + ((email == null) ? 0 : email.hashCode());
     result = prime * result + enabled;
     result = prime * result + failureCnt;
     result = prime * result + (fromSocial ? 1231 : 1237);
     result = prime * result + ((lockdate == null) ? 0 : lockdate.hashCode());
+    result = prime * result + logoImgId;
     result = prime * result + ((name == null) ? 0 : name.hashCode());
     result = prime * result + pfId;
     result = prime * result + ((phoneNum == null) ? 0 : phoneNum.hashCode());
@@ -69,6 +84,16 @@ public class MemberVO {
         return false;
     } else if (!authList.equals(other.authList))
       return false;
+    if (cEmail == null) {
+      if (other.cEmail != null)
+        return false;
+    } else if (!cEmail.equals(other.cEmail))
+      return false;
+    if (cName == null) {
+      if (other.cName != null)
+        return false;
+    } else if (!cName.equals(other.cName))
+      return false;
     if (email == null) {
       if (other.email != null)
         return false;
@@ -84,6 +109,8 @@ public class MemberVO {
       if (other.lockdate != null)
         return false;
     } else if (!lockdate.equals(other.lockdate))
+      return false;
+    if (logoImgId != other.logoImgId)
       return false;
     if (name == null) {
       if (other.name != null)
@@ -121,7 +148,8 @@ public class MemberVO {
     return "MemberVO [email=" + email + ", pfId=" + pfId + ", pw=" + pw + ", name=" + name
         + ", enabled=" + enabled + ", fromSocial=" + fromSocial + ", phoneNum=" + phoneNum
         + ", type=" + type + ", lockdate=" + lockdate + ", failureCnt=" + failureCnt + ", regdate="
-        + regdate + ", updatedate=" + updatedate + ", authList=" + authList + "]";
+        + regdate + ", updatedate=" + updatedate + ", authList=" + authList + ", logoImgId="
+        + logoImgId + ", cEmail=" + cEmail + ", cName=" + cName + "]";
   }
   public String getEmail() {
     return email;
@@ -201,4 +229,23 @@ public class MemberVO {
   public void setAuthList(List<AuthVO> authList) {
     this.authList = authList;
   }
+  public int getLogoImgId() {
+    return logoImgId;
+  }
+  public void setLogoImgId(int logoImgId) {
+    this.logoImgId = logoImgId;
+  }
+  public String getcEmail() {
+    return cEmail;
+  }
+  public void setcEmail(String cEmail) {
+    this.cEmail = cEmail;
+  }
+  public String getcName() {
+    return cName;
+  }
+  public void setcName(String cName) {
+    this.cName = cName;
+  }
+
 }

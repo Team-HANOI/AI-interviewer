@@ -14,7 +14,7 @@ public class AuthMemberDTO extends User implements OAuth2User {
   //이메일
   private String email;
   //프로필id
-  private String pfId;
+  private int pfId;
   //패스워드
   private String pw;
   //이름
@@ -39,6 +39,15 @@ public class AuthMemberDTO extends User implements OAuth2User {
 
   private Map<String, Object> attr;
 
+  //기업 회원 관련 필드
+
+  // 로고 이미지Id(fk)
+  private int logoImgId;
+  // 회사 이메일
+  private String cEmail;
+  // 회사 이름
+  private String cName;
+
 
 
   //  private MemberVO member;
@@ -62,9 +71,12 @@ public class AuthMemberDTO extends User implements OAuth2User {
       int failureCnt,
       boolean fromSocial,
       char enabled,
+      int logoImgId,
+      String cEmail,
+      String cName,
       Collection<? extends GrantedAuthority> authorities,
       Map<String, Object> attr) {
-    this(username, password, pfId, name, phoneNum, type, lockdate, failureCnt, fromSocial, enabled, authorities);
+    this(username, password, pfId, name, phoneNum, type, lockdate, failureCnt, fromSocial, enabled, logoImgId, cEmail, cName, authorities);
     this.attr = attr;
   }
 
@@ -79,17 +91,39 @@ public class AuthMemberDTO extends User implements OAuth2User {
       int failureCnt,
       boolean fromSocial,
       char enabled,
+      int logoImgId,
+      String cEmail,
+      String cName,
       Collection<? extends GrantedAuthority> authorities) {
     super(username, password, authorities);
     this.email = username;
     this.pw = password;
+    this.pfId = pfId;
+    this.name = name;
+    this.phoneNum = phoneNum;
+    this.type = type;
+    this.lockdate = lockdate;
+    this.failureCnt = failureCnt;
     this.fromSocial = fromSocial;
     this.enabled = enabled;
+    this.logoImgId = logoImgId;
+    this.cEmail = cEmail;
+    this.cName = cName;
+    // authorities?
   }
 
   @Override
   public Map<String, Object> getAttributes() {
     return this.attr;
+  }
+
+  @Override
+  public String toString() {
+    return "AuthMemberDTO [email=" + email + ", pfId=" + pfId + ", pw=" + pw + ", name=" + name
+        + ", enabled=" + enabled + ", fromSocial=" + fromSocial + ", phoneNum=" + phoneNum
+        + ", type=" + type + ", lockdate=" + lockdate + ", failureCnt=" + failureCnt + ", regdate="
+        + regdate + ", updatedate=" + updatedate + ", attr=" + attr + ", logoImgId=" + logoImgId
+        + ", cEmail=" + cEmail + ", cName=" + cName + "]";
   }
 
   public String getEmail() {
@@ -100,11 +134,11 @@ public class AuthMemberDTO extends User implements OAuth2User {
     this.email = email;
   }
 
-  public String getPfId() {
+  public int getPfId() {
     return pfId;
   }
 
-  public void setPfId(String pfId) {
+  public void setPfId(int pfId) {
     this.pfId = pfId;
   }
 
@@ -197,16 +231,33 @@ public class AuthMemberDTO extends User implements OAuth2User {
     this.attr = attr;
   }
 
+  public int getLogoImgId() {
+    return logoImgId;
+  }
+
+  public void setLogoImgId(int logoImgId) {
+    this.logoImgId = logoImgId;
+  }
+
+  public String getcEmail() {
+    return cEmail;
+  }
+
+  public void setcEmail(String cEmail) {
+    this.cEmail = cEmail;
+  }
+
+  public String getcName() {
+    return cName;
+  }
+
+  public void setcName(String cName) {
+    this.cName = cName;
+  }
+
   public static long getSerialversionuid() {
     return serialVersionUID;
   }
 
-  @Override
-  public String toString() {
-    return "AuthMemberDTO [email=" + email + ", pfId=" + pfId + ", pw=" + pw + ", name=" + name
-        + ", enabled=" + enabled + ", fromSocial=" + fromSocial + ", phoneNum=" + phoneNum
-        + ", type=" + type + ", lockdate=" + lockdate + ", failureCnt=" + failureCnt + ", regdate="
-        + regdate + ", updatedate=" + updatedate + ", attr=" + attr + "]";
-  }
 
 }

@@ -62,9 +62,12 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         memberVO.getPhoneNum(),
         memberVO.getType(),
         memberVO.getLockdate(),
-        0,
-        true,
-        'E',
+        0, // failureCnt
+        true, // fromSocial
+        'E', // enabled
+        memberVO.getLogoImgId(),
+        memberVO.getcEmail(),
+        memberVO.getcName(),
         memberVO.getAuthList().stream().map(
             authVO -> new SimpleGrantedAuthority(authVO.getAuth()))
         .collect(Collectors.toList()),
