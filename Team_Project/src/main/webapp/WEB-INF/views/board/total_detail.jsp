@@ -95,8 +95,12 @@
 				</h2>
 
 				<div class="detail-row result-btn-box">
+					<a href="/board/totaldetail">
 					<button class="btn">최신순</button>
+					</a>
+					<a href="/board/detailRCnt?q_id=${articleList[0].q_id}">
 					<button class="btn">추천순</button>
+					</a>
 				</div>
 				<c:forEach var="article" items="${articleList}">
 					<div class="detail-row">
