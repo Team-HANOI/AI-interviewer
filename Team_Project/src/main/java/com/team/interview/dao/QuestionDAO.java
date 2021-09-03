@@ -25,7 +25,7 @@ public interface QuestionDAO {
 
 	List<AnswerVO> SelectAnswer(@Param("q_id") int q_id, @Param("startrow") int startrow) throws Exception;
 
-	AnswerVO SelectAnswerRCnt(int q_id) throws Exception;
+	List<AnswerVO> SelectAnswerRCnt(@Param("q_id") int q_id, @Param("startrow") int startrow) throws Exception;
 
 	void UpdateRcnt(int q_id) throws Exception;
 

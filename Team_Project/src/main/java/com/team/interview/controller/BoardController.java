@@ -185,12 +185,34 @@ public class BoardController {
 		}
 		return mv;
 	}
+	
+
+	@GetMapping("/detailRCnt")
+	public ModelAndView AllAnsListRcnt(@RequestParam(value = "q_id", required=true) int q_id,
+			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		PageInfo pageInfo = new PageInfo();
+		ModelAndView mv = new ModelAndView();
+		System.out.println(q_id);
+		try {
+			List<AnswerVO> articleList = allService.getAnsListCnt(q_id, page, pageInfo);
+			mv.addObject("pageInfo", pageInfo);
+			mv.addObject("articleList", articleList);
+			mv.setViewName("board/total_detail");
+			System.out.println(articleList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("err", e.getMessage());
+			mv.addObject("page", "/err");
+			mv.setViewName("main");
+		}
+		return mv;
+	}
 
 	@ResponseBody
 	@PostMapping("/recommend")
 	public String recommend(@RequestParam(value = "answerId", required = true) int answerId,
 			HttpServletResponse response) throws Exception {
-		System.out.println("���������");
+
 		String cnt = "";
 		try {
 			allService.recommend(answerId);
