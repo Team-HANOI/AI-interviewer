@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.team.interview.dao.CompanyDAO;
 import com.team.interview.dao.MemberDAO;
 import com.team.interview.security.dto.AuthMemberDTO;
+import com.team.interview.vo.CompanyVO;
 import com.team.interview.vo.MemberVO;
 
 @Service
@@ -29,6 +30,13 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     if(memberVO == null) {
       throw new UsernameNotFoundException("Check Email or Social ");
+    }
+
+    if(memberVO.getType() == 'C') {
+      CompanyVO companyVO = companyDAO.findByEmail(username);
+      memberVO.setLogoImgId(companyVO.getLogoImgId());
+      memberVO.setcEmail(companyVO.getcEmail());
+      memberVO.setcName(companyVO.getcName());
     }
 
     System.out.println("----------------------------");
