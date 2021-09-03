@@ -8,5 +8,6 @@
   <mapper resource="mybatis/mappers/review.xml"/>
   <mapper resource="mybatis/mappers/interview.xml"/>
   <mapper resource="mybatis/mappers/question.xml"/>
+  <mapper resource="mybatis/mappers/keyword.xml"/>
 </mappers>  
 </configuration>
