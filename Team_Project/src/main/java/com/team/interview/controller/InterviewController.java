@@ -4,12 +4,12 @@ package com.team.interview.controller;
 
 
 import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.servlet.ModelAndView;
 
 //import com.google.cloud.texttospeech.v1.AudioConfig;
@@ -21,20 +21,25 @@ import org.springframework.web.servlet.ModelAndView;
 //import com.google.cloud.texttospeech.v1.VoiceSelectionParams;
 //import com.google.protobuf.ByteString;
 import com.team.interview.service.InterviewService;
+import com.team.interview.service.KeywordService;
 import com.team.interview.service.QuestionService;
 import com.team.interview.vo.InterviewVO;
+import com.team.interview.vo.KeywordVO;
 import com.team.interview.vo.PageInfo;
 import com.team.interview.vo.QuestionVO;
 
 @Controller
 @RequestMapping(value = "/interview")
-public class InterviewController { 
+public class InterviewController {
 
 	@Autowired
 	InterviewService service;
 
 	@Autowired
 	QuestionService questionService;
+	
+	@Autowired
+	KeywordService keywordService;
 
 	@RequestMapping(value = "/")
 	public ModelAndView interviewMain() {
@@ -120,6 +125,29 @@ public class InterviewController {
 			questions = questionService.questions();
 			System.out.println(questions);
 			mav.addObject("questions", questions);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return mav;
+
+	}
+	
+	
+	@RequestMapping(value = "/custom")
+	public ModelAndView customMode() {
+
+		ModelAndView mav = new ModelAndView("interview/custom");
+		ArrayList<KeywordVO> keywordList;
+
+		try {
+
+			keywordList = keywordService.keywordList();
+			System.out.println(keywordList);
+			mav.addObject("keywordList", keywordList);
 
 		} catch (Exception e) {
 
