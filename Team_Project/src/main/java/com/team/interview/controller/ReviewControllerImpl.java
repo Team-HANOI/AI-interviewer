@@ -248,7 +248,7 @@ public class ReviewControllerImpl implements ReviewController {
   // 댓글 달기
   @Override
   @RequestMapping(value = "/addComm", method = RequestMethod.POST)
-  public ModelAndView addRComm(@ModelAttribute RCommVO rComm) throws Exception {
+  public ModelAndView addRComm(@ModelAttribute RCommVO rComm) {
 
     System.out.println(rComm.getReviewId());
     ModelAndView mv = new ModelAndView();
@@ -261,6 +261,28 @@ public class ReviewControllerImpl implements ReviewController {
       e.printStackTrace();
       mv.addObject("err", "오류 발생");
       mv.setViewName("/board/err");
+    }
+    return mv;
+  }
+
+
+  // 대댓글 달기
+  @Override
+  @RequestMapping(value = "/addCommChild", method = RequestMethod.POST)
+  public ModelAndView addCommChild(@ModelAttribute RCommVO rComm) {
+
+    System.out.println(rComm.getReviewId());
+    System.out.println(rComm.getComId());
+    ModelAndView mv = new ModelAndView();
+
+    try {
+      reviewService.addRCommChild(rComm);
+      mv.setViewName("redirect:/review/board_review_detail?reviewId=" + rComm.getReviewId());
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      mv.addObject("err", "오류 발생");
+      mv.setViewName("/review/err");
     }
     return mv;
   }

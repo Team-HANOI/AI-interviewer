@@ -41,8 +41,9 @@ public interface ReviewController {
   ModelAndView removeBoard(@RequestParam("reviewId") int reviewId,
       @RequestParam(value = "page", required = false, defaultValue = "1") int page);
 
+  ModelAndView addRComm(@ModelAttribute RCommVO rComm);
 
-  ModelAndView addRComm(@ModelAttribute RCommVO rComm) throws Exception;
+  ModelAndView addCommChild(@ModelAttribute RCommVO rComm);
 
 
 

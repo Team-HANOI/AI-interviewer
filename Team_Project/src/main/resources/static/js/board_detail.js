@@ -33,13 +33,13 @@ function addComment(reviewId) {
 
 
 //대댓글달기
-function addComment(reviewId) {
+function addCommentChild(reviewId) {
 	alert(reviewId);
 	if ($("#content").val() == null || $("#content").val() == "") {
 		alert("댓글을 입력하세요");
 		return false;
 	}
-	alert("comment-form");
-	$("#comment-form").submit();
+	alert("commentChild-form");
+	$("#commentChild-form").submit();
 
 }
