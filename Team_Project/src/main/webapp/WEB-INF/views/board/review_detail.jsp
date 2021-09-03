@@ -199,13 +199,29 @@
 
 															<button>수정</button>
 															<button>삭제</button>
-
-															<button>답글달기</button>
+<!-- 대댓글 버튼 -->
+															<button onclick="commentChildFn()">답글 달기</button>
+<!-- 대댓글 버튼 끝 -->
 														</div>
 													</div>
 													<div class="comment-content">${comm.content}</div>
 												</div>
 											</div>
+
+<!-- 대댓글 달기 -->
+											<div id="comm" class="comm">
+												<form name="${comm.comId}" id="commentChild-form"
+													action="/review/addCommChild" method="post">
+
+													<textarea id="${comm.prtComId}" name="content"
+														class="commentChild" rows="3">홍길동</textarea>
+
+													<input type="hidden" name="reviewId" id="reviewId" value="${review.reviewId}"> 
+													<input type="hidden" name="prtComId" id="prtComId" value="${comm.prtComId}">
+													<button type="submit" class="comment-btn">댓글달기</button>
+												</form>
+											</div>
+<!-- 대댓글 달기 끝 -->
 										</c:when>
 
 

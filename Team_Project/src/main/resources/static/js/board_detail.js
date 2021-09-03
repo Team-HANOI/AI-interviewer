@@ -33,13 +33,33 @@ function addComment(reviewId) {
 
 
 //대댓글달기
-function addComment(reviewId) {
+
+function commentChildFn() {
+        document.getElementById("comm").style.display = "block";  
+      }
+
+function addCommentChild(reviewId, prtComId) {
 	alert(reviewId);
-	if ($("#content").val() == null || $("#content").val() == "") {
+	alert($("#"+prtComId).val());
+	
+	if ($("#"+prtComId).val() == null || $("#"+prtComId).val() == "") {
 		alert("댓글을 입력하세요");
 		return false;
 	}
-	alert("comment-form");
-	$("#comment-form").submit();
+	alert("commentChild-form");
+	$("#commentChild-form").submit();
 
 }
+
+
+
+$(function() {
+	$('form').submit(function(event) {
+		alert("aa"+this.name);
+		if ($('[name='+this.name+'] #prtComId').val() == null || 
+			$('[name='+this.name+'] #prtComId').val() == ""){
+			event.preventDefault();
+		}
+	});
+});
+
