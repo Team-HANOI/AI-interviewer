@@ -21,5 +21,8 @@
 <!-- 일반회원 로그인 -->
 <jsp:include page="popup_login_indv.jsp"/>
 
+<!-- 일반회원 로그인 -->
+<jsp:include page="popup_complete.jsp"/>
+
 <!-- 비번찿기 -->
 <jsp:include page="popup_pw_search.jsp"/>
