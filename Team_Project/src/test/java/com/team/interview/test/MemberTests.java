@@ -19,8 +19,7 @@ public class MemberTests {
 
   @Test
   public void insertDummies() {
-    // 1 - 80까지는 USER만 지정
-    // 81- 90까지는 USER,COMPANY
+    // 1 - 90까지는 USER
     // 91- 100까지는 USER,COMPANY,ADMIN
 
     for (int i = 1; i <= 100; i++) {
@@ -35,11 +34,12 @@ public class MemberTests {
       authVO.setEmail(memberVO.getEmail());
       authVO.setAuth("ROLE_USER");// 일반 회원
 
-      if (i > 80) {
-        authVO.setAuth("ROLE_COMPANY");// 기업회원
-      }
+      //      if (i > 80) {
+      //        authVO.setAuth("ROLE_COMPANY");// 기업회원
+      //      }
 
       if (i > 90) {
+        memberVO.setType('A');
         authVO.setAuth("ROLE_ADMIN");
       }
 

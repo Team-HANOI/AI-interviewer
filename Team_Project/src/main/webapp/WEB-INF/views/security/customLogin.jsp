@@ -48,7 +48,7 @@
     </c:if>
     
     <c:if test="${path == '/customLogin'}">
-      <a href="/customLogin/company">기업회원 로그인</a>
+      <a href="/customLogin/company">기업 회원 로그인</a>
     </c:if>
 
 </body>
