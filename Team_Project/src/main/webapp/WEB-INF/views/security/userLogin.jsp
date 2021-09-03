@@ -11,13 +11,7 @@
 </head>
 <body>
 <div class="container">
-<c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
-    <c:if test="${path == '/customLogin/company'}">
-      <h1>기업 회원 로그인</h1>
-    </c:if>
-    <c:if test="${path == '/customLogin'}">
       <h1>개발자 로그인</h1>
-    </c:if>
     <form action="/user_login" method="post">
 		    <c:if test="${param.error != null}">
 		    <p>

@@ -39,11 +39,10 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     }
     System.out.println(loginid);
     System.out.println(errormsg);
-    System.out.println("adsfa");
     request.setAttribute("username",  loginid);
     request.setAttribute("error_message",  errormsg);
 
-    request.getRequestDispatcher("/loginUser?error").forward(request,  response);
+    request.getRequestDispatcher("/userLogin?error").forward(request,  response);
   }
 
   protected void loginFailureCount(String username) {
