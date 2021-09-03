@@ -79,14 +79,14 @@
 			
 			<c:forEach var="article" items="${articleList}">
 				<tr>
-				<td>${article.q_id }</td>
+				<td>${article.qid }</td>
 				<td>
 			
-				<a href="./totaldetail?q_id=${article.q_id}">
+				<a href="./totaldetail?q_id=${article.qid}">
 					${article.content} 
 				</a>
 				</td>
-				<td>${article.q_id }</td>
+				<td>${article.qid }</td>
 			
 			
 				</tr>
