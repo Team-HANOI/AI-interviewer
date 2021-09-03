@@ -55,40 +55,39 @@
                 <!-- 구분선 -->
                 <div class="line"></div>
                 
-                <form action="" method="" class="write">
+                <form action="/review/write_review" method="post" class="write" enctype="multipart/form-data" name="write_review">
                     <div class="detail-row">
                         <div>
                             <label for="">포지션</label> 
-                            <input type="text">
+                            <input type="text" name="pos"
+						id="pos" required="required" />
                         </div>
                     </div>
                 
                     <div class="detail-row">
                         <div>
                             <label for="">회사명</label>
-                            <input type="text">
+                            <input type="text" name="company"
+						id="company" required="required" />
                         </div>             
                     </div>
                 
                     <div class="detail-row">
                         <div>
                             <label for="title">제목</label>
-                            <input type="text" id="title">
+                            <input type="text" name="title"
+						id="title" required="required" />
                         </div>
                     </div>
                 
-                    <label for="context">내용</label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <label for="content">내용</label>
+                    <textarea name="content" id="content" cols="30" rows="10" required="required"></textarea>
                 
                     <div class="detail-row">
-                        <input type="file">
-                
-                        <button type="submit" class="btn write-btn">초기화</button>
-                        
-                        <button type="submit" class="btn write-btn">
-                            <a href="board_temporary.html">임시저장</a>
-                        </button>
-                        <button type="submit" class="btn write-btn">등록</button>
+                        <input type="file" name="rImg">
+                		<button type="reset" class="btn write-btn">다시쓰기</button>
+                        <button type="submit" id="1" name="1" class="btn write-btn">임시저장</button>
+                        <button type="submit" id="0" name="0" class="btn write-btn">등록</button>
                     </div>
                 </form>
             </div>
