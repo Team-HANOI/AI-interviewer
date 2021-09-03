@@ -10,4 +10,9 @@ public class LoginController {
   public String login(){
     return "/security/customLogin";
   }
+
+  @RequestMapping("/customLogin/company")
+  public String companyLogin(){
+    return "/security/customLogin";
+  }
 }
