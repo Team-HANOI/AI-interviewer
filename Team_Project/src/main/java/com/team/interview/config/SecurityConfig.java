@@ -2,32 +2,29 @@ package com.team.interview.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import com.team.interview.security.handler.CustomLoginSuccessHandler;
 import com.team.interview.security.service.CustomOAuth2UserDetailsService;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
-  public AuthenticationFailureHandler authenticationFailureHandler;
+  public CustomAuthenticationFailureHandler authenticationFailureHandler;
 
   @Autowired
   public CustomOAuth2UserDetailsService CustomOAuth2UserDetailsService;
 
-  @Bean
-  PasswordEncoder passwordEncoder(){
-    return new BCryptPasswordEncoder();
-  }
+  @Autowired
+  public AuthenticationSuccessHandler authenticationSuccessHandler;
+
+  @Autowired
+  public BCryptPasswordEncoder bCryptPasswordEncoder;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -35,16 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http
     .authorizeRequests()
     .antMatchers("/sample/all").permitAll()
-    .antMatchers("/sample/member").hasAnyRole("USER","ADMIN","COMPANY")
+    .antMatchers("/sample/member").hasAnyRole("USER","COMPANY" ,"ADMIN")
+    .antMatchers("/sample/company").hasAnyRole("COMPANY", "ADMIN")
     .antMatchers("/sample/admin").hasRole("ADMIN")
-    .antMatchers("/all/**").permitAll()
-    .antMatchers("/member/**").hasAnyRole("USER","ADMIN","COMPANY")
-    .antMatchers("/admin/**").hasRole("ADMIN")
+    //    .antMatchers("/all/**").permitAll()
+    //    .antMatchers("/member/**").hasAnyRole("USER","ADMIN","COMPANY")
+    //    .antMatchers("/admin/**").hasRole("ADMIN")
 
     .and()
     .formLogin()
-    .loginPage("/customLogin")                    // controller mapping
-    .loginProcessingUrl("/login_proc")     
+    .loginPage("/loginUser")                    // controller mapping
+    .loginProcessingUrl("/user_login")     
     .defaultSuccessUrl("/")
     .failureHandler(authenticationFailureHandler)
     .permitAll()
@@ -63,12 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     http.csrf().disable();
 
-    http.oauth2Login().successHandler(successHandler());
-  }
-
-  @Bean
-  public AuthenticationSuccessHandler successHandler() {
-    return new CustomLoginSuccessHandler(passwordEncoder());
+    http.oauth2Login().successHandler(authenticationSuccessHandler);
   }
 
   @Override
@@ -102,5 +95,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   //        + " from tbl_member_auth where email = ?")
   //    .passwordEncoder(new BCryptPasswordEncoder()); // 입력한 비밀번호를 암호화해서 데이터베이스의 암호와 비교를 해서 올바른 값인지를 검증한다
   //  }
+
+
 }
 

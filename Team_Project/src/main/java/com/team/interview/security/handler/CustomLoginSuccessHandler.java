@@ -4,20 +4,26 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Repository;
 import com.team.interview.security.dto.AuthMemberDTO;
 
+@Configuration
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
   private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
+  @Autowired
   private PasswordEncoder passwordEncoder;
 
-  public CustomLoginSuccessHandler(PasswordEncoder passwordEncoder) {
-    this.passwordEncoder = passwordEncoder;
+  public CustomLoginSuccessHandler() {
   }
 
   @Override

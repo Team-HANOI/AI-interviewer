@@ -18,7 +18,7 @@
     <c:if test="${path == '/customLogin'}">
       <h1>개발자 로그인</h1>
     </c:if>
-    <form action="/login_proc" method="post">
+    <form action="/user_login" method="post">
 		    <c:if test="${param.error != null}">
 		    <p>
 		        Login Error! <br />
