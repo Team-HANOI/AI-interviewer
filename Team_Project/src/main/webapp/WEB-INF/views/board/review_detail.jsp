@@ -11,9 +11,13 @@
 <head>
 <!-- 공통 스타일 -->
 <jsp:include page="../common/top.jsp" />
-<!-- 페이지 스타일 -->
+
+<!-- style -->
 <link rel="stylesheet" href="/style/board_review.css">
-<link rel="stylesheet" href="/js/board_review.css">
+<link rel="stylesheet" href="/style/board_comment.css">
+
+<!-- java script -->
+<script defer src="/js/board_detail.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"
 	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="

@@ -37,9 +37,9 @@ public class ReviewControllerImpl implements ReviewController {
   @Override
   @GetMapping("/write_review")
   public ModelAndView writeReview() {
-    ModelAndView mav = new ModelAndView("main");
-    mav.addObject("page", "board/write");
-    return mav;
+    ModelAndView mv = new ModelAndView("main");
+    mv.setViewName("redirect:/board/write");
+    return mv;
   }
 
   @Override
@@ -58,7 +58,7 @@ public class ReviewControllerImpl implements ReviewController {
         newFile.setFileData(rImg.getBytes());
       }
       reviewService.writeReview(newFile, review);
-      mv.setViewName("redirect:/board/review");
+      mv.setViewName("redirect:/review/board_review");
     } catch (Exception e) {
       e.printStackTrace();
       mv.addObject("err", "새 글 등록 실패");
@@ -158,7 +158,7 @@ public class ReviewControllerImpl implements ReviewController {
     } catch (Exception e) {
       e.printStackTrace();
       mv.addObject("err", "글 조회 실패");
-      mv.setViewName("/review/err");
+      mv.setViewName("/board/err");
     }
     return mv;
   }
@@ -183,7 +183,7 @@ public class ReviewControllerImpl implements ReviewController {
     } catch (Exception e) {
       e.printStackTrace();
       mv.addObject("err", "글 조회 실패");
-      mv.setViewName("/review/err");
+      mv.setViewName("/board/err");
     }
     return mv;
   }
@@ -255,7 +255,7 @@ public class ReviewControllerImpl implements ReviewController {
 
     try {
       reviewService.addRComm(rComm);
-      mv.setViewName("redirect:/board/review_detail?reviewId=" + rComm.getReviewId());
+      mv.setViewName("redirect:/review/board_review_detail?reviewId=" + rComm.getReviewId());
 
     } catch (Exception e) {
       e.printStackTrace();
