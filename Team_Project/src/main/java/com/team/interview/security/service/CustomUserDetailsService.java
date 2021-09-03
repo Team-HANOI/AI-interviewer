@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import com.team.interview.dao.CompanyDAO;
 import com.team.interview.dao.MemberDAO;
 import com.team.interview.security.dto.AuthMemberDTO;
 import com.team.interview.vo.MemberVO;
@@ -14,9 +15,11 @@ import com.team.interview.vo.MemberVO;
 public class CustomUserDetailsService implements UserDetailsService{
 
   private final MemberDAO memberDAO;
+  private final CompanyDAO companyDAO;
 
-  public CustomUserDetailsService(final MemberDAO memberDAO) {
+  public CustomUserDetailsService(final MemberDAO memberDAO, final CompanyDAO companyDAO) {
     this.memberDAO = memberDAO;
+    this.companyDAO = companyDAO;
   }
 
   @Override

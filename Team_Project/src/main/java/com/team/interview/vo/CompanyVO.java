@@ -11,6 +11,8 @@ public class CompanyVO extends MemberVO{
   private String cEmail;
   // 회사 이름
   private String cName;
+
+
   // 등록일
   private Date regdate;
   // 수정일
@@ -95,26 +97,32 @@ public class CompanyVO extends MemberVO{
     this.email = email;
   }
 
+  @Override
   public String getLogoImgId() {
     return logoImgId;
   }
 
+  @Override
   public void setLogoImgId(String logoImgId) {
     this.logoImgId = logoImgId;
   }
 
+  @Override
   public String getcEmail() {
     return cEmail;
   }
 
+  @Override
   public void setcEmail(String cEmail) {
     this.cEmail = cEmail;
   }
 
+  @Override
   public String getcName() {
     return cName;
   }
 
+  @Override
   public void setcName(String cName) {
     this.cName = cName;
   }

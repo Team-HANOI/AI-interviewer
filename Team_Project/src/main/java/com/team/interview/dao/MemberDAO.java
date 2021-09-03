@@ -10,8 +10,8 @@ import com.team.interview.vo.MemberVO;
 @Repository
 public interface MemberDAO {
 
-  //  public MemberVO read(String userid);
-  int insertMember(MemberVO member);
+  // MemberVO read(String userid);
+  int insertMember(MemberVO memberVO);
   int insertAuth(AuthVO auth);
 
   MemberVO findByEmail(@Param("email") String email,@Param("fromSocial") boolean fromSocial);
