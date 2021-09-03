@@ -1,5 +1,7 @@
 package com.team.interview.vo;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 @Component("recruit")
@@ -8,13 +10,13 @@ public class Recruit {
 	private int r_id;
 	private String email;
 	private String pos;
-	private String r_startDate;
-	private String r_endDate;
+	private Date r_startDate;
+	private Date r_endDate;
 	private String kw;
 	private String url;
 	private String career;
-	private String regdate;
-	private String updateDate;
+	private Date regdate;
+	private Date updateDate;
 	
 	// properties for join statement
 	private String cName;
@@ -27,13 +29,13 @@ public class Recruit {
 			int id, 
 			String email, 
 			String pos, 
-			String startDate, 
-			String endDate, 
+			Date startDate, 
+			Date endDate, 
 			String keyword, 
 			String url,
 			String career, 
-			String regdate, 
-			String updateDate) {
+			Date regdate, 
+			Date updateDate) {
 		this.r_id = id;
 		this.email = email;
 		this.pos = pos;
@@ -71,19 +73,19 @@ public class Recruit {
 		this.pos = pos;
 	}
 
-	public String getStartDate() {
+	public Date getStartDate() {
 		return r_startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.r_startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public Date getEndDate() {
 		return r_endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.r_endDate = endDate;
 	}
 
@@ -111,19 +113,19 @@ public class Recruit {
 		this.career = career;
 	}
 
-	public String getRegdate() {
+	public Date getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(String regdate) {
+	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 
-	public String getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
 

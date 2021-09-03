@@ -22,7 +22,7 @@
 	</select>
 	 -->
 	
-	<insert id="insertRecruit" parameterType="int">
+	<insert id="insertRecruit" parameterType="recruit">
 	<![CDATA[
 		insert into tbl_rec 
 		values(#{r_id},#{email},#{pos},#{r_startDate},#{r_endDate},#{kw},#{url},#{career},#{regdate},#{updateDate})
