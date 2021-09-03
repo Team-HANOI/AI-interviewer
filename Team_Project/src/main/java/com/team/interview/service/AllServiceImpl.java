@@ -107,6 +107,7 @@ public class AllServiceImpl implements AllService {
 			System.out.println(pf);
 			a.setPfImgId(pf.getPfImgId());
 			a.setMemberName(pf.getName());
+			a.setQ_id(q_id);
 		}
 	 return answers;
 	
