@@ -35,7 +35,7 @@ public class MemberVO {
   // 기업 회원 관련 필드
 
   // 로고 이미지Id(fk)
-  private String logoImgId;
+  private int logoImgId;
   // 회사 이메일
   private String cEmail;
   // 회사 이름
@@ -60,7 +60,7 @@ public class MemberVO {
     result = prime * result + failureCnt;
     result = prime * result + (fromSocial ? 1231 : 1237);
     result = prime * result + ((lockdate == null) ? 0 : lockdate.hashCode());
-    result = prime * result + ((logoImgId == null) ? 0 : logoImgId.hashCode());
+    result = prime * result + logoImgId;
     result = prime * result + ((name == null) ? 0 : name.hashCode());
     result = prime * result + pfId;
     result = prime * result + ((phoneNum == null) ? 0 : phoneNum.hashCode());
@@ -110,10 +110,7 @@ public class MemberVO {
         return false;
     } else if (!lockdate.equals(other.lockdate))
       return false;
-    if (logoImgId == null) {
-      if (other.logoImgId != null)
-        return false;
-    } else if (!logoImgId.equals(other.logoImgId))
+    if (logoImgId != other.logoImgId)
       return false;
     if (name == null) {
       if (other.name != null)
@@ -232,10 +229,10 @@ public class MemberVO {
   public void setAuthList(List<AuthVO> authList) {
     this.authList = authList;
   }
-  public String getLogoImgId() {
+  public int getLogoImgId() {
     return logoImgId;
   }
-  public void setLogoImgId(String logoImgId) {
+  public void setLogoImgId(int logoImgId) {
     this.logoImgId = logoImgId;
   }
   public String getcEmail() {
@@ -250,4 +247,5 @@ public class MemberVO {
   public void setcName(String cName) {
     this.cName = cName;
   }
+
 }

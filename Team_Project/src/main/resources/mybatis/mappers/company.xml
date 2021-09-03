@@ -8,7 +8,7 @@
     <id property="email" column="email"/>
     <result property="email" column="email"/>
     <result property="logoImgId" column="logo_img_id"/>
-    <result property="cEmail" column="c_mail"/>
+    <result property="cEmail" column="c_email"/>
     <result property="cName" column="c_name"/>
     <result property="regdate" column="regdate"/>
     <result property="updatedate" column="updatedate"/>
@@ -19,28 +19,22 @@
     <insert id="insertCompany" parameterType="CompanyVO">
         <![CDATA[
 				INSERT INTO tbl_com(
-				  email
-				  , logo_img_id
+				    email
 				  , c_email
 				  , c_name
-				  , regdate
-				  , updatedate
 				  ) 
 				VALUES(
 				  #{email}
-				  , #{logoImgId}
 				  , #{cEmail}
 				  , #{cName}
-				  , #{regdate}
-				  , #{updatedate}
 				  )
         ]]>
     </insert>
 
-    <select id="findByEmail" resultMap = "companyMap">
+    <select id="findByEmail" resultMap = "CompanyMap">
       <![CDATA[
 			SELECT 
-			  email
+			    email
 			  , logo_img_id
 			  , c_email
 			  , c_name

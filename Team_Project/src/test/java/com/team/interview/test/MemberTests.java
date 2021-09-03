@@ -1,11 +1,14 @@
 package com.team.interview.test;
 
+import java.util.Iterator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.team.interview.dao.CompanyDAO;
 import com.team.interview.dao.MemberDAO;
 import com.team.interview.vo.AuthVO;
+import com.team.interview.vo.CompanyVO;
 import com.team.interview.vo.MemberVO;
 
 @SpringBootTest
@@ -13,6 +16,9 @@ public class MemberTests {
 
   @Autowired
   private MemberDAO memberDAO;
+
+  @Autowired
+  private CompanyDAO companyDAO;
 
   @Autowired
   private PasswordEncoder passwordEncoder;
@@ -34,9 +40,20 @@ public class MemberTests {
       authVO.setEmail(memberVO.getEmail());
       authVO.setAuth("ROLE_USER");// 일반 회원
 
-      //      if (i > 80) {
-      //        authVO.setAuth("ROLE_COMPANY");// 기업회원
-      //      }
+      if (i > 80 && i <= 90) {
+        CompanyVO companyVO = new CompanyVO();
+        memberVO.setType('C');
+
+        companyVO.setEmail(memberVO.getEmail());
+        companyVO.setcEmail("master@baekjoon.com");
+        companyVO.setcName("baekjoon");
+
+        authVO.setAuth("ROLE_COMPANY");// 기업회원
+        memberDAO.insertMember(memberVO);
+        memberDAO.insertAuth(authVO);
+        companyDAO.insertCompany(companyVO);
+        continue;
+      }
 
       if (i > 90) {
         memberVO.setType('A');
@@ -49,7 +66,7 @@ public class MemberTests {
 
   }
 
-  @Test
+  //  @Test
   public void testRead() {
 
     MemberVO result = memberDAO.findByEmail("user95@alpaca.com", false);

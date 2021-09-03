@@ -42,7 +42,7 @@ public class AuthMemberDTO extends User implements OAuth2User {
   //기업 회원 관련 필드
 
   // 로고 이미지Id(fk)
-  private String logoImgId;
+  private int logoImgId;
   // 회사 이메일
   private String cEmail;
   // 회사 이름
@@ -71,7 +71,7 @@ public class AuthMemberDTO extends User implements OAuth2User {
       int failureCnt,
       boolean fromSocial,
       char enabled,
-      String logoImgId,
+      int logoImgId,
       String cEmail,
       String cName,
       Collection<? extends GrantedAuthority> authorities,
@@ -91,7 +91,7 @@ public class AuthMemberDTO extends User implements OAuth2User {
       int failureCnt,
       boolean fromSocial,
       char enabled,
-      String logoImgId,
+      int logoImgId,
       String cEmail,
       String cName,
       Collection<? extends GrantedAuthority> authorities) {
@@ -116,10 +116,6 @@ public class AuthMemberDTO extends User implements OAuth2User {
   public Map<String, Object> getAttributes() {
     return this.attr;
   }
-
-
-
-
 
   @Override
   public String toString() {
@@ -235,11 +231,11 @@ public class AuthMemberDTO extends User implements OAuth2User {
     this.attr = attr;
   }
 
-  public String getLogoImgId() {
+  public int getLogoImgId() {
     return logoImgId;
   }
 
-  public void setLogoImgId(String logoImgId) {
+  public void setLogoImgId(int logoImgId) {
     this.logoImgId = logoImgId;
   }
 
@@ -262,5 +258,6 @@ public class AuthMemberDTO extends User implements OAuth2User {
   public static long getSerialversionuid() {
     return serialVersionUID;
   }
+
 
 }

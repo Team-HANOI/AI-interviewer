@@ -2,11 +2,11 @@ package com.team.interview.vo;
 
 import java.util.Date;
 
-public class CompanyVO extends MemberVO{
+public class CompanyVO{
   // 가입한 이메일(fk)
   private String email;
   // 로고 이미지Id(fk)
-  private String logoImgId;
+  private int logoImgId;
   // 회사 이메일
   private String cEmail;
   // 회사 이름
@@ -21,7 +21,6 @@ public class CompanyVO extends MemberVO{
   public CompanyVO() {
   }
 
-  @Override
   protected boolean canEqual(Object other) {
     return other instanceof CompanyVO;
   }
@@ -29,11 +28,11 @@ public class CompanyVO extends MemberVO{
   @Override
   public int hashCode() {
     final int prime = 31;
-    int result = super.hashCode();
+    int result = 1;
     result = prime * result + ((cEmail == null) ? 0 : cEmail.hashCode());
     result = prime * result + ((cName == null) ? 0 : cName.hashCode());
     result = prime * result + ((email == null) ? 0 : email.hashCode());
-    result = prime * result + ((logoImgId == null) ? 0 : logoImgId.hashCode());
+    result = prime * result + logoImgId;
     result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
     result = prime * result + ((updatedate == null) ? 0 : updatedate.hashCode());
     return result;
@@ -43,7 +42,7 @@ public class CompanyVO extends MemberVO{
   public boolean equals(Object obj) {
     if (this == obj)
       return true;
-    if (!super.equals(obj))
+    if (obj == null)
       return false;
     if (getClass() != obj.getClass())
       return false;
@@ -63,10 +62,7 @@ public class CompanyVO extends MemberVO{
         return false;
     } else if (!email.equals(other.email))
       return false;
-    if (logoImgId == null) {
-      if (other.logoImgId != null)
-        return false;
-    } else if (!logoImgId.equals(other.logoImgId))
+    if (logoImgId != other.logoImgId)
       return false;
     if (regdate == null) {
       if (other.regdate != null)
@@ -87,62 +83,50 @@ public class CompanyVO extends MemberVO{
         + ", cName=" + cName + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
   }
 
-  @Override
   public String getEmail() {
     return email;
   }
 
-  @Override
   public void setEmail(String email) {
     this.email = email;
   }
 
-  @Override
-  public String getLogoImgId() {
+  public int getLogoImgId() {
     return logoImgId;
   }
 
-  @Override
-  public void setLogoImgId(String logoImgId) {
+  public void setLogoImgId(int logoImgId) {
     this.logoImgId = logoImgId;
   }
 
-  @Override
   public String getcEmail() {
     return cEmail;
   }
 
-  @Override
   public void setcEmail(String cEmail) {
     this.cEmail = cEmail;
   }
 
-  @Override
   public String getcName() {
     return cName;
   }
 
-  @Override
   public void setcName(String cName) {
     this.cName = cName;
   }
 
-  @Override
   public Date getRegdate() {
     return regdate;
   }
 
-  @Override
   public void setRegdate(Date regdate) {
     this.regdate = regdate;
   }
 
-  @Override
   public Date getUpdatedate() {
     return updatedate;
   }
 
-  @Override
   public void setUpdatedate(Date updatedate) {
     this.updatedate = updatedate;
   }
