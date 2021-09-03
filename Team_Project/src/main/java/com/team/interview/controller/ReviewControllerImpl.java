@@ -255,7 +255,7 @@ public class ReviewControllerImpl implements ReviewController {
 
     try {
       reviewService.addRComm(rComm);
-      mv.setViewName("redirect:/board/review_detail?reviewId=" + rComm.getReviewId());
+      mv.setViewName("redirect:/review/board_review_detail?reviewId=" + rComm.getReviewId());
 
     } catch (Exception e) {
       e.printStackTrace();
