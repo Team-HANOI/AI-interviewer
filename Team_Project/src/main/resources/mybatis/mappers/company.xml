@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.interview.dao.CompanyDAO">
+
+<resultMap type="com.team.interview.vo.CompanyVO" id="CompanyMap">
+    <id property="email" column="email"/>
+    <result property="email" column="email"/>
+    <result property="logoImgId" column="logo_img_id"/>
+    <result property="cEmail" column="c_mail"/>
+    <result property="cName" column="c_name"/>
+    <result property="regdate" column="regdate"/>
+    <result property="updatedate" column="updatedate"/>
+  </resultMap>
+  
+
+
+    <insert id="insertCompany" parameterType="CompanyVO">
+        <![CDATA[
+				INSERT INTO tbl_com(
+				  email
+				  , logo_img_id
+				  , c_email
+				  , c_name
+				  , regdate
+				  , updatedate
+				  ) 
+				VALUES(
+				  #{email}
+				  , #{logoImgId}
+				  , #{cEmail}
+				  , #{cName}
+				  , #{regdate}
+				  , #{updatedate}
+				  )
+        ]]>
+    </insert>
+
+    <select id="findByEmail" resultMap = "companyMap">
+      <![CDATA[
+			SELECT 
+			  email
+			  , logo_img_id
+			  , c_email
+			  , c_name
+			  , regdate
+			  , updatedate
+			  FROM tbl_com 
+			 WHERE email = #{email}
+      ]]>
+    </select>
+</mapper>
