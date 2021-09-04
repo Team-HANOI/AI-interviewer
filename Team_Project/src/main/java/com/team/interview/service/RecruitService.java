@@ -2,10 +2,12 @@ package com.team.interview.service;
 
 import java.util.List;
 
-import com.team.interview.vo.Recruit;
+import com.team.interview.vo.FileVO;
+import com.team.interview.vo.RecruitVO;
 
 public interface RecruitService {
-	List<Recruit> searchAll() throws Exception;
-	void addRecruit(Recruit recruit) throws Exception;
-	Recruit searchRecruit(int id) throws Exception;
+	List<RecruitVO> searchAll() throws Exception;
+	void addRecruit(RecruitVO recruit) throws Exception;
+	RecruitVO searchRecruit(int id) throws Exception;
+	FileVO getFile(int fileId) throws Exception; 
 }

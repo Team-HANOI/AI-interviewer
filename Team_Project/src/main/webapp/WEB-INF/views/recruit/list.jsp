@@ -45,14 +45,29 @@
                     <div class="text-wrap">
                         <h1>회사이름: ${r.cName }</h1>
                         <p>경력: ${r.career }</p>
-                        <c:set var="keywords" value="${fn:split(r.keyword, ',') }"></c:set>
+                        <c:set var="keywords" value="${fn:split(r.kw, ',') }"></c:set>
                         <c:forEach var="k" items="${keywords }">
 	                        <small>#${k }</small>&nbsp;
                         </c:forEach>
                     </div>
-                    ${r.fileData }
-                    <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                </div>
+                    <img class="card-img" src="${r.fileData }" alt="" srcset="">
+                    <!-- 첨부파일 -->
+						<c:set var="len" value="${fn:length(file.fileName)}" />
+						<c:set var="filetype"
+							value="${fn:toUpperCase(fn:substring(file.fileName, len-4, len))}" />
+						<c:choose>
+							<c:when
+								test="${(filetype eq '.JPG') or (filetype eq 'JPEG') or (filetype eq '.PNG') or (filetype eq '.GIF')}">
+								<img src='<c:url value="/review/img/${file.fileId}"/>'
+									width="1000" class="img-thumbnail">
+								<br>
+							</c:when>
+							<c:otherwise>
+								<a href='<c:url value="/review/pds/${r.fileData }"/>'>${file.fileName}</a>
+								<br>
+							</c:otherwise>
+						</c:choose>
+					</div>
             </a>
             </c:forEach>
         </div>
