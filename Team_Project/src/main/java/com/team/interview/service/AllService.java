@@ -11,6 +11,7 @@ public interface AllService {
     List<QuestionVO> getAllQList(int pg, PageInfo pageInfo) throws Exception;
     List<QuestionVO> getkwQList(String kw,int pg, PageInfo pageInfo) throws Exception;
     List<AnswerVO> getAnsList(int q_id, int pg, PageInfo pageInfo) throws Exception;
+    List<AnswerVO> getAnsListCnt(int q_id, int pg, PageInfo pageInfo) throws Exception;
     FileVO getFile(int fileId) throws Exception;
     void recommend(int answerId) throws Exception;
     int getRCnt(int answerId) throws Exception;

@@ -32,10 +32,25 @@ public class BoardController {
 	private AllService allService;
 
 	@RequestMapping(value = "/")
-	public ModelAndView boardTotal() {
-		ModelAndView mav = new ModelAndView("board/total");
-		mav.addObject("board-total", "board/total");
-		return mav;
+	public ModelAndView boardTotal(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		PageInfo pageInfo = new PageInfo();
+		ModelAndView mv = new ModelAndView();
+		System.out.println("aa");
+		try {
+			List<QuestionVO> articleList = allService.getAllQList(page, pageInfo);
+			mv.addObject("pageInfo", pageInfo);
+			mv.addObject("articleList", articleList);
+			// mv.addObject("page","Qlistform");
+			System.out.println(articleList);
+			mv.setViewName("board/total");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("err", e.getMessage());
+			mv.addObject("page", "/err");
+			mv.setViewName("main");
+		}
+		return mv;
 	}
 
 	@RequestMapping(value = "/total_detail")
@@ -170,12 +185,34 @@ public class BoardController {
 		}
 		return mv;
 	}
+	
+
+	@GetMapping("/detailRCnt")
+	public ModelAndView AllAnsListRcnt(@RequestParam(value = "q_id", required=true) int q_id,
+			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		PageInfo pageInfo = new PageInfo();
+		ModelAndView mv = new ModelAndView();
+		System.out.println(q_id);
+		try {
+			List<AnswerVO> articleList = allService.getAnsListCnt(q_id, page, pageInfo);
+			mv.addObject("pageInfo", pageInfo);
+			mv.addObject("articleList", articleList);
+			mv.setViewName("board/total_detail");
+			System.out.println(articleList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("err", e.getMessage());
+			mv.addObject("page", "/err");
+			mv.setViewName("main");
+		}
+		return mv;
+	}
 
 	@ResponseBody
 	@PostMapping("/recommend")
 	public String recommend(@RequestParam(value = "answerId", required = true) int answerId,
 			HttpServletResponse response) throws Exception {
-		System.out.println("¿©±â±îÁø¿È");
+
 		String cnt = "";
 		try {
 			allService.recommend(answerId);

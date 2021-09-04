@@ -2,37 +2,43 @@
 .card-box {
 	margin-top:100px;
 	min-height: 500px;
-	width: 1450px;
+	width: 1140px;
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 	flex-wrap: wrap;
 	padding: 20px 0;
 }
 
 .card {
+	height: 100px;
+	width:550px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	position: relative;
-	border-radius: 8px pink;
-	width:700px;
-    height: 200px;
+	border-radius: 8px;
 	margin:10px;
-	box-shadow: 0 10px 15px #94D0CC;
+	box-shadow: 0 5px 10px #94D0CC;
 	transition: .3s ease-in;
+	cursor: pointer;
 }
 
 .card:hover{
-	transform: scale(0.95);
+	transform: scale(0.98);
 }
 
 .text-wrap{
-	padding:24px;
+	padding-left: 10px;
 	text-align: left;
 }
 
 .card-com_url {
+	position: absolute;
 	padding: 24px;
 	width: 100%;
+	top: -100%;
 }
 
 .card-com_url a {
@@ -57,13 +63,9 @@
 }
 
 .card-img {
-	position: absolute;
-	right:24px;
-	top:24px;
-	width:60px;
-	height: 60px;
-	border-radius: 50%;
-	background-size: 60px;
+	width: 100px;
+	height: 100px;
+	border-radius: 0 8px 8px 0;
 }
 
 .text-wrap button{
@@ -93,10 +95,7 @@
 	font-size: 1.1rem;
 }
 
-button {
-	cursor: pointer;
-}
-
-button:active {
-	transform: scale(.98);
+a {
+	text-decoration: none;
+	color: #000;
 }

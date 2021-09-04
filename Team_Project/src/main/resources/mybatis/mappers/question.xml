@@ -76,7 +76,7 @@
 
 	<select id="Querykw" resultType="QuestionVO">
 		<![CDATA[
-	select q_id as qid,content from (select row_number() over (order by q_id_sq desc) num, A.* from tbl_q A order by q_id_sq desc)
+	select q_id as qid,content from (select row_number() over (order by q_sq desc) num, A.* from tbl_q A order by q_sq desc)
 		where KW_LIST like '%'||#{kw}||'%' and num between #{startrow} and #{startrow}+10 and r_cnt>=10
 		]]>
 	</select>
@@ -106,18 +106,20 @@
 	<select id="SelectAnswer" resultType="AnswerVO">
 	<![CDATA[
 		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
-		 from (select row_number() over (order by a_id_sq desc) num, A.* from tbl_answer A order by a_id_sq desc) 
+		 from (select row_number() over (order by regdate desc) num, A.* from tbl_answer A order by regdate desc) 
+		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
+		]]>
+	</select>
+	
+	<select id="SelectAnswerRCnt" resultType="AnswerVO">
+	<![CDATA[
+		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
+		 from (select row_number() over (order by r_cnt desc) num, A.* from tbl_answer A order by r_cnt desc) 
 		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
 		]]>
 	</select>
 
-	<select id="selectAnswerRCnt" resultType="AnswerVO"
-		parameterType="int">
-	<![CDATA[
-		select r_cnt,content,regdate from tbl_answerh where q_id=#{q_id} order by r_cnt
-	]]>
 
-	</select>
 	<select id="getFile" parameterType="int" resultType="fileVO">
 	<![CDATA[
 	select 

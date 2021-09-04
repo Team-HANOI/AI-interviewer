@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,76 +33,30 @@
 
         <div class="post">
             <a href="/recruit/form">
-                <button class="post-btn">
-                    채용공고 올리기
-                </button>
+                <button class="post-btn btn">채용공고 올리기</button>
             </a>
         </div>
 
         <!-- 공고 -->
-        <div class="card-box">
-            <div class="card">
-                <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                <div class="text-wrap">
-                    <h1>회사이름</h1>
-                    <button>java</button>
-                    <button>jQuery</button>
-                    <button>python</button>
+		<div class="card-box">
+			<c:forEach var="r" items="${recruits }">
+            <a href="${r.url }">
+                <div class="card">
+                    <div class="text-wrap">
+                        <h1>회사이름: ${r.cName }</h1>
+                        <p>경력: ${r.career }</p>
+                        <c:set var="keywords" value="${fn:split(r.keyword, ',') }"></c:set>
+                        <c:forEach var="k" items="${keywords }">
+	                        <small>#${k }</small>&nbsp;
+                        </c:forEach>
+                    </div>
+                    ${r.fileData }
+                    <img class="card-img" src="image/sky.jpg" alt="" srcset="">
                 </div>
-                <div class="card-com_url"><a href="">http:aaaaa</a></div> 
-            </div>
-            <div class="card">
-                <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                <div class="text-wrap">
-                    <h1>회사이름</h1>
-                    <button>java</button>
-                    <button>jQuery</button>
-                    <button>python</button>
-                </div>
-                <div class="card-com_url"><a href="">http:aaaaa</a></div> 
-            </div>
-            <div class="card">
-                <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                <div class="text-wrap">
-                    <h1>회사이름</h1>
-                    <button>java</button>
-                    <button>jQuery</button>
-                    <button>python</button>
-                </div>
-                <div class="card-com_url"><a href="">http:aaaaa</a></div> 
-            </div>
-            <div class="card">
-                <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                <div class="text-wrap">
-                    <h1>회사이름</h1>
-                    <button>java</button>
-                    <button>jQuery</button>
-                    <button>python</button>
-                </div>
-                <div class="card-com_url"><a href="">http:aaaaa</a></div> 
-            </div>
-            <div class="card">
-                <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                <div class="text-wrap">
-                    <h1>회사이름</h1>
-                    <button>java</button>
-                    <button>jQuery</button>
-                    <button>python</button>
-                </div>
-                <div class="card-com_url"><a href="">http:aaaaa</a></div> 
-            </div>
-            <div class="card">
-                <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                <div class="text-wrap">
-                    <h1>회사이름</h1>
-                    <button>java</button>
-                    <button>jQuery</button>
-                    <button>python</button>
-                </div>
-                <div class="card-com_url"><a href="">http:aaaaa</a></div> 
-            </div>
+            </a>
+            </c:forEach>
         </div>
-    </main>
+	</main>
 
     <!-- 꼬리 -->
     <jsp:include page="../common/footer.jsp"/>

@@ -1,8 +1,8 @@
 // 폼 작성완료 메시지 효과
+
 const submit = document.querySelector('.apply')
 if (submit) {
-    submit.addEventListener('click', (e) => {
-        e.preventDefault()
+    submit.addEventListener('click', () => {
         document.body.classList.add('complete')
     })
 }
