@@ -1,18 +1,37 @@
 package com.team.interview.controller;
 
-
-
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.interview.service.InterviewAnswerService;
 //import com.google.cloud.texttospeech.v1.AudioConfig;
 //import com.google.cloud.texttospeech.v1.AudioEncoding;
 //import com.google.cloud.texttospeech.v1.SsmlVoiceGender;
@@ -21,22 +40,33 @@ import org.springframework.web.servlet.ModelAndView;
 //import com.google.cloud.texttospeech.v1.TextToSpeechClient;
 //import com.google.cloud.texttospeech.v1.VoiceSelectionParams;
 //import com.google.protobuf.ByteString;
-
 import com.team.interview.service.InterviewService;
+import com.team.interview.service.KeywordService;
 import com.team.interview.service.QuestionService;
+import com.team.interview.vo.FileVO;
+import com.team.interview.vo.InterviewAnswerVO;
+import com.team.interview.vo.InterviewRecordVO;
 import com.team.interview.vo.InterviewVO;
+import com.team.interview.vo.KeywordVO;
+import com.team.interview.vo.MentormodeVO;
 import com.team.interview.vo.PageInfo;
-
+import com.team.interview.vo.QuestionVO;
 
 @Controller
 @RequestMapping(value = "/interview")
-public class InterviewController { 
+public class InterviewController {
 
 	@Autowired
 	InterviewService service;
 
 	@Autowired
 	QuestionService questionService;
+
+	@Autowired
+	KeywordService keywordService;
+	
+	@Autowired
+	InterviewAnswerService interviewAnswerService;
 
 	@RequestMapping(value = "/")
 	public ModelAndView interviewMain() {
@@ -54,8 +84,29 @@ public class InterviewController {
 
 	@RequestMapping(value = "/mentor/register")
 	public ModelAndView interviewMentorRegister() {
+
 		ModelAndView mav = new ModelAndView("interview/mentor_form");
 		mav.addObject("board-total", "board/total");
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/interview/mentor/form", method = RequestMethod.POST)
+	public ModelAndView joinPage(@ModelAttribute MentormodeVO mentormode) {
+
+		ModelAndView mav = new ModelAndView("main");
+
+		try {
+
+			mav.addObject("page", "login_form");
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			mav.addObject("err", e.getMessage());
+			mav.addObject("page", "join_fail");
+
+		}
 		return mav;
 	}
 
@@ -100,8 +151,6 @@ public class InterviewController {
 		return mav;
 	}
 
-	
-	
 	@RequestMapping(value = "/result")
 	public ModelAndView interviewResult() {
 
@@ -114,59 +163,251 @@ public class InterviewController {
 	@RequestMapping(value = "/run")
 	public ModelAndView interviewRun() {
 
+//		ModelAndView mv = new ModelAndView("speakertest");
+//		 List<QuestionVO> questions = new ArrayList<>(); 
+//		 questions.add(new QuestionVO(100, "앱이 foreground에 있을 때와 background에 있을 때 어떤 제약사항이 있나요?")); 
+//		 questions.add(new QuestionVO(200, "﻿도커 이미지와 컨테이너의 차이점을 간단하게 설명해 주세요")); 
+//		 questions.add(new QuestionVO(300, "가상머신과 도커 컨테이너의 차이점이 무엇일까요?")); 
+//		 questions.add(new QuestionVO(400, "﻿mybatis 말고 다른 O R M에는 어떤 게 있는지 말씀해 주시고 간략하게 설명해 주세요")); 
+//		 questions.add(new QuestionVO(500, "﻿객체 지향과 D I(Dependency Injection)의 관계를 간단하게 설명해 주세요"));
+//		 mv.addObject("questionts", questions);
+//		 
+//		return mv;
+
 		ModelAndView mav = new ModelAndView("interview/run");
-//		ArrayList<QuestionVO> qustions;
-//
-//		try {
-//
-//			qustions = questionService.questions();
-//			mav.addObject("qustions", qustions);
-//
-//		} catch (Exception e) {
-//
-//			e.printStackTrace();
-//
-//		}
+		ArrayList<QuestionVO> questions;
+
+		try {
+
+			questions = questionService.questions();
+			System.out.println(questions);
+			mav.addObject("questions", questions);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
 
 		return mav;
 
 	}
 
-//	@ResponseBody // 비동기 통신할때 사용
-//	@RequestMapping(value = "/questionvoice", method = RequestMethod.POST)
-//	public void questionvoice(@RequestParam("ssml") String ssml,
-//			@RequestParam(value = "content", required = false) String content, HttpServletResponse response) {
-//
-//		try {
-//			if (content != null) {
-//				// 답변 DB 저장
-//			}
-//
-//			try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
-//				SynthesisInput input = SynthesisInput.newBuilder().setSsml(
-//						"<speak><prosody rate=\"90%\" pitch=\"1st\"><emphasis level=\"none\"><sub alias=\"오버로딩과\">﻿오버로딩(Overloading)과</sub></emphasis> 오버라이딩<sub alias=\"\">(Overriding)</sub>의 차이점을 간단하게 설명해 주세요.</prosody></speak>")
-//						.build();
-//				VoiceSelectionParams voice = VoiceSelectionParams.newBuilder().setLanguageCode("ko-KR")
-//						.setSsmlGender(SsmlVoiceGender.MALE).build();
-//
-//				AudioConfig audioConfig = AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.MP3).build();
-//
-//				SynthesizeSpeechResponse res = textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
-//
-//				ByteString audioContents = res.getAudioContent();
-//
-//				try (OutputStream out = response.getOutputStream()) {
-//
-//					out.write(audioContents.toByteArray());
-//					out.close();
-//
-//				}
-//			}
-//
-//		} catch (Exception e) {
-//
-//			e.printStackTrace();
-//
-//		}
-//	}
+	@ResponseBody
+	@PostMapping(value = "/questionvoice")
+	public void ttvoice(@RequestParam(value = "question", required = false) String question,
+			HttpServletResponse response) {
+
+		System.out.println(question);
+
+		String clientId = "cqr4vhpfn2";// 애플리케이션 클라이언트 아이디값";
+		String clientSecret = "6i4rSpBl3kAz16XjPWthJ7YWw8aOz0JXpsJ57JqM";// 애플리케이션 클라이언트 시크릿값";
+		try {
+			String text = URLEncoder.encode(question, "UTF-8");
+			String apiURL = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts";
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+			con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+			con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+			// post request
+			String postParams = "speaker=njihun&volume=0&speed=0&pitch=0&format=mp3&text=" + text;
+			con.setDoOutput(true);
+			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			wr.writeBytes(postParams);
+			wr.flush();
+			wr.close();
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+
+			System.out.println(responseCode);
+
+			if (responseCode == 200) { // 정상 호출
+				InputStream is = con.getInputStream();
+				int read = 0;
+				byte[] bytes = new byte[1024];
+				OutputStream outputStream = response.getOutputStream();
+				while ((read = is.read(bytes)) != -1) {
+					outputStream.write(bytes, 0, read);
+				}
+				is.close();
+			} else { // 오류 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+				String inputLine;
+				StringBuffer res = new StringBuffer();
+				while ((inputLine = br.readLine()) != null) {
+					res.append(inputLine);
+				}
+				br.close();
+				System.out.println(response.toString());
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	
+	@ResponseBody
+	@PostMapping("/answertext")
+	public ResponseEntity<String> voiceToText(MultipartHttpServletRequest multi) throws Exception {
+		
+		MultipartFile orgfile = multi.getFile("data");
+		System.out.println(orgfile.getSize());
+		InputStream instream = orgfile.getInputStream();
+		String text = reqcsr(instream);
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = (JSONObject)parser.parse(text);
+		String result = (String)jsonObject.get("text");
+		System.out.println(result);
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+	}
+	
+	public String reqcsr(InputStream voiceStream) {
+		String clientId = "a4re5zitov"; // Application Client ID";
+		String clientSecret = "5z7STcraUcZvxx3dwMl8qWomLhBtDRUueZhETJwu"; // Application Client Secret";
+		StringBuffer response = new StringBuffer();
+
+		try {
+			String language = "Kor"; // 언어 코드 ( Kor, Jpn, Eng, Chn )
+			String apiURL = "https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang=" + language;
+			URL url = new URL(apiURL);
+
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setUseCaches(false);
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			conn.setRequestProperty("Content-Type", "application/octet-stream");
+			conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+			conn.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+
+			OutputStream outputStream = conn.getOutputStream();
+			byte[] buffer = new byte[4096];
+			int bytesRead = -1;
+			while ((bytesRead = voiceStream.read(buffer)) != -1) {
+				outputStream.write(buffer, 0, bytesRead);
+			}
+			outputStream.flush();
+			voiceStream.close();
+			BufferedReader br = null;
+			int responseCode = conn.getResponseCode();
+			System.out.println(responseCode);
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else { // 오류 발생
+				System.out.println("error!!!!!!! responseCode= " + responseCode);
+				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			}
+			String inputLine;
+
+			if (br != null) {
+				while ((inputLine = br.readLine()) != null) {
+					response.append(inputLine);
+				}
+				br.close();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return response.toString();
+	}	
+	@ResponseBody
+	@PostMapping("/saveanswervoice")
+	public void saveAnswerVoice(MultipartHttpServletRequest multi,
+								@RequestParam("type") int type,
+								@RequestParam(value= "pos", required = false) String pos,
+								@RequestParam(value = "kws", required = false) String kws,
+								@RequestParam("qIds") List<String> qIds,
+								@RequestParam("answers") List<String> answers) throws Exception {	
+		try {
+			
+			HttpSession session = multi.getSession();
+//			String email = (String)session.getAttribute("email");
+			String email = "shguddnr2@Naver.com";		//
+			
+			//	면접 기록 저장 interviewAnswerService
+			//	면접의 타입에 따라 달라짐
+			InterviewRecordVO interviewRecord = new InterviewRecordVO();
+			interviewRecord.setiTypeId(type);
+			interviewRecord.setEmail(email);
+			int interviewNumber = 0;
+			
+			
+			if(type == 1) {
+				
+				interviewRecord.setChosenPos(pos);
+				interviewRecord.setChosenKw("");
+				interviewNumber = interviewAnswerService.regInterviewRecord(interviewRecord);
+				
+				
+			}else if(type == 2 || type ==3 ) {
+				
+				interviewRecord.setChosenPos("");
+				interviewRecord.setChosenKw(kws);
+				interviewNumber = interviewAnswerService.regInterviewRecord(interviewRecord);
+				
+			}
+			
+//	답변 저장
+			
+			
+
+			int cnt = Integer.parseInt(multi.getParameter("cnt"));
+			
+			for(int i=0; i<cnt; i++) {
+				
+				MultipartFile file = multi.getFile("data"+i);
+				
+				System.out.println(file.getSize());
+				
+				FileVO newFile = new FileVO();
+				newFile.setFileName(""+interviewNumber+i);
+				newFile.setFileSize(file.getSize());
+				newFile.setFileContentType(file.getContentType());
+				newFile.setFileData(file.getBytes());
+				
+				int voiceNextNum = interviewAnswerService.regVoiceAnswer(newFile);
+				
+				InterviewAnswerVO interviewAnswer = new InterviewAnswerVO();
+				interviewAnswer.setVoiceNum(voiceNextNum);
+				interviewAnswer.setiRecordId(interviewNumber);
+				interviewAnswer.setqId(Integer.parseInt(qIds.get(i)));
+				interviewAnswer.setContent(answers.get(i));
+				interviewAnswer.setrCnt(0);
+				interviewAnswerService.regInterviewAnswer(interviewAnswer);		
+				
+			}			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@GetMapping("/successinterview")
+	public String successInterview() {
+		return "success";
+	}
+	
+
+	@RequestMapping(value = "/custom")
+	public ModelAndView customMode() {
+
+		ModelAndView mav = new ModelAndView("interview/custom");
+		ArrayList<KeywordVO> keywordList;
+
+		try {
+
+			keywordList = keywordService.keywordList();
+			System.out.println(keywordList);
+			mav.addObject("keywordList", keywordList);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return mav;
+
+	}
+
+
 }
