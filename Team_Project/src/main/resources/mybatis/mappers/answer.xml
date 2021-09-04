@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.interview.dao.InterviewAnswerDAO">
+
+	<insert id="insertInterviewAnswer" parameterType="InterviewAnswerVO">
+		<![CDATA[
+			insert into tbl_answer values(#{answerId},#{voiceNum},#{iRecordId},#{qId},#{content},#{rCnt},sysdate,sysdate)
+		]]>
+	</insert>
+
+	<insert id="insertInterviewRecord" parameterType="InterviewRecordVO">
+		<![CDATA[
+			insert into TBL_I_RECORD values(#{iRecordId},#{mentorEmail},#{email},#{iTypeId},#{chosenKw},#{chosenPos},sysdate,sysdate)
+		]]>
+	</insert>
+
+
+	<insert id="insertVoiceAnswer" parameterType="FileVO">
+		<![CDATA[
+			insert into TBL_VOICE values(#{fileId},#{fileName},#{fileSize},#{fileContentType},current_timestamp,#{fileData},sysdate,sysdate)
+		]]>
+	</insert>
+	
+	<select id="voiceNextNum" resultType="int">
+		<![CDATA[
+			select voice_sq.nextval from dual
+		]]>
+	</select>
+	
+	<select id="interviewRecordNextNum" resultType="int">
+		<![CDATA[
+			select i_record_sq.nextval from dual
+		]]>
+	</select>
+	
+		<select id="answerNextNum" resultType="int">
+		<![CDATA[
+			select answer_sq.nextval from dual
+		]]>
+	</select>
+	
+	
+</mapper>

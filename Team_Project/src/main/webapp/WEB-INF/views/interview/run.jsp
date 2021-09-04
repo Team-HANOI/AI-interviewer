@@ -5,8 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- google api test -->
-<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 
 <!-- 공통 스타일  -->
 
@@ -14,6 +12,91 @@
 <!-- 페이지 스타일  -->
 
 <link rel="stylesheet" href="/style/interview_normal.css">
+<script>
+var idx=0;
+
+var qIds = new Array();
+var answers = new Array();
+
+var contents = new Array();
+<c:forEach items="${questions}" var="question">
+	qIds.push("${question.qId}");
+	contents.push("${question.content}");
+</c:forEach>
+var step=qIds.length;
+
+
+
+$(function() {
+	$("#question").text(contents[idx]);
+	$("#speaker").click(function() {
+		alert($("#question").text());
+		requestVoice($("#question").text());
+	});
+	$("#nextBtn").click(function() {
+		
+		if($("#answer").val() == ""){
+			alert("답변을 해주세요.");
+			return ;
+		}
+		++idx;
+		if(idx<step) {
+			$("#question").text(contents[idx]);
+			$("#answer").val("");
+		} else {
+			reqeustNextPage();
+		}
+	});
+	
+	
+});
+
+function requestVoice(questionText) {
+	var request = new XMLHttpRequest();
+	request.responseType = "blob";
+	request.onload = function() {
+ 		var audioURL = URL.createObjectURL(this.response);	
+ 		var audio = new Audio();
+		audio.src = audioURL;
+		audio.play();
+ 	}
+	request.open("POST", '/interview/questionvoice');
+	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	var params = "question="+questionText;
+	request.send(params);
+}
+
+function reqeustNextPage() {
+
+	let formdata = new FormData();
+	
+	formdata.append("type", "1");
+	formdata.append("pos", "front");
+    formdata.append("qIds", qIds);
+    formdata.append("answers", answers);
+    formdata.append("cnt", bloblist.length);
+    
+    for(var i = 0; i < bloblist.length; i++){
+    
+   		formdata.append("data"+String(i), bloblist[i]);
+   		
+    }
+   
+    let xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+    
+    	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
+			console.log("response:"+xhr.response);
+    		location.href="/interview/successinterview";  
+    		     
+    	}                 
+    }
+    xhr.open("POST", "/interview/saveanswervoice", true);
+    xhr.send(formdata);
+}
+
+</script>
+
 
 </head>
 <body>
@@ -52,26 +135,31 @@
 		<!--본문 면접모드-->
 		<div class="interview">
 			<div class="interview-content">
+
 				<h2>질문:</h2>
-				<div class="interview-question interview-text">${questions[0].ssml}</div>
+				<div class="interview-question interview-text" id="question">
+
+				</div>
+				<button type="button" id="speaker">듣기</button>
 
 				<h2>답변:</h2>
-				<textarea name="" id="" class="interview-answer interview-text"></textarea>
-
+				<textarea name="" id="answer"
+					class="interview-answer interview-text"></textarea>
+				<button id="record">녹음</button>
+				<button id="stop">정지</button>
+				
 				<div class="interview-time">
 					<p>
 						남은시간: <span class="time-left">00:00</span>
 					</p>
 				</div>
-			</div>
-			
-			<input
-				onclick="responsiveVoice.speak('${questions[0].content}');"
-				type='button' value='🔊 질문 듣기' />
 				
+			</div>
+
+
+
 			<div class="btn-box">
-				<a href=""><button class="btn interview-btn">이전질문</button></a> <a
-					href="interview_result.html"><button class="btn interview-btn">다음질문</button></a>
+				<button class="btn interview-btn" id="nextBtn">다음질문</button>
 			</div>
 
 
@@ -89,28 +177,71 @@
 
 
 	<script>
-	alert("작업중인 페이지 입니다.");
+    const record = document.getElementById("record")
+    const stop = document.getElementById("stop")
+    const textarea = document.getElementById("answer")
+	const audioCtx = new(window.AudioContext || window.webkitAudioContext)() // 오디오 컨텍스트 정의
+	const analyser = audioCtx.createAnalyser()
+	let bloblist = [];
 	
-	$(function(){
-	
-		alert( '${questions[0].ssml}' );
+	if (navigator.mediaDevices) {
 		
-		var request = new XMLHttpRequest();
-		
-		request.responseType = "blob"; 
-		
-		request.onload = function() {
- 			var audioURL = URL.createObjectURL(this.response);	
- 			var audio = new Audio();
-			audio.src = audioURL;
-			audio.play();
- 		}
- 		
-		request.open("POST", 'questionvoice');
-		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send("ssml=" + '${questions[0].ssml}' );
-		
-	});
+        console.log('getUserMedia supported.')
+        const constraints = {
+            audio: true
+        }
+        let chunks = []
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(stream => {
+                const mediaRecorder = new MediaRecorder(stream)  
+                record.onclick = () => {
+                	chunks = [];
+                    mediaRecorder.start()
+                    console.log(mediaRecorder.state)
+                    console.log("recorder started")
+                    record.style.background = "red"
+                    record.style.color = "black"
+                }
+
+                stop.onclick = () => {
+                    mediaRecorder.stop()
+                    console.log(mediaRecorder.state)
+                    console.log("recorder stopped")
+                    record.style.background = ""
+                    record.style.color = ""
+                }
+
+                mediaRecorder.onstop = e => {
+                    const blob = new Blob(chunks, {
+                        'type': 'audio/ogg codecs=opus'
+                    })
+                    bloblist.push(blob);
+                    let formdata = new FormData();
+                    formdata.append("fname", "audio.webm");
+                    formdata.append("data", blob);
+                    let request = new XMLHttpRequest();
+                    request.onload = () => {
+    	               	if (request.status === 200) {// HTTP가 잘 동작되었다는 뜻.
+	                       	console.log("response:"+request.response);
+                       		textarea.value=request.response;  
+                       		answers.push(textarea.value);
+                       	}                 
+                    }
+                    
+                    request.open("POST", "/interview/answertext", true);
+                    request.send(formdata);
+                    
+                }
+
+                mediaRecorder.ondataavailable = e => {
+                    chunks.push(e.data)
+                }
+            })
+            .catch(err => {
+                console.log('The following error occurred: ' + err)
+            })
+    }	
 </script>
 
 </body>
