@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class QuestionVO {
 
-	private int qid;
+	private int qId;
 	private String email;
 	private String ssml;
 	private String content;
@@ -20,9 +20,10 @@ public class QuestionVO {
 	public QuestionVO() {
 	}
 
-	public QuestionVO(int qid, String email, String ssml, String content, String qtype, String kwlist, int rcnt,
+	public QuestionVO(int qId, String email, String ssml, String content, String qtype, String kwlist, int rcnt,
 			Date regdate, Date updatedate) {
-		this.qid = qid;
+
+		this.qId = qId;
 		this.email = email;
 		this.ssml = ssml;
 		this.content = content;
@@ -31,14 +32,15 @@ public class QuestionVO {
 		this.rcnt = rcnt;
 		this.regdate = regdate;
 		this.updatedate = updatedate;
+
 	}
 
-	public int getQid() {
-		return qid;
+	public int getqId() {
+		return qId;
 	}
 
-	public void setQid(int qid) {
-		this.qid = qid;
+	public void setqId(int qId) {
+		this.qId = qId;
 	}
 
 	public String getEmail() {

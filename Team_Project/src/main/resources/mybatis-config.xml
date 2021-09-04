@@ -9,5 +9,6 @@
   <mapper resource="mybatis/mappers/interview.xml"/>
   <mapper resource="mybatis/mappers/question.xml"/>
   <mapper resource="mybatis/mappers/keyword.xml"/>
+  <mapper resource="mybatis/mappers/answer.xml"/>
 </mappers>  
 </configuration>

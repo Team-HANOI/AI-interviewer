@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+							"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.interview.dao.MentormodeDAO">
+
+
+	<!--
+	
+		private int mentorId; 
+		private String applEmail;
+		private String mentorEmail; 
+		
+		private Date startDate; 
+		private Date endDate; 
+		
+		private String content; 
+		private String title; 
+		private String method; 
+		private String field; 
+		private String bio; 
+		
+		private Date regDate; 
+		private Date updateDate; 
+		
+		멘토 모드 번호 자동으로 올라가기
+		
+		회사 이름(mentorEmail), 날짜, 시작시간, 종료시간, 멘토링 제목, 멘토링 내용, 멘톨이 분야, 멘토링 장소, 멘토 소개
+		
+		시작시간, 종료시간, 멘토링 제목, 멘토링 내용, 멘토링 분야, 멘토링 장소, 멘토 소개
+	-->
+
+		<insert id="insertMentorMode" parameterType="MentormodeVO">
+				<![CDATA[
+					INSERT INTO tbl_mentor
+					   (
+						STARTDATE as "startDate",
+						ENDDATE as "endDate",
+						
+						TITLE as "title",
+						CONTENT as "content",
+						FIELD as "field",
+						METHOD as "method",
+						BIO as "bio",
+
+						REGDATE as "regDate",
+						UPDATEDATE as "updateDate")
+
+					VALUES(#{startDate},#{endDate},#{title},#{content},#{field},
+						   #{method},#{bio},sysdate,sysdate)
+				]]>
+			</insert>
+
+	<!-- <insert id="insertMentorMode" parameterType="MentormodeVO">
+		<![CDATA[
+			INSERT INTO tbl_mentor
+			   (
+				APPL_EMAIL as "applEmail",
+				MENTOR_EMAIL as "mentorEmail",
+				STARTDATE as "startDate",
+				ENDDATE as "endDate",
+				CONTENT as "content",
+				TITLE as "title",
+				METHOD as "method",
+				FIELD as "field",
+				BIO as "bio",
+				REGDATE as "regDate",
+				UPDATEDATE as "updateDate")
+			VALUES(#{mentorId},#{applEmail},#{mentorEmail},#{startDate},#{endDate},
+				   #{content},#{title},#{method},#{field},#{bio},sysdate,sysdate)
+		]]>
+	</insert> -->
+	
+	
+	
+	
+
+
+</mapper>
