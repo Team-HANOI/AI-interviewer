@@ -15,12 +15,12 @@ import com.team.interview.vo.AuthVO;
 import com.team.interview.vo.MemberVO;
 
 @Service
-public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
+public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
   private final MemberDAO memberDAO;
   private final PasswordEncoder passwordEncoder;
 
-  public CustomOAuth2UserDetailsService(final MemberDAO memberDAO, final PasswordEncoder passwordEncoder) {
+  public CommonOAuth2UserDetailsService(final MemberDAO memberDAO, final PasswordEncoder passwordEncoder) {
     this.memberDAO = memberDAO;
     this.passwordEncoder = passwordEncoder;
   }

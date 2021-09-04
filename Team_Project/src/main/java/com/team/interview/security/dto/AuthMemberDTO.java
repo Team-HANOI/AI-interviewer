@@ -109,7 +109,6 @@ public class AuthMemberDTO extends User implements OAuth2User {
     this.logoImgId = logoImgId;
     this.cEmail = cEmail;
     this.cName = cName;
-    // authorities?
   }
 
   @Override

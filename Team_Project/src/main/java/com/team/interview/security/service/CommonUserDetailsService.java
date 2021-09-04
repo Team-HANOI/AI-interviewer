@@ -13,19 +13,19 @@ import com.team.interview.vo.CompanyVO;
 import com.team.interview.vo.MemberVO;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService{
+public class CommonUserDetailsService implements UserDetailsService{
 
   private final MemberDAO memberDAO;
   private final CompanyDAO companyDAO;
 
-  public CustomUserDetailsService(final MemberDAO memberDAO, final CompanyDAO companyDAO) {
+  public CommonUserDetailsService(final MemberDAO memberDAO, final CompanyDAO companyDAO) {
     this.memberDAO = memberDAO;
     this.companyDAO = companyDAO;
   }
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    System.out.println("CustomUserDetailsService loadUserByUsername" + username);
+    System.out.println("CustomUserDetailsService loadUserByUsername: " + username);
     MemberVO memberVO = memberDAO.findByEmail(username, false); // username이 실제로는 MemberVO에서 email을 의미.
 
     if(memberVO == null) {

@@ -28,6 +28,6 @@
 
 <!-- java script -->
 <script defer src="/js/index.js"></script>
-<!--  
+<!-- 
 <script defer src="/js/pop_ups.js"></script>
--->
+ -->

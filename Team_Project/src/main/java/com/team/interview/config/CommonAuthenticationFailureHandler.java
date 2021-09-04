@@ -15,7 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
-public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
+public class CommonAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
   @Override
   public void onAuthenticationFailure(HttpServletRequest request,
@@ -42,7 +42,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     request.setAttribute("username",  loginid);
     request.setAttribute("error_message",  errormsg);
 
-    request.getRequestDispatcher("/customLogin?error").forward(request,  response);
+    request.getRequestDispatcher("/userLogin?error").forward(request,  response);
   }
 
   protected void loginFailureCount(String username) {

@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <header>
+<sec:authentication property="principal" var="user"/>
 	<nav class="nav">
 		<!-- my page 링크 -->
+		<sec:authorize access="isAuthenticated()">
+		${user.username}
+		</sec:authorize>
 		<a href="/mypage/" class="my-page-link">M</a>
 
 		<!-- 사이트 명 -->
@@ -50,15 +56,12 @@
 				<li class="nav-sub-box">채용공고</li>
 			</a>
 
-			<li class="nav-sub-box">로그인 
-				<a>
-					<ul class="nav-sub-sub">
-						<a><li class="login-individual btn">일반회원</li></a>
-						<a><li class="sub-last-item login-com btn">기업회원</li> </a>
-					</ul>
-				</a>
-			</li>
-
+<sec:authorize access="isAuthenticated()">
+      <a href="/logout"><li class="nav-sub-box">로그아웃</li></a>
+</sec:authorize>
+<sec:authorize access="isAnonymous()">
+      <a href="/userLogin"><li class="nav-sub-box">로그인</li></a>
+</sec:authorize>
 			<li class="nav-sub-box">회원가입 
 				<a>
 					<ul class="nav-sub-sub">

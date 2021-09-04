@@ -23,6 +23,14 @@ public class SampleController {
     System.out.println("exAll..........");
   }
 
+  @GetMapping("/example")
+  public void security(@AuthenticationPrincipal AuthMemberDTO authMemberDTO){
+  }
+
+
+
+
+
   @GetMapping("/member")
   public void exMember(@AuthenticationPrincipal AuthMemberDTO authMemberDTO){
     System.out.println("exMember..........");
@@ -30,7 +38,13 @@ public class SampleController {
     System.out.println(authMemberDTO);
 
   }
+  @GetMapping("/company")
+  public void exCompany(@AuthenticationPrincipal AuthMemberDTO authMemberDTO){
+    System.out.println("exCompany..........");
+    System.out.println("--------------------------");
+    System.out.println(authMemberDTO);
 
+  }
 
   @GetMapping("/admin")
   public void exAdmin(){
