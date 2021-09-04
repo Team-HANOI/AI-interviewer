@@ -15,7 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
-public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
+public class CommonAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
   @Override
   public void onAuthenticationFailure(HttpServletRequest request,
