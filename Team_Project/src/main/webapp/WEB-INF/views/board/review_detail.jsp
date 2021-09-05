@@ -76,7 +76,7 @@
 				<div class="board-edit">
 					<a href="./write_review">
 						<button class="btn edit-btn">글쓰기</button>
-					</a> <a href="./write_review">
+					</a> <a href="/review/modifyForm?reviewId=${review.reviewId}">
 						<button class="btn edit-btn">수정</button>
 					</a> <a
 						href="./boarddelete?reviewId=${review.reviewId}&page=${pageInfo.page}">

@@ -223,13 +223,6 @@
 	]]>
 	</select>
 	
-
-	
-<!-- 	<delete id="deleteFile" parameterType="int">
-		<![CDATA[
-		delete from upload_file where file_id=#{fileId}
-		]]>
-	</delete> -->
 	
 	
 	<!-- 게시글 상세 > 좋아요 -->
@@ -243,6 +236,14 @@
 	<update id="updateLikeCount" parameterType="String">
 		<![CDATA[
 		update tbl_review set like_cnt=nvl(like_cnt,0)+1 where review_id=#{reviewId}
+		]]>		
+	</update>
+	
+	<update id="updateReview" parameterType="ReviewVO">
+		<![CDATA[
+		update tbl_review
+		set pos=#{pos}, company=#{company}, title=#{title}, content=#{content}, updatedate=sysdate
+		where review_id=#{reviewId}
 		]]>		
 	</update>
 	
