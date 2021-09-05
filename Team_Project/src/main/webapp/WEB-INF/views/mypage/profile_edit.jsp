@@ -45,18 +45,18 @@
                 </a>
                   
                 <form action="" method="POST" class="mypage-content">
-                <button class="join-btn btn" type="submit">저장</button>
-                <div class="line"></div>
-                <!-- 사용자 정보 -->
+                  <button class="join-btn btn" type="submit">저장</button>
+                  <div class="line"></div>
+                  <!-- 사용자 정보 -->
                     <div class="mypage-content-profile">
                         <ul>
                             <li>
                                 <span class="pfText">프로필 </span>
                                 
                                 <div class="pfInfoOuter">
-                                    <div clas="pfInfoInner">
+                                    <div class="pfInfoInner">
                                         <div class="pfInfoInnerLeft">
-                                            <input type="file" accept="image/*"  onchange="showMyImage(this)" id="file" style="display:none"/>
+                                            <input type="file" accept="image/*"  name = "pf"onchange="showMyImage(this)" id="file" style="display:none"/>
                                             <img id="thumbnail" class="profile-img" width="200px" height="200px" src="../image/alpaca.jpg">
                                         </div>
                                     </div>

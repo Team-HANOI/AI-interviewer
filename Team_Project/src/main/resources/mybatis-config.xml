@@ -5,6 +5,7 @@
 <mappers>
   <mapper resource="mybatis/mappers/member.xml"/>
   <mapper resource="mybatis/mappers/company.xml"/>
+  <mapper resource="mybatis/mappers/profile.xml"/>
   <mapper resource="mybatis/mappers/review.xml"/>
   <mapper resource="mybatis/mappers/interview.xml"/>
   <mapper resource="mybatis/mappers/question.xml"/>

@@ -37,7 +37,7 @@
 	        
 	        <!-- 일반회원가입 팝업 -->
 			<div class="join-individual-form">
-			    <form action="/join_indv" method="POST" class="login join-person">
+			    <form action="/join_indv" method="POST" enctype="multipart/form-data" class="login join-person">
 			        <h1 class="join-title">ALPACA 계정 만들기</h1>
 			        <div class="join-holder">    
 			            <!-- 구분선 -->
@@ -51,7 +51,7 @@
 			            <input class="join-input holder" type="password" name="pw" placeholder="비밀번호" required>
 			            <label for="">비밀번호 확인</label>
 			            <input class="join-input holder" type="password" placeholder="비밀번호 확인" required>
-			            
+			            <input type="file" name = "pfImg" style="display:none" src="../image/alpaca.jpg"/>
 			            <div class="join-confirm">
 			                <!-- <input class="join-btn btn" type="button" value="일반회원 가입하기"> -->
 			                <button class="join-btn btn"  type="submit" >일반회원 가입하기</button>

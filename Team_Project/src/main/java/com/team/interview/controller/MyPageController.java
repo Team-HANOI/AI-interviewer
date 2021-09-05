@@ -1,6 +1,8 @@
 package com.team.interview.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,12 +16,18 @@ public class MyPageController {
     mav.addObject("", "");
     return mav;
   }
-  @RequestMapping(value="/profile_edit")
+  @GetMapping(value="/profile_edit")
   public ModelAndView mypageProfileEdit() {
     ModelAndView mav = new ModelAndView("mypage/profile_edit");
     mav.addObject("", "");
     return mav;
   }
+  //  @PostMapping(value="/profile_edit")
+  //  public ModelAndView mypageProfileEdit() {
+  //    ModelAndView mav = new ModelAndView("mypage/profile_edit");
+  //    mav.addObject("", "");
+  //    return mav;
+  //  }
 
   @RequestMapping(value="/mentoring")
   public ModelAndView mypageMentoring() {

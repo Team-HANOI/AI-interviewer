@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.interview.dao.ProfileDAO">
+
+	<resultMap type="com.team.interview.vo.ProfileVO" id="profileMap">
+	  <result property="pfId" column="pf_id" />
+	  <result property="pfImgId" column="pf_img_id" />
+	  <result property="bio" column="bio" />
+	  <result property="lev" column="lev" />
+	  <result property="pSkill" column="p_skill" />
+	  <result property="gSkill" column="g_skill" />
+	  <result property="attendCnt" column="attend_cnt" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+	  <result property="exp" column="exp" />
+	  <result property="pos" column="pos" />
+	  <result property="githubUrl" column="github_url" />
+	</resultMap>
+	
+	<resultMap type="com.team.interview.vo.FileVO" id="fileMap">
+	  <result property="pfImgId" column="pf_img_id" />
+	  <result property="fileName" column="file_name" />
+	  <result property="fileSize" column="file_size" />
+	  <result property="fileContentType" column="file_content_type" />
+	  <result property="fileUploadDate" column="file_upload_date" />
+	  <result property="fileData" column="file_data" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+  </resultMap>
+
+
+    <insert id="insertProfile" parameterType="ProfileVO">
+        <![CDATA[
+        INSERT INTO TBL_PROFILE(
+				  pf_id
+				  , pf_img_id
+				  ) 
+				VALUES(
+				  profile_sq.nextval
+				  , pf_img_sq.currval
+				  )
+        ]]>
+    </insert>
+    
+    <insert id="insertProfileImage" parameterType="FileVO">
+        <![CDATA[
+        INSERT INTO TBL_PF_IMG(
+				  pf_img_id
+				  , file_name
+				  , file_size
+				  , file_content_type
+				  , file_upload_date
+				  , file_data
+				  ) 
+				VALUES(
+				  PF_IMG_sq.nextval
+				  , #{fileName}
+				  , #{fileSize}
+				  , #{fileContentType}
+				  , current_timestamp
+				  , #{fileData}
+				  )
+        ]]>
+    </insert>
+    
+</mapper>

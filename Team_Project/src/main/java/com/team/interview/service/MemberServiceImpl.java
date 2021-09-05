@@ -1,13 +1,21 @@
 package com.team.interview.service;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.team.interview.dao.MemberDAO;
+import com.team.interview.dao.ProfileDAO;
 import com.team.interview.vo.AuthVO;
 import com.team.interview.vo.CompanyVO;
 import com.team.interview.vo.FileVO;
@@ -17,6 +25,8 @@ import com.team.interview.vo.MemberVO;
 public class MemberServiceImpl implements MemberService{
   @Autowired
   MemberDAO memberDAO;
+  @Autowired
+  ProfileDAO profileDAO;
 
   @Autowired
   private PasswordEncoder passwordEncoder;
@@ -33,11 +43,30 @@ public class MemberServiceImpl implements MemberService{
     memberVO.setFromSocial(false);
     memberVO.setType('M');
 
+    File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/alpaca.jpg");
+    FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
+
+    try {
+      InputStream input = new FileInputStream(file);
+      OutputStream os = fileItem.getOutputStream();
+      IOUtils.copy(input, os);
+      // Or faster..
+      // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
+    } catch (IOException ex) {
+      // do something.
+    }
+
+    //alpaca.jpg -> multipart 변환
+    MultipartFile mFile = new CommonsMultipartFile(fileItem);
+
     FileVO newFile = new FileVO();
-    newFile.setFileName(pfImg.getOriginalFilename());
-    newFile.setFileSize(pfImg.getSize());
-    newFile.setFileContentType(pfImg.getContentType());
-    newFile.setFileData(pfImg.getBytes());
+    newFile.setFileName(mFile.getOriginalFilename());
+    newFile.setFileSize(mFile.getSize());
+    newFile.setFileContentType(mFile.getContentType());
+    newFile.setFileData(mFile.getBytes());
+    profileDAO.insertProfileImage(newFile);
+    profileDAO.insertProfile(null);
+
 
     memberDAO.insertMember(memberVO);
 

@@ -42,17 +42,21 @@
         <![CDATA[
         INSERT INTO tbl_member (
                  email
+               , PF_ID
                , pw
                , name
                , from_social
                , type
+               , FAILURE_CNT
         )
         VALUES(
                 #{email}
+              , profile_sq.currval
               , #{pw}
               , #{name}
               , #{fromSocial}
               , #{type}
+              , 0
               )
         ]]>
     </insert>

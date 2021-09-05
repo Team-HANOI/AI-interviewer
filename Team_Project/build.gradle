@@ -59,6 +59,9 @@ dependencies {
 		implementation group: 'org.json', name: 'json', version: '20210307'    
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'  
 	
+	// File to Multipartfile
+	implementation 'commons-fileupload:commons-fileupload:1.4'
+  implementation 'commons-io:commons-io:2.4'
 }
 
 test {
