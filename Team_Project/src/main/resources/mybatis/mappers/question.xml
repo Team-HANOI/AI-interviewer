@@ -76,7 +76,7 @@
 
 	<select id="Querykw" resultType="QuestionVO">
 		<![CDATA[
-	select q_id as qid,content from (select row_number() over (order by q_sq desc) num, A.* from tbl_q A order by q_sq desc)
+	select q_id as qid,content from (select row_number() over (order by q_id desc) num, A.* from tbl_q A order by q_id desc)
 		where KW_LIST like '%'||#{kw}||'%' and num between #{startrow} and #{startrow}+10 and r_cnt>=10
 		]]>
 	</select>
