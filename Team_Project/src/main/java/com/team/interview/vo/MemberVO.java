@@ -4,29 +4,29 @@ import java.util.Date;
 import java.util.List;
 
 public class MemberVO {
-  //이메일
+  //이메일 NN
   private String email;
-  //프로필id
+  //프로필id N
   private int pfId;
-  //패스워드
+  //패스워드 NN
   private String pw;
-  //이름
+  //이름 NN
   private String name;
-  //회원상태 / 활성화:E 비활성화(탈퇴):D 잠금:L 비활성화(휴면):S
+  //회원상태 NN     활성화:1 비활성화(탈퇴):0 잠금:2 비활성화(휴면):3
   private char enabled;
-  //소셜로그인 여부 true:1 false:0
+  //소셜로그인 여부 NN     true:1 false:0
   private boolean fromSocial;
-  //전화번호(핸드폰)
+  //전화번호(핸드폰) N
   private String phoneNum;
-  //회원구분  일반:M 기업:C 관리자:A
+  //회원구분  NN      일반:M 기업:C 관리자:A
   private char type;
-  //잠금날짜 (몇시간 잠금했는지 판단할때 사용)
+  //잠금날짜 N       (몇시간 잠금했는지 판단할때 사용)
   private Date lockdate;
-  //비밀번호 실패횟수
+  //비밀번호 실패횟수 N
   private int failureCnt;
-  //등록일
+  //등록일 NN
   private Date regdate;
-  //수정일
+  //수정일 NN
   private Date updatedate;
 
   private List<AuthVO> authList;

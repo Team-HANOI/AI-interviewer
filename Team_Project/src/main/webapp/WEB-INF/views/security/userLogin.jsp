@@ -69,7 +69,7 @@
 				            <div style="clear:both"></div>
 				           
 				            <label for="">이메일</label>
-				            <input class="join-input holder" type="text" name="username" placeholder="이메일">
+				            <input class="join-input holder" type="text" name="username" placeholder="이메일" value = "${joined_email}">
 				            <label for="">비밀번호
 				                <span class="pwReset">
 				                    <small class="btn pw-search">비밀번호 재설정</small>

@@ -37,23 +37,24 @@
 	        
 	        <!-- 일반회원가입 팝업 -->
 			<div class="join-individual-form">
-			    <form action="" method="POST" class="login join-person">
+			    <form action="/join_indv" method="POST" class="login join-person">
 			        <h1 class="join-title">ALPACA 계정 만들기</h1>
 			        <div class="join-holder">    
 			            <!-- 구분선 -->
 			            <div class="line"></div> 
 			            <div style="clear:both"></div>
 			            <label for="">이름</label>
-			            <input class="join-input holder" type="text" placeholder="이름">
+			            <input class="join-input holder" type="text" name="name"placeholder="이름">
 			            <label for="">이메일</label>
-			            <input class="join-input holder" type="email" placeholder="이메일">
+			            <input class="join-input holder" type="email" name="email" placeholder="이메일">
 			            <label for="">비밀번호</label>
-			            <input class="join-input holder" type="password" placeholder="비밀번호">
+			            <input class="join-input holder" type="password" name="pw" placeholder="비밀번호">
 			            <label for="">비밀번호 확인</label>
 			            <input class="join-input holder" type="password" placeholder="비밀번호 확인">
 			            
 			            <div class="join-confirm">
-			                <input class="join-btn btn" type="button" value="일반회원 가입하기">
+			                <!-- <input class="join-btn btn" type="button" value="일반회원 가입하기"> -->
+			                <button class="join-btn btn"  type="submit" >일반회원 가입하기</button>
 			            </div>
 			        </div>
 			
