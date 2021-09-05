@@ -1,11 +1,16 @@
 package com.team.interview.service;
 
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import com.team.interview.dao.MemberDAO;
 import com.team.interview.vo.AuthVO;
 import com.team.interview.vo.CompanyVO;
+import com.team.interview.vo.FileVO;
 import com.team.interview.vo.MemberVO;
 
 @Service
@@ -22,11 +27,17 @@ public class MemberServiceImpl implements MemberService{
   }
 
   @Override
-  public void joinIndv(MemberVO memberVO) {
+  public void joinIndv(MemberVO memberVO, MultipartFile pfImg) throws IOException {
     // 이름, 이메일, 비번만 날라옴
     memberVO.setPw(passwordEncoder.encode(memberVO.getPw()));
     memberVO.setFromSocial(false);
     memberVO.setType('M');
+
+    FileVO newFile = new FileVO();
+    newFile.setFileName(pfImg.getOriginalFilename());
+    newFile.setFileSize(pfImg.getSize());
+    newFile.setFileContentType(pfImg.getContentType());
+    newFile.setFileData(pfImg.getBytes());
 
     memberDAO.insertMember(memberVO);
 
@@ -35,6 +46,8 @@ public class MemberServiceImpl implements MemberService{
     authVO.setAuth("ROLE_USER");// 일반 회원
 
     memberDAO.insertAuth(authVO);
+
+
   }
 
   @Override

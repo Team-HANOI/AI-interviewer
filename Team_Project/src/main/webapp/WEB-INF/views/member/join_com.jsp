@@ -57,17 +57,17 @@
             <div style="clear:both"></div>
 
             <label for="">회사명</label>
-            <input class="join-input holder" type="text" name="cName" placeholder="회사명">
+            <input class="join-input holder" type="text" name="cName" placeholder="회사명" required>
             <label for="">회사 이메일</label>
-            <input class="join-input holder" type="email" name="cEmail" placeholder="회사 이메일">
+            <input class="join-input holder" type="email" name="cEmail" placeholder="회사 이메일" required>
             <label for="">비밀번호</label>
-            <input class="join-input holder" type="password" name="pw" placeholder="비밀번호">
+            <input class="join-input holder" type="password" name="pw" placeholder="비밀번호" required>
             <label for="">비밀번호 확인</label>
-            <input class="join-input holder" type="password" placeholder="비밀번호 확인">
+            <input class="join-input holder" type="password" placeholder="비밀번호 확인" required>
             <label for="">담당자 성명</label>
-            <input class="join-input holder" type="text" name="name" placeholder="담당자 성명">
+            <input class="join-input holder" type="text" name="name" placeholder="담당자 성명" required>
             <label for="">담당자 이메일</label>
-            <input class="join-input holder" type="email" name="email" placeholder="담당자 이메일">
+            <input class="join-input holder" type="email" name="email" placeholder="담당자 이메일" required>
             
             <div class="join-confirm">
                 <input class="btn join-btn" type="submit" value="기업회원 가입하기">

@@ -24,6 +24,14 @@ public class MemberController {
   public String userLogin(){
     return "/security/userLogin";
   }
+  @GetMapping("/join_indv_tech")
+  public String profile2(){
+    return "/member/join_indv_tech";
+  }
+  @GetMapping("/join_indv_extra")
+  public String profile(){
+    return "/member/join_indv_extra";
+  }
   @GetMapping("/join_indv")
   public String joinIndv(){
     return "/member/join_indv";
@@ -31,10 +39,11 @@ public class MemberController {
   @PostMapping("/join_indv")
   public ModelAndView joinIndv(
       @ModelAttribute MemberVO memberVO
+      , @RequestParam MultipartFile pfImg
       , RedirectAttributes redirectAttrs){
     ModelAndView mv = new ModelAndView();
     try {
-      memberService.joinIndv(memberVO);
+      memberService.joinIndv(memberVO, pfImg);
       redirectAttrs.addFlashAttribute("joined_email", memberVO.getEmail());
       mv.setViewName("redirect:/userLogin");
 

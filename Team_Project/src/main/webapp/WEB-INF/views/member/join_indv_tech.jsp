@@ -35,31 +35,22 @@
 	    <div class="dummy"></div>
 	        
 	        
-	        <!-- 일반회원가입 팝업 -->
-			<div class="join-individual-form">
-			    <form action="/join_indv" method="POST" class="login join-person">
-			        <h1 class="join-title">ALPACA 계정 만들기</h1>
-			        <div class="join-holder">    
-			            <!-- 구분선 -->
-			            <div class="line"></div> 
-			            <div style="clear:both"></div>
-			            <label for="">이름</label>
-			            <input class="join-input holder" type="text" name="name"placeholder="이름" required>
-			            <label for="">이메일</label>
-			            <input class="join-input holder" type="email" name="email" placeholder="이메일" required>
-			            <label for="">비밀번호</label>
-			            <input class="join-input holder" type="password" name="pw" placeholder="비밀번호" required>
-			            <label for="">비밀번호 확인</label>
-			            <input class="join-input holder" type="password" placeholder="비밀번호 확인" required>
-			            
-			            <div class="join-confirm">
-			                <!-- <input class="join-btn btn" type="button" value="일반회원 가입하기"> -->
-			                <button class="join-btn btn"  type="submit" >일반회원 가입하기</button>
+			    <!-- 주요 기술 팝업 -->
+			    <div id="popTech">
+			        <div class="popTechBg"></div>
+			        <div class="popTechFg">
+			            <h1>주요기술</h1>
+			            <div class="tech-text">자신 있는 기술을 최대 3개 선택하세요.</div>
+			            <div class="tech-component">
+			                <input type="checkbox" name="tech-group" value="CSS"><span class="btn lightgrey btnlabel">CSS</span>     
+			                <input type="checkbox" name="tech-group" value="HTML"><span class="btn lightgrey btnlabel">HTML</span> 
+			                <input type="checkbox" name="tech-group" value="JAVA"><span class="btn lightgrey btnlabel">JAVA</span> <br>
+			                <input type="checkbox" name="tech-group" value="JavaScript"><span class="btn lightgrey btnlabel">JavaScript</span> 
+			                <input type="checkbox" name="tech-group" value="Spring"><span class="btn lightgrey btnlabel">Spring</span> 
+			                <input type="checkbox" name="tech-group" value="MyBatis"><span class="btn lightgrey btnlabel">MyBatis</span> 
 			            </div>
 			        </div>
-			
-			    </form>
-			</div>
+			    </div>
 
     </main>
 

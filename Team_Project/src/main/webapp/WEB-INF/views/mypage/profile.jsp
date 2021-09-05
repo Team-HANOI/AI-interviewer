@@ -36,6 +36,9 @@
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title">프로필 관리</div>
+	                <a href = "/mypage/profile_edit">
+	                  <button class="join-btn btn" >프로필 편집</button>
+	                </a>
                 <div class="line"></div>
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
@@ -43,13 +46,11 @@
                         <ul>
                             <li>
                                 <span class="pfText">프로필 </span>
+                                
                                 <div class="pfInfoOuter">
                                     <div clas="pfInfoInner">
                                         <div class="pfInfoInnerLeft">
-                                            <img class="profile-img" width="200px" height="200px" src="https://t1.daumcdn.net/cfile/tistory/997607385E69770E19">
-                                        </div>
-                                        <div class="pfInfoInnerRight">
-                                            <span class="pfExpText">경험치 </span><progress class="pfExp" max="100" value="70"> 70% </progress>
+                                            <img class="profile-img" width="200px" height="200px" src="../image/alpaca.jpg">
                                         </div>
                                     </div>
                                 </div>
@@ -60,11 +61,11 @@
                                 <span class="pfInfo" >email@email.com</span>
                             </li>
                             <li>
-                                <span class="pfText">Git 저장소 주소</span>
-                                <input class="pfIntro" type="text" placeholder="https://git.com">
+                                <span class="pfText">Github 주소</span>
+                                <input class="pfIntro" type="text" readonly>
                             </li>
                             <li>
-                                <span class="pfText">주요 기술<span class="sm-grey">3개</span></span>
+                                <span class="pfText">주요 기술<span class="sm-grey"></span></span>
                                 <div style="display: block;margin-top: 10px;">
                                     <button class="btn dark" type="button">Java</button>
                                     <button class="btn dark" type="button">Spring</button>
@@ -72,18 +73,11 @@
                                 </div>
                             </li>
                             <li>
-                                <span class="pfText">기술 태그<span class="sm-grey">3개</span></span> 
-                                <div style="display: block;margin-top: 10px;">
-                                    <button class="btn lightgrey" type="button">CSS</button>
-                                    <button class="btn lightgrey" type="button">HTML</button>
-                                    <button class="btn lightgrey" type="button">JavaScript</button>
-                                </div>    
-                            </li>
-                            <li>
                                 <span class="pfText">한줄 소개</span>
-                                <textarea class="pfIntro pfTextLight" rows="3">안녕하세요</textarea>
+                                <textarea class="pfIntro pfTextLight" rows="3" readonly>안녕하세요</textarea>
                             </li>
                         </ul>
+                            
                     </div> 
                 </form>
             </div>
