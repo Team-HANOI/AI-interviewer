@@ -79,7 +79,7 @@
 				           
 				            
 				            <div class="mkAccCheck">
-				                <span class="mkAccText">아직 계정이 없으신가요?</span><span class="mkAccBtn"><a href="join_person.html">계정만들기 ></a></span>
+				                <span class="mkAccText">아직 계정이 없으신가요?</span><span class="mkAccBtn"><a href="/join_indv">계정만들기 ></a></span>
 				            </div>
 				          
 				            <div class="join-confirm">
