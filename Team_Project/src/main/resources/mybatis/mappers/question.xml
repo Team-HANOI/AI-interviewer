@@ -56,41 +56,41 @@
 	<select id="SelectAllQList" resultType="QuestionVO"
 		parameterType="int">
 <![CDATA[
-	   		select q_id as qid,content
-		from (select row_number() over (order by q_id_sq desc) num, A.* from tbl_qh A order by q_id_sq desc) 
-		where num between #{startrow} and #{startrow}+10 and r_cnt>10
+	   		select q_id as qId,content
+		from (select row_number() over (order by q_id desc) num, A.* from tbl_q A order by q_id desc) 
+		where num between #{startrow} and #{startrow}+10 and r_cnt>9
 		]]>
 
 	</select>
 	<select id="selectAllQCount" resultType="int">
 		<![CDATA[
-		select count(*) from tbl_qh
+		select count(*) from tbl_q
 		]]>
 
 	</select>
 	<select id="selectAllACount" resultType="int">
 	<![CDATA[
-		select count(*) from tbl_answerh
+		select count(*) from tbl_answer
 		]]>
 	</select>
 
 	<select id="Querykw" resultType="QuestionVO">
 		<![CDATA[
-	select q_id as qid,content from (select row_number() over (order by q_id_sq desc) num, A.* from tbl_q A order by q_id_sq desc)
+	select q_id as qId,content from (select row_number() over (order by q_id desc) num, A.* from tbl_q A order by q_id desc)
 		where KW_LIST like '%'||#{kw}||'%' and num between #{startrow} and #{startrow}+10 and r_cnt>=10
 		]]>
 	</select>
 
 	<update id="UpdateRCnt">
 	<![CDATA[
-		update tbl_answerh set r_cnt=r_cnt+1 where answer_id=#{answerId}
+		update tbl_answer set r_cnt=r_cnt+1 where answer_id=#{answerId}
 		]]>
 
 	</update>
 
 	<select id="QueryRCnt" parameterType="int" resultType="int">
 	<![CDATA[
-		select r_cnt as rCnt from tbl_answerh where answer_id=#{answerId}
+		select r_cnt as rCnt from tbl_answer where answer_id=#{answerId}
 	]]>
 	</select>
 
@@ -98,7 +98,7 @@
 	<select id="SelectProfile" resultType="ProfileVO"
 		parameterType="int">
 	<![CDATA[
-		select p.pf_img_id as pfImgId, m.name as name from tbl_i_recordh r, tbl_memberh m, tbl_profileh p
+		select p.pf_img_id as pfImgId, m.name as name from tbl_i_record r, tbl_member m, tbl_profile p
 		where r.email=m.email and m.pf_id=p.pf_id and r.i_record_id=#{iRecordId}
 		]]>
 	</select>
@@ -106,7 +106,7 @@
 	<select id="SelectAnswer" resultType="AnswerVO">
 	<![CDATA[
 		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
-		 from (select row_number() over (order by a_id_sq desc) num, A.* from tbl_answerh A order by a_id_sq desc) 
+		 from (select row_number() over (order by regdate desc) num, A.* from tbl_answer A order by regdate desc) 
 		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
 		]]>
 	</select>
@@ -114,7 +114,7 @@
 	<select id="SelectAnswerRCnt" resultType="AnswerVO">
 	<![CDATA[
 		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
-		 from (select row_number() over (order by r_cnt desc) num, A.* from tbl_answerh A order by r_cnt desc) 
+		 from (select row_number() over (order by r_cnt desc) num, A.* from tbl_answer A order by r_cnt desc) 
 		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
 		]]>
 	</select>
