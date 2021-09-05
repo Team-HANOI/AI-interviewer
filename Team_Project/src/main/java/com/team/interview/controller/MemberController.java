@@ -37,14 +37,7 @@ public class MemberController {
       memberService.joinIndv(memberVO);
       redirectAttrs.addFlashAttribute("joined_email", memberVO.getEmail());
       mv.setViewName("redirect:/userLogin");
-      // 가입 버튼 -> 로그인 화면 리다이렉트?
 
-      // 가입시 이메일 인증?
-
-      // 패스워드 인코더
-      // 이미 가입된 이메일입니다 ajax
-      // 패스워드 조합
-      // 패스워드 확인
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -53,21 +46,31 @@ public class MemberController {
     }
     return mv;
   }
-  //  @RequestMapping("/join_com")
-  //  public String joinCom(MemberVO memberVO){
-  //    try {
-  //      memberService.join(memberVO);
-  //      // 가입 버튼 -> 로그인 화면
-  //      // 패스워드 인코더
-  //      mv.setViewName("redirect:/review/board_review_detail?reviewId=" + rComm.getReviewId());
-  //
-  //    } catch (Exception e) {
-  //      e.printStackTrace();
-  //      mv.addObject("err", "오류 발생");
-  //      mv.setViewName("/review/err");
-  //    }
-  //    return "/member/join_com";
-  //  }
+
+  @GetMapping("/join_com")
+  public String joinCom(){
+    return "/member/join_com";
+  }
+  @PostMapping("/join_com")
+  public ModelAndView joinCom(
+      @ModelAttribute MemberVO memberVO
+      , RedirectAttributes redirectAttrs){
+    ModelAndView mv = new ModelAndView();
+    try {
+      memberService.joinCom(memberVO);
+      redirectAttrs.addFlashAttribute("joined_email", memberVO.getEmail());
+      mv.setViewName("redirect:/userLogin");
+
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      mv.addObject("err", "오류 발생");
+      mv.setViewName("/member/err"); // 안만듬
+    }
+    return mv;
+  }
+
+
 
   @RequestMapping("/403")
   public String accessDenied(){

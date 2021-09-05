@@ -4,7 +4,7 @@
 
 <mapper namespace="com.team.interview.dao.MemberDAO">
 
-<resultMap type="com.team.interview.vo.MemberVO" id="memberMap">
+  <resultMap type="com.team.interview.vo.MemberVO" id="memberMap">
     <id property="email" column="email"/>
     <result property="email" column="email"/>
     <result property="pfId" column="pfId"/>
@@ -26,6 +26,16 @@
     <result property="email" column="email"/>
     <result property="auth" column="auth"/>
   </resultMap>
+  
+  <resultMap type="com.team.interview.vo.CompanyVO" id="companyMap">
+    <id property="email" column="email"/>
+	  <result property="email" column="email" />
+	  <result property="logoImgId" column="logo_img_id" />
+	  <result property="cEmail" column="c_email" />
+	  <result property="cName" column="c_name" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+  </resultMap>
 
 
     <insert id="insertMember" parameterType="MemberVO">
@@ -44,6 +54,21 @@
               , #{fromSocial}
               , #{type}
               )
+        ]]>
+    </insert>
+    
+    <insert id="insertCompany" parameterType="CompanyVO">
+        <![CDATA[
+        INSERT INTO tbl_com(
+				  email
+				  , c_email
+				  , c_name
+				  ) 
+				VALUES(
+				  #{email}
+				  , #{cEmail}
+				  , #{cName}
+				  )
         ]]>
     </insert>
 

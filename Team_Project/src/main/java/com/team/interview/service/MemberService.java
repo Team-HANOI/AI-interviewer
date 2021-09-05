@@ -6,4 +6,6 @@ public interface MemberService {
   MemberVO findByEmail(String email, boolean fromSocial);
 
   void joinIndv(MemberVO memberVO);
+
+  void joinCom(MemberVO memberVO);
 }
