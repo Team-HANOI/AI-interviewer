@@ -78,8 +78,9 @@
 					<a href="./write_review">
 						<button class="btn edit-btn">글쓰기</button>
 					</a> 
-					
-					<c:if test="${user.username} == ${review.email}">
+					<c:set var="reviewEmail" value="${review.email}" />
+					<c:set var="userEmail" value="${user.username}" />
+					<c:if test="${reviewEmail eq userEmail}">
 					<a href="/review/modifyForm?reviewId=${review.reviewId}">
 						<button class="btn edit-btn">수정</button>
 					</a> 
@@ -204,7 +205,9 @@
 															<span>${comm.regdate}</span>
 														</div>
 														<div class="comment-head-right">
-															<c:if test="${user.username} == ${comm.email}">
+															<c:set var="commEmail" value="${comm.email}" />
+															<c:set var="userEmail" value="${user.username}" />
+															<c:if test="${commEmail eq userEmail}">
 															<button>수정</button>
 															<button>삭제</button>
 															</c:if>
@@ -255,10 +258,12 @@
 															</div>
 															<div class="comment-head-right">
 
-																<c:if test="${user.username} == ${comm.email}">
-																<button>수정</button>
-																<button>삭제</button>
-																</c:if>
+															<c:set var="commEmail" value="${comm.email}" />
+															<c:set var="userEmail" value="${user.username}" />
+															<c:if test="${commEmail eq userEmail}">
+															<button>수정</button>
+															<button>삭제</button>
+															</c:if>
 
 																<button>답글달기</button>
 															</div>

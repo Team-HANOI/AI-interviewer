@@ -56,6 +56,7 @@
                 <!-- 구분선 -->
                 <div class="line"></div>
                 
+                <sec:authentication property="principal" var="user"/> 
                 <form action="/review/write_review" method="post" class="write" enctype="multipart/form-data" name="write_review">
                     <input type="hidden" name="email" value="${user.username}">
                     
