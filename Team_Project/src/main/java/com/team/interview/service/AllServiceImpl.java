@@ -71,6 +71,7 @@ public class AllServiceImpl implements AllService {
 		List<AnswerVO> answers = qdao.SelectAnswer(q_id,startrow);
 		System.out.println(answers);
 		for(AnswerVO a: answers) {
+			a.setqContent(qdao.SelectQContent(q_id));
 			System.out.println(a.getContent());
 			System.out.println(a.getiRecordId());
 			ProfileVO pf = qdao.SelectProfile(a.getiRecordId());

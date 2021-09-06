@@ -38,5 +38,6 @@ public interface QuestionDAO {
 	int QueryRCnt(@Param("answerId") int answerId) throws Exception;
 
 	public ArrayList<QuestionVO> backQuestion() throws Exception;
-
+	
+	String SelectQContent(@Param("q_id") int q_id) throws Exception;
 }

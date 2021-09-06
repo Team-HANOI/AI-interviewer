@@ -54,10 +54,24 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/total_detail")
-	public ModelAndView boardTotalDetail() {
-		ModelAndView mav = new ModelAndView("board/total_detail");
-		mav.addObject("board-total", "");
-		return mav;
+	public ModelAndView boardTotalDetail(@RequestParam(value = "q_id") int q_id,
+			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		PageInfo pageInfo = new PageInfo();
+		ModelAndView mv = new ModelAndView();
+		try {
+			List<AnswerVO> articleList = allService.getAnsList(q_id, page, pageInfo);
+			mv.addObject("pageInfo", pageInfo);
+			mv.addObject("articleList", articleList);
+			mv.setViewName("board/total_detail");
+			System.out.println(articleList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("err", e.getMessage());
+			mv.addObject("page", "/err");
+			mv.setViewName("main");
+		}
+		return mv;
+
 	}
 
 	@RequestMapping(value = "/best_answers")
@@ -185,10 +199,9 @@ public class BoardController {
 		}
 		return mv;
 	}
-	
 
 	@GetMapping("/detailRCnt")
-	public ModelAndView AllAnsListRcnt(@RequestParam(value = "q_id", required=true) int q_id,
+	public ModelAndView AllAnsListRcnt(@RequestParam(value = "q_id", required = true) int q_id,
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 		PageInfo pageInfo = new PageInfo();
 		ModelAndView mv = new ModelAndView();

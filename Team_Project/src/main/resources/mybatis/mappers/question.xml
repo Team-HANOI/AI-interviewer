@@ -57,7 +57,7 @@
 		parameterType="int">
 <![CDATA[
 	   		select q_id as qId,content
-		from (select row_number() over (order by q_id desc) num, A.* from tbl_q A order by q_id desc) 
+		from (select row_number() over (order by q_id) num, A.* from tbl_q A order by q_id) 
 		where num between #{startrow} and #{startrow}+10 and r_cnt>9
 		]]>
 
@@ -76,7 +76,7 @@
 
 	<select id="Querykw" resultType="QuestionVO">
 		<![CDATA[
-	select q_id as qId,content from (select row_number() over (order by q_id desc) num, A.* from tbl_q A order by q_id desc)
+	select q_id as qId,content from (select row_number() over (order by q_id asc) num, A.* from tbl_q A order by q_id asc)
 		where KW_LIST like '%'||#{kw}||'%' and num between #{startrow} and #{startrow}+10 and r_cnt>=10
 		]]>
 	</select>
@@ -103,6 +103,14 @@
 		]]>
 	</select>
 
+		<select id="SelectQContent" resultType="String">
+	<![CDATA[
+		select content from tbl_q where q_id=#{q_id}
+	]]>
+	
+		</select>
+
+
 	<select id="SelectAnswer" resultType="AnswerVO">
 	<![CDATA[
 		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
@@ -110,7 +118,7 @@
 		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
 		]]>
 	</select>
-	
+
 	<select id="SelectAnswerRCnt" resultType="AnswerVO">
 	<![CDATA[
 		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
