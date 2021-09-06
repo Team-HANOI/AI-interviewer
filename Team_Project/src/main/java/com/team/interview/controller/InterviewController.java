@@ -19,6 +19,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -353,11 +354,12 @@ public class InterviewController {
 	// 답변 저장
 	@ResponseBody
 	@PostMapping("/saveanswervoice")
-	public void saveAnswerVoice(AuthMemberDTO authMemberDTO,MultipartHttpServletRequest multi, @RequestParam("type") int type,
-			@RequestParam(value = "pos", required = false) String pos,
-			@RequestParam(value = "kws", required = false) String kws, @RequestParam("qIds") List<String> qIds,
-			@RequestParam("answers") List<String> answers) throws Exception {
-		
+	public void saveAnswerVoice(@AuthenticationPrincipal AuthMemberDTO authMemberDTO,
+								MultipartHttpServletRequest multi, @RequestParam("type") int type,
+								@RequestParam(value = "pos", required = false) String pos,
+								@RequestParam(value = "kws", required = false) String kws, @RequestParam("qIds") List<String> qIds,
+								@RequestParam("answers") List<String> answers) throws Exception {
+							
 
 		try {
 
