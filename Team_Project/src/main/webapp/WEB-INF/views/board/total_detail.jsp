@@ -90,9 +90,11 @@
 				<!-- 구분선 -->
 				<div class="line"></div>
 
-				<h2>
-					질문 <span>1.</span>
-				</h2>
+				<div class="q">
+					질문 <span>${articleList[0].q_id}.
+					${articleList[0].qContent}</span>
+				</div>
+				
 
 				<div class="detail-row result-btn-box">
 					<a href="/board/totaldetail?q_id=${articleList[0].q_id }">
@@ -102,7 +104,7 @@
 					<button class="btn">추천순</button>
 					</a>
 				</div>
-				<c:forEach var="article" items="${articleList}">
+				<c:forEach var="article" items="${articleList}">                  
 					<div class="detail-row">
 						<div>
 							<img class="recommendations-user_icon"

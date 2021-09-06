@@ -19,6 +19,13 @@ private Date updatedate;
 private int aIdSq;
 private int pfImgId;
 private String memberName;
+private String qContent;
+public String getqContent() {
+	return qContent;
+}
+public void setqContent(String qContent) {
+	this.qContent = qContent;
+}
 public int getAnswerId() {
 	return answerId;
 }
