@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,11 +53,13 @@
 
 
 			<div class="edit-btn-box">
-
-				<!-- 임시저장 글 목록 보기 -->
-				<a href="./write_tempreview">
+			
+				<sec:authorize access="isAuthenticated()">
+					<!-- 임시저장 글 목록 보기 -->
+					<a href="./write_tempreview">
 					<button class="btn edit-btn">임시저장 글 보기</button>
-				</a>
+					</a>    
+				</sec:authorize>
 
 				<!-- 키워드검색기능 -->
 				<form action="/review/board_review_key" method="post"
@@ -72,11 +75,15 @@
 						<button type="submit" id="0" name="0" class="btn keyword">검색</button>
 					</div>
 				</form>
-
-				<!-- 글쓰기 -->
-				<a href="./write_review">
+				
+				<sec:authorize access="isAuthenticated()">
+					<!-- 글쓰기 -->
+					<a href="./write_review">
 					<button class="btn edit-btn">글쓰기</button>
-				</a>
+					</a>    
+				</sec:authorize>
+
+				
 			</div>
 		</div>
 
