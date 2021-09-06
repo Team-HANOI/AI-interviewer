@@ -75,10 +75,12 @@
 						<button type="submit" id="0" name="0" class="btn keyword">검색</button>
 					</div>
 				</form>
+
 				
 				<sec:authorize access="isAuthenticated()">
 					<!-- 글쓰기 -->
 					<a href="./write_review">
+
 					<button class="btn edit-btn">글쓰기</button>
 					</a>    
 				</sec:authorize>

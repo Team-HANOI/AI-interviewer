@@ -15,6 +15,9 @@ import com.team.interview.vo.QuestionVO;
 @Mapper
 @Repository
 public interface QuestionDAO {
+	
+	//	
+		
 	List<QuestionVO> SelectAllQList(int startrow) throws Exception;
 
 	List<QuestionVO> Querykw(@Param("kw") String kw, @Param("startrow") int startrow) throws Exception;
@@ -37,6 +40,19 @@ public interface QuestionDAO {
 
 	int QueryRCnt(@Param("answerId") int answerId) throws Exception;
 
+	
+	//	backQuestion
 	public ArrayList<QuestionVO> backQuestion() throws Exception;
-
+	
+	//	frontQuestion
+	public ArrayList<QuestionVO> frontQuestion() throws Exception;
+	
+	
+	
+	//	맞춤 모드	Question()
+	//	public ArrayList<QuestionVO> frontQuestion() throws Exception;
+	
+	//	키워드 모드 Question()
+	//	public ArrayList<QuestionVO> frontQuestion() throws Exception;
+		
 }

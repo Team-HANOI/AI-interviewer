@@ -1,7 +1,18 @@
 package com.team.interview.security.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -9,20 +20,26 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.team.interview.dao.MemberDAO;
+import com.team.interview.dao.ProfileDAO;
 import com.team.interview.security.dto.AuthMemberDTO;
 import com.team.interview.vo.AuthVO;
+import com.team.interview.vo.FileVO;
 import com.team.interview.vo.MemberVO;
 
 @Service
 public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
   private final MemberDAO memberDAO;
+  private final ProfileDAO profileDAO;
   private final PasswordEncoder passwordEncoder;
 
-  public CommonOAuth2UserDetailsService(final MemberDAO memberDAO, final PasswordEncoder passwordEncoder) {
+  public CommonOAuth2UserDetailsService(final MemberDAO memberDAO, final ProfileDAO profileDAO, final PasswordEncoder passwordEncoder) {
     this.memberDAO = memberDAO;
     this.passwordEncoder = passwordEncoder;
+    this.profileDAO =  profileDAO;
   }
 
   @Override
@@ -53,7 +70,7 @@ public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
     //
     //        return oAuth2User;
 
-    MemberVO memberVO = saveSocialMember(email);
+    MemberVO memberVO = saveSocialMember(email, oAuth2User);
     AuthMemberDTO authMember = new AuthMemberDTO(
         memberVO.getEmail(),
         memberVO.getPw(),
@@ -68,6 +85,8 @@ public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
         memberVO.getLogoImgId(),
         memberVO.getcEmail(),
         memberVO.getcName(),
+        memberVO.getRegdate(),
+        memberVO.getUpdatedate(),
         memberVO.getAuthList().stream().map(
             authVO -> new SimpleGrantedAuthority(authVO.getAuth()))
         .collect(Collectors.toList()),
@@ -78,7 +97,7 @@ public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
     return authMember;
   }
 
-  private MemberVO saveSocialMember(String email) {
+  private MemberVO saveSocialMember(String email, OAuth2User oAuth2User){
     // 기존에 동일한 이메일로 가입한 회원이 있는 경우 그대로 조회만
     MemberVO memberVO = memberDAO.findByEmail(email, true);
 
@@ -87,13 +106,14 @@ public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
     }
 
     // 없다면 회원 추가 패스워드는 1111 이름은 그냥 이메일 주소로(뒤에서 true?로 처리함)
-    MemberVO memberVO1 = new MemberVO();
-    memberVO1.setEmail(email);
-    memberVO1.setName(email);
-    memberVO1.setPw(passwordEncoder.encode("1111"));
-    memberVO1.setFromSocial(true);
+    MemberVO newMemberVO = new MemberVO();
+    newMemberVO.setEmail(email);
+    newMemberVO.setName(email);
+    newMemberVO.setPw(passwordEncoder.encode("1111"));
+    newMemberVO.setFromSocial(true);
+    newMemberVO.setType('M');
 
-    memberDAO.insertMember(memberVO1);
+    memberDAO.insertSocialMember(newMemberVO);
 
     AuthVO authVO1 = new AuthVO();
     authVO1.setEmail(email);
@@ -103,8 +123,8 @@ public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
     ArrayList<AuthVO> authVOs = new ArrayList<>();
     authVOs.add(authVO1);
-    memberVO1.setAuthList(authVOs);
+    newMemberVO.setAuthList(authVOs);
+    return newMemberVO;
 
-    return memberVO1;
   }
 }

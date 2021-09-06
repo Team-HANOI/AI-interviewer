@@ -4,10 +4,10 @@
 
 <mapper namespace="com.team.interview.dao.MemberDAO">
 
-<resultMap type="com.team.interview.vo.MemberVO" id="memberMap">
+  <resultMap type="com.team.interview.vo.MemberVO" id="memberMap">
     <id property="email" column="email"/>
     <result property="email" column="email"/>
-    <result property="pfId" column="pfId"/>
+    <result property="pfId" column="pf_id"/>
     <result property="pw" column="pw"/>
     <result property="name" column="name"/>
     <result property="enabled" column="enabled"/>
@@ -26,9 +26,43 @@
     <result property="email" column="email"/>
     <result property="auth" column="auth"/>
   </resultMap>
+  
+  <resultMap type="com.team.interview.vo.CompanyVO" id="companyMap">
+    <id property="email" column="email"/>
+	  <result property="email" column="email" />
+	  <result property="logoImgId" column="logo_img_id" />
+	  <result property="cEmail" column="c_email" />
+	  <result property="cName" column="c_name" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+  </resultMap>
+
 
 
     <insert id="insertMember" parameterType="MemberVO">
+        <![CDATA[
+        INSERT INTO tbl_member (
+                 email
+               , PF_ID
+               , pw
+               , name
+               , from_social
+               , type
+               , FAILURE_CNT
+        )
+        VALUES(
+                #{email}
+              , profile_sq.currval
+              , #{pw}
+              , #{name}
+              , #{fromSocial}
+              , #{type}
+              , 0
+              )
+        ]]>
+    </insert>
+    
+    <insert id="insertSocialMember" parameterType="MemberVO">
         <![CDATA[
         INSERT INTO tbl_member (
                  email
@@ -36,6 +70,7 @@
                , name
                , from_social
                , type
+               , FAILURE_CNT
         )
         VALUES(
                 #{email}
@@ -43,7 +78,23 @@
               , #{name}
               , #{fromSocial}
               , #{type}
+              , 0
               )
+        ]]>
+    </insert>
+    
+    <insert id="insertCompany" parameterType="CompanyVO">
+        <![CDATA[
+        INSERT INTO tbl_com(
+				  email
+				  , c_email
+				  , c_name
+				  ) 
+				VALUES(
+				  #{email}
+				  , #{cEmail}
+				  , #{cName}
+				  )
         ]]>
     </insert>
 
@@ -71,8 +122,9 @@
 	       , pf_id
 	       , pw
 	       , name
-	       , mem.regdate
-	       , mem.updatedate
+	       , type
+	       , mem.regdate regdate
+	       , mem.updatedate updatedate
 	       , enabled
 	       , from_social
 	       , phone_num
