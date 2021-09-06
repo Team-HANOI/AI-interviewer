@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     .antMatchers("/sample/company").hasAnyRole("COMPANY","ADMIN")
     .antMatchers("/sample/admin").hasRole("ADMIN")
     .antMatchers("/mypage/*").hasAnyRole("USER","COMPANY", "ADMIN")
-
+    .antMatchers("/review/board_review_detail*").hasAnyRole("USER","COMPANY", "ADMIN")
 
     .and()
     .formLogin()

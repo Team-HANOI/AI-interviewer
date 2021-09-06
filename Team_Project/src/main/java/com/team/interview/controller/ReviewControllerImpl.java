@@ -282,6 +282,7 @@ public class ReviewControllerImpl implements ReviewController {
   @Override
   @RequestMapping(value = "/addComm", method = RequestMethod.POST)
   public ModelAndView addRComm(@ModelAttribute RCommVO rComm) {
+    System.out.println(rComm.getReviewId());
     System.out.println(rComm.getEmail());
     ModelAndView mv = new ModelAndView();
 

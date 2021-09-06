@@ -53,7 +53,7 @@ function addCommentChild(reviewId, prtComId) {
 
 
 
-$(function() {
+/*$(function() {
 	$('form').submit(function(event) {
 		alert("aa"+this.name);
 		if ($('[name='+this.name+'] #prtComId').val() == null || 
@@ -61,5 +61,5 @@ $(function() {
 			event.preventDefault();
 		}
 	});
-});
+});*/
 
