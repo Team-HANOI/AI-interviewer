@@ -41,12 +41,17 @@ $(function() {
 		}
 		++idx;
 		if(idx<step) {
+		
 			$("#question").text(contents[idx]);
 			$("#answer").val("");
-		} else {
+			
+		} else if(idx == step){
+		
 			alert("마지막 질문 입니다.");
-			location.href="/interview/result"
-		}
+			reqeustNextPage();
+ 
+		} 
+		
 	});
 	
 	
@@ -88,7 +93,7 @@ function reqeustNextPage() {
     
     	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
 			console.log("response:"+xhr.response);
-    		location.href="/interview/successinterview";  
+    		location.href="/interview/result";  
     		     
     	}                 
     }
@@ -148,13 +153,13 @@ function reqeustNextPage() {
 					class="interview-answer interview-text"></textarea>
 				<button id="record">녹음</button>
 				<button id="stop">정지</button>
-				
+
 				<div class="interview-time">
 					<p>
 						남은시간: <span class="time-left">00:00</span>
 					</p>
 				</div>
-				
+
 			</div>
 
 
