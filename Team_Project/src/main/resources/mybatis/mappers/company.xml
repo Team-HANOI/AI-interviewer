@@ -4,27 +4,65 @@
 
 <mapper namespace="com.team.interview.dao.CompanyDAO">
 
-<resultMap type="com.team.interview.vo.CompanyVO" id="CompanyMap">
-    <id property="email" column="email"/>
-    <result property="email" column="email"/>
-    <result property="logoImgId" column="logo_img_id"/>
-    <result property="cEmail" column="c_email"/>
-    <result property="cName" column="c_name"/>
-    <result property="regdate" column="regdate"/>
-    <result property="updatedate" column="updatedate"/>
-  </resultMap>
+		<resultMap type="com.team.interview.vo.CompanyVO" id="CompanyMap">
+		    <id property="email" column="email"/>
+		    <result property="email" column="email"/>
+		    <result property="logoImgId" column="logo_img_id"/>
+		    <result property="cEmail" column="c_email"/>
+		    <result property="cName" column="c_name"/>
+		    <result property="regdate" column="regdate"/>
+		    <result property="updatedate" column="updatedate"/>
+		  </resultMap>
+		  
+		<resultMap type="com.team.interview.vo.FileVO" id="fileMap">
+		    <result property="logoImgId" column="LOGO_IMG_ID" />
+		    <result property="fileName" column="file_name" />
+		    <result property="fileSize" column="file_size" />
+		    <result property="fileContentType" column="file_content_type" />
+		    <result property="fileUploadDate" column="file_upload_date" />
+		    <result property="fileData" column="file_data" />
+		    <result property="regdate" column="regdate" />
+		    <result property="updatedate" column="updatedate" />
+		  </resultMap>
   
-
+      <select id="selectLogoImgNextval" resultType="int">
+        <![CDATA[
+        select logo_img_sq.nextval from dual
+        ]]> 
+      </select>
+      
+      <insert id="insertLogoImage" parameterType="FileVO">
+        <![CDATA[
+        INSERT INTO TBL_LOGO_IMG(
+          logo_img_id
+          , file_name
+          , file_size
+          , file_content_type
+          , file_upload_date
+          , file_data
+          ) 
+        VALUES(
+          logo_img_sq.nextval
+          , #{fileName}
+          , #{fileSize}
+          , #{fileContentType}
+          , current_timestamp
+          , #{fileData}
+          )
+        ]]>
+    </insert>
 
     <insert id="insertCompany" parameterType="CompanyVO">
         <![CDATA[
 				INSERT INTO tbl_com(
 				    email
+			    , logo_img_id
 				  , c_email
 				  , c_name
 				  ) 
 				VALUES(
 				  #{email}
+				  , logo_img_sq.currval
 				  , #{cEmail}
 				  , #{cName}
 				  )

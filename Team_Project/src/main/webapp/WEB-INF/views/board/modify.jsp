@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,19 @@
     <jsp:include page="../common/top.jsp"/>
 	<!-- 페이지 스타일 -->
 	<link rel="stylesheet" href="/style/board_write.css">
+	
+	<script type="text/javascript">
+	function modifyboard(){
+		modifyform.submit();
+	}
+	</script>
+	
+	<style>
+	   #commandCell{
+      text-align: center;
+   		}
+	</style>
+	
 </head>
 <body>
     <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
@@ -51,19 +63,19 @@
             <!-- 글쓰기 -->
             <div class="board mypage-right">
                 <!-- 페이지 타이틀 -->
-                <h1 class="page-title-left">글쓰기</h1>
+                <h1 class="page-title-left">글 수정하기</h1>
 
                 <!-- 구분선 -->
                 <div class="line"></div>
                 
-                <form action="/review/write_review" method="post" class="write" enctype="multipart/form-data" name="write_review">
-                    <input type="hidden" name="email" value="${user.username}">
+                <form action="/review/modify" method="post" class="write" name="modifyform">
+                    <input type = "hidden" name = "reviewId" value = "${review.reviewId}"/>
                     
                     <div class="detail-row">
                         <div>
                             <label for="">포지션</label> 
                             <input type="text" name="pos"
-						id="pos" required="required" />
+						id="pos" required="required" value = "${review.pos}"/>
                         </div>
                     </div>
                 
@@ -71,7 +83,7 @@
                         <div>
                             <label for="">회사명</label>
                             <input type="text" name="company"
-						id="company" required="required" />
+						id="company" required="required" value = "${review.company}"/>
                         </div>             
                     </div>
                 
@@ -79,19 +91,17 @@
                         <div>
                             <label for="title">제목</label>
                             <input type="text" name="title"
-						id="title" required="required" />
+						id="title" required="required" value = "${review.title}"/>
                         </div>
                     </div>
                 
                     <label for="content">내용</label>
-                    <textarea name="content" id="content" cols="30" rows="10" required="required"></textarea>
+                    <textarea name="content" id="content" cols="30" rows="10" required="required">${review.content}</textarea>
                 
-                    <div class="detail-row">
-                        <input type="file" name="rImg">
-                		<button type="reset" class="btn write-btn">다시쓰기</button>
-                        <button type="submit" id="1" name="1" class="btn write-btn">임시저장</button>
-                        <button type="submit" id="0" name="0" class="btn write-btn">등록</button>
-                    </div>
+                    <section id = "commandCell">
+						<a href="javascript:modifyboard()">[수정완료]</a>&nbsp;&nbsp;
+						<a href="javascript:history.go(-1)">[뒤로가기]</a>
+					</section>
                 </form>
             </div>
         </div>

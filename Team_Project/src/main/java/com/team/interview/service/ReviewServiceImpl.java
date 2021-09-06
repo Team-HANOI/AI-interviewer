@@ -25,13 +25,10 @@ public class ReviewServiceImpl implements ReviewService {
     } else {
       review.setFileId(0);
     }
-    review.setEmail("e@naver.com");
     review.setCommCnt(0);
     review.setLikeCnt(0);
     review.setViewCnt(0);
-    System.out.println(review.getPos());
     reviewDAO.insertReview(review);
-    System.out.println("cc");
   }
 
   @Override
@@ -116,12 +113,13 @@ public class ReviewServiceImpl implements ReviewService {
   }
 
 
+  @Override
+  public void modifyBoard(ReviewVO review) throws Exception {
+    reviewDAO.updateReview(review);
+  }
 
   @Override
   public void removeBoard(int reviewId) throws Exception {
-    // String pass = reviewDAO.selectPassword(board_num);
-    // if (!pass.equals(password))
-    // throw new Exception("삭제 권한 없음");
     reviewDAO.deleteReview(reviewId);
   }
 
@@ -130,7 +128,6 @@ public class ReviewServiceImpl implements ReviewService {
   // 본댓글달기
   @Override
   public void addRComm(RCommVO rComm) throws Exception {
-    rComm.setEmail("e@naver.com");
     reviewDAO.insertRComm(rComm);
     reviewDAO.updateCommCnt(rComm.getReviewId());
   }

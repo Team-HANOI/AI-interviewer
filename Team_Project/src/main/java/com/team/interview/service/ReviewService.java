@@ -27,6 +27,8 @@ public interface ReviewService {
 
   void updateLikeCount(String reviewId) throws Exception;
 
+  void modifyBoard(ReviewVO review) throws Exception;
+
 
   void removeBoard(int reviewId) throws Exception;
 

@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +27,7 @@
 
 </head>
 <body>
+	<sec:authentication property="principal" var="user"/> 
 	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
 	<jsp:include page="../common/header.jsp" />
 
@@ -76,12 +77,19 @@
 				<div class="board-edit">
 					<a href="./write_review">
 						<button class="btn edit-btn">글쓰기</button>
-					</a> <a href="./write_review">
+					</a> 
+					
+					<c:if test="${user.username} == ${review.email}">
+					<a href="/review/modifyForm?reviewId=${review.reviewId}">
 						<button class="btn edit-btn">수정</button>
-					</a> <a
+					</a> 
+					<a
 						href="./boarddelete?reviewId=${review.reviewId}&page=${pageInfo.page}">
 						<button class="btn edit-btn">삭제</button>
-					</a> <a
+					</a>
+					</c:if> 
+					
+					<a
 						href="./r_detail_pre?reviewId=${review.reviewId}&page=${pageInfo.page}">
 						<button class="btn edit-btn">이전글</button>
 					</a> <a
@@ -196,9 +204,10 @@
 															<span>${comm.regdate}</span>
 														</div>
 														<div class="comment-head-right">
-
+															<c:if test="${user.username} == ${comm.email}">
 															<button>수정</button>
 															<button>삭제</button>
+															</c:if>
 <!-- 대댓글 버튼 -->
 															<button onclick="commentChildFn()">답글 달기</button>
 <!-- 대댓글 버튼 끝 -->
@@ -246,8 +255,10 @@
 															</div>
 															<div class="comment-head-right">
 
+																<c:if test="${user.username} == ${comm.email}">
 																<button>수정</button>
 																<button>삭제</button>
+																</c:if>
 
 																<button>답글달기</button>
 															</div>
@@ -280,22 +291,18 @@
 							<div class="card-header">
 
 								<!-- 댓글 로그인 시작 -->
-								<%-- 										<c:choose>
-											<c:when test="${userInfo.id eq null }">
+								<c:choose>
+											<c:when test="${user.username eq null }">
 												<a class="btn btn-sm btn-info"
-													href="./auth-signin?board=diary-detail&bidx=${diary.diaryId}">로그인</a>
+													href="/userLogin">로그인 하기</a>
 												<span style="width: 10px"></span>
 											</c:when>
 
 											<c:otherwise>
-												<p>${userInfo.name}(${userInfo.id})님</p>
+												<p>${user.name}님</p>
 												<span style="width: 10px"></span>
-												<input type="hidden" name="diaryId" value="${diary.diaryId}">
-												<input type="hidden" name="commenterId"
-													value="${userInfo.id}">
-
 											</c:otherwise>
-										</c:choose> --%>
+								</c:choose>
 								<!--  댓글 로그인 끝  -->
 							</div>
 							<div style="width: 100%; text-align: center;">
@@ -310,6 +317,8 @@
 
 										<input type="hidden" name="reviewId"
 											value="${review.reviewId}">
+										<input type="hidden" name="email"
+													value="${user.username}">
 
 									</div>
 									<div style="display: inline-block;">

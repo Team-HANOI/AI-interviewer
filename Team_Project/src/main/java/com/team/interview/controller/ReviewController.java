@@ -38,8 +38,12 @@ public interface ReviewController {
   void reviewLikeCall(@RequestParam(value = "reviewId", required = true) String reviewId,
       HttpServletResponse response) throws Exception;
 
+  ModelAndView modifyForm(@RequestParam("reviewId") int reviewId);
+
   ModelAndView removeBoard(@RequestParam("reviewId") int reviewId,
       @RequestParam(value = "page", required = false, defaultValue = "1") int page);
+
+  ModelAndView boardModify(@ModelAttribute ReviewVO review);
 
   ModelAndView addRComm(@ModelAttribute RCommVO rComm);
 
