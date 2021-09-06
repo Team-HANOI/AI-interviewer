@@ -363,10 +363,12 @@ public class InterviewController {
 
 		try {
 
-			HttpSession session = multi.getSession();
-			String email = (String)session.getAttribute(authMemberDTO.getEmail());
+//			HttpSession session = multi.getSession();
+//			String email = (String)session.getAttribute(authMemberDTO.getEmail());
+			
 //			String email = "shguddnr2@Naver.com"; //
-
+			
+			String email = authMemberDTO.getEmail();	//	시큐리티에서
 			// 면접 기록 저장 interviewAnswerService
 			// 면접의 타입에 따라 달라짐
 			InterviewRecordVO interviewRecord = new InterviewRecordVO();
