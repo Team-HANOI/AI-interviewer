@@ -158,11 +158,13 @@ public class InterviewController {
 	public ModelAndView interviewResult() {
 
 		ModelAndView mav = new ModelAndView("interview/result");
+		
 		mav.addObject("board-total", "");
 		return mav;
 
 	}
 
+	
 	// 맞춤 모드
 	@RequestMapping(value = "/custom")
 	public ModelAndView customMode() {
