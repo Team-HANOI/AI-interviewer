@@ -71,8 +71,12 @@
 	</insert> -->
 	
 	
-	
-	
+	<!-- <select id="selectMaxmentorId" resultType="int">
+	<![CDATA[
+	select nvl(max(mentor_id),0) from tbl_mentor
+	]]>
+	</select>
+	 -->
 
 
 </mapper>
