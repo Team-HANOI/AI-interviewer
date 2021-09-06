@@ -65,8 +65,8 @@
 			<li class="nav-sub-box">회원가입 
 				<a>
 					<ul class="nav-sub-sub">
-						<a><li class="join-individual btn">일반회원</li> </a>
-						<a><li class="sub-last-item join-com btn">기업회원</li></a>
+						<a href="/join_indv"><li class="join-individual btn">일반회원</li> </a>
+						<a href="/join_com"><li class="sub-last-item join-com btn">기업회원</li></a>
 					</ul>
 				</a>
 			</li>

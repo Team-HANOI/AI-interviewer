@@ -74,7 +74,7 @@
 				</form>
 
 				<!-- 글쓰기 -->
-				<a href="./write_review">
+				<a href="./write">
 					<button class="btn edit-btn">글쓰기</button>
 				</a>
 			</div>

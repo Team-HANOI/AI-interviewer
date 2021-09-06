@@ -48,17 +48,17 @@
                             <label for=""><span style="color:red;">*</span> 현재 비밀번호</label>
                             <input class="pwreset-input holder" type="password" placeholder="">
                         </div>
-                        <div class="pwResetCheck">
+                        <!-- <div class="pwResetCheck">
                             <span class="pwResetText">비밀번호를 잊으셨나요?</span><a href="login_pw_reset.html"><span class="pwReset"><small> 비밀번호 재설정</small></span></a> 
-                        </div>
+                        </div> -->
 
                         <div class="pwEmailInput">
-                            <label for=""><span style="color:red;">*</span> 비밀번호</label>
+                            <label for=""><span style="color:red;">*</span> 새 비밀번호</label>
                             <input class="pwreset-input holder" type="password" placeholder="">
                         </div>
-                        <div class="pwResetCheck">
+                        <!-- <div class="pwResetCheck">
                             <span class="pwResetText">비밀번호 (소문자와 숫자 포함 최소 6자)</span>
-                        </div>
+                        </div> -->
 
                         <div class="pwEmailInput">
                             <label for=""><span style="color:red;">*</span> 비밀번호 확인</label>

@@ -68,6 +68,8 @@ public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
         memberVO.getLogoImgId(),
         memberVO.getcEmail(),
         memberVO.getcName(),
+        memberVO.getRegdate(),
+        memberVO.getUpdatedate(),
         memberVO.getAuthList().stream().map(
             authVO -> new SimpleGrantedAuthority(authVO.getAuth()))
         .collect(Collectors.toList()),

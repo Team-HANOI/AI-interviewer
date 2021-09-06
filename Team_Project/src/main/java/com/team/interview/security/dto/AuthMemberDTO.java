@@ -74,9 +74,11 @@ public class AuthMemberDTO extends User implements OAuth2User {
       int logoImgId,
       String cEmail,
       String cName,
+      Date regdate,
+      Date updatedate,
       Collection<? extends GrantedAuthority> authorities,
       Map<String, Object> attr) {
-    this(username, password, pfId, name, phoneNum, type, lockdate, failureCnt, fromSocial, enabled, logoImgId, cEmail, cName, authorities);
+    this(username, password, pfId, name, phoneNum, type, lockdate, failureCnt, fromSocial, enabled, logoImgId, cEmail, cName, regdate, updatedate, authorities);
     this.attr = attr;
   }
 
@@ -94,6 +96,8 @@ public class AuthMemberDTO extends User implements OAuth2User {
       int logoImgId,
       String cEmail,
       String cName,
+      Date regdate,
+      Date updatedate,
       Collection<? extends GrantedAuthority> authorities) {
     super(username, password, authorities);
     this.email = username;
@@ -109,6 +113,8 @@ public class AuthMemberDTO extends User implements OAuth2User {
     this.logoImgId = logoImgId;
     this.cEmail = cEmail;
     this.cName = cName;
+    this.regdate = regdate;
+    this.updatedate = updatedate;
   }
 
   @Override
