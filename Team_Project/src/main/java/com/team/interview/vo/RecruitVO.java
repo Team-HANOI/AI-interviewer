@@ -22,11 +22,9 @@ public class RecruitVO {
 
 	// properties for join statement
 	private String cName;
-	private String fileData;
 	
 	// constructors
 	public RecruitVO() {}
-	
 
 	public RecruitVO(int rId, String email, String pos, Date rStartdate, Date rEnddate, String kw, String url,
 			String career, Date regdate, Date updatedate, String cName, String fileData) {
@@ -42,7 +40,6 @@ public class RecruitVO {
 		this.regdate = regdate;
 		this.updatedate = updatedate;
 		this.cName = cName;
-		this.fileData = fileData;
 	}
 
 
@@ -133,13 +130,5 @@ public class RecruitVO {
 
 	public void setcName(String cName) {
 		this.cName = cName;
-	}
-
-	public String getFileData() {
-		return fileData;
-	}
-
-	public void setFileData(String fileData) {
-		this.fileData = fileData;
 	}
 }

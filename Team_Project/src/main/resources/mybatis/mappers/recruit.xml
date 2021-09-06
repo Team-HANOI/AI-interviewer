@@ -5,7 +5,7 @@
 	<select id="selectRecruits" resultType="recruitVO">
 	<![CDATA[
 		select 
-		c.c_name as "cName", i.logo_img_id as "fileData",
+		c.c_name as "cName",
 		r.career,
 		r.url, 
 		r.kw

@@ -36,11 +36,13 @@ public class RecruitController {
 //		mav.addObject("","");
 //		return mav;
 //	}
+	
 	@InitBinder
 	 public void initBinder(WebDataBinder binder) {   
 	  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");     
 	  binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	 }
+	
 	// shows recruit list
 	@RequestMapping(value="/")
 	public ModelAndView serachAll() {
@@ -56,20 +58,20 @@ public class RecruitController {
 	}
 	
 	// 게시판 상세 > 첨부파일
-	  @GetMapping(value = {"/img/{fileId}", "/pds/{fileId}"})
-	  public ResponseEntity<byte[]> getImageFile(@PathVariable int fileId) throws Exception { // @PathVariable_url값을_변수로_담는다
-	    FileVO file = recruitService.getFile(fileId);
-	    final HttpHeaders headers = new HttpHeaders(); // 상수화
-	    if (file != null) {
-	      String[] mtypes = file.getFileContentType().split("/");
-	      headers.setContentType(new MediaType(mtypes[0], mtypes[1]));
-	      headers.setContentDispositionFormData("attachment", file.getFileName());
-	      headers.setContentLength(file.getFileSize());
-	      return new ResponseEntity<byte[]>(file.getFileData(), headers, HttpStatus.OK);
-	    } else {
-	      return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
-	    }
-	  }
+	@GetMapping(value = {"/img/{fileId}", "/pds/{fileId}"})
+	public ResponseEntity<byte[]> getImageFile(@PathVariable int fileId) throws Exception { // @PathVariable_url값을_변수로_담는다
+		FileVO file = recruitService.getFile(fileId);
+		final HttpHeaders headers = new HttpHeaders(); // 상수화
+		if (file != null) {
+			String[] mtypes = file.getFileContentType().split("/");
+			headers.setContentType(new MediaType(mtypes[0], mtypes[1]));
+			headers.setContentDispositionFormData("attachment", file.getFileName());
+			headers.setContentLength(file.getFileSize());
+			return new ResponseEntity<byte[]>(file.getFileData(), headers, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+		}
+	}
 	
 	@RequestMapping(value="/form")
 	public ModelAndView recruitForm() {

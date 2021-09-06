@@ -50,24 +50,23 @@
 	                        <small>#${k }</small>&nbsp;
                         </c:forEach>
                     </div>
-                    <img class="card-img" src="${r.fileData }" alt="" srcset="">
                     <!-- 첨부파일 -->
-						<c:set var="len" value="${fn:length(file.fileName)}" />
-						<c:set var="filetype"
-							value="${fn:toUpperCase(fn:substring(file.fileName, len-4, len))}" />
-						<c:choose>
-							<c:when
-								test="${(filetype eq '.JPG') or (filetype eq 'JPEG') or (filetype eq '.PNG') or (filetype eq '.GIF')}">
-								<img src='<c:url value="/review/img/${file.fileId}"/>'
-									width="1000" class="img-thumbnail">
-								<br>
-							</c:when>
-							<c:otherwise>
-								<a href='<c:url value="/review/pds/${r.fileData }"/>'>${file.fileName}</a>
-								<br>
-							</c:otherwise>
-						</c:choose>
-					</div>
+					<c:set var="len" value="${fn:length(file.fileName)}" />
+					<c:set var="filetype"
+						value="${fn:toUpperCase(fn:substring(file.fileName, len-4, len))}" />
+					<c:choose>
+						<c:when
+							test="${(filetype eq '.JPG') or (filetype eq 'JPEG') or (filetype eq '.PNG') or (filetype eq '.GIF')}">
+							<img src='<c:url value="/recruit/img/${file.fileId}"/>'
+								width="1000" class="img-thumbnail card-img">
+							<br>
+						</c:when>
+						<c:otherwise>
+							<a href='<c:url value="/recruit/pds/${r.fileData }"/>'>${file.fileName}</a>
+							<br>
+						</c:otherwise>
+					</c:choose>
+				</div>
             </a>
             </c:forEach>
         </div>
