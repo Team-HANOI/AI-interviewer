@@ -146,7 +146,7 @@
 					[이전]&nbsp; 
 				</c:when>
 									<c:otherwise>
-										<a href="boardlist?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+										<a href="/review/board_review?page=${pageInfo.page-1}">[이전]</a>&nbsp;
 				</c:otherwise>
 								</c:choose>
 								<c:forEach var="i" begin="${pageInfo.startPage }"
@@ -154,7 +154,7 @@
 									<c:choose>
 										<c:when test="${pageInfo.page==i }">[${i}]</c:when>
 										<c:otherwise>
-											<a href="boardlist?page=${i}">[${i}]</a>
+											<a href="/review/board_review?page=${i}">[${i}]</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -163,7 +163,7 @@
                 [다음]
                 </c:when>
 									<c:otherwise>
-										<a href="boardlist?page=${pageInfo.page+1}">[다음]</a>
+										<a href="/review/board_review?page=${pageInfo.page+1}">[다음]</a>
 									</c:otherwise>
 								</c:choose>
 							</div>
