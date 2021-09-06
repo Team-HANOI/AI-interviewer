@@ -44,8 +44,8 @@
 		<div class="interview">
 		
 			<div class="btn-box">
-				<a href="/interview/run"><button class="btn interview-btn">백엔드</button></a> 
-				<a href="/interview/run"><button class="btn interview-btn">프론트</button></a>
+				<a href="/interview/backEnd"><button class="btn interview-btn">백엔드</button></a> 
+				<a href="/interview/frontEnd"><button class="btn interview-btn">프론트</button></a>
 			</div>
 			
 		</div>

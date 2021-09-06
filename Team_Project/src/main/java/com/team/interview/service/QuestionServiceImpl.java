@@ -15,10 +15,17 @@ public class QuestionServiceImpl implements QuestionService {
 	private QuestionDAO questionDAO;
 	
 	@Override
-	public ArrayList<QuestionVO> questions() throws Exception {
+	public ArrayList<QuestionVO> backQuestion() throws Exception {
 		return questionDAO.backQuestion();
 	}
 
+	@Override
+	public ArrayList<QuestionVO> frontQuestion() throws Exception {
+		//		public ArrayList<QuestionVO> frontQuestion() throws Exception;
+		return questionDAO.frontQuestion();
+	}
+	
+	
 	
 	
 }

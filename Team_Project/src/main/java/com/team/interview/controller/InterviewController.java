@@ -19,6 +19,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.interview.security.dto.AuthMemberDTO;
 import com.team.interview.service.InterviewAnswerService;
 //import com.google.cloud.texttospeech.v1.AudioConfig;
 //import com.google.cloud.texttospeech.v1.AudioEncoding;
@@ -64,7 +66,7 @@ public class InterviewController {
 
 	@Autowired
 	KeywordService keywordService;
-	
+
 	@Autowired
 	InterviewAnswerService interviewAnswerService;
 
@@ -151,6 +153,7 @@ public class InterviewController {
 		return mav;
 	}
 
+	// 회사별 모드
 	@RequestMapping(value = "/result")
 	public ModelAndView interviewResult() {
 
@@ -160,26 +163,39 @@ public class InterviewController {
 
 	}
 
-	@RequestMapping(value = "/run")
-	public ModelAndView interviewRun() {
+	// 맞춤 모드
+	@RequestMapping(value = "/custom")
+	public ModelAndView customMode() {
 
-//		ModelAndView mv = new ModelAndView("speakertest");
-//		 List<QuestionVO> questions = new ArrayList<>(); 
-//		 questions.add(new QuestionVO(100, "앱이 foreground에 있을 때와 background에 있을 때 어떤 제약사항이 있나요?")); 
-//		 questions.add(new QuestionVO(200, "﻿도커 이미지와 컨테이너의 차이점을 간단하게 설명해 주세요")); 
-//		 questions.add(new QuestionVO(300, "가상머신과 도커 컨테이너의 차이점이 무엇일까요?")); 
-//		 questions.add(new QuestionVO(400, "﻿mybatis 말고 다른 O R M에는 어떤 게 있는지 말씀해 주시고 간략하게 설명해 주세요")); 
-//		 questions.add(new QuestionVO(500, "﻿객체 지향과 D I(Dependency Injection)의 관계를 간단하게 설명해 주세요"));
-//		 mv.addObject("questionts", questions);
-//		 
-//		return mv;
+		ModelAndView mav = new ModelAndView("interview/custom");
+		ArrayList<KeywordVO> keywordList;
 
-		ModelAndView mav = new ModelAndView("interview/run");
+		try {
+
+			keywordList = keywordService.keywordList();
+			System.out.println(keywordList);
+			mav.addObject("keywordList", keywordList);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return mav;
+
+	}
+
+	// 일반모드 => backEnd 포지션
+	@RequestMapping(value = "/backEnd") // backEnd
+	public ModelAndView backEndQ() {
+
+		ModelAndView mav = new ModelAndView("interview/backEnd");
 		ArrayList<QuestionVO> questions;
 
 		try {
 
-			questions = questionService.questions();
+			questions = questionService.backQuestion();
 			System.out.println(questions);
 			mav.addObject("questions", questions);
 
@@ -193,6 +209,30 @@ public class InterviewController {
 
 	}
 
+	// 일반모드 => frontEnd 포지션
+	@RequestMapping(value = "/frontEnd") // backEnd
+	public ModelAndView frontEndQ() {
+
+		ModelAndView mav = new ModelAndView("interview/frontEnd");
+		ArrayList<QuestionVO> questions;
+
+		try {
+
+			questions = questionService.frontQuestion();
+			System.out.println(questions);
+			mav.addObject("questions", questions);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return mav;
+
+	}
+
+	// 질문 음성으로 내보내기(clova api)
 	@ResponseBody
 	@PostMapping(value = "/questionvoice")
 	public void ttvoice(@RequestParam(value = "question", required = false) String question,
@@ -246,22 +286,22 @@ public class InterviewController {
 		}
 	}
 
-	
+	// 답변 text로 내보내기
 	@ResponseBody
 	@PostMapping("/answertext")
 	public ResponseEntity<String> voiceToText(MultipartHttpServletRequest multi) throws Exception {
-		
+
 		MultipartFile orgfile = multi.getFile("data");
 		System.out.println(orgfile.getSize());
 		InputStream instream = orgfile.getInputStream();
 		String text = reqcsr(instream);
 		JSONParser parser = new JSONParser();
-		JSONObject jsonObject = (JSONObject)parser.parse(text);
-		String result = (String)jsonObject.get("text");
+		JSONObject jsonObject = (JSONObject) parser.parse(text);
+		String result = (String) jsonObject.get("text");
 		System.out.println(result);
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
-	
+
 	public String reqcsr(InputStream voiceStream) {
 		String clientId = "a4re5zitov"; // Application Client ID";
 		String clientSecret = "5z7STcraUcZvxx3dwMl8qWomLhBtDRUueZhETJwu"; // Application Client Secret";
@@ -309,105 +349,80 @@ public class InterviewController {
 			System.out.println(e);
 		}
 		return response.toString();
-	}	
+	}
+
+	// 답변 저장
 	@ResponseBody
 	@PostMapping("/saveanswervoice")
-	public void saveAnswerVoice(MultipartHttpServletRequest multi,
-								@RequestParam("type") int type,
-								@RequestParam(value= "pos", required = false) String pos,
-								@RequestParam(value = "kws", required = false) String kws,
-								@RequestParam("qIds") List<String> qIds,
-								@RequestParam("answers") List<String> answers) throws Exception {	
+	public void saveAnswerVoice(@AuthenticationPrincipal AuthMemberDTO authMemberDTO,
+								MultipartHttpServletRequest multi, @RequestParam("type") int type,
+								@RequestParam(value = "pos", required = false) String pos,
+								@RequestParam(value = "kws", required = false) String kws, @RequestParam("qIds") List<String> qIds,
+								@RequestParam("answers") List<String> answers) throws Exception {
+							
+
 		try {
-			
+
 			HttpSession session = multi.getSession();
-//			String email = (String)session.getAttribute("email");
-			String email = "shguddnr2@Naver.com";		//
-			
-			//	면접 기록 저장 interviewAnswerService
-			//	면접의 타입에 따라 달라짐
+			String email = (String)session.getAttribute(authMemberDTO.getEmail());
+//			String email = "shguddnr2@Naver.com"; //
+
+			// 면접 기록 저장 interviewAnswerService
+			// 면접의 타입에 따라 달라짐
 			InterviewRecordVO interviewRecord = new InterviewRecordVO();
 			interviewRecord.setiTypeId(type);
 			interviewRecord.setEmail(email);
 			int interviewNumber = 0;
-			
-			
-			if(type == 1) {
-				
+
+			if (type == 1) {
+
 				interviewRecord.setChosenPos(pos);
 				interviewRecord.setChosenKw("");
 				interviewNumber = interviewAnswerService.regInterviewRecord(interviewRecord);
-				
-				
-			}else if(type == 2 || type ==3 ) {
-				
+
+			} else if (type == 2 || type == 3) {
+
 				interviewRecord.setChosenPos("");
 				interviewRecord.setChosenKw(kws);
 				interviewNumber = interviewAnswerService.regInterviewRecord(interviewRecord);
-				
+
 			}
-			
-//	답변 저장
-			
-			
 
 			int cnt = Integer.parseInt(multi.getParameter("cnt"));
-			
-			for(int i=0; i<cnt; i++) {
-				
-				MultipartFile file = multi.getFile("data"+i);
-				
+
+			for (int i = 0; i < cnt; i++) {
+
+				MultipartFile file = multi.getFile("data" + i);
+
 				System.out.println(file.getSize());
-				
+
 				FileVO newFile = new FileVO();
-				newFile.setFileName(""+interviewNumber+i);
+				newFile.setFileName("" + interviewNumber + i);
 				newFile.setFileSize(file.getSize());
 				newFile.setFileContentType(file.getContentType());
 				newFile.setFileData(file.getBytes());
-				
+
 				int voiceNextNum = interviewAnswerService.regVoiceAnswer(newFile);
-				
+
 				InterviewAnswerVO interviewAnswer = new InterviewAnswerVO();
 				interviewAnswer.setVoiceNum(voiceNextNum);
 				interviewAnswer.setiRecordId(interviewNumber);
 				interviewAnswer.setqId(Integer.parseInt(qIds.get(i)));
 				interviewAnswer.setContent(answers.get(i));
 				interviewAnswer.setrCnt(0);
-				interviewAnswerService.regInterviewAnswer(interviewAnswer);		
-				
-			}			
-			
-		} catch(Exception e) {
+				interviewAnswerService.regInterviewAnswer(interviewAnswer);
+
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+	// 마지막 페이지 어떻게 넘길지 //
 	@GetMapping("/successinterview")
 	public String successInterview() {
 		return "success";
 	}
-	
-
-	@RequestMapping(value = "/custom")
-	public ModelAndView customMode() {
-
-		ModelAndView mav = new ModelAndView("interview/custom");
-		ArrayList<KeywordVO> keywordList;
-
-		try {
-
-			keywordList = keywordService.keywordList();
-			System.out.println(keywordList);
-			mav.addObject("keywordList", keywordList);
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		}
-
-		return mav;
-
-	}
-
 
 }
