@@ -44,7 +44,7 @@
 				<li class="nav-sub-box">커뮤니티
 					<ul class="nav-sub-sub">
 						<a href="/board/"><li>전체질문</li></a>
-						<a href="/board/review"><li>면접후기게시판</li></a>
+						<a href="/review/board_review"><li>면접후기게시판</li></a>
 						<a href="/board/free"><li>자유게시판</li></a>
 						<a href="/board/recommend"><li>면접질문</li></a>
 						<a href="/board/best_answers"><li class="sub-last-item">모범답안</li></a>

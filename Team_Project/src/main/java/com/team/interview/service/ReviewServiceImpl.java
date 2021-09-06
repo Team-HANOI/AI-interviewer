@@ -29,9 +29,7 @@ public class ReviewServiceImpl implements ReviewService {
     review.setCommCnt(0);
     review.setLikeCnt(0);
     review.setViewCnt(0);
-    System.out.println(review.getPos());
     reviewDAO.insertReview(review);
-    System.out.println("cc");
   }
 
   @Override
@@ -116,6 +114,10 @@ public class ReviewServiceImpl implements ReviewService {
   }
 
 
+  @Override
+  public void modifyBoard(ReviewVO review) throws Exception {
+    reviewDAO.updateReview(review);
+  }
 
   @Override
   public void removeBoard(int reviewId) throws Exception {
