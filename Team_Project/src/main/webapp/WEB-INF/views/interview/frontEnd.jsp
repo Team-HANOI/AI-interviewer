@@ -44,7 +44,8 @@ $(function() {
 			$("#question").text(contents[idx]);
 			$("#answer").val("");
 		} else {
-			reqeustNextPage();
+			alert("마지막 질문 입니다.");
+			location.href="/interview/result"
 		}
 	});
 	
