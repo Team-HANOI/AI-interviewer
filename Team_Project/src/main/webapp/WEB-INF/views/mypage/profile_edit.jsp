@@ -44,7 +44,7 @@
                 <button class="join-btn btn" >취소</button>
                 </a>
                   
-                <form action="" method="POST" class="mypage-content">
+                <form action="profile_edit" method="POST" class="mypage-content">
                   <button class="join-btn btn" type="submit">저장</button>
                   <div class="line"></div>
                   <!-- 사용자 정보 -->

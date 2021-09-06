@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<resultMap type="com.team.interview.vo.FileVO" id="fileMap">
-	  <result property="pfImgId" column="pf_img_id" />
+	  <result property="fileId" column="pf_img_id" />
 	  <result property="fileName" column="file_name" />
 	  <result property="fileSize" column="file_size" />
 	  <result property="fileContentType" column="file_content_type" />
@@ -69,5 +69,41 @@
 				  )
         ]]>
     </insert>
+    
+    <select id="getProfile" resultMap = "profileMap">
+      <![CDATA[
+      
+      SELECT pf_id
+			  ,pf_img_id
+			  ,bio
+			  ,lev
+			  ,p_skill
+			  ,g_skill
+			  ,attend_cnt
+			  ,regdate
+			  ,updatedate
+			  ,exp
+			  ,pos
+			  ,github_url
+			  FROM TBL_PROFILE 
+			 WHERE pf_id = #{pfId}
+      ]]>
+    </select>
+    
+    <select id="getFile" resultMap = "fileMap">
+      <![CDATA[
+      SELECT pf_img_id
+			  ,file_name
+			  ,file_size
+			  ,file_content_type
+			  ,file_upload_date
+			  ,file_data
+			  ,regdate
+			  ,updatedate
+			  FROM TBL_PF_IMG 
+			 WHERE pf_img_id = #{fileId}
+      ]]>
+    </select>
+    
     
 </mapper>

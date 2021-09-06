@@ -14,5 +14,8 @@ public interface ProfileDAO {
   int insertProfile(ProfileVO profileVO);
   int insertProfileImage(FileVO pfImg);
 
+  ProfileVO getProfile(int fileId);
+  FileVO getFile(int pfImgId);
+
   //  MemberVO findByEmail(@Param("email") String email,@Param("fromSocial") boolean fromSocial);
 }
