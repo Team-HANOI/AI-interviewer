@@ -30,20 +30,20 @@
 
 	<select id="frontQuestion" resultType="QuestionVO">
 	<![CDATA[
-		SELECT * FROM(
-		    		SELECT CONTENT,ssml
+		SELECT q_id as "qId",content FROM(
+		    		SELECT q_id ,content 
 		    		FROM TBL_Q
 		    		WHERE q_type='icebreaking'
 		   			ORDER BY DBMS_RANDOM.RANDOM
 		   		 )   		 
 		   	 WHERE rownum < 3 UNION SELECT * FROM(
-		    		SELECT CONTENT,ssml
+		    		SELECT q_id ,content
 		    		FROM TBL_Q 
 		    		WHERE q_type ='cs'
 		   			ORDER BY DBMS_RANDOM.RANDOM
 		   		 )	 
 		   	 WHERE rownum < 3 UNION SELECT * FROM(
-		    		SELECT CONTENT,ssml
+		    		SELECT q_id ,content
 		    		FROM TBL_Q 
 		    		WHERE q_type='프론트엔드'
 		   			ORDER BY DBMS_RANDOM.RANDOM
