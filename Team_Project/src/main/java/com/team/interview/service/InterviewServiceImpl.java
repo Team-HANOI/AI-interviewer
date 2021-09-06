@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.team.interview.dao.InterviewDAO;
 import com.team.interview.vo.InterviewVO;
+import com.team.interview.vo.MentormodeVO;
 import com.team.interview.vo.PageInfo;
 
 @Service
@@ -38,6 +39,12 @@ public class InterviewServiceImpl implements InterviewService {
 		pageInfo.setStartPage(startPage);
 		int startrow = (page-1)*12+1;  // 페이지당 글 수 
 		return dao.selectRecruitPosting(startrow); 
+	}
+
+	@Override
+	public void insertMentorMode(MentormodeVO mentor) {
+		dao.insertMentorMode();
+		
 	}
 
 }

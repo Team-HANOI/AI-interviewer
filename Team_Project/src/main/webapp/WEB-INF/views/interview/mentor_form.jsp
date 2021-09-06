@@ -79,19 +79,19 @@
                         </div>
                         <div class="post_page-sub-box">
                             <label for="">멘토링 제목</label>
-                            <input id="" class="login-input" type="text" placeholder="">
+                            <input id="title" class="login-input" type="text" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
                             <label for="">멘토링 내용</label>
-                            <input id="" class="login-input" type="text" placeholder="">
+                            <input id="content" class="login-input" type="text" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
                             <label for="">멘토링 분야</label>
-                            <input id="" class="login-input" type="text" placeholder="">
+                            <input id="field" class="login-input" type="text" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
                             <label for="">멘토 소개</label>
-                            <textarea id="" class="" name="" cols="57" rows="10"></textarea>
+                            <textarea id="bio" class="" name="" cols="57" rows="10"></textarea>
                         </div>
                     </div>
 
