@@ -79,14 +79,14 @@
 			
 			<c:forEach var="article" items="${articleList}">
 				<tr>
-				<td>${article.qid }</td>
+				<td>${article.qId }</td>
 				<td>
 			
-				<a href="./totaldetail?q_id=${article.qid}">
+				<a href="./totaldetail?q_id=${article.qId}">
 					${article.content} 
 				</a>
 				</td>
-				<td>${article.qid }</td>
+				<td>${article.qId }</td>
 			
 			
 				</tr>
@@ -95,7 +95,7 @@
 		</section>
 		<section id="pageList">
 			<c:choose>
-				<c:when test="${pageInfo.pg<=1}">
+				<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp;
 				</c:when>
 				<c:otherwise>
