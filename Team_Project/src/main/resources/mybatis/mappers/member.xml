@@ -62,6 +62,27 @@
         ]]>
     </insert>
     
+    <insert id="insertSocialMember" parameterType="MemberVO">
+        <![CDATA[
+        INSERT INTO tbl_member (
+                 email
+               , pw
+               , name
+               , from_social
+               , type
+               , FAILURE_CNT
+        )
+        VALUES(
+                #{email}
+              , #{pw}
+              , #{name}
+              , #{fromSocial}
+              , #{type}
+              , 0
+              )
+        ]]>
+    </insert>
+    
     <insert id="insertCompany" parameterType="CompanyVO">
         <![CDATA[
         INSERT INTO tbl_com(

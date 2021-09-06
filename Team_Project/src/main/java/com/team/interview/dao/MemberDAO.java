@@ -16,4 +16,5 @@ public interface MemberDAO {
 
   MemberVO findByEmail(@Param("email") String email,@Param("fromSocial") boolean fromSocial);
   void insertCompany(CompanyVO companyVO);
+  void insertSocialMember(MemberVO newMemberVO);
 }
