@@ -9,7 +9,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>로그인 사용자 정보 출력하기</h1>
+<h1>로그인 사용자 정보 jsp에 출력하기</h1>
 <!-- JSP 상단에 스프링 시큐리티 관련 태그 라이브러리를 선언합니다-->
 
 <sec:authorize access="hasRole('USER')">USER 권한이 있는 사용자만 보입니다<br></sec:authorize>
@@ -22,8 +22,10 @@
 </sec:authorize>
 <br>
 <sec:authorize access="isAnonymous()">
-    로그인안한 사용자만 보입니다
+    비로그인 사용자만 보입니다
 </sec:authorize>
+
+
 
 <sec:authorize access="isAuthenticated()">
 <h2>회원정보 출력</h2>
@@ -68,7 +70,9 @@ cEmail : ${user.cEmail} <br>
 cName : ${user.cName} <br>
 </sec:authorize>
 
-
+<%-- <c:if test="${user.username == 글 작성자 이메일}">
+    내글만 수정삭제 버튼 보이게
+</c:if> --%>
 
 
 <!-- Access Denied의 경우에는 403에러메시지가 발생합니다. JSP에서는 HttpServletRequest안에  

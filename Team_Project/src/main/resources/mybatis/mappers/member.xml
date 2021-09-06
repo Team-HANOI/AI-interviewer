@@ -7,7 +7,7 @@
   <resultMap type="com.team.interview.vo.MemberVO" id="memberMap">
     <id property="email" column="email"/>
     <result property="email" column="email"/>
-    <result property="pfId" column="pfId"/>
+    <result property="pfId" column="pf_id"/>
     <result property="pw" column="pw"/>
     <result property="name" column="name"/>
     <result property="enabled" column="enabled"/>
@@ -36,6 +36,7 @@
 	  <result property="regdate" column="regdate" />
 	  <result property="updatedate" column="updatedate" />
   </resultMap>
+
 
 
     <insert id="insertMember" parameterType="MemberVO">
@@ -100,8 +101,9 @@
 	       , pf_id
 	       , pw
 	       , name
-	       , mem.regdate
-	       , mem.updatedate
+	       , type
+	       , mem.regdate regdate
+	       , mem.updatedate updatedate
 	       , enabled
 	       , from_social
 	       , phone_num

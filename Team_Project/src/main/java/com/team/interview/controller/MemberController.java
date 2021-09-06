@@ -63,10 +63,11 @@ public class MemberController {
   @PostMapping("/join_com")
   public ModelAndView joinCom(
       @ModelAttribute MemberVO memberVO
+      , @RequestParam MultipartFile logoImg
       , RedirectAttributes redirectAttrs){
     ModelAndView mv = new ModelAndView();
     try {
-      memberService.joinCom(memberVO);
+      memberService.joinCom(memberVO, logoImg);
       redirectAttrs.addFlashAttribute("joined_email", memberVO.getEmail());
       mv.setViewName("redirect:/userLogin");
 

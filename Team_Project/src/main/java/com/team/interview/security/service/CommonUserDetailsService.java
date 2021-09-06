@@ -56,6 +56,8 @@ public class CommonUserDetailsService implements UserDetailsService{
         memberVO.getLogoImgId(),
         memberVO.getcEmail(),
         memberVO.getcName(),
+        memberVO.getRegdate(),
+        memberVO.getUpdatedate(),
         memberVO.getAuthList().stream()
         .map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
     authMemberDTO.setName(memberVO.getName());

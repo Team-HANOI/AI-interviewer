@@ -37,23 +37,22 @@
 	        
 	     <!-- 기업회원가입 팝업 -->
 <div class="join-business-form">
-    <form action="/join_com" method="POST" class="login join-business"> 
+    <form action="/join_com" method="POST" enctype="multipart/form-data" class="login join-business"> 
         <h1 class="join-title">기업 회원가입</h1>
         <span class>로고 이미지</span>
         <div class="join-sub">
             <!--로고 이미지-->
             <div class="profile-outer">
                 <div class="profile-inner">
-                    <img class="profile-img" width="60px" height="60px" src="https://media-exp1.licdn.com/dms/image/C560BAQFhLg-t7O-vWw/company-logo_200_200/0/1519867699220?e=2159024400&v=beta&t=FH0Kso7uqTQv8C3aGfKAF9xDF6OgsmYmk1mg8ZHTNNI">
-                    <span class="profile-img-name">corp-ci.png</span>
-                    <button class="btn profile-upload-btn">upload</button>
+                
+                <input type="file" accept="image/*"  name = "logoImg"onchange="showMyImage(this)" id="file" style="display:none"/>
+                <img id="thumbnail" class="profile-img" width="60px" height="60px" src="../image/alpaca.jpg">
                 </div>
             </div>
         </div>    
             
         <div class="join-holder">    
             <!-- 구분선 -->
-            <div class="line"></div> 
             <div style="clear:both"></div>
 
             <label for="">회사명</label>
@@ -79,6 +78,36 @@
 
     </main>
 
+    <script type="text/javascript">
+	     function showMyImage(fileInput) {
+	         var files = fileInput.files;
+	         for (var i = 0; i < files.length; i++) {           
+	             var file = files[i];
+	             var imageType = /image.*/;     
+	             if (!file.type.match(imageType)) {
+	                 continue;
+	             }           
+	             var img=document.getElementById("thumbnail");            
+	             img.file = file;    
+	             var reader = new FileReader();
+	             reader.onload = (function(aImg) { 
+	                 return function(e) { 
+	                     aImg.src = e.target.result; 
+	                 }; 
+	             })(img);
+	             reader.readAsDataURL(file);
+	         }    
+	     }
+	     $(function () {
+	       $('#thumbnail').click(function (e) {
+	          e.preventDefault();
+	         $('#file').click();
+	        });
+	       });
+	      function changeValue(obj){
+	        alert(obj.value);
+	                   }
+    </script>
     <!-- 꼬리 -->
     <jsp:include page="../common/footer.jsp"/>
 </body>

@@ -30,6 +30,11 @@
 	  <result property="updatedate" column="updatedate" />
   </resultMap>
 
+    <select id="selectPfImgNextval" resultType="int">
+        <![CDATA[
+        select pf_img_sq.nextval from dual
+        ]]> 
+      </select>
 
     <insert id="insertProfile" parameterType="ProfileVO">
         <![CDATA[

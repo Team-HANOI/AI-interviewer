@@ -9,6 +9,8 @@ import com.team.interview.vo.ProfileVO;
 @Repository
 public interface ProfileDAO {
 
+  int selectPfImgNextval() throws Exception;
+
   int insertProfile(ProfileVO profileVO);
   int insertProfileImage(FileVO pfImg);
 

@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import com.team.interview.dao.CompanyDAO;
 import com.team.interview.dao.MemberDAO;
 import com.team.interview.dao.ProfileDAO;
 import com.team.interview.vo.AuthVO;
@@ -27,6 +28,8 @@ public class MemberServiceImpl implements MemberService{
   MemberDAO memberDAO;
   @Autowired
   ProfileDAO profileDAO;
+  @Autowired
+  CompanyDAO companyDAO;
 
   @Autowired
   private PasswordEncoder passwordEncoder;
@@ -37,7 +40,7 @@ public class MemberServiceImpl implements MemberService{
   }
 
   @Override
-  public void joinIndv(MemberVO memberVO, MultipartFile pfImg) throws IOException {
+  public void joinIndv(MemberVO memberVO, MultipartFile pfImg) throws Exception {
     // 이름, 이메일, 비번만 날라옴
     memberVO.setPw(passwordEncoder.encode(memberVO.getPw()));
     memberVO.setFromSocial(false);
@@ -46,15 +49,11 @@ public class MemberServiceImpl implements MemberService{
     File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/alpaca.jpg");
     FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
 
-    try {
-      InputStream input = new FileInputStream(file);
-      OutputStream os = fileItem.getOutputStream();
-      IOUtils.copy(input, os);
-      // Or faster..
-      // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
-    } catch (IOException ex) {
-      // do something.
-    }
+    InputStream input = new FileInputStream(file);
+    OutputStream os = fileItem.getOutputStream();
+    IOUtils.copy(input, os);
+    // Or faster..
+    // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
 
     //alpaca.jpg -> multipart 변환
     MultipartFile mFile = new CommonsMultipartFile(fileItem);
@@ -64,6 +63,7 @@ public class MemberServiceImpl implements MemberService{
     newFile.setFileSize(mFile.getSize());
     newFile.setFileContentType(mFile.getContentType());
     newFile.setFileData(mFile.getBytes());
+    profileDAO.selectPfImgNextval();
     profileDAO.insertProfileImage(newFile);
     profileDAO.insertProfile(null);
 
@@ -80,12 +80,19 @@ public class MemberServiceImpl implements MemberService{
   }
 
   @Override
-  public void joinCom(MemberVO memberVO) {
-    // 이름, 이메일, 비번만 날라옴
-    System.out.println(memberVO.getEmail());
+  public void joinCom(MemberVO memberVO, MultipartFile logoImg) throws Exception {
+    // 이름, 이메일, 비번, 이미지만 날라옴
     memberVO.setPw(passwordEncoder.encode(memberVO.getPw()));
     memberVO.setFromSocial(false);
     memberVO.setType('C');
+
+    FileVO newFile = null;
+    newFile = new FileVO();
+    newFile.setFileName(logoImg.getOriginalFilename());
+    newFile.setFileSize(logoImg.getSize());
+    newFile.setFileContentType(logoImg.getContentType());
+    newFile.setFileData(logoImg.getBytes());
+
 
     CompanyVO companyVO = new CompanyVO();
     companyVO.setEmail(memberVO.getEmail());
@@ -96,11 +103,16 @@ public class MemberServiceImpl implements MemberService{
     authVO.setEmail(memberVO.getEmail());
     authVO.setAuth("ROLE_COMPANY");// 기업 회원
 
+    profileDAO.selectPfImgNextval();
+    profileDAO.insertProfileImage(newFile);
+    profileDAO.insertProfile(null);
+
+    companyDAO.selectLogoImgNextval();
+    companyDAO.insertLogoImage(newFile);
+
     memberDAO.insertMember(memberVO);
     memberDAO.insertAuth(authVO);
-    memberDAO.insertCompany(companyVO);
-
-
+    companyDAO.insertCompany(companyVO);    
   }
 
 }

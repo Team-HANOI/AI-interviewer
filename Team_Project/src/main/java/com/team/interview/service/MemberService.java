@@ -8,7 +8,7 @@ public interface MemberService {
   MemberVO findByEmail(String email, boolean fromSocial);
 
 
-  void joinCom(MemberVO memberVO);
+  void joinCom(MemberVO memberVO, MultipartFile logoImg) throws Exception;
 
-  void joinIndv(MemberVO memberVO, MultipartFile pfImg) throws IOException;
+  void joinIndv(MemberVO memberVO, MultipartFile pfImg) throws IOException, Exception;
 }
