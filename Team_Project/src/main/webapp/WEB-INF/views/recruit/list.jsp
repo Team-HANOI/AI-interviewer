@@ -50,22 +50,10 @@
 	                        <small>#${k }</small>&nbsp;
                         </c:forEach>
                     </div>
-                    <!-- 첨부파일 -->
-					<c:set var="len" value="${fn:length(file.fileName)}" />
-					<c:set var="filetype"
-						value="${fn:toUpperCase(fn:substring(file.fileName, len-4, len))}" />
-					<c:choose>
-						<c:when
-							test="${(filetype eq '.JPG') or (filetype eq 'JPEG') or (filetype eq '.PNG') or (filetype eq '.GIF')}">
-							<img src='<c:url value="/recruit/img/${file.fileId}"/>'
+                    <img src='<c:url value="/recruit/img/${r.logoId}"/>'
 								width="1000" class="img-thumbnail card-img">
-							<br>
-						</c:when>
-						<c:otherwise>
-							<a href='<c:url value="/recruit/pds/${r.fileData }"/>'>${file.fileName}</a>
-							<br>
-						</c:otherwise>
-					</c:choose>
+					
+					
 				</div>
             </a>
             </c:forEach>

@@ -59,7 +59,7 @@ public class RecruitController {
 	
 	// 게시판 상세 > 첨부파일
 	@GetMapping(value = {"/img/{fileId}", "/pds/{fileId}"})
-	public ResponseEntity<byte[]> getImageFile(@PathVariable int fileId) throws Exception { // @PathVariable_url값을_변수로_담는다
+	public ResponseEntity<byte[]> getImageFile(@PathVariable("fileId") int fileId) throws Exception { // @PathVariable_url값을_변수로_담는다
 		FileVO file = recruitService.getFile(fileId);
 		final HttpHeaders headers = new HttpHeaders(); // 상수화
 		if (file != null) {

@@ -22,6 +22,7 @@ public class RecruitVO {
 
 	// properties for join statement
 	private String cName;
+	private String logoId;
 	
 	// constructors
 	public RecruitVO() {}
@@ -130,5 +131,13 @@ public class RecruitVO {
 
 	public void setcName(String cName) {
 		this.cName = cName;
+	}
+
+	public String getLogoId() {
+		return logoId;
+	}
+
+	public void setLogoId(String logoId) {
+		this.logoId = logoId;
 	}
 }

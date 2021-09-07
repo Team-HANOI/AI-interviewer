@@ -19,6 +19,7 @@ public class RecruitServiceImpl implements RecruitService {
 	public List<RecruitVO> searchAll() throws Exception {
 		List<RecruitVO> recruits = recruitDAO.selectRecruits();
 		if (recruits == null) throw new Exception("");
+		System.out.println(recruits.size());
 		return recruits;
 	}
 
