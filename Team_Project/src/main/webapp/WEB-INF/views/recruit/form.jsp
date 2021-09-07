@@ -43,49 +43,49 @@
                     </div>
                     <div class="post_page-sub-box">
                         <label for="r-period">기간</label>
-                        <input id="r-period" name="r_startDate" class="login-input" type="date" placeholder="">
+                        <input id="r-period" name="rStartdate" class="login-input" type="date">
                         <p class="from-to"> ~ </p>
-                        <input id="" name="r_endDate" class="login-input" type="date" placeholder="">
+                        <input id="" name="rEnddate" class="login-input" type="date">
                     </div>
 
                     <div class="post_page-sub-box">
                         <label>키워드</label>
                         <div class="post-keywords">
                             <div class="post-keyword">
-                                <input id="post-kw1" name="kw" type="checkbox">
-                                <label for="post-kw1">a</label>
+                                <input id="post-kw1" name="kw" type="checkbox" value="java">
+                                <label for="post-kw1">#java</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw2" name="kw" type="checkbox">
-                                <label for="post-kw2">b</label>
+                                <input id="post-kw2" name="kw" type="checkbox" value="c#">
+                                <label for="post-kw2">#c#</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw3" name="kw" type="checkbox">
-                                <label for="post-kw3">c</label>
+                                <input id="post-kw3" name="kw" type="checkbox" value="c">
+                                <label for="post-kw3">#c</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw4" name="kw" type="checkbox">
-                                <label for="post-kw4">d</label>
+                                <input id="post-kw4" name="kw" type="checkbox" value="c++">
+                                <label for="post-kw4">#c++</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw5" name="kw" type="checkbox">
-                                <label for="post-kw5">e</label>
+                                <input id="post-kw5" name="kw" type="checkbox" value="python">
+                                <label for="post-kw5">#python</label>
                             </div>
                             <div class="post-keyword">
-                                <input id="post-kw6" name="kw" type="checkbox">
-                                <label for="post-kw6">faaaaaaaaaaa</label>
+                                <input id="post-kw6" name="kw" type="checkbox" value="php">
+                                <label for="post-kw6">#php</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="post_page-sub-box">
                         <label for="">URL</label>
-                        <input id="" class="login-input" type="text" placeholder="">
+                        <input id="" name="url" class="login-input" type="text" placeholder="">
                     </div>
 
                     <div class="post_page-sub-box">
                         <label for="">경력</label>
-                        <input id="" class="login-input" type="number" placeholder="ex) 1">
+                        <input id="" name="career" class="login-input" type="number" placeholder="ex) 1">
                     </div>
                 </div>
 

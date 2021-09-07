@@ -45,14 +45,16 @@
                     <div class="text-wrap">
                         <h1>회사이름: ${r.cName }</h1>
                         <p>경력: ${r.career }</p>
-                        <c:set var="keywords" value="${fn:split(r.keyword, ',') }"></c:set>
+                        <c:set var="keywords" value="${fn:split(r.kw, ',') }"></c:set>
                         <c:forEach var="k" items="${keywords }">
 	                        <small>#${k }</small>&nbsp;
                         </c:forEach>
                     </div>
-                    ${r.fileData }
-                    <img class="card-img" src="image/sky.jpg" alt="" srcset="">
-                </div>
+                    <img src='<c:url value="/recruit/img/${r.logoId}"/>'
+								width="1000" class="img-thumbnail card-img">
+					
+					
+				</div>
             </a>
             </c:forEach>
         </div>

@@ -5,56 +5,52 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 @Component("recruit")
-public class Recruit {
+public class RecruitVO {
+	
 	// properties
-	private int r_id;
+	private int rId;
 	private String email;
 	private String pos;
-	private Date r_startDate;
-	private Date r_endDate;
+	private Date rStartdate;
+	private Date rEnddate;
 	private String kw;
 	private String url;
 	private String career;
 	private Date regdate;
-	private Date updateDate;
+	private Date updatedate;
 	
+
 	// properties for join statement
 	private String cName;
-	private String fileData;
+	private String logoId;
 	
 	// constructors
-	public Recruit() {}
-	
-	public Recruit(
-			int id, 
-			String email, 
-			String pos, 
-			Date startDate, 
-			Date endDate, 
-			String keyword, 
-			String url,
-			String career, 
-			Date regdate, 
-			Date updateDate) {
-		this.r_id = id;
+	public RecruitVO() {}
+
+	public RecruitVO(int rId, String email, String pos, Date rStartdate, Date rEnddate, String kw, String url,
+			String career, Date regdate, Date updatedate, String cName, String fileData) {
+		super();
+		this.rId = rId;
 		this.email = email;
 		this.pos = pos;
-		this.r_startDate = startDate;
-		this.r_endDate = endDate;
-		this.kw = keyword;
+		this.rStartdate = rStartdate;
+		this.rEnddate = rEnddate;
+		this.kw = kw;
 		this.url = url;
 		this.career = career;
 		this.regdate = regdate;
-		this.updateDate = updateDate;
+		this.updatedate = updatedate;
+		this.cName = cName;
 	}
+
 
 	// getter and setter methods
 	public int getId() {
-		return r_id;
+		return rId;
 	}
 
 	public void setId(int r_id) {
-		this.r_id = r_id;
+		this.rId = r_id;
 	}
 
 	public String getEmail() {
@@ -65,7 +61,7 @@ public class Recruit {
 		this.email = email;
 	}
 
-	public String getPosition() {
+	public String getPos() {
 		return pos;
 	}
 
@@ -73,27 +69,27 @@ public class Recruit {
 		this.pos = pos;
 	}
 
-	public Date getStartDate() {
-		return r_startDate;
+	public Date getRStartdate() {
+		return rStartdate;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.r_startDate = startDate;
+	public void setRStartdate(Date startDate) {
+		this.rStartdate = startDate;
 	}
 
-	public Date getEndDate() {
-		return r_endDate;
+	public Date getREnddate() {
+		return rEnddate;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.r_endDate = endDate;
+	public void setREnddate(Date endDate) {
+		this.rEnddate = endDate;
 	}
 
-	public String getKeyword() {
+	public String getKw() {
 		return kw;
 	}
 
-	public void setKeyword(String keyword) {
+	public void setKw(String keyword) {
 		this.kw = keyword;
 	}
 
@@ -121,12 +117,12 @@ public class Recruit {
 		this.regdate = regdate;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
+	public Date getUpdatedate() {
+		return updatedate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	public void setUpdatedate(Date updateDate) {
+		this.updatedate = updateDate;
 	}
 
 	public String getcName() {
@@ -137,11 +133,11 @@ public class Recruit {
 		this.cName = cName;
 	}
 
-	public String getFileData() {
-		return fileData;
+	public String getLogoId() {
+		return logoId;
 	}
 
-	public void setFileData(String fileData) {
-		this.fileData = fileData;
+	public void setLogoId(String logoId) {
+		this.logoId = logoId;
 	}
 }
