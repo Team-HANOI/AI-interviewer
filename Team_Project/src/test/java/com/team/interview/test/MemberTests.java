@@ -1,6 +1,9 @@
 package com.team.interview.test;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Iterator;
+import javax.sql.DataSource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +26,11 @@ public class MemberTests {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
-  @Test
+  @Autowired
+  private DataSource ds;
+
+
+  //  @Test
   public void insertDummies() {
     // 1 - 90까지는 USER
     // 91- 100까지는 USER,COMPANY,ADMIN
@@ -73,6 +80,33 @@ public class MemberTests {
 
     System.out.println(result);
 
+  }
+
+
+
+  @Test
+  public void testUpdateMember() {
+
+    String sql = "UPDATE TBL_MEMBER SET pw = ?, from_social = '0', type = 'M' WHERE email = 'shguddnr2@Naver.com'";
+
+    Connection con = null;
+    PreparedStatement pstmt = null;
+
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+
+      pstmt.setString(1, passwordEncoder.encode("1111"));
+
+      pstmt.executeUpdate();
+
+    }catch(Exception e) {
+      e.printStackTrace();
+    }finally {
+      if(pstmt != null) { try { pstmt.close();  } catch(Exception e) {} }
+      if(con != null) { try { con.close();  } catch(Exception e) {} }
+
+    }
   }
 
 
