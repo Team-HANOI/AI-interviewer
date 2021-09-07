@@ -9,6 +9,7 @@ public class Criteria {
 
   private String type;
   private String keyword;
+  private String email; // 로그인 사용자 이메일
 
   public Criteria() {
     this(1, 10); // 기본값을 1 페이지, 10 amount로 하자
@@ -38,7 +39,7 @@ public class Criteria {
   @Override
   public String toString() {
     return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", type=" + type + ", keyword="
-        + keyword + "]";
+        + keyword + ", email=" + email + "]";
   }
 
   public int getPageNum() {
@@ -72,5 +73,14 @@ public class Criteria {
   public void setKeyword(String keyword) {
     this.keyword = keyword;
   }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
 
 }
