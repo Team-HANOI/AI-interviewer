@@ -1,5 +1,6 @@
 package com.team.interview.vo;
 
+import java.sql.Time;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
@@ -10,8 +11,8 @@ public class MentormodeVO {
 	private int mentorId;
 	private String applEmail;
 	private String mentorEmail;
-	private Date startDate;
-	private Date endDate;
+	private String startDate;
+	private String endDate;
 	private String content;
 	private String title;
 	private String method;
@@ -19,11 +20,13 @@ public class MentormodeVO {
 	private String bio;
 	private Date regDate;
 	private Date updateDate;
-
+	private String mentorDate;
+	private String company;
+	
 	public MentormodeVO() {
 	}
 
-	public MentormodeVO(int mentorId, String applEmail, String mentorEmail, Date startDate, Date endDate,
+	public MentormodeVO(int mentorId, String applEmail, String mentorEmail, String startDate, String endDate,
 			String content, String title, String method, String field, String bio, Date regDate, Date updateDate) {
 
 		this.mentorId = mentorId;
@@ -40,6 +43,7 @@ public class MentormodeVO {
 		this.updateDate = updateDate;
 
 	}
+	
 
 	public int getMentorId() {
 		return mentorId;
@@ -65,19 +69,19 @@ public class MentormodeVO {
 		this.mentorEmail = mentorEmail;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
@@ -136,5 +140,23 @@ public class MentormodeVO {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
+	public String getMentorDate() {
+		return mentorDate;
+	}
+
+	public void setMentorDate(String mentorDate) {
+		this.mentorDate = mentorDate;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	
+	
 
 }

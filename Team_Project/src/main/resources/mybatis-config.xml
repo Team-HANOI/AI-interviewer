@@ -11,5 +11,6 @@
   <mapper resource="mybatis/mappers/question.xml"/>
   <mapper resource="mybatis/mappers/keyword.xml"/>
   <mapper resource="mybatis/mappers/answer.xml"/>
+   <mapper resource="mybatis/mappers/mentormode.xml"/>
 </mappers>  
 </configuration>
