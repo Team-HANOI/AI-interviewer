@@ -41,6 +41,7 @@ public class MemberController {
       @ModelAttribute MemberVO memberVO
       , @RequestParam MultipartFile pfImg
       , RedirectAttributes redirectAttrs){
+
     ModelAndView mv = new ModelAndView();
     try {
       memberService.joinIndv(memberVO, pfImg);
