@@ -35,6 +35,8 @@ public interface ReviewController {
 
   ResponseEntity<byte[]> getImageFile(@PathVariable int fileId) throws Exception;
 
+  ResponseEntity<byte[]> getPfImg(@PathVariable int fileId) throws Exception;
+
   void reviewLikeCall(@RequestParam(value = "reviewId", required = true) String reviewId,
       HttpServletResponse response) throws Exception;
 

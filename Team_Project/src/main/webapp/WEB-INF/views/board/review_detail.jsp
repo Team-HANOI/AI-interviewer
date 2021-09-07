@@ -107,9 +107,11 @@
 
 					<div class="group-detail-row">
 						<div class="detail-row">
-							<img class="detail-img" src="image/sky.jpg" alt="">
-							<%-- <img src='<c:url value="/review/img/${profile.fileId}"/>'
-								width="100" class="img-thumbnail"> --%>
+<%-- 							<!-- <img class="detail-img" src="image/sky.jpg" alt=""> -->
+							<img class="recommendations-user_icon" src="img/${article.pfImgId}"> --%>
+							<img src='<c:url value="/review/pfImg/${pfId}"/>'
+											width="100" class="img-thumbnail">
+
 
 						</div>
 						<div class="detail-row">

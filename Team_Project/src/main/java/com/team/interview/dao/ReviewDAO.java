@@ -63,17 +63,19 @@ public interface ReviewDAO {
 
   // 게시글 상세 - 첨부파일
 
-  FileVO getFile(int fileId);
+  FileVO getFile(int fileId) throws Exception;
 
-  void deleteFile(int fileId);
+  // 게시글 상세 - 프로필
 
-  FileVO selectPfImg(String email);
+  int selectPfId(String email) throws Exception;
+
+  FileVO getPfImg(int pfId) throws Exception;
 
   // 게시글 상세 - 좋아요
 
-  int selectLikeCount(String reviewId);
+  int selectLikeCount(String reviewId) throws Exception;
 
-  void updateLikeCount(String reviewId);
+  void updateLikeCount(String reviewId) throws Exception;
 
 
   // 게시글 수정
@@ -94,7 +96,7 @@ public interface ReviewDAO {
   void insertRComm(RCommVO rComm) throws Exception;
 
   // update 댓글수 (게시글 넘버)
-  void updateCommCnt(int reviewId);
+  void updateCommCnt(int reviewId) throws Exception;
 
   // 대댓글 사전작업 selectSeqMax
   int selectSeqMax(@Param("prtComId") int prtComId) throws Exception;
