@@ -39,7 +39,7 @@
 	</select>
 	 -->
 	
-	<insert id="insertRecruit" parameterType="recruit">
+	<insert id="insertRecruit">
 
 	<![CDATA[
 	INSERT INTO tbl_rec(
