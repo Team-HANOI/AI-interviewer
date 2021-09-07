@@ -36,6 +36,7 @@
 					   mentor_id,
 					   company,
 					 mentordate,
+					 mentor_Email,
 						STARTDATE,
 						ENDDATE ,
 						TITLE,
@@ -44,7 +45,7 @@
 						BIO,
  						REGDATE,
 						UPDATEDATE)
-					VALUES(#{mentorId},#{company},#{mentorDate},#{startDate},#{endDate},#{title},#{content},
+					VALUES(#{mentorId},#{company},#{mentorDate},#{mentorEmail},#{startDate},#{endDate},#{title},#{content},
 					#{field},#{bio},sysdate,sysdate)
 						   			]]>
 			</insert>
@@ -82,15 +83,32 @@
 		]]>
 
 	</select>
+
+<select id="selectMyMentorCount" resultType="int">
+		<![CDATA[
+		select count(*) from tbl_mentor where mentor_email=#{mentorEmail}
+		]]>
+
+	</select>
 	
 		<select id="SelectMentorList" resultType="MentormodeVO"
 		parameterType="int">
 		<![CDATA[
-		   		select mentor_id as mentorId, startdate as startDate, enddate as endDate,content, title,company, bio, field, mentordate as mentorDate
+		   		select mentor_id as mentorId, startdate as startDate, enddate as endDate,content, title,company, bio, field, mentordate as mentorDate, mentor_email as mentorEmail
 			from (select row_number() over (order by mentor_id) num, A.* from tbl_mentor A order by mentor_id) 
 			where num between #{startrow} and #{startrow}+10 
 			]]>
 
 	</select>
+	
+	<select id="SelectMyMentorList" resultType="MentormodeVO">
+		<![CDATA[
+		   		select *
+			from (select row_number() over (order by mentor_id) num, A.* from tbl_mentor A order by mentor_id) 
+			where num between #{startrow} and #{startrow}+10 and mentor_email=#{mentorEmail}
+			]]>
+
+	</select>
+	
 
 </mapper>

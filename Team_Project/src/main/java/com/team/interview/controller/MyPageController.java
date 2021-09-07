@@ -1,15 +1,27 @@
 package com.team.interview.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.team.interview.security.dto.AuthMemberDTO;
+import com.team.interview.service.InterviewService;
+import com.team.interview.vo.MentormodeVO;
+import com.team.interview.vo.PageInfo;
 
 @Controller
 @RequestMapping(value="mypage")
 public class MyPageController {
 
+	@Autowired
+	InterviewService iservice;
+	
   @RequestMapping(value="/")
   public ModelAndView mypageProfile() {
     ModelAndView mav = new ModelAndView("mypage/profile");
@@ -37,12 +49,25 @@ public class MyPageController {
   }
 
   @RequestMapping(value="/mentoring/com")
-  public ModelAndView mypageMentoringCom() {
-    ModelAndView mav = new ModelAndView("mypage/mentoring_com");
-    mav.addObject("", "");
-    return mav;
-  }
-
+  public ModelAndView mypageMentoringCom(@AuthenticationPrincipal AuthMemberDTO authMemberDTO,@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+			PageInfo pageInfo = new PageInfo();
+			ModelAndView mv = new ModelAndView();
+			try {
+				String mentorEmail=authMemberDTO.getcEmail();
+				System.out.println(mentorEmail);
+				List<MentormodeVO> articleList = iservice.getMyMentorList(mentorEmail,page, pageInfo);
+				mv.addObject("pageInfo", pageInfo);
+				mv.addObject("articleList", articleList);
+				mv.setViewName("/mypage/mentoring_com");
+			}catch (Exception e) {
+				e.printStackTrace();
+				mv.addObject("err", e.getMessage());
+				mv.addObject("page", "/err");
+				mv.setViewName("main");
+			}
+			return mv;
+		}
+  
   @RequestMapping(value="/myarticle")
   public ModelAndView mypageMyArticle() {
     ModelAndView mav = new ModelAndView("mypage/myarticle");

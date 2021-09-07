@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,26 +34,31 @@
             </div>
             
             <!-- 유저정보 우측 정보 박스 -->
-            <div class="mypage-right">
-                <!-- 유저정보 제목 -->
+         <!--    <div class="mypage-right">
+                유저정보 제목
+                <form action="../interview/mentor_form">
                 <div class="mypage-content-title">
                     <p>멘토링</p><button type="button" class="mtAddBtn btn">멘토링 글작성</button>
                 </div> 
-
-                <div class="line"></div>
+				</form>
+                <div class="line"></div> -->
 				<!-- 사용자 정보 -->
 				<form action="" method="POST" class="mypage-content">
+<c:choose>
+<c:when test="${articleList!=null}">	
+<c:forEach var="article" items="${articleList}"> 
+     				
 					<div class="dialyMT">
-						<span class="dateMT">2021. 8. 21</span>
+						<span class="dateMT">${article.mentorDate}</span>
 						<table class="mypageTb">
 							<tr>
 								<td class="mypageTb-0lax"><input type="time" class="tbCell">
 								</td>
-								<td class="mypageTb-0lax"><span>시부터</span></td>
+								<td class="mypageTb-0lax"><span>${article.startDate}시부터</span></td>
 								<td class="mypageTb-0lax"><input type="time" class="tbCell">
 								</td>
-								<td class="mypageTb-0lax"><span>시까지</span></td>
-								<td class="mypageTb-0lax"><span>구직자명</span></td>
+								<td class="mypageTb-0lax"><span>${article.endDate}시까지</span></td>
+								<td class="mypageTb-0lax"><span>구직자명</span>${article.applEmail}</td>
 								<td class="mypageTb-0lax">
 									<button type="button" class="mdfBtn btn">수정</button>
 								</td>
@@ -60,6 +66,40 @@
 									<button type="button" class="dltBtn btn">삭제</button>
 								</td>
 							</tr>
+							</c:forEach>
+						<section id="pageList">
+			<c:choose>
+				<c:when test="${pageInfo.page<=1}">
+					[이전]&nbsp;
+				</c:when>
+				<c:otherwise>
+					<a href="mentor?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+				<c:choose>
+					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+					<c:otherwise>
+						<a href="mentor?page=${i}">[${i }]</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+				<c:otherwise>
+					<a href="mentor?page=${pageInfo.page+1}">[다음]</a>
+				</c:otherwise>
+			</c:choose>
+		</section>
+	</c:when>	
+	<c:otherwise>
+		<section id="emptyArea">등록된 글이 없습니다.</section>
+	</c:otherwise>
+	</c:choose>
+
+				<!-- 
 							<tr>
 								<td class="mypageTb-0lax"><input type="time" class="tbCell">
 								</td>
@@ -77,7 +117,7 @@
 							</tr>
 						</table>
 					</div>
-					<!--diailyMT-->
+					diailyMT
 
 					<div class="dialyMT">
 						<span class="dateMT">2021. 8. 22</span>
@@ -114,7 +154,7 @@
 							</tr>
 						</table>
 					</div>
-					<!--diailyMT-->
+					diailyMT
 
 					<div class="dialyMT">
 						<span class="dateMT">2021. 8. 23</span>
@@ -151,7 +191,7 @@
 							</tr>
 						</table>
 					</div>
-					<!--diailyMT-->
+					diailyMT
 
 					<div class="dialyMT">
 						<span class="dateMT">2021. 8. 24</span>
@@ -188,7 +228,7 @@
 							</tr>
 						</table>
 					</div>
-					<!--diailyMT-->
+					diailyMT
 
 					<div class="dialyMT">
 						<span class="dateMT">2021. 8. 25</span>
@@ -222,7 +262,7 @@
 								<td class="mypageTb-0lax">
 									<button type="button" class="dltBtn btn">삭제</button>
 								</td>
-							</tr>
+							</tr> -->
 						</table>
 					</div>
 				</form>

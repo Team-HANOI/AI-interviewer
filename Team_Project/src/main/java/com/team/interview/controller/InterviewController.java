@@ -104,10 +104,11 @@ public class InterviewController {
 	}
 
 	@RequestMapping(value = "/mentor/mentorform", method = RequestMethod.POST)
-	public ModelAndView joinPage(@ModelAttribute("mentor") MentormodeVO mentor) {
+	public ModelAndView joinPage(@ModelAttribute("mentor") MentormodeVO mentor, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
 		System.out.println("여기되나");
 		ModelAndView mav = new ModelAndView();
 		try {
+			mentor.setMentorEmail(authMemberDTO.getcEmail());
 			service.regMentor(mentor);
 			mav.setViewName("interview/mentor");
 		} catch (Exception e) {
@@ -118,6 +119,7 @@ public class InterviewController {
 		return mav;
 
 	}
+	
 
 	@RequestMapping(value = "/nomal")
 	public ModelAndView nomalinterview() {

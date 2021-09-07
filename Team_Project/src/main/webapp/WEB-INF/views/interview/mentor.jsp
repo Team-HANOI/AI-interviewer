@@ -70,6 +70,7 @@
 						<p class="mentor-title">${article.company}기업에서 ${article.field}가르쳐드립니다~~</p>
 						<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
 						<p class="mentor-date">${article.mentorDate}날에!</p>
+						<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
 					</div>
 					<button class="btn apply-mentee-btn">신청하기</button>
 				</div>
