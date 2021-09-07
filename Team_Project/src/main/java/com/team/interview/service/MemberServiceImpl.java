@@ -57,7 +57,6 @@ public class MemberServiceImpl implements MemberService {
     // Or faster..
     // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
 
-    // alpaca.jpg -> multipart 변환
     MultipartFile mFile = new CommonsMultipartFile(fileItem);
 
     FileVO newFile = new FileVO();
