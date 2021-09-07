@@ -44,6 +44,9 @@ public interface QuestionDAO {
 	//	backQuestion
 	public ArrayList<QuestionVO> backQuestion() throws Exception;
 	
+
+	String SelectQContent(@Param("q_id") int q_id) throws Exception;
+
 	//	frontQuestion
 	public ArrayList<QuestionVO> frontQuestion() throws Exception;
 	
@@ -54,5 +57,5 @@ public interface QuestionDAO {
 	
 	//	키워드 모드 Question()
 	//	public ArrayList<QuestionVO> frontQuestion() throws Exception;
-		
+
 }

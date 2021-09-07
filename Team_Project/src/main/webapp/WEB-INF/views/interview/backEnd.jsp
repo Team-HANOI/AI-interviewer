@@ -44,7 +44,9 @@ $(function() {
 			$("#question").text(contents[idx]);
 			$("#answer").val("");
 		} else {
+			alert("마지막 질문 입니다.");
 			reqeustNextPage();
+
 		}
 	});
 	
@@ -87,7 +89,7 @@ function reqeustNextPage() {
     
     	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
 			console.log("response:"+xhr.response);
-    		location.href="/interview/successinterview";  
+    		location.href="/interview/result";  
     		     
     	}                 
     }

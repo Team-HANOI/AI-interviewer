@@ -2,7 +2,6 @@ package com.team.interview.service;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -24,7 +23,7 @@ import com.team.interview.vo.MemberVO;
 import com.team.interview.vo.ProfileVO;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService {
   @Autowired
   MemberDAO memberDAO;
   @Autowired
@@ -47,8 +46,10 @@ public class MemberServiceImpl implements MemberService{
     memberVO.setFromSocial(false);
     memberVO.setType('M');
 
+
     File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
     FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
+
 
     InputStream input = new FileInputStream(file);
     OutputStream os = fileItem.getOutputStream();
@@ -56,7 +57,7 @@ public class MemberServiceImpl implements MemberService{
     // Or faster..
     // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
 
-    //alpaca.jpg -> multipart 변환
+    // alpaca.jpg -> multipart 변환
     MultipartFile mFile = new CommonsMultipartFile(fileItem);
 
     FileVO newFile = new FileVO();
@@ -113,7 +114,7 @@ public class MemberServiceImpl implements MemberService{
 
     memberDAO.insertMember(memberVO);
     memberDAO.insertAuth(authVO);
-    companyDAO.insertCompany(companyVO);    
+    companyDAO.insertCompany(companyVO);
   }
 
   @Override

@@ -47,7 +47,6 @@ public class ReviewControllerImpl implements ReviewController {
   public ModelAndView writeReview(@ModelAttribute ReviewVO review, @RequestParam MultipartFile rImg,
       RedirectAttributes redirectAttrs) {
     ModelAndView mv = new ModelAndView();
-    System.out.println("aa");
     try {
       FileVO newFile = null;
       if (rImg != null && !rImg.isEmpty()) { // &&button name='1'
@@ -283,8 +282,8 @@ public class ReviewControllerImpl implements ReviewController {
   @Override
   @RequestMapping(value = "/addComm", method = RequestMethod.POST)
   public ModelAndView addRComm(@ModelAttribute RCommVO rComm) {
-
     System.out.println(rComm.getReviewId());
+    System.out.println(rComm.getEmail());
     ModelAndView mv = new ModelAndView();
 
     try {
@@ -304,7 +303,7 @@ public class ReviewControllerImpl implements ReviewController {
   @Override
   @RequestMapping(value = "/addCommChild", method = RequestMethod.POST)
   public ModelAndView addCommChild(@ModelAttribute RCommVO rComm) {
-
+    System.out.println(rComm.getEmail());
     ModelAndView mv = new ModelAndView();
 
     try {

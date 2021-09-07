@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,11 +53,13 @@
 
 
 			<div class="edit-btn-box">
-
-				<!-- 임시저장 글 목록 보기 -->
-				<a href="./write_tempreview">
+			
+				<sec:authorize access="isAuthenticated()">
+					<!-- 임시저장 글 목록 보기 -->
+					<a href="./write_tempreview">
 					<button class="btn edit-btn">임시저장 글 보기</button>
-				</a>
+					</a>    
+				</sec:authorize>
 
 				<!-- 키워드검색기능 -->
 				<form action="/review/board_review_key" method="post"
@@ -73,10 +76,16 @@
 					</div>
 				</form>
 
-				<!-- 글쓰기 -->
-				<a href="./write">
+				
+				<sec:authorize access="isAuthenticated()">
+					<!-- 글쓰기 -->
+					<a href="./write_review">
+
 					<button class="btn edit-btn">글쓰기</button>
-				</a>
+					</a>    
+				</sec:authorize>
+
+				
 			</div>
 		</div>
 
@@ -115,29 +124,34 @@
 								<c:forEach var="article" items="${articleList}">
 									<tbody class="board-body">
 										<tr>
-											<td><a href="#">${article.pos}</a></td>
-											<td><a href="#">${article.company}</a></td>
-											<td><a
+											<td class="td_pos"><a href="#">${article.pos}</a></td>
+											<td class="td_company"><a href="#">${article.company}</a></td>
+											<td class="td_title"><a
 												href="./board_review_detail?reviewId=${article.reviewId}&page=${pageInfo.page}"><span></span>${article.title}</a></td>
-											<td><a href="#">${article.name}</a></td>
+											<td class="td_name"><a href="#">${article.name}</a></td>
 											<!--  name -->
-											<td><a href="#">${article.regdate}</a></td>
-											<td><a href="#">${article.viewCnt}</a></td>
-											<td><a href="#">${article.likeCnt}</a></td>
+											<td class="td_regdate"><a href="#">${article.regdate}</a></td>
+											<td class="td_viewCnt"><a href="#">${article.viewCnt}</a></td>
+											<td class="td_likeCnt"><a href="#">${article.likeCnt}</a></td>
 										</tr>
 									</tbody>
 								</c:forEach>
 							</table>
 						</section>
+						
+						<br>
+						<br>
+						<br>
 
 						<section id="pageList">
 							<div class="board-control">
+							<span>
 								<c:choose>
 									<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp; 
 				</c:when>
 									<c:otherwise>
-										<a href="boardlist?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+										<a href="/review/board_review?page=${pageInfo.page-1}">[이전]</a>&nbsp;
 				</c:otherwise>
 								</c:choose>
 								<c:forEach var="i" begin="${pageInfo.startPage }"
@@ -145,7 +159,7 @@
 									<c:choose>
 										<c:when test="${pageInfo.page==i }">[${i}]</c:when>
 										<c:otherwise>
-											<a href="boardlist?page=${i}">[${i}]</a>
+											<a href="/review/board_review?page=${i}">[${i}]</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -154,9 +168,10 @@
                 [다음]
                 </c:when>
 									<c:otherwise>
-										<a href="boardlist?page=${pageInfo.page+1}">[다음]</a>
+										<a href="/review/board_review?page=${pageInfo.page+1}">[다음]</a>
 									</c:otherwise>
 								</c:choose>
+								</span>
 							</div>
 						</section>
 					</c:when>

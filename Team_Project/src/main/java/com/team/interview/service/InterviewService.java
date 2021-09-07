@@ -1,14 +1,17 @@
 package com.team.interview.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.team.interview.vo.InterviewVO;
+import com.team.interview.vo.MentormodeVO;
 import com.team.interview.vo.PageInfo;
 
 
 public interface InterviewService {
 
 	public  ArrayList<InterviewVO> searchRecruitPosting(int page, PageInfo pageInfo);
-
+	public void regMentor(MentormodeVO mentor);
+	public List<MentormodeVO> getMentorList(int page,PageInfo pageInfo) throws Exception;
 
 }
