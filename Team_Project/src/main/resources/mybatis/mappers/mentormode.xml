@@ -76,5 +76,21 @@
 	]]>
 	</select>
 	
+	<select id="selectMentorCount" resultType="int">
+		<![CDATA[
+		select count(*) from tbl_mentor
+		]]>
+
+	</select>
+	
+		<select id="SelectMentorList" resultType="MentormodeVO"
+		parameterType="int">
+		<![CDATA[
+		   		select mentor_id as mentorId, startdate as startDate, enddate as endDate,content, title,company, bio, field, mentordate as mentorDate
+			from (select row_number() over (order by mentor_id) num, A.* from tbl_mentor A order by mentor_id) 
+			where num between #{startrow} and #{startrow}+10 
+			]]>
+
+	</select>
 
 </mapper>

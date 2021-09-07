@@ -78,8 +78,24 @@ public class InterviewController {
 	}
 
 	@RequestMapping(value = "/mentor")
-	public String interviewMentor() {
-		return "/interview/mentor";
+	public ModelAndView interviewMentor(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		PageInfo pageInfo = new PageInfo();
+		ModelAndView mv = new ModelAndView();
+		System.out.println("aa");
+		try {
+			List<MentormodeVO> articleList = service.getMentorList(page, pageInfo);
+			mv.addObject("pageInfo", pageInfo);
+			mv.addObject("articleList", articleList);
+			System.out.println(articleList);
+			mv.setViewName("/interview/mentor");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("err", e.getMessage());
+			mv.addObject("page", "/err");
+			mv.setViewName("main");
+		}
+		return mv;
 	}
 
 	@RequestMapping(value = "/mentor/register")
