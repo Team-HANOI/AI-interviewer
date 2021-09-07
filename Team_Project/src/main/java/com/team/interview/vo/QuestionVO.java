@@ -1,110 +1,110 @@
 package com.team.interview.vo;
 
 import java.util.Date;
-
 import org.springframework.stereotype.Component;
 
 @Component
 public class QuestionVO {
 
-	private int qId;
-	private String email;
-	private String ssml;
-	private String content;
-	private String qtype;
-	private String kwlist;
-	private int rcnt;
-	private Date regdate;
-	private Date updatedate;
+  private int qId;
+  private String email;
+  private String ssml;
+  private String content;
+  private String qtype;
+  private String kwlist;
+  private int rcnt;
+  private Date regdate;
+  private Date updatedate;
 
-	public QuestionVO() {
-	}
 
-	public QuestionVO(int qId, String email, String ssml, String content, String qtype, String kwlist, int rcnt,
-			Date regdate, Date updatedate) {
+  public QuestionVO() {
+  }
 
-		this.qId = qId;
-		this.email = email;
-		this.ssml = ssml;
-		this.content = content;
-		this.qtype = qtype;
-		this.kwlist = kwlist;
-		this.rcnt = rcnt;
-		this.regdate = regdate;
-		this.updatedate = updatedate;
+  public QuestionVO(int qId, String email, String ssml, String content, String qtype, String kwlist, int rcnt,
+      Date regdate, Date updatedate) {
 
-	}
+    this.qId = qId;
+    this.email = email;
+    this.ssml = ssml;
+    this.content = content;
+    this.qtype = qtype;
+    this.kwlist = kwlist;
+    this.rcnt = rcnt;
+    this.regdate = regdate;
+    this.updatedate = updatedate;
 
-	public int getqId() {
-		return qId;
-	}
+  }
 
-	public void setqId(int qId) {
-		this.qId = qId;
-	}
+  public int getqId() {
+    return qId;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public void setqId(int qId) {
+    this.qId = qId;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public String getEmail() {
+    return email;
+  }
 
-	public String getSsml() {
-		return ssml;
-	}
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-	public void setSsml(String ssml) {
-		this.ssml = ssml;
-	}
+  public String getSsml() {
+    return ssml;
+  }
 
-	public String getContent() {
-		return content;
-	}
+  public void setSsml(String ssml) {
+    this.ssml = ssml;
+  }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+  public String getContent() {
+    return content;
+  }
 
-	public String getQtype() {
-		return qtype;
-	}
+  public void setContent(String content) {
+    this.content = content;
+  }
 
-	public void setQtype(String qtype) {
-		this.qtype = qtype;
-	}
+  public String getQtype() {
+    return qtype;
+  }
 
-	public String getKwlist() {
-		return kwlist;
-	}
+  public void setQtype(String qtype) {
+    this.qtype = qtype;
+  }
 
-	public void setKwlist(String kwlist) {
-		this.kwlist = kwlist;
-	}
+  public String getKwlist() {
+    return kwlist;
+  }
 
-	public int getRcnt() {
-		return rcnt;
-	}
+  public void setKwlist(String kwlist) {
+    this.kwlist = kwlist;
+  }
 
-	public void setRcnt(int rcnt) {
-		this.rcnt = rcnt;
-	}
+  public int getRcnt() {
+    return rcnt;
+  }
 
-	public Date getRegdate() {
-		return regdate;
-	}
+  public void setRcnt(int rcnt) {
+    this.rcnt = rcnt;
+  }
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
+  public Date getRegdate() {
+    return regdate;
+  }
 
-	public Date getUpdatedate() {
-		return updatedate;
-	}
+  public void setRegdate(Date regdate) {
+    this.regdate = regdate;
+  }
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
-	}
+  public Date getUpdatedate() {
+    return updatedate;
+  }
+
+  public void setUpdatedate(Date updatedate) {
+    this.updatedate = updatedate;
+  }
 
 }
