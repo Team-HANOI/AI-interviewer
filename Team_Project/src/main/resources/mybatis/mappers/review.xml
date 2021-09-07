@@ -50,7 +50,7 @@
 	<select id="selectReviewList" resultType="ReviewVO" parameterType="int">
 		<![CDATA[  
 		select 
-		m.name
+		m.name 
 		,r.review_id as "reviewId"
 		,r.r_img_id as "fileId"
 		,r.email
@@ -64,8 +64,9 @@
 		,r.regdate
 		,r.updatedate
 		,r.temp
-  		  from ((select row_number() over (order by review_id desc) num, A.* from tbl_review A order by review_id desc)) z, tbl_review r, tbl_member m 
-   		 where r.temp=0 and z.num between #{startrow} and #{startrow}+10 and r.email=m.email and r.review_id=z.review_id
+		from (select row_number() over (order by review_id desc) num, A.* from tbl_review A where A.temp=0) r, tbl_member m
+		where r.email=m.email and num between #{startrow} and #{startrow}+9 
+		order by review_id desc
 		]]>
 	</select>
 	
@@ -80,8 +81,8 @@
 	
 	<select id="selectReviewKeyList" resultType="ReviewVO">
 		<![CDATA[  
-		select 
-		m.name
+		select
+		m.name 
 		,r.review_id as "reviewId"
 		,r.r_img_id as "fileId"
 		,r.email
@@ -95,9 +96,9 @@
 		,r.regdate
 		,r.updatedate
 		,r.temp
-		from tbl_review r, tbl_member m, (select row_number() over (order by review_id desc) num, A.* from tbl_review A order by review_id desc) z
-		where (r.pos like '%'||#{keyword}||'%' or r.company like '%'||#{keyword}||'%' or r.title like '%'||#{keyword}||'%' or r.content like '%'||#{keyword}||'%') and r.temp=0 and z.num between ${startrow} and ${startrow}+10 and r.email=m.email and r.review_id=z.review_id
-		
+		from (select row_number() over (order by review_id desc) num, A.* from tbl_review A where ((A.pos like '%'||#{keyword}||'%' or A.company like '%'||#{keyword}||'%' or A.title like '%'||#{keyword}||'%' or A.content like '%'||#{keyword}||'%'))and A.temp=0) r, tbl_member m
+		where num between #{startrow} and #{startrow}+9 and r.email=m.email
+		order by review_id desc
 		]]>
 	</select>
 	
