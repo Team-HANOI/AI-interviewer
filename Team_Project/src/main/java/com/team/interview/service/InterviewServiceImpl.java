@@ -70,4 +70,22 @@ public class InterviewServiceImpl implements InterviewService {
 
 		return dao.SelectMentorList(startrow);
 	}
+
+	@Override
+	public List<MentormodeVO> getMyMentorList(String mentorEmail, int page, PageInfo pageInfo) throws Exception {
+		int listCount = dao.selectMyMentorCount(mentorEmail);
+		int maxPage = (int) Math.ceil((double) listCount / 10);
+		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+		int endPage = startPage + 10 - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		pageInfo.setEndPage(endPage);
+		pageInfo.setListCount(listCount);
+		pageInfo.setMaxPage(maxPage);
+		pageInfo.setPage(page);
+		pageInfo.setStartPage(startPage);
+		int startrow = (page - 1) * 10 + 1;
+
+		return dao.SelectMyMentorList(mentorEmail,startrow);
+	}
 }

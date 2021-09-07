@@ -13,5 +13,5 @@ public interface InterviewService {
 	public  ArrayList<InterviewVO> searchRecruitPosting(int page, PageInfo pageInfo);
 	public void regMentor(MentormodeVO mentor);
 	public List<MentormodeVO> getMentorList(int page,PageInfo pageInfo) throws Exception;
-
+	public List<MentormodeVO> getMyMentorList(String mentorEmail,int page, PageInfo pageInfo) throws Exception;
 }
