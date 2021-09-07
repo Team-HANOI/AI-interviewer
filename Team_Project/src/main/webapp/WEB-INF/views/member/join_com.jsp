@@ -46,7 +46,7 @@
                 <div class="profile-inner">
                 
                 <input type="file" accept="image/*"  name = "logoImg"onchange="showMyImage(this)" id="file" style="display:none"/>
-                <img id="thumbnail" class="profile-img" width="60px" height="60px" src="../image/alpaca.jpg">
+                <img id="thumbnail" class="profile-img" width="60px" height="60px" src="../image/default_pf_img.jpg">
                 </div>
             </div>
         </div>    

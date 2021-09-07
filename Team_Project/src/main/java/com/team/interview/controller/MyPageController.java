@@ -23,11 +23,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team.interview.security.dto.AuthMemberDTO;
+import com.team.interview.service.InterviewRecordService;
 import com.team.interview.service.KeywordService;
 import com.team.interview.service.MemberService;
 import com.team.interview.service.ProfileService;
+import com.team.interview.vo.Criteria;
 import com.team.interview.vo.FileVO;
+import com.team.interview.vo.InterviewRecordVO;
 import com.team.interview.vo.MemberVO;
+import com.team.interview.vo.PageDTO;
 import com.team.interview.vo.ProfileVO;
 
 import com.team.interview.security.dto.AuthMemberDTO;
@@ -50,6 +54,8 @@ public class MyPageController {
   private KeywordService keywordSevice;
   @Autowired
   private MemberService memberService;
+  @Autowired
+  private InterviewRecordService interviewRecordService;
 
 
   @RequestMapping(value="/")
@@ -168,6 +174,48 @@ public class MyPageController {
     return mv;
   }
 
+  @GetMapping(value="/myinterview") // list
+  public ModelAndView mypageMyInterview(Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
+    ModelAndView mav = new ModelAndView("mypage/myinterview");
+    cri.setEmail(authMemberDTO.getEmail());
+    int total = interviewRecordService.getTotal(cri);
+    List<InterviewRecordVO> list = interviewRecordService.getList(cri);
+    mav.addObject("list", list);
+    mav.addObject("pageMaker", new PageDTO(cri, total));
+    return mav;
+  }
+
+  @GetMapping(value="/myinterview/detail") // get 1개
+  public ModelAndView mypageMyInterviewDetail(@RequestParam("iRecordId") int iRecordId, @ModelAttribute("cri") Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
+    ModelAndView mav = new ModelAndView("mypage/myinterview_detail");
+    mav.addObject("interviewRecord", interviewRecordService.get(iRecordId));
+    return mav;
+  }
+
+  //  @PreAuthorize("principal.username == #writer")
+  @PostMapping("/remove")
+  public String remove(@RequestParam("iRecordId") int iRecordId, @ModelAttribute("cri") Criteria cri, 
+      RedirectAttributes rttr, @AuthenticationPrincipal AuthMemberDTO authMemberDTO/* , String writer */) { // writer??
+    if(interviewRecordService.remove(iRecordId)) {
+      rttr.addFlashAttribute("result", "success");
+    }
+    //    rttr.addAttribute("pageNum", cri.getPageNum());
+    //    rttr.addAttribute("amount", cri.getAmount());
+    //    rttr.addAttribute("type", cri.getType());
+    //    rttr.addAttribute("keyword", cri.getKeyword());
+    return "redirect:/mypage/myinterview" + cri.getListLink();
+  }
+
+
+
+
+
+
+
+
+
+
+
   @RequestMapping(value="/mentoring")
   public ModelAndView mypageMentoring() {
     ModelAndView mav = new ModelAndView("mypage/mentoring");
@@ -202,19 +250,7 @@ public class MyPageController {
     return mav;
   }
 
-  @RequestMapping(value="/myinterview")
-  public ModelAndView mypageMyInterview() {
-    ModelAndView mav = new ModelAndView("mypage/myinterview");
-    mav.addObject("", "");
-    return mav;
-  }
 
-  @RequestMapping(value="/myinterview/detail")
-  public ModelAndView mypageMyInterviewDetail() {
-    ModelAndView mav = new ModelAndView("mypage/myinterview_detail");
-    mav.addObject("", "");
-    return mav;
-  }
 
   @RequestMapping(value="/pwchange")
   public ModelAndView mypagePasswordChange() {

@@ -1,14 +1,28 @@
 package com.team.interview.test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Iterator;
+import javax.sql.DataSource;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.team.interview.dao.CompanyDAO;
 import com.team.interview.dao.MemberDAO;
 import com.team.interview.vo.AuthVO;
 import com.team.interview.vo.CompanyVO;
+import com.team.interview.vo.FileVO;
 import com.team.interview.vo.MemberVO;
 
 @SpringBootTest
@@ -23,7 +37,11 @@ public class MemberTests {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
-  @Test
+  @Autowired
+  private DataSource ds;
+
+
+  //  @Test
   public void insertDummies() {
     // 1 - 90까지는 USER
     // 91- 100까지는 USER,COMPANY,ADMIN
@@ -73,6 +91,77 @@ public class MemberTests {
 
     System.out.println(result);
 
+  }
+
+
+
+  //  @Test
+  public void testUpdateMember() {
+
+    String sql = "UPDATE TBL_MEMBER SET pw = ?, from_social = '0', type = 'M' WHERE email = 'shguddnr2@Naver.com'";
+
+    Connection con = null;
+    PreparedStatement pstmt = null;
+
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+
+      pstmt.setString(1, passwordEncoder.encode("1111"));
+
+      pstmt.executeUpdate();
+
+    }catch(Exception e) {
+      e.printStackTrace();
+    }finally {
+      if(pstmt != null) { try { pstmt.close();  } catch(Exception e) {} }
+      if(con != null) { try { con.close();  } catch(Exception e) {} }
+
+    }
+  }
+  @Test
+  public void testUpdateToDefaultProfileImage() {
+
+    String sql = "UPDATE TBL_PF_IMG"
+        + "   SET "
+        + "    file_name = ?"
+        + "    ,file_size = ?"
+        + "    ,file_content_type = ?"
+        + "    ,file_upload_date = current_timestamp"
+        + "    ,file_data = ?"
+        + "    ,regdate = sysdate"
+        + "    ,updatedate = sysdate"
+        + " WHERE pf_img_id = 1";
+
+    Connection con = null;
+    PreparedStatement pstmt = null;
+
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+
+      File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
+      FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
+
+      InputStream input = new FileInputStream(file);
+      OutputStream os = fileItem.getOutputStream();
+      IOUtils.copy(input, os);
+      MultipartFile mFile = new CommonsMultipartFile(fileItem);
+
+      pstmt.setString(1, mFile.getOriginalFilename());
+      pstmt.setLong(2, mFile.getSize());
+      pstmt.setString(3, mFile.getContentType());
+      pstmt.setBytes(4, mFile.getBytes());
+
+      pstmt.executeUpdate();
+
+    }catch(Exception e) {
+      e.printStackTrace();
+    }finally {
+      if(pstmt != null) { try { pstmt.close();  } catch(Exception e) {} }
+      if(con != null) { try { con.close();  } catch(Exception e) {} }
+
+    }
   }
 
 
