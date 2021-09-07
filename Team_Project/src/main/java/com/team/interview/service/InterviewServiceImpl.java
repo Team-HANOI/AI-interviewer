@@ -42,8 +42,10 @@ public class InterviewServiceImpl implements InterviewService {
 	}
 
 	@Override
-	public void insertMentorMode(MentormodeVO mentor) {
-		dao.insertMentorMode();
+	public void regMentor(MentormodeVO mentor) {
+		int mentor_id=dao.selectMaxmentorId()+1;
+		mentor.setMentorId(mentor_id);
+		dao.insertMentorMode(mentor);
 		
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team.interview.dao.MentormodeDAO">
+<mapper namespace="com.team.interview.dao.InterviewDAO">
 
 
 	<!--
@@ -33,21 +33,20 @@
 				<![CDATA[
 					INSERT INTO tbl_mentor
 					   (
-						STARTDATE as "startDate",
-						ENDDATE as "endDate",
-						
-						TITLE as "title",
-						CONTENT as "content",
-						FIELD as "field",
-						METHOD as "method",
-						BIO as "bio",
-
-						REGDATE as "regDate",
-						UPDATEDATE as "updateDate")
-
-					VALUES(#{startDate},#{endDate},#{title},#{content},#{field},
-						   #{method},#{bio},sysdate,sysdate)
-				]]>
+					   mentor_id,
+					   company,
+					 mentordate,
+						STARTDATE,
+						ENDDATE ,
+						TITLE,
+						CONTENT,
+						FIELD,
+						BIO,
+ 						REGDATE,
+						UPDATEDATE)
+					VALUES(#{mentorId},#{company},#{mentorDate},#{startDate},#{endDate},#{title},#{content},
+					#{field},#{bio},sysdate,sysdate)
+						   			]]>
 			</insert>
 
 	<!-- <insert id="insertMentorMode" parameterType="MentormodeVO">
@@ -71,12 +70,11 @@
 	</insert> -->
 	
 	
-	<!-- <select id="selectMaxmentorId" resultType="int">
+	<select id="selectMaxmentorId" resultType="int">
 	<![CDATA[
 	select nvl(max(mentor_id),0) from tbl_mentor
 	]]>
 	</select>
-	 -->
-
+	
 
 </mapper>

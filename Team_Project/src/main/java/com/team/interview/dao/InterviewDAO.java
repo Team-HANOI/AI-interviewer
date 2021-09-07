@@ -7,14 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.team.interview.vo.InterviewVO;
 import com.team.interview.vo.MentormodeVO;
-import com.team.interview.vo.MentormodeVO;
 
 @Mapper
 @Repository
 public interface InterviewDAO {
 
 	public ArrayList<InterviewVO> selectRecruitPosting(int startrow);
-	public MentormodeVO insertMentorMode();
+	public void insertMentorMode(MentormodeVO mentor);
 	public int selectMaxmentorId();
 	public int selectTotPostCnt();
 	

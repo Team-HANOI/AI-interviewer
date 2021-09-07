@@ -10,6 +10,6 @@ import com.team.interview.vo.PageInfo;
 public interface InterviewService {
 
 	public  ArrayList<InterviewVO> searchRecruitPosting(int page, PageInfo pageInfo);
-	public void insertMentorMode(MentormodeVO mentor);
+	public void regMentor(MentormodeVO mentor);
 
 }

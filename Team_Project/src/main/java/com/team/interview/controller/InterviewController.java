@@ -78,38 +78,29 @@ public class InterviewController {
 	}
 
 	@RequestMapping(value = "/mentor")
-	public ModelAndView interviewMentor() {
-		ModelAndView mav = new ModelAndView("interview/mentor");
-		mav.addObject("board-total", "board/total");
-		return mav;
+	public String interviewMentor() {
+		return "/interview/mentor";
 	}
 
 	@RequestMapping(value = "/mentor/register")
-	public ModelAndView interviewMentorRegister() {
-
-		ModelAndView mav = new ModelAndView("interview/mentor_form");
-		mav.addObject("board-total", "board/total");
-
-		return mav;
+	public String interviewMentorRegister() {
+		return "/interview/mentor_form";
 	}
 
-	@RequestMapping(value = "/interview/mentor/form", method = RequestMethod.POST)
-	public ModelAndView joinPage(@ModelAttribute MentormodeVO mentormode) {
-
-		ModelAndView mav = new ModelAndView("main");
-
+	@RequestMapping(value = "/mentor/mentorform", method = RequestMethod.POST)
+	public ModelAndView joinPage(@ModelAttribute("mentor") MentormodeVO mentor) {
+		System.out.println("여기되나");
+		ModelAndView mav = new ModelAndView();
 		try {
-
-			mav.addObject("page", "login_form");
-
+			service.regMentor(mentor);
+			mav.setViewName("interview/mentor");
 		} catch (Exception e) {
-
 			e.printStackTrace();
-			mav.addObject("err", e.getMessage());
-			mav.addObject("page", "join_fail");
-
+			mav.setViewName("err");
 		}
+
 		return mav;
+
 	}
 
 	@RequestMapping(value = "/nomal")
@@ -158,13 +149,12 @@ public class InterviewController {
 	public ModelAndView interviewResult() {
 
 		ModelAndView mav = new ModelAndView("interview/result");
-		
+
 		mav.addObject("board-total", "");
 		return mav;
 
 	}
 
-	
 	// 맞춤 모드
 	@RequestMapping(value = "/custom")
 	public ModelAndView customMode() {
@@ -356,21 +346,19 @@ public class InterviewController {
 	// 답변 저장
 	@ResponseBody
 	@PostMapping("/saveanswervoice")
-	public void saveAnswerVoice(@AuthenticationPrincipal AuthMemberDTO authMemberDTO,
-								MultipartHttpServletRequest multi, @RequestParam("type") int type,
-								@RequestParam(value = "pos", required = false) String pos,
-								@RequestParam(value = "kws", required = false) String kws, @RequestParam("qIds") List<String> qIds,
-								@RequestParam("answers") List<String> answers) throws Exception {
-							
+	public void saveAnswerVoice(@AuthenticationPrincipal AuthMemberDTO authMemberDTO, MultipartHttpServletRequest multi,
+			@RequestParam("type") int type, @RequestParam(value = "pos", required = false) String pos,
+			@RequestParam(value = "kws", required = false) String kws, @RequestParam("qIds") List<String> qIds,
+			@RequestParam("answers") List<String> answers) throws Exception {
 
 		try {
 
 //			HttpSession session = multi.getSession();
 //			String email = (String)session.getAttribute(authMemberDTO.getEmail());
-			
+
 //			String email = "shguddnr2@Naver.com"; //
-			
-			String email = authMemberDTO.getEmail();	//	시큐리티에서
+
+			String email = authMemberDTO.getEmail(); // 시큐리티에서
 			// 면접 기록 저장 interviewAnswerService
 			// 면접의 타입에 따라 달라짐
 			InterviewRecordVO interviewRecord = new InterviewRecordVO();
