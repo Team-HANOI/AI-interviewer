@@ -76,14 +76,17 @@
 												                    <br>
 												                  </c:otherwise>
 												                </c:choose>
+												                
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <span class="pfText">기본 정보</span><br><br>
-                                <span class="pfInfo" >${user.phoneNum} </span>
+                                
+                                <span class="pfInfo" >${user.name}</span>
                                 <span class="pfInfo" >${user.email}</span>
+                                <span class="pfInfo" >${user.phoneNum}</span>
                             </li>
                             <li>
                                 <span class="pfText">Github 주소</span>
@@ -92,10 +95,14 @@
                             <li>
                                 <span class="pfText">주요 기술<span class="sm-grey"></span></span>
                                 <div style="display: block;margin-top: 10px;">
-                                    <button class="btn dark" type="button">Java</button>
-                                    <button class="btn dark" type="button">Spring</button>
-                                    <button class="btn dark" type="button">MyBatis</button>
+                                <c:forEach var="pSkill" items="${pSkillList}">
+                                    <button class="btn dark" type="button">${pSkill}</button>
+																</c:forEach>
                                 </div>
+                            </li>
+                            <li>
+                                <span class="pfText">희망 직무<span class="sm-grey"></span></span>
+                                <span class="pfInfo" >${profile.pos}</span>
                             </li>
                             <li>
                                 <span class="pfText">한줄 소개</span>

@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
@@ -107,8 +108,9 @@ public class CommonOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
     // 없다면 회원 추가 패스워드는 1111 이름은 그냥 이메일 주소로(뒤에서 true?로 처리함)
     MemberVO newMemberVO = new MemberVO();
+    StringTokenizer st = new StringTokenizer(email, "@");
     newMemberVO.setEmail(email);
-    newMemberVO.setName(email);
+    newMemberVO.setName(st.nextToken());
     newMemberVO.setPw(passwordEncoder.encode("1111"));
     newMemberVO.setFromSocial(true);
     newMemberVO.setType('M');

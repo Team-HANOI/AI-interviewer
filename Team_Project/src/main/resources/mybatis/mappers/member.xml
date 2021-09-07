@@ -37,6 +37,22 @@
 	  <result property="updatedate" column="updatedate" />
   </resultMap>
 
+    <update id="updateMypageProfile">
+UPDATE TBL_MEMBER 
+set
+  name = #{name}
+  ,updatedate = sysdate
+  ,phone_num = #{phoneNum}
+ WHERE email = #{email}
+    </update>
+
+
+    <update id="updatePfIdByEmail">
+    UPDATE TBL_MEMBER 
+		   SET 
+		  pf_id = profile_sq.currval
+		 WHERE email = #{email}
+    </update>
 
 
     <insert id="insertMember" parameterType="MemberVO">

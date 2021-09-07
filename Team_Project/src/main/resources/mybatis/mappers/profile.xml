@@ -29,6 +29,28 @@
 	  <result property="regdate" column="regdate" />
 	  <result property="updatedate" column="updatedate" />
   </resultMap>
+  
+  <update id="updateMypageProfileImage">
+  UPDATE TBL_PF_IMG 
+   SET
+  file_name = #{fileName}
+  ,file_size = #{fileSize}
+  ,file_content_type = #{fileContentType}
+  ,file_data = #{fileData}
+  ,updatedate = sysdate
+ WHERE pf_img_id = #{fileId}
+  
+  </update>
+  <update id="updateMypageProfile">
+UPDATE TBL_PROFILE 
+   SET 
+  bio = #{bio}
+  ,p_skill = #{pSkill}
+  ,updatedate = sysdate
+  ,pos = #{pos}
+  ,github_url = #{githubUrl}
+ WHERE pf_id = #{pfId}
+  </update>
 
     <select id="selectPfImgNextval" resultType="int">
         <![CDATA[
