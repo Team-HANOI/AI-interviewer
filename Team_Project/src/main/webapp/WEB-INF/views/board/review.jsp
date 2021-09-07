@@ -124,23 +124,28 @@
 								<c:forEach var="article" items="${articleList}">
 									<tbody class="board-body">
 										<tr>
-											<td><a href="#">${article.pos}</a></td>
-											<td><a href="#">${article.company}</a></td>
-											<td><a
+											<td class="td_pos"><a href="#">${article.pos}</a></td>
+											<td class="td_company"><a href="#">${article.company}</a></td>
+											<td class="td_title"><a
 												href="./board_review_detail?reviewId=${article.reviewId}&page=${pageInfo.page}"><span></span>${article.title}</a></td>
-											<td><a href="#">${article.name}</a></td>
+											<td class="td_name"><a href="#">${article.name}</a></td>
 											<!--  name -->
-											<td><a href="#">${article.regdate}</a></td>
-											<td><a href="#">${article.viewCnt}</a></td>
-											<td><a href="#">${article.likeCnt}</a></td>
+											<td class="td_regdate"><a href="#">${article.regdate}</a></td>
+											<td class="td_viewCnt"><a href="#">${article.viewCnt}</a></td>
+											<td class="td_likeCnt"><a href="#">${article.likeCnt}</a></td>
 										</tr>
 									</tbody>
 								</c:forEach>
 							</table>
 						</section>
+						
+						<br>
+						<br>
+						<br>
 
 						<section id="pageList">
 							<div class="board-control">
+							<span>
 								<c:choose>
 									<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp; 
@@ -166,6 +171,7 @@
 										<a href="/review/board_review?page=${pageInfo.page+1}">[다음]</a>
 									</c:otherwise>
 								</c:choose>
+								</span>
 							</div>
 						</section>
 					</c:when>
