@@ -23,7 +23,7 @@
 		<!-- 타이틀 더미 -->
 		<div class="dummy"></div>
 
-		<div class="keyword-box">
+		<div class="keyword-box" align="center">
 			<h2 class="popup-text">키워드를 선택하세요</h2>
 
 			<!-- 구분선 -->
