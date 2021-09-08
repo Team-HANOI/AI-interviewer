@@ -79,6 +79,4 @@ public class FileVO {
   public void setUpdatedate(Date updatedate) {
     this.updatedate = updatedate;
   }
-
-
 }

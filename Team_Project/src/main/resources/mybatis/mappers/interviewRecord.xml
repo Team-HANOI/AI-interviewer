@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.interview.dao.InterviewRecordDAO">
+
+  <resultMap type="com.team.interview.vo.InterviewRecordVO" id="interviewRecordMap">
+	  <id property="iRecordId" column="i_record_id"/>
+	  <result property="iRecordId" column="i_record_id" />
+	  <result property="mentorEmail" column="mentor_email" />
+	  <result property="email" column="email" />
+	  <result property="iTypeId" column="i_type_id" />
+	  <result property="chosenKw" column="chosen_kw" />
+	  <result property="chosenPos" column="chosen_pos" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+	  <collection property="answerVOList" resultMap="answerMap">
+    </collection> 
+  </resultMap>
+  
+  <resultMap type="com.team.interview.vo.AnswerVO" id="answerMap">
+	  <result property="answerId" column="answer_id" />
+	  <result property="voiceNum" column="voice_num" />
+	  <result property="iRecordId" column="i_record_id" />
+	  <result property="q_id" column="q_id" />
+	  <result property="content" column="content" />
+	  <result property="rCnt" column="r_cnt" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+	  <association property="questionVO" resultMap="questionMap">
+    </association>
+	  <association property="fileVO" resultMap="fileMap">
+    </association>
+  </resultMap>
+  
+  <resultMap type="com.team.interview.vo.QuestionVO" id="questionMap">
+	  <id property="qId" column="q_id"/>
+	  <result property="qId" column="q_id" />
+	  <result property="email" column="email" />
+	  <result property="ssml" column="ssml" />
+	  <result property="content" column="content" />
+	  <result property="kwlist" column="kw_list" />
+	  <result property="rcnt" column="r_cnt" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+  </resultMap>
+  
+  
+  <resultMap type="com.team.interview.vo.FileVO" id="fileMap">
+	  <result property="fileId" column="voice_num" />
+	  <result property="fileName" column="file_name" />
+	  <result property="fileSize" column="file_size" />
+	  <result property="fileContentType" column="file_content_type" />
+	  <result property="fileUploadDate" column="file_upload_date" />
+	  <result property="fileData" column="file_data" />
+	  <result property="regdate" column="regdate" />
+	  <result property="updatedate" column="updatedate" />
+  </resultMap>
+	
+    <select id="read" resultMap = "interviewRecordMap">
+      <![CDATA[
+        SELECT 
+          r.i_record_id
+				  ,r.mentor_email
+				  ,r.email
+				  ,r.i_type_id
+				  ,r.chosen_kw
+				  ,r.chosen_pos
+				  ,r.regdate
+				  ,r.updatedate
+				  ,a.answer_id
+				  ,a.content
+				  ,a.r_cnt
+				  ,q.q_id
+				  ,q.ssml
+				  ,q.content
+				  ,q.q_type
+				  ,q.kw_list
+				  ,q.r_cnt
+				  ,v.voice_num
+				  ,v.file_name
+				  ,v.FILE_SIZE
+				  ,v.FILE_CONTENT_TYPE
+				  ,v.FILE_UPLOAD_DATE
+				  ,v.FILE_DATA
+				  FROM 
+				    TBL_I_RECORD r 
+				    LEFT OUTER JOIN TBL_ANSWER a
+			       on r.i_record_id = a.i_record_id
+			      LEFT OUTER JOIN TBL_Q q
+		         on a.Q_ID = q.Q_ID
+	          LEFT OUTER JOIN TBL_VOICE v
+		         on a.VOICE_NUM = v.VOICE_NUM
+				 WHERE r.i_record_id = #{iRecordId}
+      ]]>
+    </select>
+    
+    
+    <select id="getListWithPaging" resultMap = "interviewRecordMap">
+    <![CDATA[
+    SELECT i_record_id
+		  ,mentor_email
+		  ,email
+		  ,i_type_id
+		  ,chosen_kw
+		  ,chosen_pos
+		  ,regdate
+		  ,updatedate
+		  FROM 
+		  (
+        select /*+INDEX_DESC(TBL_I_RECORD pk_TBL_I_RECORD) */
+          rownum rn
+          ,i_record_id
+		      ,mentor_email
+		      ,email
+		      ,i_type_id
+		      ,chosen_kw
+		      ,chosen_pos
+		      ,regdate
+		      ,updatedate 
+        from 
+          TBL_I_RECORD
+        where 
+        rownum <= #{pageNum} * #{amount}
+        )
+        where (rn > (#{pageNum} - 1) * #{amount}) and email = #{email}
+    ]]>
+  </select>
+  <!-- 현재페이지(pageNum)이 1이면 rn은 위부터 차례대로 20, 10 이다 -->
+    
+    <select id="getTotalCount" resultType="int">
+    select count(*) from TBL_I_RECORD where email = #{email}
+    </select>
+    
+    
+</mapper>

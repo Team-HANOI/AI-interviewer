@@ -6,10 +6,13 @@
   <mapper resource="mybatis/mappers/member.xml"/>
   <mapper resource="mybatis/mappers/company.xml"/>
   <mapper resource="mybatis/mappers/profile.xml"/>
+  <mapper resource="mybatis/mappers/interviewRecord.xml"/>
   <mapper resource="mybatis/mappers/review.xml"/>
   <mapper resource="mybatis/mappers/interview.xml"/>
   <mapper resource="mybatis/mappers/question.xml"/>
   <mapper resource="mybatis/mappers/keyword.xml"/>
   <mapper resource="mybatis/mappers/answer.xml"/>
+   <mapper resource="mybatis/mappers/mentormode.xml"/>
+  <mapper resource="mybatis/mappers/recruit.xml"/>  
 </mappers>  
 </configuration>

@@ -2,17 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.interview.dao.RecruitDAO">
-<select id="selectRecruits" resultType="recruit">
+	<select id="selectRecruits" resultType="recruitVO">
 	<![CDATA[
 		select 
-		c.c_name as "cName",
-		r.career,
-		r.url, 
-		r.kw
+		c.c_name as "cName", 
+		i.logo_img_id as "logoId", 
+		r.career, r.kw, r.url  
 		from tbl_com c, tbl_logo_img i, tbl_rec r 
 		where c.email = r.email and c.logo_img_id = i.logo_img_id order by 1
 	]]>
 	</select>
+	
+	<select id="getFile" parameterType="int" resultType="fileVO">
+	<![CDATA[
+	select 
+		logo_img_id as "fileId"
+		,file_name as "fileName"
+		,file_size as "fileSize"
+		,file_content_type as "fileContentType"
+		,file_upload_date as "fileUploadDate"
+		,file_data as "fileData"
+		,regdate as "regdate"
+		,updatedate as "updatedate"
+        from tbl_logo_img
+        where logo_img_id=#{fileId}
+	]]>
+	</select>
+	
+	
 	
 	<!-- 
 	<select id="selectRecruits" resultType="recruit">
@@ -22,17 +39,39 @@
 	</select>
 	 -->
 	
-	<insert id="insertRecruit" parameterType="recruit">
+	<insert id="insertRecruit">
+
 	<![CDATA[
-		insert into tbl_rec 
-		values(#{r_id},#{email},#{pos},#{r_startDate},#{r_endDate},#{kw},#{url},#{career},#{regdate},#{updateDate})
+	INSERT INTO tbl_rec(
+		r_id
+		, email
+		, pos
+		, r_startdate
+		, r_enddate
+		, kw
+		, url
+		, career
+		, regdate
+		, updatedate
+	) 
+	VALUES(
+		#{rId}
+		, #{email}
+		, #{pos}
+		, #{rStartdate}
+		, #{rEnddate}
+		, #{kw}
+		, #{url}
+		, #{career}
+		, sysdate
+		, sysdate
+	)
 	]]>	
 	</insert>
 	
-	<select id="searchRecruit" resultType="recruit"
-	parameterType="String">
+	<select id="searchRecruit" resultType="recruitVO">
 	<![CDATA[
-		select * from tbl_rec where id=#{r_id}
+		select * from tbl_rec where r_id=#{rId}
 	]]>
 	</select>
 	

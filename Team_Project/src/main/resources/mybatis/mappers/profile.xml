@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<resultMap type="com.team.interview.vo.FileVO" id="fileMap">
-	  <result property="pfImgId" column="pf_img_id" />
+	  <result property="fileId" column="pf_img_id" />
 	  <result property="fileName" column="file_name" />
 	  <result property="fileSize" column="file_size" />
 	  <result property="fileContentType" column="file_content_type" />
@@ -29,6 +29,28 @@
 	  <result property="regdate" column="regdate" />
 	  <result property="updatedate" column="updatedate" />
   </resultMap>
+  
+  <update id="updateMypageProfileImage">
+  UPDATE TBL_PF_IMG 
+   SET
+  file_name = #{fileName}
+  ,file_size = #{fileSize}
+  ,file_content_type = #{fileContentType}
+  ,file_data = #{fileData}
+  ,updatedate = sysdate
+ WHERE pf_img_id = #{fileId}
+  
+  </update>
+  <update id="updateMypageProfile">
+UPDATE TBL_PROFILE 
+   SET 
+  bio = #{bio}
+  ,p_skill = #{pSkill}
+  ,updatedate = sysdate
+  ,pos = #{pos}
+  ,github_url = #{githubUrl}
+ WHERE pf_id = #{pfId}
+  </update>
 
     <select id="selectPfImgNextval" resultType="int">
         <![CDATA[
@@ -69,5 +91,41 @@
 				  )
         ]]>
     </insert>
+    
+    <select id="getProfile" resultMap = "profileMap">
+      <![CDATA[
+      
+      SELECT pf_id
+			  ,pf_img_id
+			  ,bio
+			  ,lev
+			  ,p_skill
+			  ,g_skill
+			  ,attend_cnt
+			  ,regdate
+			  ,updatedate
+			  ,exp
+			  ,pos
+			  ,github_url
+			  FROM TBL_PROFILE 
+			 WHERE pf_id = #{pfId}
+      ]]>
+    </select>
+    
+    <select id="getFile" resultMap = "fileMap">
+      <![CDATA[
+      SELECT pf_img_id
+			  ,file_name
+			  ,file_size
+			  ,file_content_type
+			  ,file_upload_date
+			  ,file_data
+			  ,regdate
+			  ,updatedate
+			  FROM TBL_PF_IMG 
+			 WHERE pf_img_id = #{fileId}
+      ]]>
+    </select>
+    
     
 </mapper>

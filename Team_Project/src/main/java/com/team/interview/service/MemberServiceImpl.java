@@ -20,6 +20,7 @@ import com.team.interview.vo.AuthVO;
 import com.team.interview.vo.CompanyVO;
 import com.team.interview.vo.FileVO;
 import com.team.interview.vo.MemberVO;
+import com.team.interview.vo.ProfileVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -45,10 +46,10 @@ public class MemberServiceImpl implements MemberService {
     memberVO.setFromSocial(false);
     memberVO.setType('M');
 
-    File file =
-        new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/alpaca.jpg");
-    FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false,
-        file.getName(), (int) file.length(), file.getParentFile());
+
+    File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
+    FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
+
 
     InputStream input = new FileInputStream(file);
     OutputStream os = fileItem.getOutputStream();
@@ -56,7 +57,6 @@ public class MemberServiceImpl implements MemberService {
     // Or faster..
     // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
 
-    // alpaca.jpg -> multipart 변환
     MultipartFile mFile = new CommonsMultipartFile(fileItem);
 
     FileVO newFile = new FileVO();
@@ -87,13 +87,28 @@ public class MemberServiceImpl implements MemberService {
     memberVO.setFromSocial(false);
     memberVO.setType('C');
 
-    FileVO newFile = null;
-    newFile = new FileVO();
-    newFile.setFileName(logoImg.getOriginalFilename());
-    newFile.setFileSize(logoImg.getSize());
-    newFile.setFileContentType(logoImg.getContentType());
-    newFile.setFileData(logoImg.getBytes());
+    FileVO newFile = new FileVO();
 
+    if(logoImg.getSize() == 0) { // 날라온게 없으면 디폴트 이미지로
+      File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
+      FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
+
+
+      InputStream input = new FileInputStream(file);
+      OutputStream os = fileItem.getOutputStream();
+      IOUtils.copy(input, os);
+      MultipartFile mFile = new CommonsMultipartFile(fileItem);
+      newFile.setFileName(mFile.getOriginalFilename());
+      newFile.setFileSize(mFile.getSize());
+      newFile.setFileContentType(mFile.getContentType());
+      newFile.setFileData(mFile.getBytes());
+    } else {
+      newFile.setFileName(logoImg.getOriginalFilename());
+      newFile.setFileSize(logoImg.getSize());
+      newFile.setFileContentType(logoImg.getContentType());
+      newFile.setFileData(logoImg.getBytes());
+
+    }
 
     CompanyVO companyVO = new CompanyVO();
     companyVO.setEmail(memberVO.getEmail());
@@ -114,6 +129,28 @@ public class MemberServiceImpl implements MemberService {
     memberDAO.insertMember(memberVO);
     memberDAO.insertAuth(authVO);
     companyDAO.insertCompany(companyVO);
+  }
+
+  @Override
+  public void updateMypageProfile(MemberVO memberVO, ProfileVO profileVO, MultipartFile pfImg)
+      throws Exception {
+    int pfId = memberDAO.findByEmail(memberVO.getEmail(), memberVO.isFromSocial()).getPfId();
+    profileVO.setPfId(pfId);
+
+    int pfImgId = profileDAO.getProfile(pfId).getPfImgId();
+    FileVO newFile = null;
+    newFile = new FileVO();
+    newFile.setFileId(pfImgId);
+    newFile.setFileName(pfImg.getOriginalFilename());
+    newFile.setFileSize(pfImg.getSize());
+    newFile.setFileContentType(pfImg.getContentType());
+    newFile.setFileData(pfImg.getBytes());
+
+    memberDAO.updateMypageProfile(memberVO);
+    profileDAO.updateMypageProfile(profileVO);
+    if(newFile.getFileSize() != 0) {
+      profileDAO.updateMypageProfileImage(newFile);
+    }
   }
 
 }

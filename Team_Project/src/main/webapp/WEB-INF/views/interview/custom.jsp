@@ -19,7 +19,7 @@
 		<!-- 태양 -->
 		<!-- 팝업 -->
 		<!-- 팝업배경 더미 -->
-
+	<form action="/interview/customMode" method="GET" >
 		<!-- 타이틀 더미 -->
 		<div class="dummy"></div>
 
@@ -29,57 +29,19 @@
 			<!-- 구분선 -->
 			<div class="line"></div>
 
-
 			<div class="keywords">
 				<c:forEach items="${keywordList}" var="keywordList" varStatus="idx">
 					<div class="keyword">
-						<input id="kw${idx.count }" type="checkbox"> <label for="kw${idx.count }">${keywordList.kw }</label>
+						<input id="kw${idx.count }" type="checkbox" name="keyword" value="${keywordList.kw }"> <label for="kw${idx.count }">${keywordList.kw }</label>
 					</div>
 				</c:forEach>
 			</div>
 
 			<!-- 구분선 -->
 			<div class="line"></div>
-
-			<a href="run">
-				<button class="btn popup-btn">확인</button>
-			</a>
+				<button class="btn popup-btn" type="submit">확인</button>
 		</div>
-
-
-		<%-- 
-		<!-- 구분선 -->
-		<div class="line"></div>
-
-		<c:forEach items="${keywordList }" var="keywordList">
-			<div class="toggleArea">
-				<label class="switch"> <input id="kw1"
-					name="keywordCheckBox" type="checkbox" value="${keywordList.kw }" />
-					<span class="slider round">${keywordList.kw }</span>
-				</label>
-			</div>
-		
-
-			
-				<span class="keywords" id="keywords"> <input id="kw1"
-					type="checkbox" name="keywordCheckBox"> <label for="kw1">${keywordList.kw }</label>
-	
-				</span> 
-			
-
-		</c:forEach>
-
-
-
-
-		<!-- 구분선 -->
-		<div class="line"></div>
-
-
-		<a href="/interview/run">
-			<button class="btn popup-btn">확인</button>
-		</a> --%>
-
+	</form>
 	</main>
 	<jsp:include page="../common/footer.jsp" />
 </body>

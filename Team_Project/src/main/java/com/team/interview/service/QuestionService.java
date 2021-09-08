@@ -10,6 +10,6 @@ public interface QuestionService {
 
 	public ArrayList<QuestionVO> frontQuestion() throws Exception;
 	
-	
+	public ArrayList<QuestionVO> customQuestion(String[] keyword) throws Exception;
 	
 }

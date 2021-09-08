@@ -34,7 +34,9 @@ import com.team.interview.vo.ReviewVO;
 public class ReviewControllerImpl implements ReviewController {
   @Autowired
   private ReviewService reviewService;
+
   private ReviewDAO reviewDAO;
+
 
   @Override
   @GetMapping("/write_review")

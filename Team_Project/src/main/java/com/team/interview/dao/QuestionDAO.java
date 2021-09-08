@@ -39,21 +39,17 @@ public interface QuestionDAO {
 	void UpdateRCnt(@Param("answerId") int answerId) throws Exception;
 
 	int QueryRCnt(@Param("answerId") int answerId) throws Exception;
-
 	
+	String SelectQContent(@Param("q_id") int q_id) throws Exception;
+
 	//	backQuestion
 	public ArrayList<QuestionVO> backQuestion() throws Exception;
 	
-
-	String SelectQContent(@Param("q_id") int q_id) throws Exception;
-
 	//	frontQuestion
 	public ArrayList<QuestionVO> frontQuestion() throws Exception;
 	
-	
-	
-	//	맞춤 모드	Question()
-	//	public ArrayList<QuestionVO> frontQuestion() throws Exception;
+	//	customQuestion()
+	public ArrayList<QuestionVO> customQuestion(ArrayList<String> list) throws Exception;
 	
 	//	키워드 모드 Question()
 	//	public ArrayList<QuestionVO> frontQuestion() throws Exception;

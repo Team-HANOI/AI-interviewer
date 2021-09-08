@@ -53,7 +53,7 @@
         <!-- 공고 -->
         <div class="card-box">
             <!-- 채용공고 -->
-            <form action="/interview/mentor/form" method="GET" class="mentor-form join">
+            <form action="./mentorform" method="POST" class="mentor-form join">
                 <h1 class="join-title">멘토 등록하기</h1>
                 
                 <!-- 구분선 -->
@@ -62,36 +62,36 @@
                 <div class="login-sub">
                     <div class="post_page-box">
                         <div class="post_page-sub-box">
-                            <label for="">회사이름</label>
-                            <input id="" class="login-input" type="text" placeholder="">
+                            <label for="company">회사이름</label>
+                            <input id="company" class="login-input" type="text" name="company" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">날짜</label>
-                            <input id="" class="login-input" type="date" placeholder="">
+                            <label for="mentorDate">날짜</label>
+                            <input id="mentorDate" class="login-input" type="date" name="mentorDate" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">시작시간</label>
-                            <input id="" class="login-input" type="time" placeholder="">
+                            <label for="startDate">시작시간</label>
+                            <input id="startDate" class="login-input" type="time" name="startDate" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">종료시간</label>
-                            <input id="" class="login-input" type="time" placeholder="">
+                            <label for="endDate">종료시간</label>
+                            <input id="endDate" class="login-input" type="time" name="endDate" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">멘토링 제목</label>
-                            <input id="title" class="login-input" type="text" placeholder="">
+                            <label for="title">멘토링 제목</label>
+                            <input id="title" class="login-input" name="title" type="text" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">멘토링 내용</label>
-                            <input id="content" class="login-input" type="text" placeholder="">
+                            <label for="content">멘토링 내용</label>
+                            <input id="content" class="login-input" name="content" type="text" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">멘토링 분야</label>
-                            <input id="field" class="login-input" type="text" placeholder="">
+                            <label for="field">멘토링 분야</label>
+                            <input id="field" class="login-input" type="text" name="field" placeholder="">
                         </div>
                         <div class="post_page-sub-box">
-                            <label for="">멘토 소개</label>
-                            <textarea id="bio" class="" name="" cols="57" rows="10"></textarea>
+                            <label for="bio">멘토 소개</label>
+                            <textarea id="bio" class="" name="bio" cols="57" rows="10"></textarea>
                         </div>
                     </div>
 
