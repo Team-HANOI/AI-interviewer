@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.team.interview.dao.ReviewDAO;
 import com.team.interview.service.ReviewService;
 import com.team.interview.vo.FileVO;
 import com.team.interview.vo.PageInfo;
@@ -33,8 +34,9 @@ import com.team.interview.vo.ReviewVO;
 public class ReviewControllerImpl implements ReviewController {
   @Autowired
   private ReviewService reviewService;
-  
-  
+
+  private ReviewDAO reviewDAO;
+
 
   @Override
   @GetMapping("/write_review")
@@ -120,13 +122,15 @@ public class ReviewControllerImpl implements ReviewController {
     try {
       ReviewVO review = reviewService.getBoard(reviewId);
       FileVO file = reviewService.getFile(review.getFileId());
-      // FileVO profile = reviewService.getPfImg(review.getEmail());
-
+      System.out.println("controller email : " + review.getEmail());
+      int pfId = reviewService.selectPfId(review.getEmail());
+      // int pfId = reviewDAO.selectPfId(review.getEmail());
+      System.out.println("controller pfId : " + pfId);
       // 댓글목록 조회
       ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
 
       mv.addObject("commList", commList);
-      // mv.addObject("profile", profile);
+      mv.addObject("pfId", pfId);
       mv.addObject("file", file);
       mv.addObject("review", review);
       mv.addObject("page", page);
@@ -204,6 +208,25 @@ public class ReviewControllerImpl implements ReviewController {
       return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
     }
   }
+
+
+  // 게시판 상세 > 프로필
+  @GetMapping(value = "/pfImg/{pfId}")
+  public ResponseEntity<byte[]> getPfImg(@PathVariable int pfId) throws Exception { // @PathVariable_url값을_변수로_담는다
+    FileVO file = reviewService.getPfImg(pfId);
+    final HttpHeaders headers = new HttpHeaders(); // 상수화
+    if (file != null) {
+      String[] mtypes = file.getFileContentType().split("/");
+      headers.setContentType(new MediaType(mtypes[0], mtypes[1]));
+      headers.setContentDispositionFormData("attachment", file.getFileName());
+      headers.setContentLength(file.getFileSize());
+      return new ResponseEntity<byte[]>(file.getFileData(), headers, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+
 
   // 게시판 상세 > 좋아요
 
@@ -318,6 +341,24 @@ public class ReviewControllerImpl implements ReviewController {
       mv.setViewName("/review/err");
     }
     return mv;
+  }
+
+  // 댓글 작성자 프로필사진
+  @GetMapping(value = "/commImg/{email}")
+  public ResponseEntity<byte[]> getcommImg(@PathVariable String email) throws Exception {
+    System.out.println("getcommImg controller email : " + email);
+    FileVO file = reviewService.getCommImg(email);
+    System.out.println("getcommImg controller file.getFileId : " + file.getFileId());
+    final HttpHeaders headers = new HttpHeaders(); // 상수화
+    if (file != null) {
+      String[] mtypes = file.getFileContentType().split("/");
+      headers.setContentType(new MediaType(mtypes[0], mtypes[1]));
+      headers.setContentDispositionFormData("attachment", file.getFileName());
+      headers.setContentLength(file.getFileSize());
+      return new ResponseEntity<byte[]>(file.getFileData(), headers, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+    }
   }
 
 

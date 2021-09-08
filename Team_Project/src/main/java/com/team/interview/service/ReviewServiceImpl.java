@@ -97,10 +97,16 @@ public class ReviewServiceImpl implements ReviewService {
     return reviewDAO.getFile(fileId);
   }
 
-  // @Override
-  // public FileVO getPfImg(String email) throws Exception {
-  // return reviewDAO.selectPfImg(email);
-  // }
+  @Override
+  public FileVO getPfImg(int pfId) throws Exception {
+    return reviewDAO.getPfImg(pfId);
+  }
+
+  @Override
+  public int selectPfId(String email) throws Exception {
+    int id = reviewDAO.selectPfId(email);
+    return id;
+  }
 
   @Override
   public int getLikeCount(String reviewId) throws Exception {
@@ -149,4 +155,14 @@ public class ReviewServiceImpl implements ReviewService {
   public ArrayList<RCommVO> getRCommList(int reviewId) throws Exception {
     return (ArrayList<RCommVO>) reviewDAO.selectRCommList(reviewId);
   }
+
+  @Override
+  public FileVO getCommImg(String email) throws Exception {
+    System.out.println("getcommImg service email : " + email);
+    System.out.println("getcommImg service dao : " + reviewDAO.getCommImg(email));
+    FileVO commImg = reviewDAO.getCommImg(email);
+    return commImg;
+
+  }
+
 }

@@ -162,7 +162,33 @@ public class InterviewController {
   @RequestMapping(value = "/result")
   public ModelAndView interviewResult() {
 
+
     ModelAndView mav = new ModelAndView("interview/result");
+
+	}
+	
+	@RequestMapping(value = "/apply", method = RequestMethod.GET)
+	public ModelAndView applyPage(@ModelAttribute("mentor") MentormodeVO mentor, @RequestParam(value="mentorEmail") String mentorEmail,@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
+		
+		System.out.println("여기되나");
+		ModelAndView mav = new ModelAndView();
+		try {
+			mentor.setMentorEmail(mentorEmail);
+			mentor.setApplEmail(authMemberDTO.getEmail());
+			System.out.println(mentor.getApplEmail());
+			System.out.println(mentor.getMentorEmail());
+			service.appMentor(mentor);
+			mav.setViewName("interview/mentor");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.setViewName("err");
+		}
+
+		return mav;
+
+	}
+	
+
 
     mav.addObject("board-total", "");
     return mav;

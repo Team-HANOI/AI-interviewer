@@ -107,9 +107,9 @@
 
 					<div class="group-detail-row">
 						<div class="detail-row">
-							<img class="detail-img" src="image/sky.jpg" alt="">
-							<%-- <img src='<c:url value="/review/img/${profile.fileId}"/>'
-								width="100" class="img-thumbnail"> --%>
+							<img src='<c:url value="/review/pfImg/${pfId}"/>'
+											width="100" class="img-thumbnail">
+
 
 						</div>
 						<div class="detail-row">
@@ -191,9 +191,11 @@
 											<div class="comment-main-level">
 
 												<div class="comment-avatar">
-													<img
+													<%-- <!-- <img
 														src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg"
-														alt="">
+														alt=""> -->	
+														<img src='<c:url value="/review/pfImg/${pfId}"/>'> --%>
+													<img src="/review/commImg/${comm.email}">
 												</div>
 
 												<div class="comment-box">
