@@ -224,6 +224,31 @@
 	]]>
 	</select>
 	
+	<!-- 게시판 상세 > 프로필 -->
+	
+	<select id="selectPfId" resultType="int" parameterType="String">
+		<![CDATA[
+		select
+        pf_id from tbl_member where email=#{email}
+		]]>		
+	</select>
+	
+	<select id="getPfImg" resultType="fileVO" parameterType="int">
+	<![CDATA[
+		select
+        i.pf_img_id as "fileId"
+		,i.file_name as "fileName"
+		,i.file_size as "fileSize"
+		,i.file_content_type as "fileContentType"
+		,i.file_upload_date as "fileUploadDate"
+		,i.file_data as "fileData"
+		,i.regdate as "regdate"
+		,i.updatedate as "updatedate"
+		from tbl_profile p, tbl_pf_img i
+		where p.pf_id=${pfId} and p.pf_img_id=i.pf_img_id
+	]]>
+	</select>
+	
 	
 	
 	<!-- 게시글 상세 > 좋아요 -->
@@ -315,6 +340,22 @@
         where c.review_id=#{reviewId} and  c.email=m.email
 		order by c.prt_com_id asc, c.lev asc, c.seq asc
 		]]>
+	</select>
+	
+	<select id="getCommImg" resultType="fileVO" parameterType="String">
+		<![CDATA[
+		select
+    	i.pf_img_id as "fileId"
+    	,i.file_name as "fileName"
+    	,i.file_size as "fileSize"
+    	,i.file_content_type as "fileContentType"
+    	,i.file_upload_date as "fileUploadDate"
+    	,i.file_data as "fileData"
+    	,i.regdate as "regdate"
+    	,i.updatedate as "updatedate"
+		from tbl_member m, tbl_profile p, tbl_pf_img i
+		where m.email=#{email} and m.pf_id=p.pf_id and p.pf_img_id=i.pf_img_id
+		]]>		
 	</select>
 	
 </mapper>
