@@ -93,7 +93,8 @@ public class MyPageController {
   @GetMapping(value = {"/img/{fileId}", "/pds/{fileId}"})
   public ResponseEntity<byte[]> getImageFile(@PathVariable int fileId) throws Exception { // @PathVariable_url값을_변수로_담는다
     FileVO file = profileService.getFile(fileId);
-    final HttpHeaders headers = new HttpHeaders(); // 상수화
+
+    final HttpHeaders headers = new HttpHeaders();
     if (file != null) {
       String[] mtypes = file.getFileContentType().split("/");
       headers.setContentType(new MediaType(mtypes[0], mtypes[1]));
@@ -104,6 +105,31 @@ public class MyPageController {
       return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
     }
   }
+
+
+
+
+
+  @GetMapping(value = {"/audio/{fileId}"})
+  public ResponseEntity<byte[]> getVoiceFile(@PathVariable int fileId) throws Exception { // @PathVariable_url값을_변수로_담는다
+
+    FileVO file = interviewRecordService.getVoiceFile(fileId);
+
+    final HttpHeaders headers = new HttpHeaders();
+    if (file != null) {
+      String[] mtypes = file.getFileContentType().split(" ");
+      String[] mtypes2 = mtypes[0].split("/");
+      headers.setContentType(new MediaType(mtypes2[0], mtypes2[1]));  // audio/ogg
+      headers.setContentDispositionFormData("attachment", file.getFileName());
+      headers.setContentLength(file.getFileSize());
+      return new ResponseEntity<byte[]>(file.getFileData(), headers, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+
+
 
   @GetMapping(value="/profile_edit")
   public ModelAndView mypageProfileEdit(@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {

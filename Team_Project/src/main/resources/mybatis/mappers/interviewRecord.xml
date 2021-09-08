@@ -56,6 +56,21 @@
 	  <result property="updatedate" column="updatedate" />
   </resultMap>
 	
+	<select id="getVoiceFile" resultMap = "fileMap">
+      <![CDATA[
+      SELECT VOICE_NUM
+        ,file_name
+        ,file_size
+        ,file_content_type
+        ,file_upload_date
+        ,file_data
+        ,regdate
+        ,updatedate
+        FROM TBL_VOICE 
+       WHERE VOICE_NUM = #{fileId}
+      ]]>
+    </select>
+	
     <select id="read" resultMap = "interviewRecordMap">
       <![CDATA[
         SELECT 
@@ -120,9 +135,9 @@
         from 
           TBL_I_RECORD
         where 
-        rownum <= #{pageNum} * #{amount}
+        rownum <= #{pageNum} * #{amount} and email = #{email}
         )
-        where (rn > (#{pageNum} - 1) * #{amount}) and email = #{email}
+        where (rn > (#{pageNum} - 1) * #{amount}) 
     ]]>
   </select>
   <!-- 현재페이지(pageNum)이 1이면 rn은 위부터 차례대로 20, 10 이다 -->

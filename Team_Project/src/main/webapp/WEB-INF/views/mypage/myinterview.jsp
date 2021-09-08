@@ -49,10 +49,10 @@
                                     <a class='move' href='<c:out value="${interviewRecord.iRecordId}"/>'>
                                      <fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/>
                                      <c:choose>
-																		<c:when test="${interviewRecord.iTypeId eq '1'}">일반</c:when>
-																		<c:when test="${interviewRecord.iTypeId eq '2'}">맞춤</c:when>
-																		<c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
-																		<c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
+																			<c:when test="${interviewRecord.iTypeId eq '1'}">일반</c:when>
+																			<c:when test="${interviewRecord.iTypeId eq '2'}">맞춤</c:when>
+																			<c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
+																			<c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
 																		</c:choose> 면접
                                     </a>
                               </li>
