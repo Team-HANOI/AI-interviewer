@@ -19,9 +19,14 @@ public class MentormodeVO {
   private String bio;
   private Date regDate;
   private Date updateDate;
+  //멘토링날짜
   private Date mentorDate;
+  //회사이름
   private String company;
+  //멘토이름
   private String mentorName;
+  //지원자이름
+  private String applName;
 
   public MentormodeVO() {
   }
@@ -167,6 +172,14 @@ public class MentormodeVO {
 
   public void setMentorName(String mentorName) {
     this.mentorName = mentorName;
+  }
+
+  public String getApplName() {
+    return applName;
+  }
+
+  public void setApplName(String applName) {
+    this.applName = applName;
   }
 
 
