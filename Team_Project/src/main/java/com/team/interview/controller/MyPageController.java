@@ -104,9 +104,6 @@ public class MyPageController {
   }
 
 
-
-
-
   @GetMapping(value = {"/audio/{fileId}"})
   public ResponseEntity<byte[]> getVoiceFile(@PathVariable int fileId) throws Exception { // @PathVariable_url값을_변수로_담는다
 
@@ -230,15 +227,6 @@ public class MyPageController {
   }
 
 
-
-
-
-
-
-
-
-  // 리스트(페이징 구현), 삭제
-
   @RequestMapping(value="/mentoring")
   public ModelAndView mypageMentoring(Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/mentoring");
@@ -254,11 +242,8 @@ public class MyPageController {
     } catch (Exception e) {
       e.printStackTrace();
     }
-
-
     return mav;
   }
-
 
 
   @RequestMapping(value="/mentoring/com")
@@ -266,7 +251,7 @@ public class MyPageController {
     PageInfo pageInfo = new PageInfo();
     ModelAndView mv = new ModelAndView();
     try {
-      String mentorEmail=authMemberDTO.getcEmail();
+      String mentorEmail=authMemberDTO.getEmail();
       System.out.println(mentorEmail);
       List<MentormodeVO> articleList = iservice.getMyMentorList(mentorEmail,page, pageInfo);
       mv.addObject("pageInfo", pageInfo);
@@ -281,14 +266,15 @@ public class MyPageController {
     return mv;
   }
 
+
+  // 이 밑으로 안함
+
   @RequestMapping(value="/myarticle") // 내가쓴글리스트
   public ModelAndView mypageMyArticle() {
     ModelAndView mav = new ModelAndView("mypage/myarticle");
     mav.addObject("", "");
     return mav;
   }
-
-
 
   @RequestMapping(value="/pwchange") // 패스워드 변경
   public ModelAndView mypagePasswordChange() {
