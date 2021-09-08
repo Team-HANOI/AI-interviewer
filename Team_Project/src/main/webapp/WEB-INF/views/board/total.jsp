@@ -124,7 +124,7 @@
 		<section id="emptyArea">등록된 글이 없습니다.</section>
 	</c:otherwise>
 	</c:choose>
-                <div class="line"></div>
+              <!--   <div class="line"></div>
 
                 <div class="board-table detail-row">
                     <div>
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-
+ -->
 	            <!-- 하부 컨트롤 -->
     	        <jsp:include page="board_common/board_page_ctrl.jsp"/>
             </div>
