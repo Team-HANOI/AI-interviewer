@@ -43,21 +43,70 @@
 				</form>
                 <div class="line"></div> -->
 				<!-- 사용자 정보 -->
-				<form action="" method="POST" class="mypage-content">
-<c:choose>
-<c:when test="${articleList!=null}">	
-<c:forEach var="article" items="${articleList}"> 
-     				
+				<!-- <form action="" method="POST" class="mypage-content"> -->
+     	<c:choose>
+			<c:when test="${articleList!=null}">
+				<!-- 메인화면 게시판 -->
+				<ul class="mentor-box">
+					<c:forEach var="article" items="${articleList}">
+						<li class="mentor">
+							<div class="mentor-item">
+								<div class="mentor-cover"></div>
+								<div class="mentor-info">
+									<p class="mentor-title">${article.company}기업에서
+										${article.field}가르쳐드립니다~~</p>
+									<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
+									<p class="mentor-date">${article.mentorDate}날에!</p>
+									<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
+								</div>
+								<button class="btn apply-mentee-btn">신청하기</button>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
+				<section id="pageList">
+					<c:choose>
+						<c:when test="${pageInfo.page<=1}">
+					[이전]&nbsp;
+				</c:when>
+						<c:otherwise>
+							<a href="mentor?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				</c:otherwise>
+					</c:choose>
+					<c:forEach var="i" begin="${pageInfo.startPage }"
+						end="${pageInfo.endPage }">
+						<c:choose>
+							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+							<c:otherwise>
+								<a href="mentor?page=${i}">[${i }]</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+						<c:otherwise>
+							<a href="mentor?page=${pageInfo.page+1}">[다음]</a>
+						</c:otherwise>
+					</c:choose>
+				</section>
+			</c:when>
+			<c:otherwise>
+				<section id="emptyArea">등록된 글이 없습니다.</section>
+			</c:otherwise>
+		</c:choose>
+     				<%-- 
 					<div class="dialyMT">
 						<span class="dateMT">${article.mentorDate}</span>
 						<table class="mypageTb">
 							<tr>
-								<td class="mypageTb-0lax"><input type="time" class="tbCell">
-								</td>
+								
 								<td class="mypageTb-0lax"><span>${article.startDate}시부터</span></td>
-								<td class="mypageTb-0lax"><input type="time" class="tbCell">
-								</td>
+								<!-- <td class="mypageTb-0lax"><input type="time" class="tbCell">
+								</td> -->
 								<td class="mypageTb-0lax"><span>${article.endDate}시까지</span></td>
+								<td class="mypageTb-0lax"><span>분야</span>${article.feild}</td>
 								<td class="mypageTb-0lax"><span>구직자명</span>${article.applEmail}</td>
 								<td class="mypageTb-0lax">
 									<button type="button" class="mdfBtn btn">수정</button>
@@ -67,8 +116,9 @@
 								</td>
 							</tr>
 							</c:forEach>
-						<section id="pageList">
-			<c:choose>
+							</div>
+			<%-- 			<section id="pageList"> --%>
+		<%-- 	<c:choose>
 				<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp;
 				</c:when>
@@ -98,8 +148,7 @@
 		<section id="emptyArea">등록된 글이 없습니다.</section>
 	</c:otherwise>
 	</c:choose>
-
-				<!-- 
+ --%> 	<!-- 
 							<tr>
 								<td class="mypageTb-0lax"><input type="time" class="tbCell">
 								</td>
@@ -267,7 +316,7 @@
 					</div>
 				</form>
 			</div>
-        </div>
+        
     </main>
 
     <!-- 꼬리 -->
