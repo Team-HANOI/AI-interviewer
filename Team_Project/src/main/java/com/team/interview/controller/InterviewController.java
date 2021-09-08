@@ -173,9 +173,9 @@ public class InterviewController {
 
 	}
 
-	// 맞춤 모드
+	// customMode 키워드 선택
 	@RequestMapping(value = "/custom")
-	public ModelAndView customMode() {
+	public ModelAndView custom() {
 
 		ModelAndView mav = new ModelAndView("interview/custom");
 		ArrayList<KeywordVO> keywordList;
@@ -184,7 +184,38 @@ public class InterviewController {
 
 			keywordList = keywordService.keywordList();
 			System.out.println(keywordList);
+
 			mav.addObject("keywordList", keywordList);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+		return mav;
+	}
+
+	// customMode 면접
+	@RequestMapping(value = "/customMode" )
+	public ModelAndView customMode(@RequestParam(value="keyword") String[] keyword) {
+
+		ModelAndView mav = new ModelAndView("interview/customMode");
+		ArrayList<QuestionVO> questions;
+
+		try {
+
+			questions = questionService.customQuestion(keyword);			
+			System.out.println(questions);
+			mav.addObject("questions", questions);
+			
+			String str = "";
+			for(int i = 0; i < keyword.length; i++) {
+				
+				str += keyword[i]+",";
+				
+			}
+			System.out.println(str);
+			mav.addObject("keyword",str);
 
 		} catch (Exception e) {
 
@@ -193,9 +224,10 @@ public class InterviewController {
 		}
 
 		return mav;
-
+		
 	}
 
+	
 	// 일반모드 => backEnd 포지션
 	@RequestMapping(value = "/backEnd") // backEnd
 	public ModelAndView backEndQ() {
