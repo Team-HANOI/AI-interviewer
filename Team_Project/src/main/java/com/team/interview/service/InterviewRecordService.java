@@ -2,6 +2,7 @@ package com.team.interview.service;
 
 import java.util.List;
 import com.team.interview.vo.Criteria;
+import com.team.interview.vo.FileVO;
 import com.team.interview.vo.InterviewRecordVO;
 
 public interface InterviewRecordService {
@@ -10,4 +11,5 @@ public interface InterviewRecordService {
   public List<InterviewRecordVO> getList(Criteria cri);
 
   public int getTotal(Criteria cri);
+  FileVO getVoiceFile(int fileId) throws Exception;
 }
