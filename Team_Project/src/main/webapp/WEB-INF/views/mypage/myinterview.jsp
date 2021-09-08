@@ -10,6 +10,8 @@
     <jsp:include page="../common/top.jsp"/>
 	<!-- 페이지 스타일 -->
 	<link rel="stylesheet" href="/style/board_review.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="../zandi.css">
 </head>
 <body>
     <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
@@ -20,12 +22,42 @@
     
     <!-- 본문 시작 -> 여기서 작업하세요 -->
     <main>
+    
     	<!-- 팝업 -->
         <jsp:include page="../common/popups/popups.jsp"/>
 
 		<!-- 타이틀 더미 -->
         <div class="dummy"></div>
         
+                <div id = zandi>
+                  <ul class="months">
+                    <li>Jan</li>
+                    <li>Feb</li>
+                    <li>Mar</li>
+                    <li>Apr</li>
+                    <li>May</li>
+                    <li>Jun</li>
+                    <li>Jul</li>
+                    <li>Aug</li>
+                    <li>Sep</li>
+                    <li>Oct</li>
+                    <li>Nov</li>
+                    <li>Dec</li>
+                  </ul>
+                  <ul class="days">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                  </ul>
+                  <ul class="squares">
+                    <!-- added via javascript -->
+                  </ul>
+                </div>
+                
         <!-- 마이 페이지 -->
         <div class="mypage">
             <!-- 유저정보 좌측 메뉴 정보 -->
@@ -40,6 +72,9 @@
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title">내 면접</div>
                 <div class="line"></div>
+                
+                
+						  
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-list">
@@ -108,6 +143,7 @@
       actionForm.submit();
     });
     </script>
+    <script  src="../zandi.js"></script>
 </body>
 </html>
 
