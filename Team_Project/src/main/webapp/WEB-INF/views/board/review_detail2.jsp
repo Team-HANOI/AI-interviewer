@@ -9,64 +9,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <!-- css -->
-    <link rel="stylesheet" href="/style/board_comment.css">
-    <link rel="stylesheet" href="/style/board_detail2.css">
+<!-- 공통 스타일 -->
+<jsp:include page="../common/top.jsp" />
 
-    <!-- js -->
-	<script defer src="/js/board_detail.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.js"
+<!-- style -->
+<link rel="stylesheet" href="/style/board_review.css">
+<link rel="stylesheet" href="/style/board_comment.css">
+
+<!-- java script -->
+<script defer src="/js/board_detail.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"
 	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 	crossorigin="anonymous"></script>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-</head>
 
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
 <body>
 	<sec:authentication property="principal" var="user"/> 
-	
-    <header>
-<%--         <div class="profile-main">
-			<img src='<c:url value="/review/pfImg/${pfId}"/>'
-				width="100" class="img-thumbnail">
-		</div> --%>
-		<div class="wrap-profile">
-		<div class="profile-main">
-			<img src='<c:url value="/review/pfImg/${pfId}"/>'width="100" class="img-thumbnail">
-		</div>
-		</div>
-        <h3 class="review-name">${review.name} | ${review.regdate}</h3>
-        <h1>${review.pos} | ${review.company} | ${review.title}</h1>
+	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
+	<jsp:include page="../common/header.jsp" />
 
-		
-		
-        <div class="tagbtn_box">
-            <div class="tagbtn_row">
-                <a href="./write_review" class="button2">글쓰기</a>
-                <c:set var="reviewEmail" value="${review.email}" />
-				<c:set var="userEmail" value="${user.username}" />
-				<c:if test="${reviewEmail eq userEmail}">
-                <a href="/review/modifyForm?reviewId=${review.reviewId}" class="button2">수정</a>
-                <a href="./boarddelete?reviewId=${review.reviewId}&page=${pageInfo.page}" class="button2">삭제</a>
-                </c:if> 
-            </div>
-            <div class="tagbtn_row">
-                <a href="./r_detail_pre?reviewId=${review.reviewId}&page=${pageInfo.page}" class="button2">이전글</a>
-                <a href="./r_detail_next?reviewId=${review.reviewId}&page=${pageInfo.page}" class="button2">다음글</a>
-                <a href="./board_review?page=${pageInfo.page}" class="button2">목록보기</a>
-            </div>
-            <div class="tagbtn_row">
-                <a href="#" class="button2">조회수 : ${review.viewCnt}</a>
-                
-                <!-- 좋아요-->
+	<!-- 구분선 -->
+	<div class="line"></div>
+
+	<!-- 본문 시작 -> 여기서 작업하세요 -->
+	<main>
+		<!-- 팝업 -->
+		<!-- 팝업배경 더미 -->
+		<div class="popup-dummy"></div>
+
+		<!-- 키워드 카드 팝업 -->
+		<jsp:include page="../common/popups/popup_keyword.jsp" />
+
+		<!-- 기업회원가입 팝업 -->
+		<jsp:include page="../common/popups/popup_join_com.jsp" />
+
+		<!-- 일반회원가입 팝업 -->
+		<jsp:include page="../common/popups/popup_join_indv.jsp" />
+
+		<!-- 일번회원가입 추가입력 폼 팝업 -->
+		<jsp:include page="../common/popups/popup_join_indv_extra.jsp" />
+
+		<!-- 기업회원 로그인 -->
+		<jsp:include page="../common/popups/popup_login_com.jsp" />
+
+		<!-- 일반회원 로그인 -->
+		<jsp:include page="../common/popups/popup_login_indv.jsp" />
+
+		<!-- 타이틀 더미 -->
+		<div class="dummy"></div>
+
+		<!-- 메인화면 게시판 -->
+		<div class="board-total mypage">
+			<!-- 게시판 메뉴 -->
+			<jsp:include page="board_common/board_nav.jsp" />
+
+			<!-- 게시판 -->
+			<div class="board mypage-right">
+				<!-- 페이지 타이틀 -->
+				<h1 class="page-title-left">면접후기 상세보기</h1>
+
+				<!-- 구분선 -->
+				<div class="line"></div>
+
+				<div class="board-edit">
+					<a href="./write_review">
+						<button class="btn edit-btn">글쓰기</button>
+					</a> 
+					<c:set var="reviewEmail" value="${review.email}" />
+					<c:set var="userEmail" value="${user.username}" />
+					<c:if test="${reviewEmail eq userEmail}">
+					<a href="/review/modifyForm?reviewId=${review.reviewId}">
+						<button class="btn edit-btn">수정</button>
+					</a> 
+					<a
+						href="./boarddelete?reviewId=${review.reviewId}&page=${pageInfo.page}">
+						<button class="btn edit-btn">삭제</button>
+					</a>
+					</c:if> 
+					
+					<a
+						href="./r_detail_pre?reviewId=${review.reviewId}&page=${pageInfo.page}">
+						<button class="btn edit-btn">이전글</button>
+					</a> <a
+						href="./r_detail_next?reviewId=${review.reviewId}&page=${pageInfo.page}">
+						<button class="btn edit-btn">다음글</button>
+					</a> <a href="./board_review?page=${pageInfo.page}">
+						<button class="btn edit-btn">목록보기</button>
+					</a>
+				</div>
+
+				<div class="board-detail">
+					<p class="text item detail-row">${review.pos}|
+						${review.company} | ${review.title}</p>
+
+					<div class="group-detail-row">
+						<div class="detail-row">
+							<img src='<c:url value="/review/pfImg/${pfId}"/>'
+											width="100" class="img-thumbnail">
+
+
+						</div>
+						<div class="detail-row">
+							<p class="text item">${review.name}</p>
+							<p class="text item">${review.regdate}</p>
+							<p class="text item">
+								조회수: <span>${review.viewCnt}</span>
+							</p>
+
+							<!-- 좋아요-->
 
 							<article class="board-view text-center">
 								<div class="btn-group">
-									<button type="button" class="button2" id="" name="" data-bs-toggle="modal"
+									<button type="button" id="" name="" data-bs-toggle="modal"
 										data-bs-target="#exampleModal"
 										onclick="javascript:likeCnt(${review.reviewId});">
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -76,30 +133,22 @@
 												d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"></path>
 							                        </svg>
 										좋아요
+									</button>
+									<button type="button" class="likeCnt" id="likeCnt">
 										<fmt:formatNumber value="${review.likeCnt}"
 											pattern="###,###,###,###" />
 									</button>
 								</div>
 							</article>
-                
-                
-                
-            </div>
-        </div>
-    </header>
 
 
-    <article>
- 
-        <main>
-            <h2 class="context-h2">${review.pos} | ${review.company} | ${review.title}</h2>
-            <p class="context-p">${review.content} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</b>. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
-            
-            <!-- 구분선 -->
-            <br>
-            <hr noshade/>
-            <br>
-            <!-- 첨부파일 -->
+
+						</div>
+					</div>
+
+					<div class=content>
+
+						<!-- 첨부파일 -->
 						<tr>
 							<td><c:set var="len" value="${fn:length(file.fileName)}" />
 								<c:set var="filetype"
@@ -117,27 +166,21 @@
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
-			<!-- 첨부파일 끝-->
-            <details open>
-                <summary>Will lorem ispum last forever ?</summary>
-                Who knos : orbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. <b>Curabitur sit amet mauris</b>. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet.Vestibulum ante ipsum primis in fauci
-            </details>
-        
-            
-        </main>
-        </article>
-    
-    
+						<!-- 첨부파일 끝-->
 
-    
 
-    <div id="comments">
-            <!-- 댓글목록 -->
 
-						<div class="comments-h2">
+						<!-- 본문내용 -->
+						<p>${review.content}</p>
+					</div>
+					<!-- 본문내용 끝 -->
+
+
+					<!-- 댓글목록 -->
+
+					<div class="comments-container">
 						<h2>댓글</h2>
-						</div>
-						<div class="comments-container">
+
 						<c:forEach items="${commList}" var="comm" varStatus="status">
 
 							<ul id="comments-list" class="comments-list">
@@ -164,21 +207,14 @@
 															<span>${comm.regdate}</span>
 														</div>
 														<div class="comment-head-right">
-															
 															<c:set var="commEmail" value="${comm.email}" />
 															<c:set var="userEmail" value="${user.username}" />
 															<c:if test="${commEmail eq userEmail}">
-															<div class="comment-head-right-btn">
 															<button>수정</button>
-															</div>
-															<div class="comment-head-right-btn">
 															<button>삭제</button>
-															</div>
 															</c:if>
 <!-- 대댓글 버튼 -->
-															<div class="comment-head-right-btn">
 															<button onclick="commentChildFn()">답글 달기</button>
-															</div>
 <!-- 대댓글 버튼 끝 -->
 														</div>
 													</div>
@@ -186,7 +222,7 @@
 												</div>
 											</div>
 
-<%-- <!-- 대댓글 달기 -->
+<!-- 대댓글 달기 -->
 											<div id="comm" class="comm">
 												<form name="${comm.comId}" id="commentChild-form"
 													action="/review/addCommChild" method="post">
@@ -199,7 +235,7 @@
 													<button type="submit" class="comment-btn">댓글달기</button>
 												</form>
 											</div>
-<!-- 대댓글 달기 끝 --> --%>
+<!-- 대댓글 달기 끝 -->
 										</c:when>
 
 
@@ -246,16 +282,20 @@
 					</div>
 
 					<!--  댓글 목록 끝  -->
-        
-        
-        
-        
-        <div>
-        <form name="comment-form" id="comment-form"
+
+
+
+
+
+
+
+
+
+					<!--  댓글 입력 창 시작 -->
+					<form name="comment-form" id="comment-form"
 						action="/review/addComm" method="post">
-            
-            
-            <div class="card-header">
+						<div class="card">
+							<div class="card-header">
 
 								<!-- 댓글 로그인 시작 -->
 								<c:choose>
@@ -271,18 +311,47 @@
 											</c:otherwise>
 								</c:choose>
 								<!--  댓글 로그인 끝  -->
-			</div>
-            
-            <textarea class="form-control" name="content" id="content" placeholder="댓글을 입력하세요"></textarea>
-            <input type="hidden" name="reviewId"
+							</div>
+							<div style="width: 100%; text-align: center;">
+								<div
+									style="display: inline-block; width: 50%; text-align: center;">
+
+									<div style="display: inline-block; width: 50%;">
+
+										<textarea class="form-control" name="content" id="content"
+											placeholder="댓글을 입력하세요" id="floatingTextarea2"
+											style="height: 100px; width: 300px; float: right"></textarea>
+
+										<input type="hidden" name="reviewId"
 											value="${review.reviewId}">
 										<input type="hidden" name="email"
 													value="${user.username}">
-            
-            <button type="button" id="comment-btn" onclick="addComment(${review.reviewId});">댓글달기</button>
-        </form>
-        </div>
-    </div>
-    
+
+									</div>
+									<div style="display: inline-block;">
+
+										<button class="btn btn-primary" type="button" id="comment-btn"
+											style="height: 100px; float: left;"
+											onclick="addComment(${review.reviewId});">댓글 달기</button>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<!--  댓글 입력 창 끝 -->
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</main>
+
+	<!-- 꼬리 -->
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
+
+
