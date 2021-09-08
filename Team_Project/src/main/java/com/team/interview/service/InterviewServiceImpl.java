@@ -50,9 +50,14 @@ public class InterviewServiceImpl implements InterviewService {
 		int mentor_id = dao.selectMaxmentorId() + 1;
 		mentor.setMentorId(mentor_id);
 		dao.insertMentorMode(mentor);
-
+		
 	}
 
+	@Override
+	public void appMentor(MentormodeVO mentor) throws Exception {
+		dao.updateMentor(mentor.getApplEmail(),mentor.getMentorEmail());
+	}
+	
 	@Override
 	public List<MentormodeVO> getMentorList(int page, PageInfo pageInfo) throws Exception {
 		int listCount = dao.selectMentorCount();
