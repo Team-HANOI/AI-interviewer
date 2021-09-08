@@ -237,14 +237,29 @@ public class MyPageController {
 
 
 
-
+  // 리스트(페이징 구현), 삭제
 
   @RequestMapping(value="/mentoring")
-  public ModelAndView mypageMentoring() {
+  public ModelAndView mypageMentoring(Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/mentoring");
-    mav.addObject("", "");
+
+    cri.setEmail(authMemberDTO.getEmail());
+
+    int total = iservice.getTotal(cri);
+    List<MentormodeVO> list;
+    try {
+      list = iservice.getList(cri);
+      mav.addObject("list", list);
+      mav.addObject("pageMaker", new PageDTO(cri, total));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+
     return mav;
   }
+
+
 
   @RequestMapping(value="/mentoring/com")
   public ModelAndView mypageMentoringCom(@AuthenticationPrincipal AuthMemberDTO authMemberDTO,@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
@@ -266,7 +281,7 @@ public class MyPageController {
     return mv;
   }
 
-  @RequestMapping(value="/myarticle")
+  @RequestMapping(value="/myarticle") // 내가쓴글리스트
   public ModelAndView mypageMyArticle() {
     ModelAndView mav = new ModelAndView("mypage/myarticle");
     mav.addObject("", "");
@@ -275,14 +290,14 @@ public class MyPageController {
 
 
 
-  @RequestMapping(value="/pwchange")
+  @RequestMapping(value="/pwchange") // 패스워드 변경
   public ModelAndView mypagePasswordChange() {
     ModelAndView mav = new ModelAndView("mypage/pwchange");
     mav.addObject("", "");
     return mav;
   }
 
-  @RequestMapping(value="/delete")
+  @RequestMapping(value="/delete") // 계정 삭제
   public ModelAndView mypageSession() {
     ModelAndView mav = new ModelAndView("mypage/delete");
     mav.addObject("", "");

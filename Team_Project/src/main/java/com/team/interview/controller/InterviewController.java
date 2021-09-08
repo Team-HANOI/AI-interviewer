@@ -8,17 +8,22 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,7 +60,7 @@ import com.team.interview.vo.QuestionVO;
 public class InterviewController {
 
   @Autowired
-  InterviewService service;
+  InterviewService interviewService;
 
   @Autowired
   QuestionService questionService;
@@ -73,13 +78,20 @@ public class InterviewController {
     return mav;
   }
 
+  @InitBinder
+  public void initBinder(WebDataBinder binder) {   
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");     
+    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+  }
+
+
   @RequestMapping(value = "/mentor")
   public ModelAndView interviewMentor(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
     PageInfo pageInfo = new PageInfo();
     ModelAndView mv = new ModelAndView();
     System.out.println("aa");
     try {
-      List<MentormodeVO> articleList = service.getMentorList(page, pageInfo);
+      List<MentormodeVO> articleList = interviewService.getMentorList(page, pageInfo);
       mv.addObject("pageInfo", pageInfo);
       mv.addObject("articleList", articleList);
       System.out.println(articleList);
@@ -104,8 +116,12 @@ public class InterviewController {
     System.out.println("여기되나");
     ModelAndView mav = new ModelAndView();
     try {
-      mentor.setMentorEmail(authMemberDTO.getcEmail());
-      service.regMentor(mentor);
+      //      SimpleDateFormat transFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+      //      String mentorDateString = transFormat1.format(mentor.getMentorDate());
+
+
+      mentor.setMentorEmail(authMemberDTO.getEmail());
+      interviewService.regMentor(mentor);
       mav.setViewName("interview/mentor");
     } catch (Exception e) {
       e.printStackTrace();
@@ -133,7 +149,7 @@ public class InterviewController {
     ModelAndView mav = new ModelAndView("interview/recruit");
     PageInfo pageInfo = new PageInfo();
 
-    ArrayList<InterviewVO> voList = service.searchRecruitPosting(page, pageInfo);
+    ArrayList<InterviewVO> voList = interviewService.searchRecruitPosting(page, pageInfo);
 
     for (InterviewVO vo : voList) {
       //		System.out.println("==========recruit==="+vo.getKw()+"===========");		
@@ -170,7 +186,7 @@ public class InterviewController {
       mentor.setApplEmail(authMemberDTO.getEmail());
       System.out.println(mentor.getApplEmail());
       System.out.println(mentor.getMentorEmail());
-      service.appMentor(mentor);
+      interviewService.appMentor(mentor);
       mav.setViewName("interview/mentor");
     } catch (Exception e) {
       e.printStackTrace();
