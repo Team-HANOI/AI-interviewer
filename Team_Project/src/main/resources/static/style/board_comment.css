@@ -25,22 +25,19 @@ ul {
 * Lista de Comentarios
 =======================*/
 .comments-container {
-  margin: 60px auto 15px;
   padding: 5px;
-  width: 768px;
-  background: #dee1e3;
+}
+.comments-h2 {
+	color: white;
 }
 
 .comments-container h1 {
   font-size: 36px;
-  color: #283035;
+  color: white;
   font-weight: 400;
 }
 
-.comments-container h1 a {
-  font-size: 18px;
-  font-weight: 700;
-}
+
 
 .comments-list {
   margin-top: 30px;
@@ -188,6 +185,7 @@ ul {
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
+  
 }
 
 .comment-box .comment-head i {
@@ -210,6 +208,16 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.comment-head-right {
+	display: flex;
+	direction: row;	
+	margin-left: 20px;
+}
+
+.comment-head-right-btn {
+	margin: 20px, 20px;
 }
 
 .comment-box .comment-name {
