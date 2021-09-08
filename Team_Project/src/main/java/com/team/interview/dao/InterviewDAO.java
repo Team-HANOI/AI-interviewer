@@ -22,4 +22,5 @@ public interface InterviewDAO {
 	List<MentormodeVO> SelectMentorList(int startrow) throws Exception;
 	public int selectMyMentorCount(@Param("mentorEmail") String mentorEmail)  throws Exception;
 	public List<MentormodeVO> SelectMyMentorList(@Param("mentorEmail") String mentorEmail,@Param("startrow") int startrow) throws Exception;
+	void updateMentor(@Param("appEmail") String appEmail, @Param("mentorEmail") String mentorEmail) throws Exception;
 }
