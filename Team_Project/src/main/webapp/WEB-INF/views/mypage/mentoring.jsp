@@ -36,7 +36,7 @@
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title">
-                    <p>신청중인 멘토링</p><button type="button" class="mtAddBtn btn">멘토링 신청 바로가기</button>
+                    <p>신청중인 멘토링</p>
                 </div> 
 
                 <div class="line"></div>
