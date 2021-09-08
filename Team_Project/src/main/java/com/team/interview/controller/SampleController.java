@@ -23,8 +23,6 @@ public class SampleController {
   public void securityEx1(){
   }
 
-
-
   @GetMapping("/all")
   public void exAll(){
     System.out.println("exAll..........");
