@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import com.team.interview.vo.Criteria;
+import com.team.interview.vo.FileVO;
 import com.team.interview.vo.InterviewRecordVO;
 
 @Mapper
@@ -16,6 +17,7 @@ public interface InterviewRecordDAO {
   public int getTotalCount(Criteria cri);
 
   public int delete(int iRecordId);
+  public FileVO getVoiceFile(int fileId);
 
 
 }
