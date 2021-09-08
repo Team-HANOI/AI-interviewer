@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
@@ -50,31 +51,35 @@
                 <!-- 사용자 정보 -->
                 <div class="mypage-content">
                 
-                <c:forEach items="${interviewRecord.answerVOList}" var="answer" varStatus="status">
-                
-                    <!-- 질의 응답-->
-                    <div class="dialyMT">
-                        <table class="mypageTb">
-                            <tr>
-                                <td class="mypageTb-02ax">
-                                    <span>질문 ${status.count}.</span><span id="question${status.count}"> ${answer.questionVO.content}</span>
-                                </td>
-                                <td class="mypageTb-03ax">
-                                    <button type="button" class="playBtn" id="speaker${status.count}">듣기</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="mypageTb-01ax">
-                                    <p>${answer.content}</p>
-                                </td>
-                                <td class="mypageTb-04ax">
-                                    <button type="button" class="playBtn">${answer.fileVO.fileName}듣기</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </c:forEach>
-                
+                <c:if test="${not empty interviewRecord.answerVOList}">
+	                <c:forEach items="${interviewRecord.answerVOList}" var="answer" varStatus="status">
+	                
+	                    <!-- 질의 응답-->
+	                    <div class="dialyMT">
+	                        <table class="mypageTb">
+	                            <tr>
+	                                <td class="mypageTb-02ax">
+	                                    <span>질문 ${status.count}.</span><span id="question${status.count}"> ${answer.questionVO.content}</span>
+	                                </td>
+	                                <td class="mypageTb-03ax">
+	                                    <button type="button" class="playBtn" id="speaker${status.count}">듣기</button>
+	                                </td>
+	                            </tr>
+	                            <tr>
+	                                <td class="mypageTb-01ax">
+	                                    <p>${answer.content}</p>
+	                                </td>
+	                                <td class="mypageTb-04ax">
+	                                    <button type="button" class="playBtn">${answer.fileVO.fileName}듣기</button>
+                                        <audio controls>
+				                                  <source src='<c:url value="/mypage/audio/${answer.fileVO.fileId}"/>' type="audio/ogg">
+				                                </audio>
+	                                </td>
+	                            </tr>
+	                        </table>
+	                    </div>
+	                </c:forEach>
+                </c:if>
 							    <button data-oper='list'>목록으로 돌아가기</button><br>
                 </div>
 							    
