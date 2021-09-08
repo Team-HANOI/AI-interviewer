@@ -37,6 +37,7 @@ public interface ReviewController {
 
   ResponseEntity<byte[]> getPfImg(@PathVariable int fileId) throws Exception;
 
+
   void reviewLikeCall(@RequestParam(value = "reviewId", required = true) String reviewId,
       HttpServletResponse response) throws Exception;
 
@@ -47,9 +48,12 @@ public interface ReviewController {
 
   ModelAndView boardModify(@ModelAttribute ReviewVO review);
 
+  // 댓글
   ModelAndView addRComm(@ModelAttribute RCommVO rComm);
 
   ModelAndView addCommChild(@ModelAttribute RCommVO rComm);
+
+  ResponseEntity<byte[]> getcommImg(@PathVariable String email) throws Exception;
 
 
 

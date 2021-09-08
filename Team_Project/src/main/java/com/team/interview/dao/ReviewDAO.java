@@ -106,4 +106,8 @@ public interface ReviewDAO {
 
   // select댓글List
   List<RCommVO> selectRCommList(int reviewId) throws Exception;
+
+
+  // select 댓글작성자 프로필사진
+  FileVO getCommImg(String email) throws Exception;
 }

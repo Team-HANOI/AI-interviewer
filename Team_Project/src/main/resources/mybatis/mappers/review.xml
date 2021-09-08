@@ -342,4 +342,20 @@
 		]]>
 	</select>
 	
+	<select id="getCommImg" resultType="fileVO" parameterType="String">
+		<![CDATA[
+		select
+    	i.pf_img_id as "fileId"
+    	,i.file_name as "fileName"
+    	,i.file_size as "fileSize"
+    	,i.file_content_type as "fileContentType"
+    	,i.file_upload_date as "fileUploadDate"
+    	,i.file_data as "fileData"
+    	,i.regdate as "regdate"
+    	,i.updatedate as "updatedate"
+		from tbl_member m, tbl_profile p, tbl_pf_img i
+		where m.email=#{email} and m.pf_id=p.pf_id and p.pf_img_id=i.pf_img_id
+		]]>		
+	</select>
+	
 </mapper>

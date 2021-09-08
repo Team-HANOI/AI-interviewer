@@ -341,6 +341,24 @@ public class ReviewControllerImpl implements ReviewController {
     return mv;
   }
 
+  // 댓글 작성자 프로필사진
+  @GetMapping(value = "/commImg/{email}")
+  public ResponseEntity<byte[]> getcommImg(@PathVariable String email) throws Exception {
+    System.out.println("getcommImg controller email : " + email);
+    FileVO file = reviewService.getCommImg(email);
+    System.out.println("getcommImg controller file.getFileId : " + file.getFileId());
+    final HttpHeaders headers = new HttpHeaders(); // 상수화
+    if (file != null) {
+      String[] mtypes = file.getFileContentType().split("/");
+      headers.setContentType(new MediaType(mtypes[0], mtypes[1]));
+      headers.setContentDispositionFormData("attachment", file.getFileName());
+      headers.setContentLength(file.getFileSize());
+      return new ResponseEntity<byte[]>(file.getFileData(), headers, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+    }
+  }
+
 
 
 }

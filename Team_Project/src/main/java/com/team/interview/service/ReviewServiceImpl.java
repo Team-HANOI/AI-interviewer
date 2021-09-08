@@ -104,9 +104,7 @@ public class ReviewServiceImpl implements ReviewService {
 
   @Override
   public int selectPfId(String email) throws Exception {
-    System.out.println("service email : " + email);
     int id = reviewDAO.selectPfId(email);
-    System.out.println("dao email : " + id);
     return id;
   }
 
@@ -157,4 +155,14 @@ public class ReviewServiceImpl implements ReviewService {
   public ArrayList<RCommVO> getRCommList(int reviewId) throws Exception {
     return (ArrayList<RCommVO>) reviewDAO.selectRCommList(reviewId);
   }
+
+  @Override
+  public FileVO getCommImg(String email) throws Exception {
+    System.out.println("getcommImg service email : " + email);
+    System.out.println("getcommImg service dao : " + reviewDAO.getCommImg(email));
+    FileVO commImg = reviewDAO.getCommImg(email);
+    return commImg;
+
+  }
+
 }

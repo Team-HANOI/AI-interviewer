@@ -44,6 +44,6 @@ public interface ReviewService {
 
   ArrayList<RCommVO> getRCommList(int reviewId) throws Exception;
 
-
+  FileVO getCommImg(String email) throws Exception;
 
 }
