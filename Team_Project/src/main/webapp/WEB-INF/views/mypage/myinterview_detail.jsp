@@ -10,6 +10,7 @@
     <jsp:include page="../common/top.jsp"/>
 	<!-- 페이지 스타일 -->
 	<link rel="stylesheet" href="/style/board_review.css">
+	
 </head>
 <body>
     <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
@@ -49,16 +50,17 @@
                 <!-- 사용자 정보 -->
                 <div class="mypage-content">
                 
-                <c:forEach items="${interviewRecord.answerVOList}" var="answer">
+                <c:forEach items="${interviewRecord.answerVOList}" var="answer" varStatus="status">
+                
                     <!-- 질의 응답-->
                     <div class="dialyMT">
                         <table class="mypageTb">
                             <tr>
                                 <td class="mypageTb-02ax">
-                                    <p>질문. ${answer.questionVO.content}</p>
+                                    <span>질문 ${status.count}.</span><span id="question${status.count}"> ${answer.questionVO.content}</span>
                                 </td>
                                 <td class="mypageTb-03ax">
-                                    <button type="button" class="playBtn">듣기</button>
+                                    <button type="button" class="playBtn" id="speaker${status.count}">듣기</button>
                                 </td>
                             </tr>
                             <tr>
@@ -89,6 +91,35 @@
             </div>
         </div>
     </main>
+<script>
+for(let i = 0; i < 20; i++) {
+	$(function() {
+	  $("#speaker"+i).click(function() {
+	    requestVoice($("#question"+i).text());
+	  });
+	});
+	
+}
+
+function requestVoice(questionText) {
+  var request = new XMLHttpRequest();
+  request.responseType = "blob";
+  request.onload = function() {
+    var audioURL = URL.createObjectURL(this.response);  
+    var audio = new Audio();
+    audio.src = audioURL;
+    audio.play();
+  }
+  request.open("POST", '/interview/questionvoice');
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  var params = "question="+questionText;
+  request.send(params);
+}
+
+</script>    
+    
+    
+    
 <script type="text/javascript">
 $(document).ready(function() {
 	var operForm = $("#operForm");
