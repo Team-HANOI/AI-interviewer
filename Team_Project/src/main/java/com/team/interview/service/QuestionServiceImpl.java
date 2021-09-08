@@ -21,11 +21,20 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public ArrayList<QuestionVO> frontQuestion() throws Exception {
-		//		public ArrayList<QuestionVO> frontQuestion() throws Exception;
 		return questionDAO.frontQuestion();
 	}
 	
-	
-	
+	@Override
+	public ArrayList<QuestionVO> customQuestion(String[] keyword) throws Exception {
+
+		ArrayList<String> list = new ArrayList<String>();
+		
+		for(String s : keyword) {
+			
+			list.add(s);
+			
+		}
+		return questionDAO.customQuestion(list);	
+	}
 	
 }
