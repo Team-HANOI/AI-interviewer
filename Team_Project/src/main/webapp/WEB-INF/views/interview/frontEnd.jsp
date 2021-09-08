@@ -93,7 +93,7 @@ function reqeustNextPage() {
     
     	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
 			console.log("response:"+xhr.response);
-    		location.href="/interview/result";  
+    		location.href="/review/board_review";
     		     
     	}                 
     }
