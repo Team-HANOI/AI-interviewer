@@ -52,12 +52,12 @@ public interface ReviewDAO {
   // 이전 게시글 상세
   void updateViewCountPre(int reviewId) throws Exception;
 
-  ReviewVO selectReviewPre(int reviewId) throws Exception;
+  int selectReviewPre(int reviewId) throws Exception;
 
   // 다음 게시글 상세
   void updateViewCountNext(int reviewId) throws Exception;
 
-  ReviewVO selectReviewNext(int reviewId) throws Exception;
+  int selectReviewNext(int reviewId) throws Exception;
 
 
 

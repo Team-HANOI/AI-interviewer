@@ -148,21 +148,21 @@ public class ReviewControllerImpl implements ReviewController {
       @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
     ModelAndView mv = new ModelAndView();
     try {
-      ReviewVO review = reviewService.getBoardPre(reviewId);
-      // review/board_review temp 0 이고 -1
-      // mv.setViewName("redirect:/review/board_review_detail?reviewId=" + 1);
+      int review = reviewService.getBoardPre(reviewId);
+      mv.setViewName("redirect:/review/board_review_detail?reviewId=" + review);
 
-      FileVO file = reviewService.getFile(review.getFileId());
-      int pfId = reviewService.selectPfId(review.getEmail());
-      // 댓글목록 조회
-      ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
-
-      mv.addObject("commList", commList);
-      mv.addObject("pfId", pfId);
-      mv.addObject("file", file);
-      mv.addObject("review", review);
-      mv.addObject("page", page);
-      mv.setViewName("/board/review_detail");
+      // ver1
+      // FileVO file = reviewService.getFile(review.getFileId());
+      // int pfId = reviewService.selectPfId(review.getEmail());
+      // // 댓글목록 조회
+      // ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
+      //
+      // mv.addObject("commList", commList);
+      // mv.addObject("pfId", pfId);
+      // mv.addObject("file", file);
+      // mv.addObject("review", review);
+      // mv.addObject("page", page);
+      // mv.setViewName("/board/review_detail");
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -180,18 +180,23 @@ public class ReviewControllerImpl implements ReviewController {
       @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
     ModelAndView mv = new ModelAndView();
     try {
-      ReviewVO review = reviewService.getBoardNext(reviewId);
-      FileVO file = reviewService.getFile(review.getFileId());
-      int pfId = reviewService.selectPfId(review.getEmail());
-      // 댓글목록 조회
-      ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
+      int review = reviewService.getBoardNext(reviewId);
+      mv.setViewName("redirect:/review/board_review_detail?reviewId=" + review);
 
-      mv.addObject("commList", commList);
-      mv.addObject("pfId", pfId);
-      mv.addObject("file", file);
-      mv.addObject("review", review);
-      mv.addObject("page", page);
-      mv.setViewName("/board/review_detail");
+
+      // ver1
+      // ReviewVO review = reviewService.getBoardNext(reviewId);
+      // FileVO file = reviewService.getFile(review.getFileId());
+      // int pfId = reviewService.selectPfId(review.getEmail());
+      // // 댓글목록 조회
+      // ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
+      //
+      // mv.addObject("commList", commList);
+      // mv.addObject("pfId", pfId);
+      // mv.addObject("file", file);
+      // mv.addObject("review", review);
+      // mv.addObject("page", page);
+      // mv.setViewName("/board/review_detail");
     } catch (Exception e) {
       e.printStackTrace();
       mv.addObject("err", "글 조회 실패");

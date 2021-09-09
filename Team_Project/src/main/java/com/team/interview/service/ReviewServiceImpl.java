@@ -81,13 +81,13 @@ public class ReviewServiceImpl implements ReviewService {
   }
 
   @Override
-  public ReviewVO getBoardPre(int reviewId) throws Exception {
+  public int getBoardPre(int reviewId) throws Exception {
     reviewDAO.updateViewCountPre(reviewId); // 조회수 증가
     return reviewDAO.selectReviewPre(reviewId);
   }
 
   @Override
-  public ReviewVO getBoardNext(int reviewId) throws Exception {
+  public int getBoardNext(int reviewId) throws Exception {
     reviewDAO.updateViewCountNext(reviewId); // 조회수 증가
     return reviewDAO.selectReviewNext(reviewId);
   }

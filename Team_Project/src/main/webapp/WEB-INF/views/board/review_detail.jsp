@@ -156,14 +156,9 @@
 			</tr>
 			<!-- 첨부파일 끝-->
 			<details open>
-				<summary>Will lorem ispum last forever ?</summary>
-				Who knos : orbi in dui quis est pulvinar ullamcorper. Nulla
-				facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed
-				aliquet risus a tortor. Integer id quam. Morbi mi.
-				<b>Curabitur sit amet mauris</b>. Quisque nisl felis, venenatis
-				tristique, dignissim in, ultrices sit amet, augue. Proin sodales
-				libero eget ante. Nulla quam. Aenean laoreet.Vestibulum ante ipsum
-				primis in fauci
+				<summary>AI면접관 서비스란 ?</summary>
+				내 관심사, 더 공부해야 할 키워드를 선택하여 AI면접관과 함께 맞춤 면접을 진행해보세요!<br>
+				내가 면접 본 음성파일을 마이페이지에서 확인하여 스스로 실력을 향상시킬 수도 있고, 면접 본 텍스트를 커뮤니티에 공유하여 사람들에게 피드백을 받을 수도 있습니다^^ 추천을 많이 받은 모범답안만 공부해도 면접 프리패스 완성! 지금 당장 시작해보세요. 취업에 성공하는 그날까지 AI면접관이 당신과 함께 합니다. 잘될 당신을 응원합니다^^
 			</details>
 
 

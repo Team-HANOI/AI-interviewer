@@ -151,25 +151,19 @@
 		]]>		
 	</update>
 	
-	<select id="selectReviewPre" resultType="ReviewVO" parameterType="int">
+	<select id="selectReviewPre" resultType="int" parameterType="int">
 		<![CDATA[
 		select 
-		m.name
-		,r.review_id as "reviewId"
-		,r.r_img_id as "fileId"
-		,r.email
-		,r.pos
-		,r.company
-		,r.title
-		,r.content
-		,r.comm_cnt as "commCnt"
-		,r.like_cnt as "likeCnt"
-		,r.view_cnt as "viewCnt"
-		,r.regdate
-		,r.updatedate
-		,r.temp
-    	from tbl_review r, tbl_member m 
-    	where review_id=#{reviewId}-1 and r.email=m.email
+		reviewId
+		from(
+		    select 
+		    review_id
+		    , lag(review_id) over (order by review_id) as reviewId
+		    from tbl_review
+		    where temp=0
+		    order by review_id
+		    )
+		where review_id =#{reviewId}
 		]]>		
 	</select>
 	
@@ -182,25 +176,19 @@
 		]]>		
 	</update>
 	
-	<select id="selectReviewNext" resultType="ReviewVO" parameterType="int">
+	<select id="selectReviewNext" resultType="int" parameterType="int">
 		<![CDATA[
 		select 
-		m.name
-		,r.review_id as "reviewId"
-		,r.r_img_id as "fileId"
-		,r.email
-		,r.pos
-		,r.company
-		,r.title
-		,r.content
-		,r.comm_cnt as "commCnt"
-		,r.like_cnt as "likeCnt"
-		,r.view_cnt as "viewCnt"
-		,r.regdate
-		,r.updatedate
-		,r.temp
-    	from tbl_review r, tbl_member m 
-    	where review_id=#{reviewId}+1 and r.email=m.email
+		reviewId
+		from(
+		    select 
+		    review_id
+		    , lead(review_id) over (order by review_id) as reviewId
+		    from tbl_review
+		    where temp=0
+		    order by review_id
+		    )
+		where review_id =#{reviewId}
 		]]>		
 	</select>
 	
