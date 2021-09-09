@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,254 +39,49 @@
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title">
-                    <p>신청중인 멘토링</p><button type="button" class="mtAddBtn btn">멘토링 신청 바로가기</button>
+                    <p>내가 신청한 멘토링</p>
                 </div> 
 
                 <div class="line"></div>
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
                     <div class="dialyMT">
-                        <span class="dateMT">2021. 8. 21</span>
+                    
+	                        <!-- <span class="dateMT">2021-08-17</span> -->
                         <table class="mypageTb">
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-    
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn btn">취소</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-        
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                        </table> 
-                    </div>  
-
-                    <!--diailyMT-->
-                    <div class="dialyMT">
-                        <span class="dateMT">2021. 8. 22</span>
-                        <table class="mypageTb">
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-        
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-                
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
+                           <c:forEach items="${list}" var="mentorMode">
+                              <a class='move' href='<c:out value="${mentorMode.mentorId}"/>'>
+                              </a>
+	                            <tr>
+	                               
+	                                <td class="mypageTb-0lax">
+                                   <a class='move' href='<c:out value="${interviewRecord.iRecordId}"/>'>
+		                                <fmt:formatDate pattern="MM월 dd일" value="${mentorMode.mentorDate }"/>
+	                                 </a>
+		                                </td>
+		                                <td class="mypageTb-0lax">
+		                                    <input type="time" class="tbCell" value="${mentorMode.startDate }">
+		                                </td>
+		                                <td class="mypageTb-0lax">
+		                                    <span>시부터</span>
+		                                </td>
+		                                <td class="mypageTb-0lax">
+		                                    <input type="time" class="tbCell" value="${mentorMode.endDate }">
+		                                </td>
+		                                <td class="mypageTb-0lax">
+		                                    <span>시까지</span>
+		                                </td>
+		                                <td class="mypageTb-0lax">
+		                                    <span>${mentorMode.company } ${mentorMode.mentorName } 멘토님</span>
+		                                </td>
+	                                <td class="mypageTb-0lax">
+	                                    <button type="button" class="dltBtn btn btn">취소</button>
+	                                </td>
+	                            </tr>
+                            </c:forEach>
                         </table> 
                     </div>  
                     
-                    <!--diailyMT-->
-                    <div class="dialyMT">
-                        <span class="dateMT">2021. 8. 23</span>
-                        <table class="mypageTb">
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-        
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-            
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                        </table> 
-                    </div>  <!--diailyMT-->
-
-                    <div class="dialyMT">
-                        <span class="dateMT">2021. 8. 24</span>
-                        <table class="mypageTb">
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-                    
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-                    
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                        </table> 
-                    </div>  
-                    
-                    <!--diailyMT-->
-                    <div class="dialyMT">
-                        <span class="dateMT">2021. 8. 25</span>
-                        <table class="mypageTb">
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-                
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시부터</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <input type="time" class="tbCell">
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>시까지</span>
-                                </td>
-                                <td class="mypageTb-0lax">
-                                    <span>멘토명</span>
-                                </td>
-                    
-                                <td class="mypageTb-0lax">
-                                    <button type="button" class="dltBtn btn">취소</button>
-                                </td>
-                            </tr>
-                        </table> 
-                    </div> 
                 </form>
             </div>
         </div>

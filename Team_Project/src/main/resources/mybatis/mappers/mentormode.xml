@@ -44,9 +44,10 @@
 						FIELD,
 						BIO,
  						REGDATE,
-						UPDATEDATE)
+						UPDATEDATE
+						, MENTOR_NAME)
 					VALUES(#{mentorId},#{company},#{mentorDate},#{mentorEmail},#{startDate},#{endDate},#{title},#{content},
-					#{field},#{bio},sysdate,sysdate)
+					#{field},#{bio},sysdate,sysdate, #{mentorName})
 						   			]]>
 			</insert>
 
@@ -94,7 +95,7 @@
 		<select id="SelectMentorList" resultType="MentormodeVO"
 		parameterType="int">
 		<![CDATA[
-		   		select mentor_id as mentorId, startdate as startDate, enddate as endDate,content, title,company, bio, field, mentordate as mentorDate, mentor_email as mentorEmail
+		   		select mentor_id as mentorId, startdate as startDate, enddate as endDate,content, title,company, bio, field, mentordate as mentorDate, mentor_email as mentorEmail,appl_email as applEmail
 			from (select row_number() over (order by mentor_id) num, A.* from tbl_mentor A order by mentor_id) 
 			where num between #{startrow} and #{startrow}+10 
 			]]>
@@ -103,12 +104,79 @@
 	
 	<select id="SelectMyMentorList" resultType="MentormodeVO">
 		<![CDATA[
-		   		select *
-			from (select row_number() over (order by mentor_id) num, A.* from tbl_mentor A order by mentor_id) 
-			where num between #{startrow} and #{startrow}+10 and mentor_email=#{mentorEmail}
+   		select 
+   		 M.mentor_id as mentorId
+   		 , M.startdate as startDate
+   		 , M.enddate as endDate
+   		 , M.mentordate as mentorDate
+   		 , M.appl_email as applEmail
+   		 , MEM.name as applName
+			from 
+			(
+			 select 
+			   row_number() over (order by mentor_id) num
+			   , A.* 
+		   from tbl_mentor A 
+			   order by mentor_id
+			) M
+			LEFT OUTER JOIN
+			TBL_MEMBER MEM
+			on M.appl_email = MEM.email
+			where num between #{startrow} and #{startrow}+10  and mentor_email=#{mentorEmail} order by mentordate asc, startdate asc
 			]]>
 
 	</select>
+	
+	<update id="updateMentor">
+	<![CDATA[ 
+	update tbl_mentor set appl_email=#{appEmail} where mentor_email=#{mentorEmail}	
+	]]>
+	
+	
+	</update>
+	
+	
+	 <select id="SelectMyAppliedMentoring" resultType="MentormodeVO">
+    <![CDATA[
+    SELECT  
+      mentor_id as mentorId
+      ,mentor_email as mentorEmail
+      ,startdate as startDate
+      ,enddate as endDate
+      ,mentordate as mentorDate
+      ,company
+      ,mentor_name as mentorName
+    FROM  
+      (
+        select 
+          rownum rn
+          ,mentor_id 
+          ,mentor_email
+          ,startdate
+          ,enddate
+          ,mentordate
+          ,company
+          ,mentor_name
+        from 
+          TBL_MENTOR
+        where 
+          rownum <= #{pageNum} * #{amount} and appl_email = #{email}
+        )
+        where (rn > (#{pageNum} - 1) * #{amount}) order by mentordate asc, startdate asc
+   ]]>
+	</select>
+	
+	 <select id="getMentorNameByEmail" resultType="String">
+    <![CDATA[
+    select name from tbl_member where email = #{mentorEmail}
+   ]]>
+	</select>
+	
+    <select id="getTotalCount" resultType="int">
+      select count(*) from TBL_MENTOR where appl_email = #{email}
+    </select>
+	
+	
 	
 
 </mapper>

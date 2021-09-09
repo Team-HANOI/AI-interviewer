@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+						<!--
+								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
+								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
+								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
+								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
+								맞춤모드 키워드선택 -> 맞춤모드 면접 화면 
+														 		-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,13 +21,12 @@
 <link rel="stylesheet" href="/style/interview_normal.css">
 <script>
 var idx=0;
-
 var qIds = new Array();
 var answers = new Array();
-
 var chosenKw = "${keyword}";
-
+var type = "${type }";
 var contents = new Array();
+
 
 <c:forEach items="${questions}" var="question">
 	qIds.push("${question.qId}");
@@ -74,8 +80,7 @@ function reqeustNextPage() {
 
 	let formdata = new FormData();
 	
-	formdata.append("type", "3");
-	
+	formdata.append("type", type);
 	formdata.append("kws",chosenKw);
 	
     formdata.append("qIds", qIds);
@@ -94,7 +99,7 @@ function reqeustNextPage() {
     
     	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
 			console.log("response:"+xhr.response);
-    		location.href="/interview/result";  
+    		location.href="/review/board_review";  
     		     
     	}                 
     }
@@ -155,12 +160,7 @@ function reqeustNextPage() {
 				<button id="record">녹음</button>
 				<button id="stop">정지</button>
 				
-				<div class="interview-time">
-					<p>
-						남은시간: <span class="time-left">00:00</span>
-					</p>
-				</div>
-				
+
 			</div>
 
 

@@ -1,13 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+						<!--
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+														 -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 공통 스타일  -->
 <jsp:include page="../common/top.jsp" />
 <!-- 페이지 스타일  -->
 <link rel="stylesheet" href="/style/interview_normal.css">
+<script>
+	
+
+	$(function(){
+		$("form").submit(function(e){
+		
+			var flag = false;
+						
+			$(this).find("input[type=checkbox]").each(function(index, item){
+				if($(item).is(':checked')){
+					flag = true;
+				}
+			});
+	
+			if(flag === false){		
+			
+				alert("키워드를 선택해 주세요.");
+				e.preventDefault();
+				
+			}
+						
+		});
+	});
+
+</script>
+
 
 </head>
 <body>
@@ -23,7 +60,7 @@
 		<!-- 타이틀 더미 -->
 		<div class="dummy"></div>
 
-		<div class="keyword-box">
+		<div class="keyword-box" align="center">
 			<h2 class="popup-text">키워드를 선택하세요</h2>
 
 			<!-- 구분선 -->
@@ -39,6 +76,7 @@
 
 			<!-- 구분선 -->
 			<div class="line"></div>
+				<input type="hidden" name="type" value="${type }">	<!-- 400에러가 이거 없어서 -->
 				<button class="btn popup-btn" type="submit">확인</button>
 		</div>
 	</form>

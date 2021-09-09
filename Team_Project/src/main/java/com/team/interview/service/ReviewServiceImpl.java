@@ -81,13 +81,13 @@ public class ReviewServiceImpl implements ReviewService {
   }
 
   @Override
-  public ReviewVO getBoardPre(int reviewId) throws Exception {
+  public int getBoardPre(int reviewId) throws Exception {
     reviewDAO.updateViewCountPre(reviewId); // 조회수 증가
     return reviewDAO.selectReviewPre(reviewId);
   }
 
   @Override
-  public ReviewVO getBoardNext(int reviewId) throws Exception {
+  public int getBoardNext(int reviewId) throws Exception {
     reviewDAO.updateViewCountNext(reviewId); // 조회수 증가
     return reviewDAO.selectReviewNext(reviewId);
   }
@@ -156,13 +156,18 @@ public class ReviewServiceImpl implements ReviewService {
     return (ArrayList<RCommVO>) reviewDAO.selectRCommList(reviewId);
   }
 
+  // 댓글작성자 프로필 사진
   @Override
   public FileVO getCommImg(String email) throws Exception {
     System.out.println("getcommImg service email : " + email);
     System.out.println("getcommImg service dao : " + reviewDAO.getCommImg(email));
     FileVO commImg = reviewDAO.getCommImg(email);
     return commImg;
+  }
 
+  @Override
+  public void removeBoardComm(int comId) throws Exception {
+    reviewDAO.deleteRComm(comId);
   }
 
 }

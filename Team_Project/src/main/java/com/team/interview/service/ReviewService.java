@@ -17,9 +17,9 @@ public interface ReviewService {
 
   ReviewVO getBoard(int reviewId) throws Exception;
 
-  ReviewVO getBoardPre(int reviewId) throws Exception;
+  int getBoardPre(int reviewId) throws Exception;
 
-  ReviewVO getBoardNext(int reviewId) throws Exception;
+  int getBoardNext(int reviewId) throws Exception;
 
   FileVO getFile(int fileId) throws Exception;
 
@@ -46,4 +46,5 @@ public interface ReviewService {
 
   FileVO getCommImg(String email) throws Exception;
 
+  void removeBoardComm(int comId) throws Exception;
 }

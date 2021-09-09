@@ -20,6 +20,7 @@
     
     <!-- 본문 시작 -> 여기서 작업하세요 -->
     <main>
+    
     	<!-- 팝업 -->
         <jsp:include page="../common/popups/popups.jsp"/>
 
@@ -40,6 +41,9 @@
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title">내 면접</div>
                 <div class="line"></div>
+                
+                
+						  
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-list">

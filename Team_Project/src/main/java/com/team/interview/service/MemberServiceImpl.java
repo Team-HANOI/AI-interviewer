@@ -46,7 +46,6 @@ public class MemberServiceImpl implements MemberService {
     memberVO.setFromSocial(false);
     memberVO.setType('M');
 
-
     File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
     FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
 
@@ -66,7 +65,22 @@ public class MemberServiceImpl implements MemberService {
     newFile.setFileData(mFile.getBytes());
     profileDAO.selectPfImgNextval();
     profileDAO.insertProfileImage(newFile);
-    profileDAO.insertProfile(null);
+
+
+    // 첫 가입시 잔디 insert
+    // "0,0,0, ... ,0" 을 db에 insert(0 364개 + , 363개 = length : 727)
+    ProfileVO profileVO = new ProfileVO();
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < 364; i++) {
+      if(i == 363) {
+        sb.append(0);
+      } else {
+        sb.append(0).append(",");
+      }
+    }
+    profileVO.setJandi(sb.toString());
+
+    profileDAO.insertProfile(profileVO);
 
 
     memberDAO.insertMember(memberVO);
@@ -121,7 +135,23 @@ public class MemberServiceImpl implements MemberService {
 
     profileDAO.selectPfImgNextval();
     profileDAO.insertProfileImage(newFile);
-    profileDAO.insertProfile(null);
+
+
+    // 첫 가입시 잔디 insert
+    // "0,0,0, ... ,0" 을 db에 insert(0 364개 + , 363개 = length : 727)
+    ProfileVO profileVO = new ProfileVO();
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < 364; i++) {
+      if(i == 363) {
+        sb.append(0);
+      } else {
+        sb.append(1).append(",");
+      }
+    }
+    profileVO.setJandi(sb.toString());
+    profileDAO.insertProfile(profileVO);
+
+
 
     companyDAO.selectLogoImgNextval();
     companyDAO.insertLogoImage(newFile);

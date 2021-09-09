@@ -35,16 +35,25 @@
 					<c:when test="${pageInfo.page<=1}">
 						<li data-filter=".filter-card">이전</li>
 					</c:when>
-					<c:otherwise>
-						<a href="/interview/recruit?page=${pageInfo.page-1}">[이전]</a>&nbsp;
-					</c:otherwise>
-				</c:choose>
-				<c:forEach var="i" begin="${pageInfo.startPage }"
-					end="${pageInfo.endPage }">
-					<c:choose>
-						<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 						<c:otherwise>
-							<a href="/interview/recruit?page=${i}">[${i }]</a>
+							<a href="/interview/recruit?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+					</c:otherwise>
+					</c:choose>
+					<c:forEach var="i" begin="${pageInfo.startPage }"
+						end="${pageInfo.endPage }">
+						<c:choose>
+							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+							<c:otherwise>
+								<a href="/interview/recruit?page=${i}">[${i }]</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+						[다음]
+					</c:when>
+						<c:otherwise>
+							<a href="/interview/recruit?page=${pageInfo.page+1}">[다음]</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>

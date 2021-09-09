@@ -59,58 +59,85 @@
 				</a>
 			</div>
 		</sec:authorize>
-		<c:choose>
-			<c:when test="${articleList!=null}">
-				<!-- 메인화면 게시판 -->
-				<ul class="mentor-box">
-					<c:forEach var="article" items="${articleList}">
-						<li class="mentor">
-							<div class="mentor-item">
-								<div class="mentor-cover"></div>
-								<div class="mentor-info">
-									<p class="mentor-title">${article.company}기업에서
-										${article.field}가르쳐드립니다~~</p>
-									<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
-									<p class="mentor-date">${article.mentorDate}날에!</p>
-									<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
+
+		<!-- 메인화면 게시판 -->
+		<c:if test="${articleList!=null}">
+
+			<c:forEach var="article" items="${articleList}">
+				<c:choose>
+					<c:when test="${article.applEmail=null}">
+						<ul class="mentor-box">
+							<li class="mentor">
+								<div class="mentor-item">
+									<div class="mentor-cover"></div>
+									<div class="mentor-info">
+										<p class="mentor-title">${article.company}기업에서
+											${article.field}가르쳐드립니다~~</p>
+										<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
+										<p class="mentor-date">${article.mentorDate}날에!</p>
+										<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
+									</div>
+									<a href="./apply?mentorEmail=${article.mentorEmail}">
+										<button class="btn apply-mentee-btn">신청하기📝</button>
+									</a>
+
 								</div>
-								<button class="btn apply-mentee-btn">신청하기</button>
-							</div>
-						</li>
-					</c:forEach>
-				</ul>
-				<section id="pageList">
-					<c:choose>
-						<c:when test="${pageInfo.page<=1}">
+							</li>
+						</ul>
+					</c:when>
+					<c:otherwise>
+						<ul class="mentor-box">
+							<li class="mentor">
+								<div class="mentor-item">
+									<div class="mentor-cover"></div>
+									<div class="mentor-info">
+										<p class="mentor-title">${article.company}기업에서
+											${article.field}가르쳐드립니다~~</p>
+										<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
+										<p class="mentor-date">${article.mentorDate}날에!</p>
+										<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
+										<button class="btn apply-mentee-btn">🚧마감🚧</button>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+					</c:otherwise>
+			</c:choose>
+			</c:forEach>
+		</c:if>
+
+		<!-- 메인화면 게시판 -->
+
+
+		<section id="pageList">
+			<c:choose>
+				<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp;
 				</c:when>
-						<c:otherwise>
-							<a href="mentor?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				<c:otherwise>
+					<a href="mentor?page=${pageInfo.page-1}">[이전]</a>&nbsp;
 				</c:otherwise>
-					</c:choose>
-					<c:forEach var="i" begin="${pageInfo.startPage }"
-						end="${pageInfo.endPage }">
-						<c:choose>
-							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
-							<c:otherwise>
-								<a href="mentor?page=${i}">[${i }]</a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:choose>
-						<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+			</c:choose>
+			<c:forEach var="i" begin="${pageInfo.startPage }"
+				end="${pageInfo.endPage }">
+				<c:choose>
+					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+					<c:otherwise>
+						<a href="mentor?page=${i}">[${i }]</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${pageInfo.page>=pageInfo.maxPage }">
 					[다음]
 				</c:when>
-						<c:otherwise>
-							<a href="mentor?page=${pageInfo.page+1}">[다음]</a>
-						</c:otherwise>
-					</c:choose>
-				</section>
-			</c:when>
-			<c:otherwise>
-				<section id="emptyArea">등록된 글이 없습니다.</section>
-			</c:otherwise>
-		</c:choose>
+				<c:otherwise>
+					<a href="mentor?page=${pageInfo.page+1}">[다음]</a>
+				</c:otherwise>
+			</c:choose>
+		</section>
+		
 
 		<!-- <li class="mentor">
 				<div class="mentor-item">

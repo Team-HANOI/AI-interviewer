@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team.interview.security.dto.AuthMemberDTO;
 import com.team.interview.service.InterviewRecordService;
+import com.team.interview.service.InterviewService;
 import com.team.interview.service.KeywordService;
 import com.team.interview.service.MemberService;
 import com.team.interview.service.ProfileService;
@@ -31,22 +31,19 @@ import com.team.interview.vo.Criteria;
 import com.team.interview.vo.FileVO;
 import com.team.interview.vo.InterviewRecordVO;
 import com.team.interview.vo.MemberVO;
-import com.team.interview.vo.PageDTO;
-import com.team.interview.vo.ProfileVO;
-
-import com.team.interview.security.dto.AuthMemberDTO;
-import com.team.interview.service.InterviewService;
 import com.team.interview.vo.MentormodeVO;
+import com.team.interview.vo.PageDTO;
 import com.team.interview.vo.PageInfo;
+import com.team.interview.vo.ProfileVO;
 
 @Controller
 @RequestMapping(value="mypage")
 public class MyPageController {
 
 
-	@Autowired
-	InterviewService iservice;
-	
+  @Autowired
+  InterviewService iservice;
+
 
   @Autowired
   private ProfileService profileService;
@@ -105,9 +102,6 @@ public class MyPageController {
       return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
     }
   }
-
-
-
 
 
   @GetMapping(value = {"/audio/{fileId}"})
@@ -233,59 +227,63 @@ public class MyPageController {
   }
 
 
-
-
-
-
-
-
-
-
-
   @RequestMapping(value="/mentoring")
-  public ModelAndView mypageMentoring() {
+  public ModelAndView mypageMentoring(Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/mentoring");
-    mav.addObject("", "");
+
+    cri.setEmail(authMemberDTO.getEmail());
+
+    int total = iservice.getTotal(cri);
+    List<MentormodeVO> list;
+    try {
+      list = iservice.getList(cri);
+      mav.addObject("list", list);
+      mav.addObject("pageMaker", new PageDTO(cri, total));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     return mav;
   }
 
+
   @RequestMapping(value="/mentoring/com")
   public ModelAndView mypageMentoringCom(@AuthenticationPrincipal AuthMemberDTO authMemberDTO,@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
-			PageInfo pageInfo = new PageInfo();
-			ModelAndView mv = new ModelAndView();
-			try {
-				String mentorEmail=authMemberDTO.getcEmail();
-				System.out.println(mentorEmail);
-				List<MentormodeVO> articleList = iservice.getMyMentorList(mentorEmail,page, pageInfo);
-				mv.addObject("pageInfo", pageInfo);
-				mv.addObject("articleList", articleList);
-				mv.setViewName("/mypage/mentoring_com");
-			}catch (Exception e) {
-				e.printStackTrace();
-				mv.addObject("err", e.getMessage());
-				mv.addObject("page", "/err");
-				mv.setViewName("main");
-			}
-			return mv;
-		}
-  
-  @RequestMapping(value="/myarticle")
+    PageInfo pageInfo = new PageInfo();
+    ModelAndView mv = new ModelAndView();
+    try {
+      String mentorEmail=authMemberDTO.getEmail();
+      System.out.println(mentorEmail);
+      List<MentormodeVO> articleList = iservice.getMyMentorList(mentorEmail,page, pageInfo);
+      mv.addObject("pageInfo", pageInfo);
+      mv.addObject("articleList", articleList);
+      mv.setViewName("/mypage/mentoring_com");
+    }catch (Exception e) {
+      e.printStackTrace();
+      mv.addObject("err", e.getMessage());
+      mv.addObject("page", "/err");
+      mv.setViewName("main");
+    }
+    return mv;
+  }
+
+
+  // 이 밑으로 안함
+
+  @RequestMapping(value="/myarticle") // 내가쓴글리스트
   public ModelAndView mypageMyArticle() {
     ModelAndView mav = new ModelAndView("mypage/myarticle");
     mav.addObject("", "");
     return mav;
   }
 
-
-
-  @RequestMapping(value="/pwchange")
+  @RequestMapping(value="/pwchange") // 패스워드 변경
   public ModelAndView mypagePasswordChange() {
     ModelAndView mav = new ModelAndView("mypage/pwchange");
     mav.addObject("", "");
     return mav;
   }
 
-  @RequestMapping(value="/delete")
+  @RequestMapping(value="/delete") // 계정 삭제
   public ModelAndView mypageSession() {
     ModelAndView mav = new ModelAndView("mypage/delete");
     mav.addObject("", "");

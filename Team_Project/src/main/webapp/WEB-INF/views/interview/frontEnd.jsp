@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+						<!--
+								일반면접모드 -> 프론트 직무 면접 화면
+								일반면접모드 -> 프론트 직무 면접 화면
+								일반면접모드 -> 프론트 직무 면접 화면
+								일반면접모드 -> 프론트 직무 면접 화면
+								일반면접모드 -> 프론트 직무 면접 화면
+																 -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,34 +78,34 @@
 	
 	function reqeustNextPage() {
 	
-		let formdata = new FormData();
-		
-		formdata.append("type", "1");
-		formdata.append("pos", "front");
-	    formdata.append("qIds", qIds);
-	    formdata.append("answers", answers);
-	    formdata.append("cnt", bloblist.length);
-	    
-	    for(var i = 0; i < bloblist.length; i++){
-	    
-	   		formdata.append("data"+String(i), bloblist[i]);
-	   		
-	    }
-	   
-	    let xhr = new XMLHttpRequest();
-	    xhr.onload = () => {
-	    
-	    	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
-				console.log("response:"+xhr.response);
-	    		location.href="/interview/result";  
-	    		     
-	    	}                 
-	    }
-	    xhr.open("POST", "/interview/saveanswervoice", true);
-	    xhr.send(formdata);
-	}
-	
-  </script>
+	formdata.append("type", "1");
+	formdata.append("pos", "front");
+    formdata.append("qIds", qIds);
+    formdata.append("answers", answers);
+    formdata.append("cnt", bloblist.length);
+    
+    for(var i = 0; i < bloblist.length; i++){
+    
+   		formdata.append("data"+String(i), bloblist[i]);
+   		
+    }
+   
+    let xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+    
+    	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
+			console.log("response:"+xhr.response);
+    		location.href="/review/board_review";
+    		     
+    	}                 
+    }
+    xhr.open("POST", "/interview/saveanswervoice", true);
+    xhr.send(formdata);
+}
+
+</script>
+
+
 </head>
 
 <body>

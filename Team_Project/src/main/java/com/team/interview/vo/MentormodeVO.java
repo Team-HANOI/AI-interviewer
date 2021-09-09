@@ -1,162 +1,188 @@
 package com.team.interview.vo;
 
-import java.sql.Time;
 import java.util.Date;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MentormodeVO {
 
-	private int mentorId;
-	private String applEmail;
-	private String mentorEmail;
-	private String startDate;
-	private String endDate;
-	private String content;
-	private String title;
-	private String method;
-	private String field;
-	private String bio;
-	private Date regDate;
-	private Date updateDate;
-	private String mentorDate;
-	private String company;
-	
-	public MentormodeVO() {
-	}
+  private int mentorId;
+  private String applEmail;
+  private String mentorEmail;
+  private String startDate;
+  private String endDate;
+  private String content;
+  private String title;
+  private String method;
+  private String field;
+  private String bio;
+  private Date regDate;
+  private Date updateDate;
+  //멘토링날짜
+  private Date mentorDate;
+  //회사이름
+  private String company;
+  //멘토이름
+  private String mentorName;
+  //지원자이름
+  private String applName;
 
-	public MentormodeVO(int mentorId, String applEmail, String mentorEmail, String startDate, String endDate,
-			String content, String title, String method, String field, String bio, Date regDate, Date updateDate) {
+  public MentormodeVO() {
+  }
 
-		this.mentorId = mentorId;
-		this.applEmail = applEmail;
-		this.mentorEmail = mentorEmail;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.content = content;
-		this.title = title;
-		this.method = method;
-		this.field = field;
-		this.bio = bio;
-		this.regDate = regDate;
-		this.updateDate = updateDate;
+  public MentormodeVO(int mentorId, String applEmail, String mentorEmail, String startDate,
+      String endDate, String content, String title, String method, String field, String bio,
+      Date regDate, Date updateDate, Date mentorDate, String company, String mentorName) {
+    super();
+    this.mentorId = mentorId;
+    this.applEmail = applEmail;
+    this.mentorEmail = mentorEmail;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.content = content;
+    this.title = title;
+    this.method = method;
+    this.field = field;
+    this.bio = bio;
+    this.regDate = regDate;
+    this.updateDate = updateDate;
+    this.mentorDate = mentorDate;
+    this.company = company;
+    this.mentorName = mentorName;
+  }
 
-	}
-	
 
-	public int getMentorId() {
-		return mentorId;
-	}
 
-	public void setMentorId(int mentorId) {
-		this.mentorId = mentorId;
-	}
+  public int getMentorId() {
+    return mentorId;
+  }
 
-	public String getApplEmail() {
-		return applEmail;
-	}
+  public void setMentorId(int mentorId) {
+    this.mentorId = mentorId;
+  }
 
-	public void setApplEmail(String applEmail) {
-		this.applEmail = applEmail;
-	}
+  public String getApplEmail() {
+    return applEmail;
+  }
 
-	public String getMentorEmail() {
-		return mentorEmail;
-	}
+  public void setApplEmail(String applEmail) {
+    this.applEmail = applEmail;
+  }
 
-	public void setMentorEmail(String mentorEmail) {
-		this.mentorEmail = mentorEmail;
-	}
+  public String getMentorEmail() {
+    return mentorEmail;
+  }
 
-	public String getStartDate() {
-		return startDate;
-	}
+  public void setMentorEmail(String mentorEmail) {
+    this.mentorEmail = mentorEmail;
+  }
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
+  public String getStartDate() {
+    return startDate;
+  }
 
-	public String getEndDate() {
-		return endDate;
-	}
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
+  public String getEndDate() {
+    return endDate;
+  }
 
-	public String getContent() {
-		return content;
-	}
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+  public String getContent() {
+    return content;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public void setContent(String content) {
+    this.content = content;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public String getTitle() {
+    return title;
+  }
 
-	public String getMethod() {
-		return method;
-	}
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-	public void setMethod(String method) {
-		this.method = method;
-	}
+  public String getMethod() {
+    return method;
+  }
 
-	public String getField() {
-		return field;
-	}
+  public void setMethod(String method) {
+    this.method = method;
+  }
 
-	public void setField(String field) {
-		this.field = field;
-	}
+  public String getField() {
+    return field;
+  }
 
-	public String getBio() {
-		return bio;
-	}
+  public void setField(String field) {
+    this.field = field;
+  }
 
-	public void setBio(String bio) {
-		this.bio = bio;
-	}
+  public String getBio() {
+    return bio;
+  }
 
-	public Date getRegDate() {
-		return regDate;
-	}
+  public void setBio(String bio) {
+    this.bio = bio;
+  }
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
+  public Date getRegDate() {
+    return regDate;
+  }
 
-	public Date getUpdateDate() {
-		return updateDate;
-	}
+  public void setRegDate(Date regDate) {
+    this.regDate = regDate;
+  }
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
+  public Date getUpdateDate() {
+    return updateDate;
+  }
 
-	public String getMentorDate() {
-		return mentorDate;
-	}
+  public void setUpdateDate(Date updateDate) {
+    this.updateDate = updateDate;
+  }
 
-	public void setMentorDate(String mentorDate) {
-		this.mentorDate = mentorDate;
-	}
+  public Date getMentorDate() {
+    return mentorDate;
+  }
 
-	public String getCompany() {
-		return company;
-	}
+  public void setMentorDate(Date mentorDate) {
+    this.mentorDate = mentorDate;
+  }
 
-	public void setCompany(String company) {
-		this.company = company;
-	}
-	
-	
+  public String getCompany() {
+    return company;
+  }
+
+  public void setCompany(String company) {
+    this.company = company;
+  }
+
+  public String getMentorName() {
+    return mentorName;
+  }
+
+  public void setMentorName(String mentorName) {
+    this.mentorName = mentorName;
+  }
+
+  public String getApplName() {
+    return applName;
+  }
+
+  public void setApplName(String applName) {
+    this.applName = applName;
+  }
+
+
+
 
 }
