@@ -78,7 +78,7 @@
 										<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
 									</div>
 									<a href="./apply?mentorEmail=${article.mentorEmail}">
-										<button class="btn apply-mentee-btn">신청하기</button>
+										<button class="btn apply-mentee-btn">신청하기📝</button>
 									</a>
 
 								</div>
@@ -96,7 +96,7 @@
 										<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
 										<p class="mentor-date">${article.mentorDate}날에!</p>
 										<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
-										<button class="btn apply-mentee-btn">마감</button>
+										<button class="btn apply-mentee-btn">🚧마감🚧</button>
 									</div>
 								</div>
 							</li>
