@@ -55,7 +55,8 @@ public interface ReviewController {
 
   ResponseEntity<byte[]> getcommImg(@PathVariable String email) throws Exception;
 
-  ModelAndView removeBoardComm(@RequestParam("reviewId") int reviewId);
+  ModelAndView removeBoardComm(@RequestParam("reviewId") int reviewId,
+      @RequestParam("comId") int comId);
 
 
   // ---------------------

@@ -183,31 +183,32 @@
 		<div class="comments-container">
 			<c:forEach items="${commList}" var="comm" varStatus="status">
 
+
 				<ul id="comments-list" class="comments-list">
 					<li><c:choose>
 							<c:when test="${comm.lev==0}">
 
 
 								<div class="comment-main-level">
-									<style>
-									.comments-list .comment-avatar {
-										width: 65px;
-										height: 65px;
-										position: relative;
-										z-index: 99;
-										float: left;
-										border: 3px solid #fff;
-										-webkit-border-radius: 4px;
-										-moz-border-radius: 4px;
-										border-radius: 4px;
-										-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-										-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-										box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-										overflow: hidden;
-										background-image: url(/review/commImg/${comm.email});
-										background-size: cover;
-									}
-									</style>
+<style>
+.comments-list .comment-avatar {
+	width: 65px;
+	height: 65px;
+	position: relative;
+	z-index: 99;
+	float: left;
+	border: 3px solid #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+	background-image: url(/review/commImg/${comm.email});
+	background-size: cover;
+}
+</style>
 									<div class="comment-avatar">
 										<%-- <img src="/review/commImg/${comm.email}"> --%>
 									</div>
@@ -234,18 +235,18 @@
 													
 						
 													<div class="comment-head-right-btn">
-														<a href="/review/boardcommdelete?reviewId=${review.reviewId}">
+														<a href="/review/boardcommdelete?reviewId=${review.reviewId}&comId=${comm.comId}">
 														<button>삭제</button>
 														</a>
 													</div>
 												</c:if>
-												<!-- 대댓글 버튼 -->
+<!-- 대댓글 버튼 -->
 												<div class="comment-head-right-btn">
 													<a>
 													<button onclick="commentChildFn()">답글 달기</button>
 													</a>
 												</div>
-												<!-- 대댓글 버튼 끝 -->
+<!-- 대댓글 버튼 끝 -->
 											</div>
 										</div>
 										<div class="comment-content">${comm.content}</div>
@@ -276,7 +277,6 @@
 							<c:otherwise>
 								<ul class="comments-list reply-list">
 									<li>
-
 										<div class="comment-avatar">
 										</div>
 										<div class="comment-box">
@@ -289,14 +289,29 @@
 												</div>
 												<div class="comment-head-right">
 
-													<c:set var="commEmail" value="${comm.email}" />
-													<c:set var="userEmail" value="${user.username}" />
+													
 													<c:if test="${commEmail eq userEmail}">
+													<div class="comment-head-right-btn">
+													<a href="/review/boardcommdelete?reviewId=${review.reviewId}">
 														<button>수정</button>
+													</a>	
+													</div>
+													
+													
+						
+													<div class="comment-head-right-btn">
+														<a href="/review/boardcommdelete?comId=${comm.comId}">
 														<button>삭제</button>
-													</c:if>
-
-													<button>답글달기</button>
+														</a>
+													</div>
+												</c:if>
+<!-- 대댓글 버튼 -->
+												<div class="comment-head-right-btn">
+													<a>
+													<button onclick="commentChildFn()">답글 달기</button>
+													</a>
+												</div>
+<!-- 대댓글 버튼 끝 -->
 												</div>
 											</div>
 											<div class="comment-content">${comm.content}</div>

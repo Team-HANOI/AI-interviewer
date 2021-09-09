@@ -360,7 +360,7 @@
 	<!-- 댓글삭제 -->
 	<delete id="deleteRComm" parameterType="int">
 		<![CDATA[
-		delete from tbl_r_comm where review_id=#{reviewId}
+		delete from tbl_r_comm where com_id=#{comId}
 		]]>
 	</delete>
 	

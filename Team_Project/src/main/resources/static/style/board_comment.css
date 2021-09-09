@@ -132,7 +132,7 @@ ul {
 /**
 * Caja del Comentario
 ---------------------------*/
-.comments-list .comment-box {
+.comment-box {
   width: 900px;
   margin-left: 100px;
   position: relative;
