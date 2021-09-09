@@ -26,6 +26,15 @@
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
+<script type="text/javascript">
+	$(function() {
+		const reviewLike = "${review.likeCnt}";
+		const cnt = reviewLike.toLocaleString('ko-KR');
+		$("#likeCnt").text(cnt);
+	});
+</script>
+
+
 </head>
 
 <body>

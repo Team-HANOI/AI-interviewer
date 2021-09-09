@@ -1,3 +1,6 @@
+
+
+
 //좋아요 기능
 function likeCnt(reviewId) {
 	$.ajax({
@@ -52,11 +55,7 @@ function addCommentChild(reviewId, prtComId) {
 
 }
 
-
-
 $(function() {
-	const cnt = "${review.likeCnt}".toLocaleString('ko-KR');
-	$("#likeCnt").text(cnt);
 	$('.commChildForm').submit(function(event) {
 		var value = $(this).find('.commentChild')[0].value;		
 		if (value==null || value==""){
