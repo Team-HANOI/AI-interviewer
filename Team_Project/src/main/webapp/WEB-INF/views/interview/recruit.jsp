@@ -111,7 +111,7 @@ $(function() {
 						<form class="kwform" action="/interview/customMode" method="GET">
 						
 							<h1>${list.cname}</h1>
-							<input type="text" name="type" value="${type }">
+							<input type="hidden" name="type" value="${type }">
 							
 							<c:forEach items="${list.kwList}" var="kw">
 								<%-- <button>${kw}</button> --%>
