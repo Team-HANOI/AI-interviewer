@@ -155,4 +155,28 @@ set
       WHERE mem.email = #{email} and from_social = #{fromSocial}
       ]]>
     </select>
+    <select id="findByEmailOnly" resultMap = "memberMap">
+      <![CDATA[
+      SELECT 
+        mem.email
+	       , pf_id
+	       , pw
+	       , name
+	       , type
+	       , mem.regdate regdate
+	       , mem.updatedate updatedate
+	       , enabled
+	       , from_social
+	       , phone_num
+	       , lockdate
+	       , failure_cnt
+	       , auth.auth
+      FROM 
+        tbl_member mem 
+          LEFT OUTER JOIN 
+        tbl_auth auth 
+        on mem.email = auth.email 
+      WHERE mem.email = #{email}
+      ]]>
+    </select>
 </mapper>

@@ -41,8 +41,6 @@ public class MemberVO {
   // 회사 이름
   private String cName;
 
-
-
   public MemberVO() {
   }
   protected boolean canEqual(Object other) {
