@@ -39,6 +39,7 @@
 
 			<!-- 구분선 -->
 			<div class="line"></div>
+				<input type="hidden" name="type" value="${type }">	<!-- 400에러가 이거 없어서 -->
 				<button class="btn popup-btn" type="submit">확인</button>
 		</div>
 	</form>

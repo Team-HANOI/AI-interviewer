@@ -58,7 +58,7 @@
                 채용공고모드
             </div>
                         
-            <div class="mode bottom_right btn keyword-popup">
+            <div class="mode bottom_right btn keyword-popup"onclick="location.href='/interview/custom';">
                 맞춤 모드
             </div>
 

@@ -14,13 +14,12 @@
 <link rel="stylesheet" href="/style/interview_normal.css">
 <script>
 var idx=0;
-
 var qIds = new Array();
 var answers = new Array();
-
 var chosenKw = "${keyword}";
-
+var type = "${type }";
 var contents = new Array();
+
 
 <c:forEach items="${questions}" var="question">
 	qIds.push("${question.qId}");
@@ -74,8 +73,7 @@ function reqeustNextPage() {
 
 	let formdata = new FormData();
 	
-	formdata.append("type", "3");
-	
+	formdata.append("type", type);
 	formdata.append("kws",chosenKw);
 	
     formdata.append("qIds", qIds);
@@ -94,7 +92,7 @@ function reqeustNextPage() {
     
     	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
 			console.log("response:"+xhr.response);
-    		location.href="/review/board_review";
+    		location.href="/review/board_review";  
     		     
     	}                 
     }

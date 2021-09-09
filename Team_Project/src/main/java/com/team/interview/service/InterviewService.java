@@ -17,4 +17,5 @@ public interface InterviewService {
   public void appMentor(MentormodeVO mentor) throws Exception;
   List<MentormodeVO> getList(Criteria cri) throws Exception;
   int getTotal(Criteria cri); 
+  
 }

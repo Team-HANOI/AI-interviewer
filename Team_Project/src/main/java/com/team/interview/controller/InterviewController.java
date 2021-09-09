@@ -132,7 +132,7 @@ public class InterviewController {
 
   }
 
-
+	//	일반모드 분기 페이지
   @RequestMapping(value = "/nomal")
   public ModelAndView nomalinterview() {
     ModelAndView mav = new ModelAndView("interview/nomal");
@@ -171,10 +171,23 @@ public class InterviewController {
     }
     mav.addObject("voList", voList);
     mav.addObject("pageInfo", pageInfo);
+	mav.addObject("type",2);
     return mav;
   }
 
-
+	// recruitMode 면접
+	@RequestMapping(value = "/recruitMode" )
+	public ModelAndView recruitMode(@RequestParam(value="kwList") List<String> kwList) {
+//	public ModelAndView recruitMode(@RequestParam(value="kwList") String kwList) {
+		
+		
+		ModelAndView mav = new ModelAndView("interview/customMode");
+		//	customMode와 같이씀
+		return mav;
+		
+	}
+  
+  
 
   @RequestMapping(value = "/apply", method = RequestMethod.GET)
   public ModelAndView applyPage(@ModelAttribute("mentor") MentormodeVO mentor, @RequestParam(value="mentorEmail") String mentorEmail,@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
@@ -219,10 +232,10 @@ public class InterviewController {
     try {
 
       keywordList = keywordService.keywordList();
-      System.out.println(keywordList);
+      System.out.println(keywordList);	//	키워드 잘 받아와지나?
 
       mav.addObject("keywordList", keywordList);
-
+	  mav.addObject("type",3);
     } catch (Exception e) {
 
       e.printStackTrace();
@@ -233,7 +246,8 @@ public class InterviewController {
 
   // customMode 면접
   @RequestMapping(value = "/customMode" )
-  public ModelAndView customMode(@RequestParam(value="keyword") String[] keyword) {
+  public ModelAndView customMode(@RequestParam(value="keyword") String[] keyword,
+		  						 @RequestParam(value="type") int type) {
 
     ModelAndView mav = new ModelAndView("interview/customMode");
     ArrayList<QuestionVO> questions;
@@ -252,7 +266,8 @@ public class InterviewController {
       }
       System.out.println(str);
       mav.addObject("keyword",str);
-
+	  mav.addObject("type",type);	//	타입 받아오기
+		
     } catch (Exception e) {
 
       e.printStackTrace();
@@ -439,14 +454,11 @@ public class InterviewController {
 
     try {
 
-      //			HttpSession session = multi.getSession();
-      //			String email = (String)session.getAttribute(authMemberDTO.getEmail());
+      //	String email = "shguddnr2@Naver.com"; //
 
-      //			String email = "shguddnr2@Naver.com"; //
-
-      String email = authMemberDTO.getEmail(); // 시큐리티에서
-      // 면접 기록 저장 interviewAnswerService
-      // 면접의 타입에 따라 달라짐
+      String email = authMemberDTO.getEmail(); // 세선email받아오기
+      //	면접 기록 저장 interviewAnswerService
+      //	면접의 타입에 따라 달라짐
       InterviewRecordVO interviewRecord = new InterviewRecordVO();
       interviewRecord.setiTypeId(type);
       interviewRecord.setEmail(email);
@@ -497,10 +509,10 @@ public class InterviewController {
     }
   }
 
-  // 마지막 페이지 어떻게 넘길지 //
-  @GetMapping("/successinterview")
-  public String successInterview() {
-    return "success";
-  }
+	//	dummy 
+	//  @GetMapping("/successinterview")
+	//  public String successInterview() {
+	//    return "success";
+	//  }
 
 }
