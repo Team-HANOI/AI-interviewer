@@ -46,4 +46,5 @@ public interface ReviewService {
 
   FileVO getCommImg(String email) throws Exception;
 
+  void removeBoardComm(int reviewId) throws Exception;
 }

@@ -68,7 +68,7 @@
 					<a href="/review/modifyForm?reviewId=${review.reviewId}"
 						class="button2">수정</a>
 					<a
-						href="./boarddelete?reviewId=${review.reviewId}&page=${pageInfo.page}"
+						href="/review/boarddelete?reviewId=${review.reviewId}&page=${pageInfo.page}"
 						class="button2">삭제</a>
 				</c:if>
 			</div>
@@ -218,15 +218,24 @@
 												<c:set var="userEmail" value="${user.username}" />
 												<c:if test="${commEmail eq userEmail}">
 													<div class="comment-head-right-btn">
+													<a href="/review/boardcommdelete?reviewId=${review.reviewId}">
 														<button>수정</button>
+													</a>	
 													</div>
+													
+													
+						
 													<div class="comment-head-right-btn">
+														<a href="/review/boardcommdelete?reviewId=${review.reviewId}">
 														<button>삭제</button>
+														</a>
 													</div>
 												</c:if>
 												<!-- 대댓글 버튼 -->
 												<div class="comment-head-right-btn">
+												<a href="#">
 													<button onclick="commentChildFn()">답글 달기</button>
+												</a>
 												</div>
 												<!-- 대댓글 버튼 끝 -->
 											</div>
