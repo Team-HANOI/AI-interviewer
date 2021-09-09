@@ -72,5 +72,4 @@ public class ProfileServiceImpl implements ProfileService{
     return profile;
   }
 
-
 }

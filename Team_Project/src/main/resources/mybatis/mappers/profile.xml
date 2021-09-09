@@ -17,6 +17,7 @@
 	  <result property="exp" column="exp" />
 	  <result property="pos" column="pos" />
 	  <result property="githubUrl" column="github_url" />
+	  <result property="jandi" column="jandi" />
 	</resultMap>
 	
 	<resultMap type="com.team.interview.vo.FileVO" id="fileMap">
@@ -62,11 +63,13 @@ UPDATE TBL_PROFILE
         <![CDATA[
         INSERT INTO TBL_PROFILE(
 				  pf_id
-				  , pf_img_id
+				  ,pf_img_id
+				  ,jandi
 				  ) 
 				VALUES(
 				  profile_sq.nextval
 				  , pf_img_sq.currval
+				  , #{jandi}
 				  )
         ]]>
     </insert>
@@ -107,6 +110,7 @@ UPDATE TBL_PROFILE
 			  ,exp
 			  ,pos
 			  ,github_url
+			  ,jandi
 			  FROM TBL_PROFILE 
 			 WHERE pf_id = #{pfId}
       ]]>
@@ -127,5 +131,28 @@ UPDATE TBL_PROFILE
       ]]>
     </select>
     
+    <update id="updateNewDayJandi">
+    <![CDATA[
+    UPDATE TBL_PROFILE 
+		   SET 
+		  jandi = #{jandi}
+		 WHERE 
+		  pf_id = #{pfId}
+    ]]>
+    </update>
+    
+    <update id="updateInterviewCompleteJandi">
+    <![CDATA[
+    UPDATE TBL_PROFILE 
+		   SET 
+		  jandi = #{jandi}
+		 WHERE 
+		  pf_id = #{pfId}
+    ]]>
+    </update>
+    
+    <select id="getMaxNumOfPfId" resultType="int">
+      SELECT max(PF_ID) KEEP(DENSE_RANK FIRST ORDER BY PF_ID DESC) FROM TBL_PROFILE
+    </select>
     
 </mapper>

@@ -15,6 +15,7 @@ public interface MemberDAO {
   int insertAuth(AuthVO auth);
 
   MemberVO findByEmail(@Param("email") String email,@Param("fromSocial") boolean fromSocial);
+  MemberVO findByEmailOnly(String email);
   void insertCompany(CompanyVO companyVO);
   void insertSocialMember(MemberVO newMemberVO);
 

@@ -75,6 +75,7 @@ public class MemberController {
       , RedirectAttributes redirectAttrs,
       @AuthenticationPrincipal AuthMemberDTO authMemberDTO){
     ModelAndView mv = new ModelAndView();
+
     try {
       memberService.joinCom(memberVO, logoImg);
       redirectAttrs.addFlashAttribute("joined_email", memberVO.getEmail());
