@@ -302,7 +302,6 @@ public class ReviewControllerImpl implements ReviewController {
       @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
     ModelAndView mv = new ModelAndView();
     try {
-      reviewService.removeBoardComm(reviewId);
       reviewService.removeBoard(reviewId);
       mv.addObject("page", page);
       mv.setViewName("redirect:/review/board_review");
@@ -320,8 +319,6 @@ public class ReviewControllerImpl implements ReviewController {
   @Override
   @RequestMapping(value = "/addComm", method = RequestMethod.POST)
   public ModelAndView addRComm(@ModelAttribute RCommVO rComm) {
-    System.out.println(rComm.getReviewId());
-    System.out.println(rComm.getEmail());
     ModelAndView mv = new ModelAndView();
 
     try {

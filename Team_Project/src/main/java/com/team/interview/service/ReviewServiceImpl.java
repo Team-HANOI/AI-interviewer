@@ -126,6 +126,7 @@ public class ReviewServiceImpl implements ReviewService {
 
   @Override
   public void removeBoard(int reviewId) throws Exception {
+    reviewDAO.deleteRCommTotal(reviewId);
     reviewDAO.deleteReview(reviewId);
   }
 
