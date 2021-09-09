@@ -6,9 +6,10 @@ function likeCnt(reviewId) {
 		data: { reviewId: reviewId }, //요청과 함께 서버에 보내는 string 또는 json
 		dataType: "text", // 서버에서 내려온 data 형식. ( default : xml, json, script, text, html )
 		success: function(data, textStatus) { // 요청에 성공하면 함수 실행 data는 응답 데이터가 들어간다
-			alert("aa");
 			if (textStatus == 'success') {
-				$("#likeCnt").text(data);
+				const cn1 = data.toLocaleString('ko-KR');
+				$("#likeCnt").text(cn1);
+				
 			};
 		},
 		error: function(response, textStatus) { // 에러가 났을 경우의 작업
@@ -21,12 +22,12 @@ function likeCnt(reviewId) {
 
 //본댓글달기
 function addComment(reviewId) {
-	alert(reviewId);
+	//alert(reviewId);
 	if ($("#content").val() == null || $("#content").val() == "") {
 		alert("댓글을 입력하세요");
 		return false;
 	}
-	alert("comment-form");
+	//alert("comment-form");
 	$("#comment-form").submit();
 
 }
@@ -53,13 +54,14 @@ function addCommentChild(reviewId, prtComId) {
 
 
 
-/*$(function() {
-	$('form').submit(function(event) {
-		alert("aa"+this.name);
-		if ($('[name='+this.name+'] #prtComId').val() == null || 
-			$('[name='+this.name+'] #prtComId').val() == ""){
+$(function() {
+	const cnt = "${review.likeCnt}".toLocaleString('ko-KR');
+	$("#likeCnt").text(cnt);
+	$('.commChildForm').submit(function(event) {
+		var value = $(this).find('.commentChild')[0].value;		
+		if (value==null || value==""){
 			event.preventDefault();
 		}
 	});
-});*/
+});
 
