@@ -39,7 +39,7 @@ function addComment(reviewId) {
 //대댓글달기
 
 function commentChildFn() {
-        document.getElementById("comm").style.display = "block";  
+        document.getElementById("commentChild-form").style.display = "block";  
       }
 
 function addCommentChild(reviewId, prtComId) {

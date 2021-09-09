@@ -241,9 +241,9 @@
 												</c:if>
 												<!-- 대댓글 버튼 -->
 												<div class="comment-head-right-btn">
-												<a href="#">
+													<a>
 													<button onclick="commentChildFn()">답글 달기</button>
-												</a>
+													</a>
 												</div>
 												<!-- 대댓글 버튼 끝 -->
 											</div>

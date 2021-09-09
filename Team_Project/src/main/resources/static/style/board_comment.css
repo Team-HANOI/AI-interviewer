@@ -125,6 +125,10 @@ ul {
   display: block;
   clear: both;
 }
+
+.commChildForm {
+    display: none;
+}
 /**
 * Caja del Comentario
 ---------------------------*/
