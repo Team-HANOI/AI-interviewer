@@ -363,10 +363,12 @@ public class ReviewControllerImpl implements ReviewController {
   // 댓글 삭제
   @Override
   @GetMapping("/boardcommdelete")
-  public ModelAndView removeBoardComm(@RequestParam("reviewId") int reviewId) {
+  public ModelAndView removeBoardComm(@RequestParam("reviewId") int reviewId,
+      @RequestParam("comId") int comId) {
+    System.out.println("comId:" + comId);
     ModelAndView mv = new ModelAndView();
     try {
-      reviewService.removeBoardComm(reviewId);
+      reviewService.removeBoardComm(comId);
       mv.setViewName("redirect:/review/board_review_detail?reviewId=" + reviewId);
     } catch (Exception e) {
       e.printStackTrace();

@@ -112,5 +112,5 @@ public interface ReviewDAO {
   FileVO getCommImg(String email) throws Exception;
 
   // 댓글 삭제
-  void deleteRComm(int reviewId) throws Exception;
+  void deleteRComm(int comId) throws Exception;
 }

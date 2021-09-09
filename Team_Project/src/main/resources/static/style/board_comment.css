@@ -125,10 +125,14 @@ ul {
   display: block;
   clear: both;
 }
+
+.commChildForm {
+    display: none;
+}
 /**
 * Caja del Comentario
 ---------------------------*/
-.comments-list .comment-box {
+.comment-box {
   width: 900px;
   margin-left: 100px;
   position: relative;

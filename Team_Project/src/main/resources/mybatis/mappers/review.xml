@@ -337,7 +337,7 @@
         ,c.updatedate
 		from tbl_r_comm c, tbl_member m
         where c.review_id=#{reviewId} and  c.email=m.email
-		order by c.prt_com_id asc, c.lev asc, c.seq asc
+		order by c.prt_com_id asc, c.com_id asc
 		]]>
 	</select>
 	
@@ -360,7 +360,7 @@
 	<!-- 댓글삭제 -->
 	<delete id="deleteRComm" parameterType="int">
 		<![CDATA[
-		delete from tbl_r_comm where review_id=#{reviewId}
+		delete from tbl_r_comm where com_id=#{comId}
 		]]>
 	</delete>
 	
