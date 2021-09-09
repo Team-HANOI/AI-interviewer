@@ -290,6 +290,7 @@ public class ReviewControllerImpl implements ReviewController {
       @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
     ModelAndView mv = new ModelAndView();
     try {
+      reviewService.removeBoardComm(reviewId);
       reviewService.removeBoard(reviewId);
       mv.addObject("page", page);
       mv.setViewName("redirect:/review/board_review");
@@ -346,9 +347,7 @@ public class ReviewControllerImpl implements ReviewController {
   // 댓글 작성자 프로필사진
   @GetMapping(value = "/commImg/{email}")
   public ResponseEntity<byte[]> getcommImg(@PathVariable String email) throws Exception {
-    System.out.println("getcommImg controller email : " + email);
     FileVO file = reviewService.getCommImg(email);
-    System.out.println("getcommImg controller file.getFileId : " + file.getFileId());
     final HttpHeaders headers = new HttpHeaders(); // 상수화
     if (file != null) {
       String[] mtypes = file.getFileContentType().split("/");
@@ -359,6 +358,22 @@ public class ReviewControllerImpl implements ReviewController {
     } else {
       return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
     }
+  }
+
+  // 댓글 삭제
+  @Override
+  @GetMapping("/boardcommdelete")
+  public ModelAndView removeBoardComm(@RequestParam("reviewId") int reviewId) {
+    ModelAndView mv = new ModelAndView();
+    try {
+      reviewService.removeBoardComm(reviewId);
+      mv.setViewName("redirect:/review/board_review_detail?reviewId=" + reviewId);
+    } catch (Exception e) {
+      e.printStackTrace();
+      mv.addObject("err", e.getMessage());
+      mv.setViewName("/board/err");
+    }
+    return mv;
   }
 
 

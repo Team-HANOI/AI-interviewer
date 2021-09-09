@@ -156,13 +156,18 @@ public class ReviewServiceImpl implements ReviewService {
     return (ArrayList<RCommVO>) reviewDAO.selectRCommList(reviewId);
   }
 
+  // 댓글작성자 프로필 사진
   @Override
   public FileVO getCommImg(String email) throws Exception {
     System.out.println("getcommImg service email : " + email);
     System.out.println("getcommImg service dao : " + reviewDAO.getCommImg(email));
     FileVO commImg = reviewDAO.getCommImg(email);
     return commImg;
+  }
 
+  @Override
+  public void removeBoardComm(int reviewId) throws Exception {
+    reviewDAO.deleteRComm(reviewId);
   }
 
 }

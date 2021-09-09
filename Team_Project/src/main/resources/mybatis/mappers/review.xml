@@ -273,7 +273,6 @@
 		]]>		
 	</update>
 	
-	
 	<!-- 게시글 삭제 -->
 	<delete id="deleteReview" parameterType="int">
 		<![CDATA[
@@ -357,5 +356,13 @@
 		where m.email=#{email} and m.pf_id=p.pf_id and p.pf_img_id=i.pf_img_id
 		]]>		
 	</select>
+	
+	<!-- 댓글삭제 -->
+	<delete id="deleteRComm" parameterType="int">
+		<![CDATA[
+		delete from tbl_r_comm where review_id=#{reviewId}
+		]]>
+	</delete>
+	
 	
 </mapper>
