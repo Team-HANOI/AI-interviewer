@@ -122,10 +122,7 @@ public class ReviewControllerImpl implements ReviewController {
     try {
       ReviewVO review = reviewService.getBoard(reviewId);
       FileVO file = reviewService.getFile(review.getFileId());
-      System.out.println("controller email : " + review.getEmail());
       int pfId = reviewService.selectPfId(review.getEmail());
-      // int pfId = reviewDAO.selectPfId(review.getEmail());
-      System.out.println("controller pfId : " + pfId);
       // 댓글목록 조회
       ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
 
@@ -152,14 +149,21 @@ public class ReviewControllerImpl implements ReviewController {
     ModelAndView mv = new ModelAndView();
     try {
       ReviewVO review = reviewService.getBoardPre(reviewId);
-      FileVO file = reviewService.getFile(review.getFileId());
-      // FileVO profile = reviewService.getPfImg(review.getEmail());
+      // review/board_review temp 0 이고 -1
+      // mv.setViewName("redirect:/review/board_review_detail?reviewId=" + 1);
 
-      // mv.addObject("profile", profile);
+      FileVO file = reviewService.getFile(review.getFileId());
+      int pfId = reviewService.selectPfId(review.getEmail());
+      // 댓글목록 조회
+      ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
+
+      mv.addObject("commList", commList);
+      mv.addObject("pfId", pfId);
       mv.addObject("file", file);
       mv.addObject("review", review);
       mv.addObject("page", page);
       mv.setViewName("/board/review_detail");
+
     } catch (Exception e) {
       e.printStackTrace();
       mv.addObject("err", "글 조회 실패");
@@ -178,9 +182,12 @@ public class ReviewControllerImpl implements ReviewController {
     try {
       ReviewVO review = reviewService.getBoardNext(reviewId);
       FileVO file = reviewService.getFile(review.getFileId());
-      // FileVO profile = reviewService.getPfImg(review.getEmail());
+      int pfId = reviewService.selectPfId(review.getEmail());
+      // 댓글목록 조회
+      ArrayList<RCommVO> commList = reviewService.getRCommList(review.getReviewId());
 
-      // mv.addObject("profile", profile);
+      mv.addObject("commList", commList);
+      mv.addObject("pfId", pfId);
       mv.addObject("file", file);
       mv.addObject("review", review);
       mv.addObject("page", page);
