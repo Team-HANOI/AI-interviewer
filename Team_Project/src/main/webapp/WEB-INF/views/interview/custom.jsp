@@ -14,10 +14,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 공통 스타일  -->
 <jsp:include page="../common/top.jsp" />
 <!-- 페이지 스타일  -->
 <link rel="stylesheet" href="/style/interview_normal.css">
+<script>
+	
+
+	$(function(){
+		$("form").submit(function(e){
+		
+			var flag = false;
+						
+			$(this).find("input[type=checkbox]").each(function(index, item){
+				if($(item).is(':checked')){
+					flag = true;
+				}
+			});
+	
+			if(flag === false){		
+			
+				alert("키워드를 선택해 주세요.");
+				e.preventDefault();
+				
+			}
+						
+		});
+	});
+
+</script>
+
 
 </head>
 <body>
