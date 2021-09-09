@@ -111,6 +111,9 @@ public interface ReviewDAO {
   // select 댓글작성자 프로필사진
   FileVO getCommImg(String email) throws Exception;
 
+  // 댓글 전체삭제
+  void deleteRCommTotal(int reviewId) throws Exception;
+
   // 댓글 삭제
   void deleteRComm(int comId) throws Exception;
 }

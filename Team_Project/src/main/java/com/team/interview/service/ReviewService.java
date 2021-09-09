@@ -33,8 +33,8 @@ public interface ReviewService {
 
   void modifyBoard(ReviewVO review) throws Exception;
 
-
   void removeBoard(int reviewId) throws Exception;
+
 
   // 댓글
 
