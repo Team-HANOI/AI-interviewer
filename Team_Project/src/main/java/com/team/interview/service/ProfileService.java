@@ -9,6 +9,4 @@ public interface ProfileService {
   FileVO getFile(int fileId) throws Exception;
 
   ProfileVO getProfile(int pfId, String email) throws Exception;
-
-
 }

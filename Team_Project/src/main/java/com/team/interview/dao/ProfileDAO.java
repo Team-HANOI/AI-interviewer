@@ -20,5 +20,9 @@ public interface ProfileDAO {
   void updateMypageProfile(ProfileVO profileVO);
   void updateMypageProfileImage(FileVO newFile);
 
+  void updateNewDayJandi(ProfileVO profileVO);
+  void updateInterviewCompleteJandi(ProfileVO profileVO);
+  int getMaxNumOfPfId();
+
   //  MemberVO findByEmail(@Param("email") String email,@Param("fromSocial") boolean fromSocial);
 }
