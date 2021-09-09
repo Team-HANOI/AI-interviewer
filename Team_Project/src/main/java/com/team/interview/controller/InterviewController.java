@@ -120,9 +120,10 @@ public class InterviewController {
       //      String mentorDateString = transFormat1.format(mentor.getMentorDate());
 
 
+    mentor.setMentorName(authMemberDTO.getName());
       mentor.setMentorEmail(authMemberDTO.getEmail());
       interviewService.regMentor(mentor);
-      mav.setViewName("interview/mentor");
+      mav.setViewName("interview");
     } catch (Exception e) {
       e.printStackTrace();
       mav.setViewName("err");
