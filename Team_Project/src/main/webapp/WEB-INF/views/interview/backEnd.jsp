@@ -1,184 +1,185 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-<!-- 공통 스타일  -->
-
-<jsp:include page="../common/top.jsp" />
-<!-- 페이지 스타일  -->
-
-<link rel="stylesheet" href="/style/interview_normal.css">
-<script>
-var idx=0;
-
-var qIds = new Array();
-var answers = new Array();
-
-var contents = new Array();
-<c:forEach items="${questions}" var="question">
-	qIds.push("${question.qId}");
-	contents.push("${question.content}");
-</c:forEach>
-var step=qIds.length;
-
-
-
-$(function() {
-	$("#question").text(contents[idx]);
-	$("#speaker").click(function() {
-		alert($("#question").text());
-		requestVoice($("#question").text());
+  <jsp:include page="../common/top_t.jsp"/>
+  
+  <script>
+	var idx=0;
+	
+	var qIds = new Array();
+	var answers = new Array();
+	
+	var contents = new Array();
+	<c:forEach items="${questions}" var="question">
+		qIds.push("${question.qId}");
+		contents.push("${question.content}");
+	</c:forEach>
+	var step=qIds.length;
+	
+	$(function() {
+		$("#question").text(contents[idx]);
+		$("#speaker").click(function() {
+			alert($("#question").text());
+			requestVoice($("#question").text());
+		});
+		$("#nextBtn").click(function() {
+			
+			if($("#answer").val() == ""){
+				alert("답변을 해주세요.");
+				return ;
+			}
+			++idx;
+			if(idx<step) {
+				$("#question").text(contents[idx]);
+				$("#answer").val("");
+			} else {
+				alert("마지막 질문 입니다.");
+				reqeustNextPage();
+	
+			}
+		});
 	});
-	$("#nextBtn").click(function() {
+	
+	function requestVoice(questionText) {
+		var request = new XMLHttpRequest();
+		request.responseType = "blob";
+		request.onload = function() {
+	 		var audioURL = URL.createObjectURL(this.response);	
+	 		var audio = new Audio();
+			audio.src = audioURL;
+			audio.play();
+	 	}
+		request.open("POST", '/interview/questionvoice');
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		var params = "question="+questionText;
+		request.send(params);
+	}
+	
+	function reqeustNextPage() {
+	
+		let formdata = new FormData();
 		
-		if($("#answer").val() == ""){
-			alert("답변을 해주세요.");
-			return ;
-		}
-		++idx;
-		if(idx<step) {
-			$("#question").text(contents[idx]);
-			$("#answer").val("");
-		} else {
-			alert("마지막 질문 입니다.");
-			reqeustNextPage();
-
-		}
-	});
+		formdata.append("type", "1");
+		formdata.append("pos", "back");
+	    formdata.append("qIds", qIds);
+	    formdata.append("answers", answers);
+	    formdata.append("cnt", bloblist.length);
+	    
+	    for(var i = 0; i < bloblist.length; i++){
+	    
+	   		formdata.append("data"+String(i), bloblist[i]);
+	   		
+	    }
+	   
+	    let xhr = new XMLHttpRequest();
+	    xhr.onload = () => {
+	    
+	    	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
+				console.log("response:"+xhr.response);
+	    		location.href="/interview/result";  
+	    		     
+	    	}                 
+	    }
+	    xhr.open("POST", "/interview/saveanswervoice", true);
+	    xhr.send(formdata);
+	}
 	
-	
-});
-
-function requestVoice(questionText) {
-	var request = new XMLHttpRequest();
-	request.responseType = "blob";
-	request.onload = function() {
- 		var audioURL = URL.createObjectURL(this.response);	
- 		var audio = new Audio();
-		audio.src = audioURL;
-		audio.play();
- 	}
-	request.open("POST", '/interview/questionvoice');
-	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	var params = "question="+questionText;
-	request.send(params);
-}
-
-function reqeustNextPage() {
-
-	let formdata = new FormData();
-	
-	formdata.append("type", "1");
-	formdata.append("pos", "back");
-    formdata.append("qIds", qIds);
-    formdata.append("answers", answers);
-    formdata.append("cnt", bloblist.length);
-    
-    for(var i = 0; i < bloblist.length; i++){
-    
-   		formdata.append("data"+String(i), bloblist[i]);
-   		
-    }
-   
-    let xhr = new XMLHttpRequest();
-    xhr.onload = () => {
-    
-    	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
-			console.log("response:"+xhr.response);
-    		location.href="/interview/result";  
-    		     
-    	}                 
-    }
-    xhr.open("POST", "/interview/saveanswervoice", true);
-    xhr.send(formdata);
-}
-
-</script>
-
-
+  </script>
 </head>
+
 <body>
-	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-	<jsp:include page="../common/header.jsp" />
 
-	<!-- 본문 시작 -> 여기서 작업하세요 -->
-	<main>
-		<!-- 태양 -->
-		<div class="sun">
-			<img src="https://pngimg.com/uploads/sun/sun_PNG13439.png" alt="">
-		</div>
+  <!-- ======= Header ======= -->
+  <jsp:include page="../common/nav.jsp"/>
+  
+  <!-- ======= Hero Section ======= -->
+  <section id="" class="" 
+  style="background-image: url('/image/i_backend.jpg');
+  background-size:cover;">
+  </section><!-- End Hero -->
+  <main id="main">
+  	<!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>일반면접(백엔드)</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>일반면접</li>
+          </ol>
+        </div>
+      </div>
+    </section><!-- End Our Portfolio Section -->
 
-		<!-- 팝업 -->
-		<!-- 팝업배경 더미 -->
-		<div class="popup-dummy"></div>
+    <!-- ======= Portfolio Section ======= -->
+    <section class="portfolio">
+      <div class="container">
+      <p>남은시간: <span class="time-left">00:00</span></p>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+          <div class="col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text" id="question">
+            <div class="portfolio-item row text-wrap">
+            
+            <!-- 질문 텍스트 -->
+            <p class="text-light px-3 fs-3 w-100 badge text-break" style="white-space: initial;">
+            
+            </p><!-- 질문 텍스트 끝-->
+            
+              <div class="portfolio-info bg-dark w-25 mx-auto pt-2 pb-2">
+                <h3>질문 1</h3>
+                <div>
+                  <button class="btn interview-btn bx text-light" id="nextBtn">다음질문</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter=".filter-card">
+              	<button class="btn btn-light" id="speaker">질문듣기</button>
+              </li>
+              <li data-filter="*" class="filter">
+              	<button class="btn btn-light" id="record">녹음</button>
+              </li>
+              <li data-filter=".filter-app">
+              	<button class="btn btn-light" id="stop">정지</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="row" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+          <textarea name="" id="answer" rows="10"
+					class="interview-answer interview-text col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text" id="question">
+          </textarea>
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->			
+  </main><!-- End #main -->
 
-		<!-- 키워드 카드 팝업 -->
-		<jsp:include page="../common/popups/popup_keyword.jsp" />
-
-		<!-- 기업회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_com.jsp" />
-
-		<!-- 일반회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv.jsp" />
-
-		<!-- 일번회원가입 추가입력 폼 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv_extra.jsp" />
-
-		<!-- 기업회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_com.jsp" />
-
-		<!-- 일반회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_indv.jsp" />
-
-		<!--본문 면접모드-->
-		<div class="interview">
-			<div class="interview-content">
-
-				<h2>질문:</h2>
-				<div class="interview-question interview-text" id="question">
-
-				</div>
-				<button type="button" id="speaker">듣기</button>
-
-				<h2>답변:</h2>
-				<textarea name="" id="answer"
-					class="interview-answer interview-text"></textarea>
-				<button id="record">녹음</button>
-				<button id="stop">정지</button>
-				
-				<div class="interview-time">
-					<p>
-						남은시간: <span class="time-left">00:00</span>
-					</p>
-				</div>
-				
-			</div>
-
-
-
-			<div class="btn-box">
-				<button class="btn interview-btn" id="nextBtn">다음질문</button>
-			</div>
-
-
-		</div>
-	</main>
-
-	<!-- 꼬리 -->
-	<jsp:include page="../common/footer.jsp" />
-
-	<script
+  <!-- ======= Footer ======= -->
+  <jsp:include page="../common/footer.jsp"/>
+  
+  <!-- Vendor JS Files -->
+  <jsp:include page="../common/vendor_js.jsp"/>
+  
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  
+  <script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-	</script>
+  </script>
 
 
 
 
-	<script>
+  <script>
     const record = document.getElementById("record")
     const stop = document.getElementById("stop")
     const textarea = document.getElementById("answer")
@@ -244,7 +245,7 @@ function reqeustNextPage() {
                 console.log('The following error occurred: ' + err)
             })
     }	
-</script>
-
+  </script>
 </body>
 </html>
+

@@ -76,6 +76,12 @@ public class InterviewController {
 		mav.addObject("board-total", "board/total");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/run")
+	public ModelAndView interviewRun() {
+		ModelAndView mav = new ModelAndView("interview/run");
+		return mav;
+	}
 
 	@RequestMapping(value = "/mentor")
 	public ModelAndView interviewMentor(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
@@ -121,9 +127,9 @@ public class InterviewController {
 	}
 	
 
-	@RequestMapping(value = "/nomal")
+	@RequestMapping(value = "/normal")
 	public ModelAndView nomalinterview() {
-		ModelAndView mav = new ModelAndView("interview/nomal");
+		ModelAndView mav = new ModelAndView("interview/normal");
 		mav.addObject("board-total", "");
 		return mav;
 	}

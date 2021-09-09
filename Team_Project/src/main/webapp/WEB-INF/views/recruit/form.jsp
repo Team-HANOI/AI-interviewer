@@ -1,27 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<!-- 공통 스타일  -->
-    <jsp:include page="../common/top.jsp"/>
-	<!-- 페이지 스타일  -->
-	<link rel="stylesheet" href="/style/recruit_form.css">
-</head>
-<body>
-    <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-    <jsp:include page="../common/header.jsp"/>
-    
-    <!-- 본문 시작 -> 여기서 작업하세요 -->
-    <main>
-    	<!-- 팝업 -->
-        <jsp:include page="../common/popups/popups.jsp"/>
 
-        <!-- 타이틀 더미 -->
-        <div class="dummy"></div>
-        
-        <!-- 채용공고 작성 -->
-        <h1 class="page-title-left">채용공고 작성하기</h1>
+<head>
+  <jsp:include page="../common/top_t.jsp"/>
+  <link rel="stylesheet" href="/style/recruit_form.css">
+</head>
+
+<body>
+  <div class="logo">
+    <h1 class="text-light"><a href="index.html"><span>Moderna</span></a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  </div>
+
+  <!-- ======= Header ======= -->
+  <jsp:include page="../common/nav.jsp"/>
+  
+  <main id="main">
+  	<!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>채용공고 작성하기</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>채용공고</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Our Portfolio Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section class="portfolio">
+      <div class="container">
+      	<!-- 채용공고 작성 -->
         <form action="/recruit/form" method="POST" class="form-box">
 
             <!-- 구분선 -->
@@ -92,11 +110,17 @@
                 <input class="login-btn apply btn" type="submit" value="채용공고 올리기">
             </div>
         </form>
-    </main>
+      	
 
-    <!-- 꼬리 -->
-    <jsp:include page="../common/footer.jsp"/>
-</body>
-</html>
+      </div>
+    </section><!-- End Portfolio Section -->
+  </main><!-- End #main -->
 
-
+  <!-- ======= Footer ======= -->
+  <jsp:include page="../common/footer.jsp"/>
+  
+  <!-- Vendor JS Files -->
+  <jsp:include page="../common/vendor_js.jsp"/>
+  
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>

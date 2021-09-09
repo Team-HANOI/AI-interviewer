@@ -1,0 +1,182 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <jsp:include page="common/top_t.jsp"/>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <jsp:include page="common/nav.jsp"/>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>MR. Alpaca</span></h2>
+          <p class="animate__animated animate__fadeInUp">알파카로 꿈을 이루세요.</p>
+          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">Interview</h2>
+          <p class="animate__animated animate__fadeInUp">다양한 면접가능</p>
+          <a href="#features" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">커뮤니티</h2>
+          <p class="animate__animated animate__fadeInUp">다양한 정보검색</p>
+          <a href="#service" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Contact</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Contact</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>Our Address</h3>
+                  <p>서울 강남 어딘가 멀티캠퍼스</p>
+                </div>
+              </div>
+              <div class="col-md-12 row">
+                <div class="info-box col">
+                  <a class="hayoon" href="https://github.com/bluedawn228"> 
+                    <i class="fab fa-github-square fa-4x developers-git"></i>
+                    <p class="developers-id">bluedawn228</p>
+				  </a>
+                </div>
+              
+                <div class="info-box col">
+                   <a class="hayoon" href="https://github.com/cgkim449"> 
+                    <i class="fab fa-github-square fa-4x developers-git"></i>
+                    <p class="developers-id">cgkim449</p>
+				  </a>
+                </div>
+              
+                <div class="info-box col">
+                  <a class="hayoon" href="https://github.com/AngryPig123"> 
+                    <i class="fab fa-github-square fa-4x developers-git"></i>
+                    <p class="developers-id">AngryPig123</p>
+				  </a>
+                </div>
+              
+                <div class="info-box col">
+                  <a class="hayoon" href="https://github.com/jin-co"> 
+                    <i class="fab fa-github-square fa-4x developers-git"></i>
+				    <p class="developers-id">jin-co</p>
+				  </a>
+                </div>
+              
+                <div class="info-box col">
+                  <a class="hayoon" href="https://github.com/HAYOON26"> 
+                    <i class="fab fa-github-square fa-4x developers-git"></i>
+                    <p class="developers-id">HAYOON26</p>
+				  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+    <!-- ======= Map Section ======= -->
+    <section class="map mt-2">
+      <div class="container-fluid p-0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007%2C%20USA!5e0!3m2!1sen!2sbg!4v1579767901424!5m2!1sen!2sbg" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
+    </section><!-- End Map Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <jsp:include page="common/footer.jsp"/>
+  
+  <!-- Vendor JS Files -->
+  <jsp:include page="common/vendor_js.jsp"/>
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+

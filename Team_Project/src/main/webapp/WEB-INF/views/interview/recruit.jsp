@@ -1,87 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<!-- 공통 스타일  -->
-<jsp:include page="../common/top.jsp" />
-<!-- 페이지 스타일  -->
-<link rel="stylesheet" href="/style/interview_recruit.css">
+  <jsp:include page="../common/top_t.jsp"/>
 </head>
+
 <body>
-	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-	<jsp:include page="../common/header.jsp" />
 
-	<!-- 본문 시작 -> 여기서 작업하세요 -->
-	<main>
-		<!-- 태양 -->
-		<div class="sun">
-			<img src="https://pngimg.com/uploads/sun/sun_PNG13439.png" alt="">
-		</div>
-
-		<!-- 팝업 -->
-		<!-- 팝업배경 더미 -->
-		<div class="popup-dummy"></div>
-
-		<!-- 키워드 카드 팝업 -->
-		<jsp:include page="../common/popups/popup_keyword.jsp" />
-
-		<!-- 기업회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_com.jsp" />
-
-		<!-- 일반회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv.jsp" />
-
-		<!-- 일번회원가입 추가입력 폼 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv_extra.jsp" />
-
-		<!-- 기업회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_com.jsp" />
-
-		<!-- 일반회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_indv.jsp" />
-
-		<!-- 본문 타이틀 -->
-		<div class="title">
-			<div class="title-text">
-				<h1 class="text">채용공고모드</h1>
-			</div>
-		</div>
-
-		<div class="row intro">
-			<p class="row-text">원하는 공고를 선택하면 솰라솰라</p>
-		</div>
-
-		<!-- 구분선 -->
-		<div class="line"></div>
-
-		<!-- 공고 -->
-		<div class="container">
-			<c:forEach items="${voList}" var="list">
-				<div class="card" id="pick"
-					OnClick="location.href ='/interview/run'">
-					<!-- 정보를 가지고 넘어가야됨 -->
-					<div class="img-gradient"></div>
-					<img class="play-button1" src="${list.logoUrl}" alt="${list.cname}"
-						srcset="">
-					<div class="text-wrap">
-						<h1>${list.cname}</h1>
-
-						<c:forEach items="${list.kwList}" var="kw">
-							<button>${kw}</button>
-						</c:forEach>
-					</div>
-					<div></div>
-				</div>
-				<!-- card -->
-			</c:forEach>
-
-			<div id="pageList" class="pageList">
+  <!-- ======= Header ======= -->
+  <jsp:include page="../common/nav_main.jsp"/>
+  
+  <!-- ======= Hero Section ======= -->
+  <section id="" class="h-100" 
+  style="background-image: url('/image/i_recruit.jpg');
+  background-size:cover; background-position:center;
+  position: relative;">
+  	<div class="w-100 h-100 bg-dark" style="position:absolute;
+  	top:0; opacity:.5;"></div>
+  </section><!-- End Hero -->
+  
+  <main id="main">
+  	<section class="portfolio">
+      <div class="container">
+	
+		<!-- 페이지 컨트롤 -->
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <div id="pageList" class="pageList">
 				<c:choose>
 					<c:when test="${pageInfo.page<=1}">
-						[이전]&nbsp;
+						<li data-filter=".filter-card">이전</li>
 					</c:when>
 					<c:otherwise>
 						<a href="/interview/recruit?page=${pageInfo.page-1}">[이전]</a>&nbsp;
@@ -98,19 +50,52 @@
 				</c:forEach>
 				<c:choose>
 					<c:when test="${pageInfo.page>=pageInfo.maxPage }">
-						[다음]
+						<li data-filter=".filter-app">다음</li>
 					</c:when>
 					<c:otherwise>
 						<a href="/interview/recruit?page=${pageInfo.page+1}">[다음]</a>
 					</c:otherwise>
 				</c:choose>
-			</div>
-		</div>
-		<!-- container -->
-	</main>
+			  </div>
+            </ul>
+          </div>
+        </div> <!-- End 페이지 컨트롤 -->
 
-	<!-- 꼬리 -->
-	<jsp:include page="../common/footer.jsp" />
+		<!-- 공고 container -->
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+		  <!-- 공고 -->
+		  <c:forEach items="${voList}" var="list">
+            <div class="col-lg-4 col-md-6 portfolio-wrap filter-app" id="pick"
+            OnClick="location.href ='/interview/run'">
+              <div class="portfolio-item">
+                <!-- 정보를 가지고 넘어가야됨 -->
+                <img src="/assets/img/portfolio/portfolio-1.jpg" class="play-button1 img-fluid" alt="${list.cname}">
+                <div class="portfolio-info">
+                  <h1 class="bg-light">{list.cname}</h1>
+                  <div>
+                    <c:forEach items="${list.kwList}" var="kw">
+					  <small class="bg-light">#${kw}</small>
+				    </c:forEach>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </c:forEach>
+        </div> <!-- End 공고 container -->
+        
+      </div>
+    </section><!-- End Portfolio Section -->
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <jsp:include page="../common/footer.jsp"/>
+  
+  <!-- Vendor JS Files -->
+  <jsp:include page="../common/vendor_js.jsp"/>
+  
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  
 </body>
 </html>
 
