@@ -162,11 +162,6 @@ function reqeustNextPage() {
 				<button id="record">녹음</button>
 				<button id="stop">정지</button>
 
-				<div class="interview-time">
-					<p>
-						남은시간: <span class="time-left">00:00</span>
-					</p>
-				</div>
 
 			</div>
 
