@@ -4,65 +4,94 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<!-- 공통 스타일  -->
-    <jsp:include page="../common/top.jsp"/>
-	<!-- 페이지 스타일  -->
-	<link rel="stylesheet" href="/style/recruit_list.css">
+  <jsp:include page="../common/top_t.jsp"/>
 </head>
+
 <body>
-    <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-    <jsp:include page="../common/header.jsp"/>
-    
-    <!-- 본문 시작 -> 여기서 작업하세요 -->
-    <main>
-    	<!-- 태양 -->
-    	<div class="sun">
-            <img src="https://pngimg.com/uploads/sun/sun_PNG13439.png" alt="">
-        </div>
-        
-    	<!-- 팝업 -->
-        <jsp:include page="../common/popups/popups.jsp"/>
 
-        <!-- 본문 타이틀 -->
-        <div class="title">
-            <div class="title-text">
-                <h1 class="text">채용공고</h1>
-            </div>
+  <!-- ======= Header ======= -->
+  <jsp:include page="../common/nav.jsp"/>
+  
+  <main id="main">
+  	<!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Our Portfolio</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Our Portfolio</li>
+          </ol>
         </div>
 
-        <div class="post">
+      </div>
+    </section><!-- End Our Portfolio Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section class="portfolio">
+      <div class="container">
+      
+      	<div class="post">
             <a href="/recruit/form">
-                <button class="post-btn btn">채용공고 올리기</button>
+                <button class="post-btn btn btn-light">채용공고 올리기</button>
             </a>
         </div>
 
-        <!-- 공고 -->
-		<div class="card-box">
-			<c:forEach var="r" items="${recruits }">
-            <a href="${r.url }">
-                <div class="card">
-                    <div class="text-wrap">
-                        <h1>회사이름: ${r.cName }</h1>
-                        <p>경력: ${r.career }</p>
-                        <c:set var="keywords" value="${fn:split(r.kw, ',') }"></c:set>
-                        <c:forEach var="k" items="${keywords }">
-	                        <small>#${k }</small>&nbsp;
-                        </c:forEach>
-                    </div>
-                    <img src='<c:url value="/recruit/img/${r.logoId}"/>'
-								width="1000" class="img-thumbnail card-img">
-					
-					
-				</div>
-            </a>
-            </c:forEach>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter=".filter-app"></li>
+              <li data-filter=".filter-card"></li>
+              <li data-filter=".filter-web"></li>
+            </ul>
+          </div>
         </div>
-	</main>
 
-    <!-- 꼬리 -->
-    <jsp:include page="../common/footer.jsp"/>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <c:forEach var="r" items="${recruits }">
+          <a href="${r.url }">
+            <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
+              <div class="portfolio-item">
+                <img src='<c:url value="/recruit/img/${r.logoId}"/>'
+				  width="1000" class="img-thumbnail card-img img-fluid">
+             
+                <div class="portfolio-info">
+                  <h3>${r.cName }</h3>
+             	  <div>
+                    <c:set var="keywords" value="${fn:split(r.kw, ',') }"></c:set>
+                    <c:forEach var="k" items="${keywords }">
+              	      <small class="bg-light px-3 rounded">#${k }</small>&nbsp;
+                    </c:forEach>
+             	  </div>
+           	    </div>
+		      </div>
+  		    </div>
+          </a>
+        </c:forEach>
+
+          
+            
+              
+            
+          
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <jsp:include page="../common/footer.jsp"/>
+  
+  <!-- Vendor JS Files -->
+  <jsp:include page="../common/vendor_js.jsp"/>
+  
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  
 </body>
 </html>
-
-
