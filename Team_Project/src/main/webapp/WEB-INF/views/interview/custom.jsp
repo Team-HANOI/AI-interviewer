@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+						<!--
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+								맞춤모드에서 키워드 선택 화면
+														 -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+						<!--
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+																 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -60,16 +60,16 @@ import com.team.interview.vo.QuestionVO;
 public class InterviewController {
 
   @Autowired
-  InterviewService interviewService;
+  InterviewService interviewService;	//	면접서비스, 회사별모드 관련
 
   @Autowired
-  QuestionService questionService;
+  QuestionService questionService;	//	질문뽑아오는 서비스, 면접 모드에서 질문 다르게 가져오는거
 
   @Autowired
-  KeywordService keywordService;
+  KeywordService keywordService;	//	키워드관련 서비스, 맞춤모드에서 키워드 목록을 가져오기 위해 사용했음.
 
   @Autowired
-  InterviewAnswerService interviewAnswerService;
+  InterviewAnswerService interviewAnswerService;	//	면접기록 서비스, 면접을 기록하기 위해 사용
 
   @RequestMapping(value = "/")
   public ModelAndView interviewMain() {
@@ -131,16 +131,95 @@ public class InterviewController {
     return mav;
 
   }
+  
+  @RequestMapping(value = "/apply", method = RequestMethod.GET)
+  public ModelAndView applyPage(@ModelAttribute("mentor") MentormodeVO mentor, @RequestParam(value="mentorEmail") String mentorEmail,@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
 
-	//	일반모드 분기 페이지
-  @RequestMapping(value = "/nomal")
-  public ModelAndView nomalinterview() {
+    System.out.println("여기되나");
+    ModelAndView mav = new ModelAndView();
+    try {
+      mentor.setMentorEmail(mentorEmail);
+      mentor.setApplEmail(authMemberDTO.getEmail());
+      System.out.println(mentor.getApplEmail());
+      System.out.println(mentor.getMentorEmail());
+      interviewService.appMentor(mentor);
+      mav.setViewName("interview/mentor");
+    } catch (Exception e) {
+      e.printStackTrace();
+      mav.setViewName("err");
+    }
+
+    return mav;
+
+  }
+
+  
+
+  //	일반모드, 회사별 모드, 맞춤모드 컨트롤러
+  
+  
+  
+	//	일반모드 : 백앤드,프론트앤드로 분기 하여 면접 진행 
+  @RequestMapping(value = "/nomal") 
+  public ModelAndView nomalinterview() {	 //	백앤드,프론트 분기컨트롤러
     ModelAndView mav = new ModelAndView("interview/nomal");
     mav.addObject("board-total", "");
     return mav;
   }
+  
+  // 일반모드 => backEnd 포지션
+  @RequestMapping(value = "/backEnd")
+  public ModelAndView backEndQ() {	 // backEnd
 
-  // 채용공고모드 : 기업채용공고를 불러온다.
+    ModelAndView mav = new ModelAndView("interview/backEnd");
+    ArrayList<QuestionVO> questions;
+
+    try {
+
+      questions = questionService.backQuestion();
+      System.out.println(questions);
+      mav.addObject("questions", questions);
+
+    } catch (Exception e) {
+
+      e.printStackTrace();
+
+    }
+
+    return mav;
+
+  }
+
+  // 일반모드 => frontEnd 포지션
+  @RequestMapping(value = "/frontEnd") 
+  public ModelAndView frontEndQ() {	// frontEnd
+
+    ModelAndView mav = new ModelAndView("interview/frontEnd");
+    ArrayList<QuestionVO> questions;
+
+    try {
+
+      questions = questionService.frontQuestion();
+      System.out.println(questions);
+      mav.addObject("questions", questions);
+
+    } catch (Exception e) {
+
+      e.printStackTrace();
+
+    }
+
+    return mav;
+
+  }
+  //	일반모드 끝
+  
+  
+  
+  
+  
+  
+  // 회사별 모드 : 크롤링하여 저장한 기업채용공고를 이용하여 면접을 진행시켜줌.
   @RequestMapping(value = "/recruit", method = RequestMethod.GET)
   public ModelAndView interviewRecruit(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 
@@ -175,54 +254,23 @@ public class InterviewController {
     return mav;
   }
 
-	// recruitMode 면접
+  //	받아온 정보를 면접페이지로(customMode를 같이사용) 넘긴다
 	@RequestMapping(value = "/recruitMode" )
 	public ModelAndView recruitMode(@RequestParam(value="kwList") List<String> kwList) {
-//	public ModelAndView recruitMode(@RequestParam(value="kwList") String kwList) {
-		
-		
-		ModelAndView mav = new ModelAndView("interview/customMode");
-		//	customMode와 같이씀
+	
+		ModelAndView mav = new ModelAndView("interview/customMode");	//	받아온 정보를 면접페이지로(customMode를 같이사용) 넘긴다
 		return mav;
 		
 	}
+	// 회사별 모드 끝
   
-  
-
-  @RequestMapping(value = "/apply", method = RequestMethod.GET)
-  public ModelAndView applyPage(@ModelAttribute("mentor") MentormodeVO mentor, @RequestParam(value="mentorEmail") String mentorEmail,@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
-
-    System.out.println("여기되나");
-    ModelAndView mav = new ModelAndView();
-    try {
-      mentor.setMentorEmail(mentorEmail);
-      mentor.setApplEmail(authMemberDTO.getEmail());
-      System.out.println(mentor.getApplEmail());
-      System.out.println(mentor.getMentorEmail());
-      interviewService.appMentor(mentor);
-      mav.setViewName("interview/mentor");
-    } catch (Exception e) {
-      e.printStackTrace();
-      mav.setViewName("err");
-    }
-
-    return mav;
-
-  }
-
-  // 회사별 모드
-  @RequestMapping(value = "/result")
-  public ModelAndView interviewResult() {
-
-    ModelAndView mav = new ModelAndView("interview/result");
-
-
-    mav.addObject("board-total", "");
-    return mav;
-
-  }
-
-  // customMode 키워드 선택
+	
+	
+	
+	
+	
+	
+//	맞춤모드 : 질문에 포함되는 기술 스택 keyword를 선택하여 면접을 진행시켜줌
   @RequestMapping(value = "/custom")
   public ModelAndView custom() {
 
@@ -244,7 +292,6 @@ public class InterviewController {
     return mav;
   }
 
-  // customMode 면접
   @RequestMapping(value = "/customMode" )
   public ModelAndView customMode(@RequestParam(value="keyword") String[] keyword,
 		  						 @RequestParam(value="type") int type) {
@@ -277,53 +324,14 @@ public class InterviewController {
     return mav;
 
   }
+  //	맞춤모드 끝
+	
+  
+  
+	
 
 
-  // 일반모드 => backEnd 포지션
-  @RequestMapping(value = "/backEnd") // backEnd
-  public ModelAndView backEndQ() {
 
-    ModelAndView mav = new ModelAndView("interview/backEnd");
-    ArrayList<QuestionVO> questions;
-
-    try {
-
-      questions = questionService.backQuestion();
-      System.out.println(questions);
-      mav.addObject("questions", questions);
-
-    } catch (Exception e) {
-
-      e.printStackTrace();
-
-    }
-
-    return mav;
-
-  }
-
-  // 일반모드 => frontEnd 포지션
-  @RequestMapping(value = "/frontEnd") // backEnd
-  public ModelAndView frontEndQ() {
-
-    ModelAndView mav = new ModelAndView("interview/frontEnd");
-    ArrayList<QuestionVO> questions;
-
-    try {
-
-      questions = questionService.frontQuestion();
-      System.out.println(questions);
-      mav.addObject("questions", questions);
-
-    } catch (Exception e) {
-
-      e.printStackTrace();
-
-    }
-
-    return mav;
-
-  }
 
   // 질문 음성으로 내보내기(clova api)
   @ResponseBody
@@ -378,7 +386,11 @@ public class InterviewController {
       System.out.println(e);
     }
   }
+  //	tts끝
+  
+  
 
+  
   // 답변 text로 내보내기
   @ResponseBody
   @PostMapping("/answertext")
@@ -443,6 +455,9 @@ public class InterviewController {
     }
     return response.toString();
   }
+  //	stt끝
+  
+
 
   // 답변 저장
   @ResponseBody
@@ -508,11 +523,26 @@ public class InterviewController {
       e.printStackTrace();
     }
   }
+  // 답변 저장 끝
+  
+  
+  
 
 	//	dummy 
 	//  @GetMapping("/successinterview")
 	//  public String successInterview() {
 	//    return "success";
+	//  }
+  
+	//  @RequestMapping(value = "/result")
+	//  public ModelAndView interviewResult() {
+	//
+	//    ModelAndView mav = new ModelAndView("interview/result");
+	//
+	//
+	//    mav.addObject("board-total", "");
+	//    return mav;
+	//
 	//  }
 
 }
