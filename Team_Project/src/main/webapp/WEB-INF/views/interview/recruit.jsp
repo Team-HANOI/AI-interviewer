@@ -14,7 +14,7 @@
 <script>
 	
 $(function() {
-	$('.col-lg-4 col-md-6 portfolio-wrap filter-app').click(function(e) {
+	$(".card").click(function(e) {
 		
 		$(this).find('.kwform')[0].submit();
 	});
@@ -24,9 +24,14 @@ $(function() {
 
 <style>
 img {
-  width: 300px;
-  height: 150px;
-  object-fit: cover;
+	width: 450px;
+	height: 150px;
+	object-fit: cover;
+}
+
+#listPos {
+	background-color: white;
+	color: black;
 }
 </style>
 
@@ -48,26 +53,27 @@ img {
 	<main id="main">
 		<section class="portfolio">
 			<div class="container">
-
+				<%-- 
 				<!-- 공고 container -->
 				<div class="row portfolio-container" data-aos="fade-up"
 					data-aos-easing="ease-in-out" data-aos-duration="500">
 					<!-- 공고 -->
 					<c:forEach items="${voList}" var="list">
-						<div class="col-lg-4 col-md-6 portfolio-wrap filter-app" id="pick">
+						<div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
 							<div class="portfolio-item">
 								<!-- 정보를 가지고 넘어가야됨 -->
+								<div class="card" id="pick">
 								<img src="${list.logoUrl}" class="play-button1 img-fluid"
 									alt="${list.cname}">
+									</div>
 								<div class="portfolio-info">
 
 									<!--  <h1 class="bg-light">{list.cname}</h1> -->
-									<form class="kwform" action="/interview/customMode"
-										method="GET">
+									<form class="kwform" action="/interview/customMode"	method="GET">
 
 										<h1 class="bg-light">${list.cname}</h1>
+										<h3 id="listPos">${list.pos}</h3>
 										<input type="hidden" name="type" value="${type }">
-
 
 										<c:forEach items="${list.kwList}" var="kw">
 											<input id="kw${list.cname }" type="checkbox" checked="checked" name="keyword" value="${kw}"> <label for="kw${list.cname }">${kw}</label>
@@ -80,6 +86,49 @@ img {
 					</c:forEach>
 				</div>
 				<!-- End 공고 container -->
+ --%>
+
+				<div class="row portfolio-container" data-aos="fade-up"
+					data-aos-easing="ease-in-out" data-aos-duration="500">
+					<!-- 공고 -->
+					<div class="container">
+
+						<c:forEach items="${voList}" var="list">
+							<div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
+								<div class="portfolio-item">
+									<div class="card" id="pick">
+										<!-- 정보를 가지고 넘어가야됨 -->
+
+										<img class="play-button1 img-fluid" src="${list.logoUrl}"
+											alt="${list.cname}">
+										<!-- <div class="text-wrap"> -->
+										<div class="portfolio-info">
+											<form class="kwform" action="/interview/customMode"
+												method="GET">
+
+												<h1>${list.cname}</h1>
+												<h1>${list.pos}</h1>
+												<input type="hidden" name="type" value="${type }">
+
+												<c:forEach items="${list.kwList}" var="kw">
+													<%-- <button>${kw}</button> --%>
+													<input id="kw${list.cname }" type="checkbox"
+														checked="checked" name="keyword" value="${kw}">
+													<label for="kw${list.cname }">${kw}</label>
+												</c:forEach>
+											</form>
+										</div>
+
+									</div>
+									<div></div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+					<!-- card -->
+				</div>
+
+
 
 				<!-- 페이지 컨트롤 -->
 				<div class="row">
