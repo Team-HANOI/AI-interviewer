@@ -1,5 +1,6 @@
 package com.team.interview.test;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.team.interview.dao.ProfileDAO;
@@ -36,7 +37,7 @@ public class ProfileTests {
 
   // 자정에
   // db에서 String 가져와서 newDay() 호출 후 return 받은 String을 db에 업데이트
-  //  @Test
+  @Test
   public void testUpdateNewDayJandiForEachProfile() {
 
     int total = profileDAO.getMaxNumOfPfId();

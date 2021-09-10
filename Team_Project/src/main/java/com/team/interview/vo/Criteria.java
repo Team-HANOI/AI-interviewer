@@ -8,7 +8,8 @@ public class Criteria {
   private int amount; // 한 페이지당 보여줄 데이터의 개수
 
   private String type;
-  private String keyword;
+  private String keyword; // 면접 타입
+  private String q; // 질문 검색 키워드
   private String email; // 로그인 사용자 이메일
 
   public Criteria() {
@@ -31,15 +32,15 @@ public class Criteria {
         .queryParam("pageNum", this.getPageNum())
         .queryParam("amount", this.getAmount())
         .queryParam("type", this.getType())
-        .queryParam("keyword", this.getKeyword());
+        .queryParam("keyword", this.getKeyword())
+        .queryParam("q", this.getQ());
     return builder.toUriString();
   }
-
 
   @Override
   public String toString() {
     return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", type=" + type + ", keyword="
-        + keyword + ", email=" + email + "]";
+        + keyword + ", q=" + q + ", email=" + email + "]";
   }
 
   public int getPageNum() {
@@ -74,6 +75,14 @@ public class Criteria {
     this.keyword = keyword;
   }
 
+  public String getQ() {
+    return q;
+  }
+
+  public void setQ(String q) {
+    this.q = q;
+  }
+
   public String getEmail() {
     return email;
   }
@@ -81,6 +90,5 @@ public class Criteria {
   public void setEmail(String email) {
     this.email = email;
   }
-
 
 }
