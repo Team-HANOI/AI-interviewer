@@ -79,7 +79,7 @@
 	
 	let formdata = new FormData();
 	formdata.append("type", "1");
-	formdata.append("pos", "back");
+	formdata.append("pos", "frontEnd");
     formdata.append("qIds", qIds);
     formdata.append("answers", answers);
     formdata.append("cnt", bloblist.length);
