@@ -43,10 +43,10 @@
             <div class="testimonial-item swiper-slide">
               <img src="/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
               <h3>Saul Goodman</h3>
-              <h4>Ceo &amp; Founder</h4>
+              <h4>Developer</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                알파카덕에 취직했어요
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
@@ -57,7 +57,7 @@
               <h4>Designer</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                실제같은 면접 취업에 많은 도움이 됐어요.
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
@@ -65,10 +65,10 @@
             <div class="testimonial-item swiper-slide">
               <img src="/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
               <h3>Jena Karlis</h3>
-              <h4>Store Owner</h4>
+              <h4>Fromt Developer</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                면접준비하시는 분들에게 강추합니다.
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
@@ -79,7 +79,7 @@
               <h4>Freelancer</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                장난아닙니다.
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
@@ -90,7 +90,7 @@
               <h4>Entrepreneur</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                알파카에서 좋은 인재 영입했어요.
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
