@@ -177,7 +177,7 @@ ul {
 	background: #e2f1f7;
 }
 .comment-box .rereply-head {
-	background: #e2f1f7;
+	background: #7c9eb0;
 }
 
 .comment-box .comment-head i {
@@ -226,15 +226,15 @@ ul {
 
 .comment-box .comment-head span {
   float: left;
-  color: #999;
+  color: #bbb8b8;
   font-size: 13px;
   position: relative;
   top: 1px;
   margin-top: 10px;
 }
 
-/* 댓글내용 */
-.comment-box .comment-content {
+/* 본댓글내용 */
+.reply-content {
   background: #fcfcfc;
   padding: 12px;
   font-size: 15px;
@@ -242,6 +242,17 @@ ul {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
+}
+/* 대댓글내용 */
+.rereply-content{
+  background: #d0dfe6;
+  padding: 12px;
+  font-size: 15px;
+  color: #595959;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}	
 }
 
 .comment-box .comment-name.by-author,

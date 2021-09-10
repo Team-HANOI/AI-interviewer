@@ -238,7 +238,7 @@
 <%--<!-- 본댓글의 답글달기버튼 끝 -->--%>
 											</div>
 										</div>
-										<div class="comment-content">${comm.content}</div>
+										<div class="reply-content">${comm.content}</div>
 									</div>
 								</div>
 
@@ -274,8 +274,9 @@
 												<div class="comment-head-left">
 
 													<h6 class="comment-name">
-														<a href="http://creaticode.com/blog">${comm.name} | ${comm.content}</a>
-													</h6>
+													<a href="http://creaticode.com/blog">${comm.name}</a>
+												</h6>
+												<span>${comm.regdate}</span>
 												</div>
 												<div class="comment-head-right">
 
@@ -304,7 +305,7 @@
 
 												</div>
 											</div>
-											<div class="comment-content">${comm.content}</div>
+											<div class="rereply-content">${comm.content}</div>
 										</div>
 									</li>
 								</ul>
