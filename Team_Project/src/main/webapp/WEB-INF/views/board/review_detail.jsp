@@ -171,6 +171,7 @@
 		<div class="comments-container">
 			<c:forEach items="${commList}" var="comm" varStatus="status">
 
+<!-- 본댓글 시작-->
 
 				<ul id="comments-list" class="comments-list">
 					<li><c:choose>
@@ -202,7 +203,7 @@
 									</div>
 
 									<div class="comment-box">
-										<div class="comment-head">
+										<div class="comment-head reply-head">
 											<div class="comment-head-left">
 												<h6 class="comment-name">
 													<a href="http://creaticode.com/blog">${comm.name}</a>
@@ -228,27 +229,27 @@
 														</a>
 													</div>
 												</c:if>
-<!-- 대댓글 버튼 -->
+<%-- <!-- 본댓글의 답글달기버튼 시작-->--%>
 												<div class="comment-head-right-btn">
 													<a>
 													<button class="btn-commChildFn" onclick="commentChildFn()">답글 달기</button>
 													</a>
 												</div>
-<!-- 대댓글 버튼 끝 -->
+<%--<!-- 본댓글의 답글달기버튼 끝 -->--%>
 											</div>
 										</div>
-										<div class="comment-content">${comm.content}</div>
+										<div class="reply-content">${comm.content}</div>
 									</div>
 								</div>
 
-<!-- 대댓글 달기 박스 -->
+<%-- <!-- 본댓글의 답글달기박스 시작--> --%>
 								<div id="comm" class="comm">
 									<form class="commChildForm" name="${comm.comId}"
 										id="commentChild-form" action="/review/addCommChild"
 										method="post">
 
 										<textarea id="${comm.prtComId}" name="content"
-											class="commentChild" rows="3">홍길동</textarea>
+											class="commentChild" rows="3"></textarea>
 
 										<input type="hidden" name="reviewId" id="reviewId"
 											value="${review.reviewId}"> <input type="hidden"
@@ -256,28 +257,29 @@
 										<button type="submit" class="comment-btn">댓글달기</button>
 									</form>
 								</div>
-<!-- 대댓글 달기 끝 -->
+<%--<!-- 본댓글의 답글달기박스 끝-->--%>
+
 							</c:when>
+<%--<!-- 본댓글 끝 --> --%>
 
 
-
-
+<%--<!-- 대댓글 시작--> --%>
 							<c:otherwise>
 								<ul class="comments-list reply-list">
 									<li>
 										<div class="comment-avatar">
 										</div>
 										<div class="comment-box">
-											<div class="comment-head">
+											<div class="comment-head rereply-head">
 												<div class="comment-head-left">
+
 													<h6 class="comment-name">
-														<a href="http://creaticode.com/blog">${comm.name}</a>
-													</h6>
-													<span>${comm.regdate}</span>
+													<a href="http://creaticode.com/blog">${comm.name}</a>
+												</h6>
+												<span>${comm.regdate}</span>
 												</div>
 												<div class="comment-head-right">
 
-													
 													<c:if test="${commEmail eq userEmail}">
 													<div class="comment-head-right-btn">
 													<a href="/review/boardcommdelete?reviewId=${review.reviewId}">
@@ -293,21 +295,43 @@
 														</a>
 													</div>
 												</c:if>
-<!-- 대댓글 버튼 -->
+<%--<!-- 대댓글의 답글달기버튼 시작 --> --%>
 												<div class="comment-head-right-btn">
 													<a>
-													<button onclick="commentChildFn">답글 달기</button>
+													<button class="btn-reCommChildFn" onclick="commentChildFn">답글 달기</button>
 													</a>
 												</div>
-<!-- 대댓글 버튼 끝 -->
+<%--<!-- 대댓글의 답글달기버튼 끝 --> --%>
+
 												</div>
 											</div>
-											<div class="comment-content">${comm.content}</div>
+											<div class="rereply-content">${comm.content}</div>
 										</div>
 									</li>
 								</ul>
+								
+								
+<%-- <!-- 대댓글의 답글달기박스 시작--> --%>
+								<div id="recomm" class="recomm">
+									<form class="commChildForm" name="${comm.comId}"
+										id="commentChild-form" action="/review/addCommChild"
+										method="post">
+
+										<textarea id="${comm.prtComId}" name="content"
+											class="commentChild" rows="3"></textarea>
+
+										<input type="hidden" name="reviewId" id="reviewId"
+											value="${review.reviewId}"> <input type="hidden"
+											name="prtComId" id="prtComId" value="${comm.prtComId}">
+										<button type="submit" class="comment-btn">댓글달기</button>
+									</form>
+								</div>
+<%--<!-- 대댓글의 답글달기박스 끝-->--%>
+								
+								
 							</c:otherwise>
 						</c:choose></li>
+<!-- 대댓글 끝-->						
 				</ul>
 
 			</c:forEach>

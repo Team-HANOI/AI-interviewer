@@ -77,16 +77,15 @@ ul {
 }
 .reply-list li:before {
   content: "";
-  width: 60px;
+  width: 100px;
   height: 2px;
   background: #c7cacb;
   position: absolute;
   top: 25px;
-  left: -55px;
+  left: -86px;
 }
 
 .comments-list li {
-  margin-bottom: 15px;
   display: block;
   position: relative;
 }
@@ -100,7 +99,7 @@ ul {
 }
 
 .reply-list {
-  padding-left: 88px;
+  padding-left: 120px;
   clear: both;
   margin-top: 15px;
 }
@@ -118,6 +117,7 @@ ul {
   height: 50px;
 }
 
+
 .comment-main-level:after {
   content: "";
   width: 0;
@@ -127,6 +127,10 @@ ul {
 }
 
 .comm {
+    display: none;
+} 
+
+.recomm {
     display: none;
 } 
 
@@ -165,14 +169,19 @@ ul {
 
 /* 댓글 해드 */
 .comment-box .comment-head {
-  background: #e2f1f7;
-  padding: 10px 12px;
   border-bottom: 1px solid #e5e5e5;
   overflow: hidden;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
   
+}
+
+.comment-box .reply-head {
+	background: #e2f1f7;
+}
+.comment-box .rereply-head {
+	background: #7c9eb0;
 }
 
 .comment-box .comment-head i {
@@ -221,14 +230,15 @@ ul {
 
 .comment-box .comment-head span {
   float: left;
-  color: #999;
+  color: #bbb8b8;
   font-size: 13px;
   position: relative;
   top: 1px;
+  margin-top: 10px;
 }
 
-/* 댓글내용 */
-.comment-box .comment-content {
+/* 본댓글내용 */
+.reply-content {
   background: #fcfcfc;
   padding: 12px;
   font-size: 15px;
@@ -237,6 +247,17 @@ ul {
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
 }
+/* 대댓글내용 */
+.rereply-content{
+  background: #d0dfe6;
+  padding: 12px;
+  font-size: 15px;
+  color: #595959;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}	
+
 
 .comment-box .comment-name.by-author,
 .comment-box .comment-name.by-author a {
