@@ -56,7 +56,6 @@
 							<a href="/interview/recruit?page=${pageInfo.page+1}">[다음]</a>
 						</c:otherwise>
 					</c:choose>
-				</c:forEach>
 				<c:choose>
 					<c:when test="${pageInfo.page>=pageInfo.maxPage }">
 						<li data-filter=".filter-app">다음</li>
