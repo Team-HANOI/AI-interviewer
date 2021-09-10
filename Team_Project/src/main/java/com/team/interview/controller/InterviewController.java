@@ -161,9 +161,9 @@ public class InterviewController {
   
   
 	//	일반모드 : 백앤드,프론트앤드로 분기 하여 면접 진행 
-  @RequestMapping(value = "/nomal") 
-  public ModelAndView nomalinterview() {	 //	백앤드,프론트 분기컨트롤러
-    ModelAndView mav = new ModelAndView("interview/nomal");
+  @RequestMapping(value = "/normal") 
+  public ModelAndView normallinterview() {	 //	백앤드,프론트 분기컨트롤러
+    ModelAndView mav = new ModelAndView("interview/normal");
     mav.addObject("board-total", "");
     return mav;
   }

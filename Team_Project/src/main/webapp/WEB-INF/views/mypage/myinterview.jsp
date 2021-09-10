@@ -10,6 +10,12 @@
     <jsp:include page="../common/top.jsp"/>
 	<!-- 페이지 스타일 -->
 	<link rel="stylesheet" href="/style/board_review.css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	
 </head>
 <body>
     <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
@@ -39,25 +45,27 @@
             <!-- 유저정보 우측 정보 박스 -->
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
-                <div class="mypage-content-title">내 면접</div>
+                <sec:authentication property="principal" var="user"/>
+                <div class="mypage-content-title">⚡️${user.name}의 면접 기록</div>
                 <div class="line"></div>
                 
-                
-						  
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-list">
                         <ul> 
                               <c:forEach items="${list}" var="interviewRecord">
+                              
                               <li>
                                     <a class='move' href='<c:out value="${interviewRecord.iRecordId}"/>'>
-                                     <fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/>
-                                     <c:choose>
-																			<c:when test="${interviewRecord.iTypeId eq '1'}">일반</c:when>
-																			<c:when test="${interviewRecord.iTypeId eq '2'}">맞춤</c:when>
-																			<c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
-																			<c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
-																		</c:choose> 면접
+                                     <fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/> 의 면접 기록
+                                    </a>
+                                    <a>
+                                      <c:choose>
+	                                      <c:when test="${interviewRecord.iTypeId eq '1'}"><span class="badge rounded-pill bg-primary type1" >💡일반 모드</span></c:when>
+	                                      <c:when test="${interviewRecord.iTypeId eq '2'}"><span class="badge rounded-pill bg-success type2" >✅맞춤 모드</span></c:when>
+	                                      <c:when test="${interviewRecord.iTypeId eq '3'}"><span class="badge rounded-pill bg-danger type3" >🚀멘토 모드</span></c:when>
+	                                      <c:when test="${interviewRecord.iTypeId eq '4'}"><span class="badge rounded-pill bg-warning text-dark type4" >👔채용공고 모드</span></c:when>
+                                      </c:choose>
                                     </a>
                               </li>
                               </c:forEach>
@@ -80,6 +88,17 @@
             </div>
         </div>
         
+        
+      <!-- 검색폼 시작 -->
+	    <form id = 'searchForm' action="/mypage/myinterview" method="get">
+	     <input type="hidden" name="type" value='T'>
+	     <input type='hidden' name='keyword' value=''/>
+	     <input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cri.pageNum}"/>'>
+	     <input type="hidden" name="amount" value='<c:out value="${pageMaker.cri.amount}"/>'>
+	    </form>
+    <!-- 검색폼 끝 -->
+      
+        
       <form id="actionForm" action="/mypage/myinterview" method="get">
 	      <input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cri.pageNum}"/>'>
 	      <input type="hidden" name="amount" value='<c:out value="${pageMaker.cri.amount}"/>'>
@@ -95,6 +114,8 @@
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    
     <script type="text/javascript">
     var actionForm = $("#actionForm");
     /*페이지 번호 클릭했을때 그 페이지로 이동*/
@@ -111,8 +132,62 @@
       actionForm.attr("action", "/mypage/myinterview/detail");
       actionForm.submit();
     });
+    
+    /*검색 버튼의 이벤트 처리*/
+    var searchForm = $("#searchForm");
+    var type1 = $(".type1");
+    var type2 = $(".type2");
+    var type3 = $(".type3");
+    var type4 = $(".type4");
+      
+    type1.on("click", function(e){
+      
+      /* 일반모드 1, 멘토모드 3 등*/
+      searchForm.find("input[name='keyword']").val("1");
+      
+      /*pageNum을 현재 페이지 번호에서 1로 바꾼다. 즉 검색 후 1페이지로 이동하게 한다*/
+      searchForm.find("input[name='pageNum']").val("1");
+      e.preventDefault();
+      
+      searchForm.submit();
+    });
+    type2.on("click", function(e){
+      
+      /* 일반모드 1, 멘토모드 3 등*/
+      searchForm.find("input[name='keyword']").val("2");
+      
+      /*pageNum을 현재 페이지 번호에서 1로 바꾼다. 즉 검색 후 1페이지로 이동하게 한다*/
+      searchForm.find("input[name='pageNum']").val("1");
+      e.preventDefault();
+      
+      searchForm.submit();
+    });
+    type3.on("click", function(e){
+      
+      /* 일반모드 1, 멘토모드 3 등*/
+      searchForm.find("input[name='keyword']").val("3");
+      
+      /*pageNum을 현재 페이지 번호에서 1로 바꾼다. 즉 검색 후 1페이지로 이동하게 한다*/
+      searchForm.find("input[name='pageNum']").val("1");
+      e.preventDefault();
+      
+      searchForm.submit();
+    });
+    type4.on("click", function(e){
+      
+      /* 일반모드 1, 멘토모드 3 등*/
+      searchForm.find("input[name='keyword']").val("4");
+      
+      /*pageNum을 현재 페이지 번호에서 1로 바꾼다. 즉 검색 후 1페이지로 이동하게 한다*/
+      searchForm.find("input[name='pageNum']").val("1");
+      e.preventDefault();
+      
+      searchForm.submit();
+    });
+    
+    
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
-
 
