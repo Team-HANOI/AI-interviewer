@@ -53,8 +53,6 @@ public class MemberServiceImpl implements MemberService {
     InputStream input = new FileInputStream(file);
     OutputStream os = fileItem.getOutputStream();
     IOUtils.copy(input, os);
-    // Or faster..
-    // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
 
     MultipartFile mFile = new CommonsMultipartFile(fileItem);
 
@@ -112,6 +110,7 @@ public class MemberServiceImpl implements MemberService {
       OutputStream os = fileItem.getOutputStream();
       IOUtils.copy(input, os);
       MultipartFile mFile = new CommonsMultipartFile(fileItem);
+
       newFile.setFileName(mFile.getOriginalFilename());
       newFile.setFileSize(mFile.getSize());
       newFile.setFileContentType(mFile.getContentType());

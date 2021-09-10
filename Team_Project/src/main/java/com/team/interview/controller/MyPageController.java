@@ -208,6 +208,7 @@ public class MyPageController {
   @GetMapping(value="/myinterview/detail") // get 1개
   public ModelAndView mypageMyInterviewDetail(@RequestParam("iRecordId") int iRecordId, @ModelAttribute("cri") Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/myinterview_detail");
+    InterviewRecordVO ir = interviewRecordService.get(iRecordId);
     mav.addObject("interviewRecord", interviewRecordService.get(iRecordId));
     return mav;
   }

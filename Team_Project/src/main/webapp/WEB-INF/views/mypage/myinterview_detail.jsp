@@ -70,7 +70,6 @@
 	                                    <p>${answer.content}</p>
 	                                </td>
 	                                <td class="mypageTb-04ax">
-	                                    <button type="button" class="playBtn">듣기</button>
                                         <audio controls>
 				                                  <source src='<c:url value="/mypage/audio/${answer.fileVO.fileId}"/>' type="audio/ogg">
 				                                </audio>
