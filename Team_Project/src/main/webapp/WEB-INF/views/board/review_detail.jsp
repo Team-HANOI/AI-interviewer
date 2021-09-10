@@ -231,7 +231,7 @@
 <!-- 대댓글 버튼 -->
 												<div class="comment-head-right-btn">
 													<a>
-													<button onclick="commentChildFn()">답글 달기</button>
+													<button class="btn-commChildFn" onclick="commentChildFn()">답글 달기</button>
 													</a>
 												</div>
 <!-- 대댓글 버튼 끝 -->
@@ -296,7 +296,7 @@
 <!-- 대댓글 버튼 -->
 												<div class="comment-head-right-btn">
 													<a>
-													<button onclick="commentChildFn()">답글 달기</button>
+													<button onclick="commentChildFn">답글 달기</button>
 													</a>
 												</div>
 <!-- 대댓글 버튼 끝 -->

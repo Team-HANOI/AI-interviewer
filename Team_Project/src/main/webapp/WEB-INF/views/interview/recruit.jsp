@@ -120,6 +120,7 @@ img {
 									<c:when test="${pageInfo.page>=pageInfo.maxPage }">
 						[다음]
 					</c:when>
+
 									<c:otherwise>
 										<a href="/interview/recruit?page=${pageInfo.page+1}">[다음]</a>
 									</c:otherwise>
@@ -129,8 +130,6 @@ img {
 					</div>
 				</div>
 				<!-- End 페이지 컨트롤 -->
-
-			
 
 			</div>
 		</section>
