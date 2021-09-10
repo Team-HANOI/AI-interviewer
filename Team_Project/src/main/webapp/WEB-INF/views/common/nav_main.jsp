@@ -26,7 +26,9 @@
       <ul>
         <li><a href="/board/">전체질문</a></li>
         <li><a href="/review/board_review">면접후기</a></li>
+        <!-- 삭제 
         <li><a href="/board/free">자유게시판</a></li>
+        -->
         <li><a href="/board/recommend">면접질문</a></li>
         <li><a href="/board/best_answers">모범답안</a></li>
       </ul>
