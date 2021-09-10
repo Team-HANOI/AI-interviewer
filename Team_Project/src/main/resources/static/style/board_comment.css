@@ -126,9 +126,10 @@ ul {
   clear: both;
 }
 
-/* .commChildForm {
+.comm {
     display: none;
-} */
+} 
+
 /**
 * Caja del Comentario
 ---------------------------*/

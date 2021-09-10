@@ -51,12 +51,12 @@
               	  </h2>
               	  <div class="entry-meta">
                     <ul>
-                      <li class="d-flex align-items-center td_pos"><i class="bi bi-person"></i> <a href="blog-single.html">직무:${article.pos}</a></li>
-                      <li class="d-flex align-items-center td_name"><i class="bi bi-person"></i> <a href="blog-single.html">회사:${article.company}</a></li>
-                      <li class="d-flex align-items-center td_company"><i class="bi bi-person"></i> <a href="blog-single.html">작성자:${article.name}</a></li>          
+                      <li class="d-flex align-items-center td_pos"><i class="bi bi-person"></i> <a href="blog-single.html">직무: ${article.pos}</a></li>
+                      <li class="d-flex align-items-center td_name"><i class="bi bi-person"></i> <a href="blog-single.html">회사: ${article.company}</a></li>
+                      <li class="d-flex align-items-center td_company"><i class="bi bi-person"></i> <a href="blog-single.html">작성자: ${article.name}</a></li>          
                       <li class="d-flex align-items-center td_regdate"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">${article.regdate}</time></a></li>
                       <li class="d-flex align-items-center td_viewCnt"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">${article.viewCnt}</a></li>
-                      <li class="d-flex align-items-center td_likeCnt"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">${article.likeCnt}</a></li>                     
+                      <li class="d-flex align-items-center td_likeCnt"><i class="bi bi-suit-heart"></i> <a href="blog-single.html">${article.likeCnt}</a></li>                     
                     </ul>
               	  </div>
               	  </div>

@@ -37,10 +37,35 @@ function addComment(reviewId) {
 
 
 //대댓글달기
+let comms = document.querySelectorAll('.comm')
+const btnCommFns = document.querySelectorAll('.btn-commChildFn')
+btnCommFns.forEach((btn, idx) => {
+	btn.addEventListener('click', () => {
+		console.log(idx)
+		comms[idx].style.display = 'block'
+	})
+})
+
+
 
 function commentChildFn() {
-        document.getElementById("commentChild-form").style.display = "block";  
-      }
+/*    
+console.log('hi')
+comms.forEach((comm, idx) => {
+	removeActive()
+	console.log(idx)
+	comm.style.display = 'block'
+})
+*/
+}
+
+function removeActive() {
+comms.forEach((comm, idx) => {
+	console.log(idx)
+	comm.style.display = 'none'
+})
+	
+}
 
 function addCommentChild(reviewId, prtComId) {
 	alert(reviewId);
