@@ -77,16 +77,15 @@ ul {
 }
 .reply-list li:before {
   content: "";
-  width: 60px;
+  width: 100px;
   height: 2px;
   background: #c7cacb;
   position: absolute;
   top: 25px;
-  left: -55px;
+  left: -86px;
 }
 
 .comments-list li {
-  margin-bottom: 15px;
   display: block;
   position: relative;
 }
@@ -100,7 +99,7 @@ ul {
 }
 
 .reply-list {
-  padding-left: 88px;
+  padding-left: 120px;
   clear: both;
   margin-top: 15px;
 }
@@ -117,6 +116,7 @@ ul {
   width: 50px;
   height: 50px;
 }
+
 
 .comment-main-level:after {
   content: "";
@@ -165,14 +165,19 @@ ul {
 
 /* 댓글 해드 */
 .comment-box .comment-head {
-  background: #e2f1f7;
-  padding: 10px 12px;
   border-bottom: 1px solid #e5e5e5;
   overflow: hidden;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
   
+}
+
+.comment-box .reply-head {
+	background: #e2f1f7;
+}
+.comment-box .rereply-head {
+	background: #e2f1f7;
 }
 
 .comment-box .comment-head i {
@@ -225,6 +230,7 @@ ul {
   font-size: 13px;
   position: relative;
   top: 1px;
+  margin-top: 10px;
 }
 
 /* 댓글내용 */
