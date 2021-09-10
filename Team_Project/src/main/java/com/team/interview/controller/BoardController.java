@@ -1,14 +1,15 @@
 package com.team.interview.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.interview.service.AllService;
+import com.team.interview.service.KeywordService;
 import com.team.interview.vo.AnswerVO;
 import com.team.interview.vo.FileVO;
+import com.team.interview.vo.KeywordVO;
 import com.team.interview.vo.PageInfo;
 import com.team.interview.vo.QuestionVO;
 
@@ -30,16 +33,26 @@ import com.team.interview.vo.QuestionVO;
 public class BoardController {
 	@Autowired
 	private AllService allService;
+	
+	@Autowired
+	KeywordService keywordService;
 
 	@RequestMapping(value = "/")
 	public ModelAndView boardTotal(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 		PageInfo pageInfo = new PageInfo();
 		ModelAndView mv = new ModelAndView();
 		System.out.println("aa");
+		ArrayList<KeywordVO> keywordList;
+		
 		try {
 			List<QuestionVO> articleList = allService.getAllQList(page, pageInfo);
+			
+			keywordList = keywordService.keywordList();
+			mv.addObject("keywordList", keywordList);
+			
 			mv.addObject("pageInfo", pageInfo);
 			mv.addObject("articleList", articleList);
+			
 			// mv.addObject("page","Qlistform");
 			System.out.println(articleList);
 			mv.setViewName("board/total");
