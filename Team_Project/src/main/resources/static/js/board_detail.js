@@ -56,6 +56,7 @@ comms.forEach((comm, idx) => {
 function commentChildFn() {
 }
 
+
 //대댓글의 답글달기
 let recomms = document.querySelectorAll('.recomm')
 const btnReCommFns = document.querySelectorAll('.btn-reCommChildFn')
@@ -66,7 +67,6 @@ btnReCommFns.forEach((btn, idx) => {
 	})
 })
 
-
 function removeActive() {
 recomms.forEach((recomm, idx) => {
 	console.log(idx)
@@ -75,6 +75,7 @@ recomms.forEach((recomm, idx) => {
 }
 
 
+//대댓글 인서트
 function addCommentChild(reviewId, prtComId) {
 	alert(reviewId);
 	alert($("#"+prtComId).val());
