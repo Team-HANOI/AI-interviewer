@@ -78,6 +78,6 @@ body {
   background-color: #7bc96f;
 }
 
-.squares li[data-level="3"] {
+.squares li[data-level="10"] {
   background-color: #196127;
 }

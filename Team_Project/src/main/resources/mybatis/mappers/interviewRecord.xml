@@ -37,7 +37,7 @@
 	  <result property="qId" column="q_id" />
 	  <result property="email" column="email" />
 	  <result property="ssml" column="ssml" />
-	  <result property="content" column="content" />
+	  <result property="content" column="qcontent" />
 	  <result property="kwlist" column="kw_list" />
 	  <result property="rcnt" column="r_cnt" />
 	  <result property="regdate" column="regdate" />
@@ -55,6 +55,23 @@
 	  <result property="regdate" column="regdate" />
 	  <result property="updatedate" column="updatedate" />
   </resultMap>
+  
+  
+   <sql id="criteria">
+    <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+      <foreach item="a" collection="typeArr">
+        <trim prefix="OR">
+          <choose>
+            <when test="a=='T'.toString()">
+              i_type_id like '%'||#{keyword}||'%'
+            </when>
+          </choose>
+        </trim>
+      </foreach>
+    </trim>
+   </sql>
+  
+  
 	
 	<select id="getVoiceFile" resultMap = "fileMap">
       <![CDATA[
@@ -87,7 +104,7 @@
 				  ,a.r_cnt
 				  ,q.q_id
 				  ,q.ssml
-				  ,q.content
+				  ,q.content as qcontent
 				  ,q.q_type
 				  ,q.kw_list
 				  ,q.r_cnt
@@ -135,6 +152,11 @@
         from 
           TBL_I_RECORD
         where 
+        ]]>
+        
+        <include refid="criteria"></include>
+        
+        <![CDATA[
         rownum <= #{pageNum} * #{amount} and email = #{email}
         )
         where (rn > (#{pageNum} - 1) * #{amount}) 
@@ -143,7 +165,12 @@
   <!-- 현재페이지(pageNum)이 1이면 rn은 위부터 차례대로 20, 10 이다 -->
     
     <select id="getTotalCount" resultType="int">
-    select count(*) from TBL_I_RECORD where email = #{email}
+    select count(*) from TBL_I_RECORD 
+    where 
+    
+    <include refid="criteria"></include>
+    
+    email = #{email} and i_record_id > 0
     </select>
     
     
