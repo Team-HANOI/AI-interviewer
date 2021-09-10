@@ -64,12 +64,27 @@ public class MyPageController {
     try {
       MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
       profile = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+
+      // 잔디 시작
+      String jandi = profile.getJandi();
+      int[] intArr = new int[365];
+      StringTokenizer st = new StringTokenizer(jandi, ",");
+      int i = 0;
+      int test = 0;
+      String test2;
+      while(st.hasMoreTokens()) {
+        intArr[i++] = Integer.parseInt(st.nextToken());
+      }
+      mv.addObject("intArr", intArr);
+      // 잔디 끝
+
+
       FileVO file = profileService.getFile(profile.getPfImgId());
 
       String pSkill = profile.getpSkill();
       ArrayList<String> pSkillList = new ArrayList<>();
       if(pSkill != null) {
-        StringTokenizer st = new StringTokenizer(pSkill, ",");
+        st = new StringTokenizer(pSkill, ",");
         while(st.hasMoreTokens()) {
           pSkillList.add(st.nextToken());
         }

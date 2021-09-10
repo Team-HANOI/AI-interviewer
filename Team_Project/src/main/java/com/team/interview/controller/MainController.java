@@ -43,7 +43,6 @@ public class MainController {
       MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
       ProfileVO profile = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
 
-      // db에서 String을 가져와서 int배열로 만들자
       String jandi = profile.getJandi();
       int[] intArr = new int[365];
       StringTokenizer st = new StringTokenizer(jandi, ",");
