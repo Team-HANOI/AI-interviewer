@@ -79,7 +79,6 @@ function reqeustNextPage() {
 	
 	formdata.append("type", type);
 	formdata.append("kws",chosenKw);
-	
     formdata.append("qIds", qIds);
     formdata.append("answers", answers);
     formdata.append("cnt", bloblist.length);

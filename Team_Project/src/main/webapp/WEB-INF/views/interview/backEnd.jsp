@@ -77,6 +77,7 @@
 	
 	function reqeustNextPage() {
 	
+	let formdata = new FormData();
 	formdata.append("type", "1");
 	formdata.append("pos", "back");
     formdata.append("qIds", qIds);
