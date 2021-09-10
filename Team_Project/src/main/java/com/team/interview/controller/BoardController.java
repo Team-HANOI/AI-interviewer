@@ -155,13 +155,18 @@ public class BoardController {
 		PageInfo pageInfo = new PageInfo();
 		ModelAndView mv = new ModelAndView();
 		System.out.println("aa");
+		ArrayList<KeywordVO> keywordList;
 		try {
 			List<QuestionVO> articleList = allService.getAllQList(page, pageInfo);
+			
+			keywordList = keywordService.keywordList();
 			mv.addObject("pageInfo", pageInfo);
 			mv.addObject("articleList", articleList);
+			mv.addObject("keywordList",keywordList);
 			// mv.addObject("page","Qlistform");
 			System.out.println(articleList);
 			mv.setViewName("board/total");
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
