@@ -1,24 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-						<!--
-								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
-								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
-								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
-								맞춤모드 키워드선택 -> 맞춤모드 면접 화면
-								맞춤모드 키워드선택 -> 맞춤모드 면접 화면 
-														 		-->
-
+<!--
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+								일반면접모드 -> 백엔드 직무 면접 화면
+																 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+<jsp:include page="../common/top_t.jsp" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 
-<!-- 공통 스타일  -->
-
-<jsp:include page="../common/top.jsp" />
-<!-- 페이지 스타일  -->
-
-<link rel="stylesheet" href="/style/interview_normal.css">
 <script>
 var idx=0;
 var qIds = new Array();
@@ -109,78 +106,103 @@ function reqeustNextPage() {
 
 </script>
 
+<style>
+#question{
+	color: white;
+	font-size: 30px;
+}
+
+</style>
+
 
 </head>
+
 <body>
-	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-	<jsp:include page="../common/header.jsp" />
 
-	<!-- 본문 시작 -> 여기서 작업하세요 -->
-	<main>
-		<!-- 태양 -->
-		<div class="sun">
-			<img src="https://pngimg.com/uploads/sun/sun_PNG13439.png" alt="">
-		</div>
+	<!-- ======= Header ======= -->
+	<jsp:include page="../common/nav.jsp" />
 
-		<!-- 팝업 -->
-		<!-- 팝업배경 더미 -->
-		<div class="popup-dummy"></div>
+	<!-- ======= Hero Section ======= -->
+	<section id="" class=""
+		style="background-image: url('/image/i_backend.jpg'); background-size: cover;">
+	</section>
+	<!-- End Hero -->
+	<main id="main">
+		<!-- ======= Our Portfolio Section ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
 
-		<!-- 키워드 카드 팝업 -->
-		<jsp:include page="../common/popups/popup_keyword.jsp" />
+					<ol>
+						<li><a href="/">Home</a></li>
 
-		<!-- 기업회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_com.jsp" />
-
-		<!-- 일반회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv.jsp" />
-
-		<!-- 일번회원가입 추가입력 폼 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv_extra.jsp" />
-
-		<!-- 기업회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_com.jsp" />
-
-		<!-- 일반회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_indv.jsp" />
-
-		<!--본문 면접모드-->
-		<div class="interview">
-			<div class="interview-content">
-
-				<h2>질문:</h2>
-				<div class="interview-question interview-text" id="question">
-
+					</ol>
 				</div>
-				<button type="button" id="speaker">듣기</button>
+			</div>
+		</section>
+		<!-- End Our Portfolio Section -->
 
-				<h2>답변:</h2>
-				<textarea name="" id="answer"
-					class="interview-answer interview-text"></textarea>
-				<button id="record">녹음</button>
-				<button id="stop">정지</button>
-				
+		<!-- ======= Portfolio Section ======= -->
+		<section class="portfolio">
+			<div class="container">
+
+				<div class="row portfolio-container" data-aos="fade-up"
+					data-aos-easing="ease-in-out" data-aos-duration="500">
+					<div
+						class="col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text">
+						<div class="portfolio-item row text-wrap" id="question">
+
+
+						</div>
+						<ul id="portfolio-flters">
+
+							<li data-filter="*" class="filter">
+								<button class="btn btn-light" id="speaker">질문 듣기</button>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+
+
+				<div class="row" data-aos="fade-up" data-aos-easing="ease-in-out"
+					data-aos-duration="500">
+					<textarea name="" id="answer" rows="10" class="interview-answer interview-text col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text">
+</textarea>
+				</div>
+				<ul id="portfolio-flters">
+					<li data-filter="*" class="filter">
+						<button class="btn btn-light" id="record">녹음</button>
+					</li>
+
+					<li data-filter=".filter-app">
+						<button class="btn btn-light" id="stop">정지</button>
+					</li>
+				</ul>
+
+				<ul id="portfolio-flters">
+
+					<li data-filter="*" class="filter">
+						<button class="btn btn-light" id="nextBtn">다음질문</button>
+					</li>
+
+				</ul>
 
 			</div>
-
-
-
-			<div class="btn-box">
-				<button class="btn interview-btn" id="nextBtn">다음질문</button>
-			</div>
-
-
-		</div>
+		</section>
+		<!-- End Portfolio Section -->
 	</main>
+	<!-- End #main -->
 
-	<!-- 꼬리 -->
+	<!-- ======= Footer ======= -->
 	<jsp:include page="../common/footer.jsp" />
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-	</script>
+	<!-- Vendor JS Files -->
+	<jsp:include page="../common/vendor_js.jsp" />
 
-
+	<!-- Template Main JS File -->
+	<script src="../assets/js/main.js"></script>
 
 
 	<script>
@@ -249,7 +271,7 @@ function reqeustNextPage() {
                 console.log('The following error occurred: ' + err)
             })
     }	
-</script>
-
+  </script>
 </body>
 </html>
+
