@@ -130,6 +130,10 @@ ul {
     display: none;
 } 
 
+.recomm {
+    display: none;
+} 
+
 /**
 * Caja del Comentario
 ---------------------------*/
@@ -253,7 +257,7 @@ ul {
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
 }	
-}
+
 
 .comment-box .comment-name.by-author,
 .comment-box .comment-name.by-author a {

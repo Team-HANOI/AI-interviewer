@@ -36,7 +36,7 @@ function addComment(reviewId) {
 }
 
 
-//대댓글달기
+//본댓글의 답글달기
 let comms = document.querySelectorAll('.comm')
 const btnCommFns = document.querySelectorAll('.btn-commChildFn')
 btnCommFns.forEach((btn, idx) => {
@@ -46,26 +46,34 @@ btnCommFns.forEach((btn, idx) => {
 	})
 })
 
-
-
-function commentChildFn() {
-/*    
-console.log('hi')
-comms.forEach((comm, idx) => {
-	removeActive()
-	console.log(idx)
-	comm.style.display = 'block'
-})
-*/
-}
-
 function removeActive() {
 comms.forEach((comm, idx) => {
 	console.log(idx)
 	comm.style.display = 'none'
 })
-	
 }
+
+function commentChildFn() {
+}
+
+//대댓글의 답글달기
+let recomms = document.querySelectorAll('.recomm')
+const btnReCommFns = document.querySelectorAll('.btn-reCommChildFn')
+btnReCommFns.forEach((btn, idx) => {
+	btn.addEventListener('click', () => {
+		console.log(idx)
+		recomms[idx].style.display = 'block'
+	})
+})
+
+
+function removeActive() {
+recomms.forEach((recomm, idx) => {
+	console.log(idx)
+	recomm.style.display = 'none'
+})
+}
+
 
 function addCommentChild(reviewId, prtComId) {
 	alert(reviewId);
