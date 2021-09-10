@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-						<!--
+<!--
 								일반면접모드 -> 백엔드 직무 면접 화면
 								일반면접모드 -> 백엔드 직무 면접 화면
 								일반면접모드 -> 백엔드 직무 면접 화면
@@ -12,25 +12,34 @@
 <html lang="en">
 
 <head>
-  <jsp:include page="../common/top_t.jsp"/>
-  
-  <script>
+<jsp:include page="../common/top_t.jsp" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+
+<script>
 	var idx=0;
 	
 	var qIds = new Array();
 	var answers = new Array();
 	
 	var contents = new Array();
+	
 	<c:forEach items="${questions}" var="question">
 		qIds.push("${question.qId}");
 		contents.push("${question.content}");
 	</c:forEach>
 	var step=qIds.length;
 	
+
+	
 	$(function() {
+		
 		$("#question").text(contents[idx]);
+		
+		
+		
 		$("#speaker").click(function() {
-			alert($("#question").text());
+	
 			requestVoice($("#question").text());
 		});
 		$("#nextBtn").click(function() {
@@ -95,98 +104,106 @@
 
 </script>
 
+<style>
+#question{
+	color: white;
+	font-size: 30px;
+}
+
+</style>
+
 
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav.jsp"/>
-  
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="" 
-  style="background-image: url('/image/i_backend.jpg');
-  background-size:cover;">
-  </section><!-- End Hero -->
-  <main id="main">
-  	<!-- ======= Our Portfolio Section ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>일반면접(백엔드)</h2>
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li>일반면접</li>
-          </ol>
-        </div>
-      </div>
-    </section><!-- End Our Portfolio Section -->
+	<!-- ======= Header ======= -->
+	<jsp:include page="../common/nav.jsp" />
 
-    <!-- ======= Portfolio Section ======= -->
-    <section class="portfolio">
-      <div class="container">
-      <p>남은시간: <span class="time-left">00:00</span></p>
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-          <div class="col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text" id="question">
-            <div class="portfolio-item row text-wrap">
-            
-            <!-- 질문 텍스트 -->
-            <p class="text-light px-3 fs-3 w-100 badge text-break" style="white-space: initial;">
-            
-            </p><!-- 질문 텍스트 끝-->
-            
-              <div class="portfolio-info bg-dark w-25 mx-auto pt-2 pb-2">
-                <h3>질문 1</h3>
-                <div>
-                  <button class="btn interview-btn bx text-light" id="nextBtn">다음질문</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter=".filter-card">
-              	<button class="btn btn-light" id="speaker">질문듣기</button>
-              </li>
-              <li data-filter="*" class="filter">
-              	<button class="btn btn-light" id="record">녹음</button>
-              </li>
-              <li data-filter=".filter-app">
-              	<button class="btn btn-light" id="stop">정지</button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="row" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-          <textarea name="" id="answer" rows="10"
-					class="interview-answer interview-text col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text" id="question">
-          </textarea>
-        </div>
-      </div>
-    </section><!-- End Portfolio Section -->			
-  </main><!-- End #main -->
+	<!-- ======= Hero Section ======= -->
+	<section id="" class=""
+		style="background-image: url('/image/i_backend.jpg'); background-size: cover;">
+	</section>
+	<!-- End Hero -->
+	<main id="main">
+		<!-- ======= Our Portfolio Section ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>일반면접(백엔드)</h2>
+					<ol>
+						<li><a href="/">Home</a></li>
+						<li>일반면접</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Our Portfolio Section -->
 
-  <!-- ======= Footer ======= -->
-  <jsp:include page="../common/footer.jsp"/>
-  
-  <!-- Vendor JS Files -->
-  <jsp:include page="../common/vendor_js.jsp"/>
-  
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
-  
-  <script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-  </script>
+		<!-- ======= Portfolio Section ======= -->
+		<section class="portfolio">
+			<div class="container">
+
+				<div class="row portfolio-container" data-aos="fade-up"
+					data-aos-easing="ease-in-out" data-aos-duration="500">
+					<div
+						class="col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text">
+						<div class="portfolio-item row text-wrap" id="question">
+
+
+						</div>
+						<ul id="portfolio-flters">
+
+							<li data-filter="*" class="filter">
+								<button class="btn btn-light" id="speaker">질문 듣기</button>
+							</li>
+
+						</ul>
+					</div>
+				</div>
 
 
 
+				<div class="row" data-aos="fade-up" data-aos-easing="ease-in-out"
+					data-aos-duration="500">
+					<textarea name="" id="answer" rows="10" class="interview-answer interview-text col-lg-12 col-md-6 portfolio-wrap filter-app interview-question interview-text">
+</textarea>
+				</div>
+				<ul id="portfolio-flters">
+					<li data-filter="*" class="filter">
+						<button class="btn btn-light" id="record">녹음</button>
+					</li>
 
-  <script>
+					<li data-filter=".filter-app">
+						<button class="btn btn-light" id="stop">정지</button>
+					</li>
+				</ul>
+
+				<ul id="portfolio-flters">
+
+					<li data-filter="*" class="filter">
+						<button class="btn btn-light" id="nextBtn">다음질문</button>
+					</li>
+
+				</ul>
+
+			</div>
+		</section>
+		<!-- End Portfolio Section -->
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<jsp:include page="../common/footer.jsp" />
+
+	<!-- Vendor JS Files -->
+	<jsp:include page="../common/vendor_js.jsp" />
+
+	<!-- Template Main JS File -->
+	<script src="../assets/js/main.js"></script>
+
+
+	<script>
     const record = document.getElementById("record")
     const stop = document.getElementById("stop")
     const textarea = document.getElementById("answer")
