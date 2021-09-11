@@ -254,19 +254,10 @@ header {
 }
 
 /* my page link 스타일 */
-.my-page-link {
-    height: 50px;
-    width: 50px;
-    background-color: #420516;
-    color: #fff;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 1s .4s cubic-bezier(0.31,-0.67,0.53,1.67);
+.mypage-link {
+	height: 200px;
+	text-align:center !important;
+	background-color: red;
 }
 
 /* 본문 스타일  */

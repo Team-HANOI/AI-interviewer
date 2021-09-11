@@ -7,32 +7,23 @@
 <head>
   <jsp:include page="../common/top_t.jsp"/>
   <!-- 공통 스타일 -->
-    <jsp:include page="../common/top.jsp"/>
-  <!-- 페이지 스타일 -->
-  <link rel="stylesheet" href="/style/board_review.css">
-    <link rel="stylesheet" href="/style/board_total.css">
+  <jsp:include page="../common/top.jsp"/>
+  
 </head>
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
-  
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
-  	<div class="w-100 h-100 bg-dark" style="position:absolute;
-  	top:0; opacity:.5;"></div>
-  </section><!-- End Hero -->
+  <jsp:include page="../common/nav.jsp"/>
   
   <main id="main">
   	<section class="portfolio">
-      <div class="container">
+      <div class="container-login">
 	
 		<!-- 작업공간 시작-->
 		      <div class="login-individual-form">
             
+                
+                <form action="/login_proc" method="post" class="login-person join">
                 <h1 class="join-title">MR.ALPACA 로그인</h1>
                 <div class="join-sub">
                     <a href="/oauth2/authorization/google">
@@ -51,7 +42,6 @@
                     </a>
                     <div style="clear:both"></div>
                 </div>
-                <form action="/login_proc" method="post" class="login-person join">
                 <div class="join-holder">
                     <!-- 구분선 -->
                     <div class="line"></div> 
@@ -87,12 +77,7 @@
                 </div>
                 
             </form>
-        </div>
-		
-		
-		
-        
-        <!-- 작업공간 끝-->
+        </div> <!-- 작업공간 끝-->
       </div>
     </section><!-- End Portfolio Section -->
   </main><!-- End #main -->

@@ -50,9 +50,9 @@
         <li><a href="/join_com">기업회원</a></li>
       </ul>
     </li>
+    <li><a href="/contact">Contact Us</a></li>
     <!-- my page 링크 -->
     <li><a href="/mypage/" class="my-page-link">M</a></li>
-    <li><a href="/contact">Contact Us</a></li>
   </ul>
   <i class="bi bi-list mobile-nav-toggle"></i>
 </nav><!-- .navbar -->	  
