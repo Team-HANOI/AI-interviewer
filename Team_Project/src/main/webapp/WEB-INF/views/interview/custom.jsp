@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-						<!--
-								맞춤모드에서 키워드 선택 화면
-								맞춤모드에서 키워드 선택 화면
-								맞춤모드에서 키워드 선택 화면
-								맞춤모드에서 키워드 선택 화면
-								맞춤모드에서 키워드 선택 화면
-														 -->
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 공통 스타일  -->
-<jsp:include page="../common/top.jsp" />
-<!-- 페이지 스타일  -->
-<link rel="stylesheet" href="/style/interview_normal.css">
+<jsp:include page="../common/top_t.jsp" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	
 
@@ -45,46 +34,76 @@
 
 </script>
 
-
 </head>
+
 <body>
-	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-	<jsp:include page="../common/header.jsp" />
 
-	<!-- 본문 시작 -> 여기서 작업하세요 -->
-	<main>
-		<!-- 태양 -->
-		<!-- 팝업 -->
-		<!-- 팝업배경 더미 -->
-	<form action="/interview/customMode" method="GET" >
-		<!-- 타이틀 더미 -->
-		<div class="dummy"></div>
+	<!-- ======= Header ======= -->
+	<jsp:include page="../common/nav_main.jsp" />
 
-		<div class="keyword-box" align="center">
-			<h2 class="popup-text">키워드를 선택하세요</h2>
+	<!-- ======= Hero Section ======= -->
+	<section id="" class="h-100"
+		style="background-image: url('/image/i_recruit.jpg'); background-size: cover; background-position: center; position: relative;">
+		<div class="w-100 h-100 bg-dark"
+			style="position: absolute; top: 0; opacity: .5;"></div>
+	</section>
+	<!-- End Hero -->
 
-			<!-- 구분선 -->
-			<div class="line"></div>
+	<main id="main">
+		<section class="portfolio">
+			<div class="container">
+				<!-- 작업공간 시작-->
 
-			<div class="keywords">
-				<c:forEach items="${keywordList}" var="keywordList" varStatus="idx">
-					<div class="keyword">
-						<input id="kw${idx.count }" type="checkbox" name="keyword" value="${keywordList.kw }"> <label for="kw${idx.count }">${keywordList.kw }</label>
-					</div>
+				<form action="/interview/customMode" method="GET">
+					<!-- 타이틀 더미 -->
+					<div class="dummy"></div>
+
+					<div class="keyword-box" align="center">
+						<h2 class="popup-text">키워드를 선택하세요</h2>
+
+						<!-- 구분선 -->
+						<div class="line"></div>
+
+						<div>
+
+							<c:forEach items="${keywordList}" var="keywordList"
+								varStatus="idx">
+
+								<input class="form-check-input" id="kw${idx.count }"
+									type="checkbox" name="keyword" value="${keywordList.kw }">
+								<label class="form-check-label" for="kw${idx.count }"><button
+										type="button" class="btn btn-secondary btn-sm" disabled>${keywordList.kw }</button></label>				
+				
 				</c:forEach>
-			</div>
 
-			<!-- 구분선 -->
-			<div class="line"></div>
-				<input type="hidden" name="type" value="${type }">	<!-- 400에러가 이거 없어서 -->
-				<button class="btn popup-btn" type="submit">확인</button>
-		</div>
-	</form>
+						</div>
+						<!-- 구분선 -->
+						<div class="line"></div>
+						<input type="hidden" name="type" value="${type }">
+						<!-- 400에러가 이거 없어서 -->
+						<button type="submit" class="btn btn-outline-secondary btn-sm">확인</button>
+
+					</div>
+				</form>
+
+
+				<!-- 작업공간 끝-->
+			</div>
+		</section>
+		<!-- End Portfolio Section -->
 	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
 	<jsp:include page="../common/footer.jsp" />
+
+	<!-- Vendor JS Files -->
+	<jsp:include page="../common/vendor_js.jsp" />
+
+	<!-- Template Main JS File -->
+	<script src="../assets/js/main.js"></script>
+
 </body>
 </html>
-
-
 
 
