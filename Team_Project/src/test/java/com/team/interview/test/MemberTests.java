@@ -107,7 +107,7 @@ public class MemberTests {
       con = ds.getConnection();
       pstmt = con.prepareStatement(sql);
 
-      pstmt.setString(1, passwordEncoder.encode("1111"));
+      pstmt.setString(1, passwordEncoder.encode("1234"));
 
       pstmt.executeUpdate();
 
