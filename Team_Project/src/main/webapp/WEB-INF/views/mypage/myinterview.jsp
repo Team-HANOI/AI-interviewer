@@ -60,7 +60,8 @@
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
                 <sec:authentication property="principal" var="user"/>
-                <div class="mypage-content-title">⚡️${user.name}의 면접 기록</div>
+                <div class="mypage-content-title" style="font-size: x-large;
+    font-weight: normal;">🗃️ ${user.name}의 면접 기록</div>
                 <div class="line"></div>
                 
                 <!-- 사용자 정보 -->
