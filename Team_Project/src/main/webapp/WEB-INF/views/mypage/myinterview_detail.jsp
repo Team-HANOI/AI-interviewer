@@ -57,10 +57,10 @@
                 <!-- 유저정보 제목 -->
                 <div class="dateMT"><fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/> 
                   <c:choose>
-                    <c:when test="${interviewRecord.iTypeId eq '1'}">일반</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '2'}">맞춤</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '1'}">💡일반 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '2'}">✅맞춤 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '3'}">🚀멘토 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '4'}">👔채용공고 모드</c:when>
                   </c:choose> 면접 기록</div>
                 <div class="line"></div>
                 <!-- 사용자 정보 -->
@@ -74,10 +74,10 @@
                           <table class="mypageTb">
                               <tr>
                                   <td class="mypageTb-02ax">
-                                      <span>질문 ${status.count}.</span><span id="question${status.count}"> ${answer.questionVO.content}</span>
+                                      <span style="font-weight: bold;">질문 ${status.count}. </span><span id="question${status.count}"> ${answer.questionVO.content}</span>
                                   </td>
                                   <td class="mypageTb-03ax">
-                                      <button type="button" class="playBtn" id="speaker${status.count}">듣기</button>
+                                      <button type="button" class="playBtn" id="speaker${status.count}">🔊질문 듣기</button>
                                   </td>
                               </tr>
                               <tr>
@@ -94,7 +94,11 @@
                       </div>
                   </c:forEach>
                 </c:if>
-                  <button data-oper='list'>목록으로 돌아가기</button><br>
+                  <br>
+                  <h4 style="float: left;">📝메모</h4> <button style="float: right;"type="button" class="btn btn-success">저장</button>
+                  <textarea class="form-control" rows="5" cols="100"></textarea>
+                  <br>
+                  <button data-oper='list' class="btn btn-secondary" >목록으로 돌아가기</button>
                 </div>
                   
                   
@@ -107,6 +111,9 @@
                     <input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
                     <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
                   </form>
+                  
+                  
+                  
             </div>
         </div>
         

@@ -113,7 +113,7 @@
                                 <span class="pfText">주요 기술<span class="sm-grey"></span></span>
                                 <div style="display: block;margin-top: 10px;">
                                 <c:forEach var="pSkill" items="${pSkillList}">
-                                    <button class="btn dark" type="button">${pSkill}</button>
+                                <span style="font-weight: normal;" class="badge rounded-pill bg-secondary">${pSkill}</span>
                                 </c:forEach>
                                 </div>
                             </li>
