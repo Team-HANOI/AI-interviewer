@@ -62,7 +62,7 @@
               	  </div>
 				  <div class="entry-content">
                     <div class="read-more">
-                      <a href="blog-single.html">상세보기</a>
+                      <a href="./board_review_detail?reviewId=${article.reviewId}&page=${pageInfo.page}">상세보기</a>
                     </div>
               	  </div>
               	  </div>
@@ -158,6 +158,13 @@
 					</a>    
 			</sec:authorize> 
 <!-- 임시저장 글 목록 보기 끝 -->--%>
+
+<!-- 글쓰기기능 -->
+<sec:authorize access="isAuthenticated()">
+<h3 class="sidebar-title"><a href="./write_review">글쓰기</a></h3>
+<br>
+</sec:authorize> 
+<!-- 글쓰기기능 -->
 			
 			<!-- 키워드검색기능 -->
               <h3 class="sidebar-title">키워드 검색</h3>
