@@ -25,18 +25,20 @@ $(function() {
 
 <style>
 img {
-  width: 450px;
-  height: 150px;
-  object-fit: cover;
+	width: 450px;
+	height: 150px;
+	object-fit: cover;
 }
 
-.listPos{
-
-	background-color:orange;
-	
-
+.listPos {
+	background-color: orange;
 }
 
+#keywords{
+	color: black;
+	background: white;
+	border-radius:5px/5px;
+}
 
 </style>
 </head>
@@ -57,8 +59,8 @@ img {
 	<main id="main">
 		<section class="portfolio">
 			<div class="container">
-			
-			
+
+
 				<!-- 공고 container -->
 				<div class="row portfolio-container" data-aos="fade-up"
 					data-aos-easing="ease-in-out" data-aos-duration="500">
@@ -81,8 +83,9 @@ img {
 											<div>
 												<c:forEach items="${list.kwList}" var="kw">
 													<input id="kw${list.cname }" type="checkbox"
-														checked="checked" name="keyword" value="${kw}">
-													<label for="kw${list.cname }">${kw}</label>
+														style="display: none" checked="checked" name="keyword"
+														value="${kw}">
+													<label for="kw${list.cname }"><span id="keywords">${kw}</span></label>
 												</c:forEach>
 											</div>
 										</form>
