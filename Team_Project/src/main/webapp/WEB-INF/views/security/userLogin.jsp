@@ -23,8 +23,10 @@
 		      <div class="login-individual-form">
             
                 
-                <form action="/login_proc" method="post" class="login-person join">
-                <h1 class="join-title">MR.ALPACA 로그인</h1>
+            <div class="login-person join">
+                <h1 class="join-title" style="padding-left:144px">MR. ALPACA 로그인</h1>
+                <br>
+                <br>
                 <div class="join-sub">
                     <a href="/oauth2/authorization/google">
                       <button class="join-input google" >
@@ -36,47 +38,58 @@
                                   <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
                                   <path fill="none" d="M0 0h48v48H0z"></path>
                               </g>
-                          </svg> 
+                            </svg> 
                           <span class="logo-text">Google로 계속하기</span>
-                      </button>
-                    </a>
+                        </button>
+                      </a>
                     <div style="clear:both"></div>
                 </div>
-                <div class="join-holder">
-                    <!-- 구분선 -->
-                    <div class="line"></div> 
-                    
-                    <c:if test="${param.error != null}">
-                      <div class="join-text">
-                        <a href="#" onclick="javascript:showPwAlert()" style="color:red;">${error_message}</a>
-                      </div>
-                    </c:if>
-                    <div style="clear:both"></div>
-                   
-                    <label for="">이메일</label>
-                    <input class="join-input holder" type="text" name="username" placeholder="이메일" value = "${joined_email}">
-                    <label for="">비밀번호
-                    </label>
-                    <input class="join-input holder" type="text" name="password" placeholder="비밀번호">
-                   
-                    
-                    <div class="mkAccCheck">
-                        <span class="mkAccText">아직 계정이 없으신가요?</span><span class="mkAccBtn"><a href="/join_indv">계정만들기 ></a></span>
-                    </div>
-                  
-                    <div class="join-confirm">
-                    
-                        <input class="join-btn" type="submit" value="이메일 로그인">
-                        <div class="cookieCfm">
-                            <input type="checkbox" id="term_2">
-                            <label for="term_2">
-                                <small>로그인 상태 유지</small>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <br>
+	                
+                <form action="/login_proc" method="post" class="login-person join">
+	                <div class="join-holder">
+	                <!-- 구분선 -->
+	                     <div style="width:167%;">
+	                      <div class="line" style="width:44%; float:left; background-color: #bdbdbd;"></div> 
+		                    <div style="float: left;margin: 0px 15px 0px 15px;
+    font-size: small;
+    color: #bdbdbd;">또는</div>
+	                      <div class="line" style="width:45%; float:left; background-color: #bdbdbd;"></div> 
+	                     </div>
+	                    <c:if test="${param.error != null}">
+	                      <div class="join-text">
+	                        <a href="#" onclick="javascript:showPwAlert()" style="color:red;">${error_message}</a>
+	                      </div>
+	                    </c:if>
+	                    <br>
+	                    <div style="clear:both"></div>
+	                   
+	                    <label for="" style="    margin-top: 15px;
+	                    ">이메일</label>
+	                    <input style="width:167%;" class="join-input holder" type="text" name="username" placeholder="이메일" value = "${joined_email}">
+	                    <label for="">비밀번호
+	                    </label>
+	                    <input style="width:167%;" class="join-input holder" type="password" name="password" placeholder="비밀번호">
+	                   
+	                    
+	                    <div style="width:167%;" class="mkAccCheck">
+	                        <span class="mkAccText">아직 계정이 없으신가요?</span><span class="mkAccBtn"><a href="/join_indv">계정만들기 ></a></span>
+	                    </div>
+	                  
+	                    <div style="width:167%;" class="join-confirm">
+	                    
+	                        <input class="join-btn" type="submit" value="이메일 로그인">
+	                        <div class="cookieCfm" style="padding-left:200px;     margin-top: 9px;">
+	                            <input type="checkbox" id="term_2">
+	                            <label for="term_2">
+	                                <small>로그인 상태 유지</small>
+	                            </label>
+	                        </div>
+	                    </div>
+	                </div>
                 
-            </form>
+                </form>
+            </div>
         </div> <!-- 작업공간 끝-->
       </div>
     </section><!-- End Portfolio Section -->

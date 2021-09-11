@@ -15,11 +15,8 @@
 <link rel="stylesheet" href="/style/jandi.css">
 <!-- 잔디 css 끝 -->
 
-  <!-- 공통 스타일 -->
-    <jsp:include page="../common/top.jsp"/>
   <!-- 페이지 스타일 -->
-  <link rel="stylesheet" href="/style/board_review.css">
-    <link rel="stylesheet" href="/style/board_total.css">
+    <jsp:include page="../common/top.jsp"/>
 
 
 <jsp:include page="../common/top_t.jsp"/>
@@ -28,16 +25,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
-  
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
-  	<div class="w-100 h-100 bg-dark" style="position:absolute;
-  	top:0; opacity:.5;"></div>
-  </section><!-- End Hero -->
+  <jsp:include page="../common/nav.jsp"/>
   
   <main id="main">
   	<section class="portfolio">
@@ -45,6 +33,7 @@
 		<!-- 작업공간 시작-->
 	   <!-- 마이 페이지 -->
         <div class="mypage">
+         
             <!-- 유저정보 좌측 메뉴 정보 -->
             <div class="mypage-left">
 
@@ -53,18 +42,15 @@
             </div>
             
             <!-- 유저정보 우측 정보 박스 -->
-            <div class="mypage-right">
+            <div class="mypage-right"> 
+                       
+                <sec:authentication property="principal" var="user"/>
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title">프로필
                   <a href = "/mypage/profile_edit">
                     <button>편집</button>
                   </a>
-                </div>
-                  
-                <div class="line"></div>
-                
-                
-                <sec:authentication property="principal" var="user"/>
+                </div> 
                 
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
@@ -133,35 +119,35 @@
             </div>
         </div>
         <!-- 잔디 시작 -->
-                        <div class="graph">
-                          <ul class="months">
-                            <li>Sep</li>
-                            <li>Oct</li>
-                            <li>Nov</li>
-                            <li>Dec</li>
-                            <li>Jan</li>
-                            <li>Feb</li>
-                            <li>Mar</li>
-                            <li>Apr</li>
-                            <li>May</li>
-                            <li>Jun</li>
-                            <li>Jul</li>
-                            <li>Aug</li>
-                          </ul>
-                          <ul class="days">
-                            <li>Sun</li>
-                            <li>Mon</li>
-                            <li>Tue</li>
-                            <li>Wed</li>
-                            <li>Thu</li>
-                            <li>Fri</li>
-                            <li>Sat</li>
-                          </ul>
-                          <ul class="squares">
-                            <!-- added via javascript -->
-                          </ul>
-                        </div>
-                        <!-- 잔디 끝 -->
+        <div class="graph">
+          <ul class="months">
+            <li>Sep</li>
+            <li>Oct</li>
+            <li>Nov</li>
+            <li>Dec</li>
+            <li>Jan</li>
+            <li>Feb</li>
+            <li>Mar</li>
+            <li>Apr</li>
+            <li>May</li>
+            <li>Jun</li>
+            <li>Jul</li>
+            <li>Aug</li>
+          </ul>
+          <ul class="days">
+            <li>Sun</li>
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+          </ul>
+          <ul class="squares">
+            <!-- added via javascript -->
+          </ul>
+        </div>
+        <!-- 잔디 끝 -->
         
         
 		<!-- 작업공간 끝-->
