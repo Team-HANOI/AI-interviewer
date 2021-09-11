@@ -40,6 +40,7 @@
     </ul>
   </li>
   <li><a href="/contact">Contact Us</a></li>
+  <li><a href="/mypage/" class="my-page-link">M</a></li>
 </ul>
 <i class="bi bi-list mobile-nav-toggle"></i>
 </nav><!-- .navbar -->	  
