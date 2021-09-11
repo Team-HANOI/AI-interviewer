@@ -42,7 +42,7 @@
 	
 	   <div class="join-individual-form">
           <form action="/join_indv" method="POST" enctype="multipart/form-data" class="login join-person">
-              <h1 class="join-title">ALPACA 계정 만들기</h1>
+              <h1 class="join-title">MR.ALPACA 계정 만들기</h1>
               <div class="join-holder">    
                   <!-- 구분선 -->
                   <div class="line"></div> 

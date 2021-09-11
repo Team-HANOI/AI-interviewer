@@ -1,53 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-<!-- 잔디 css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="/style/jandi.css">
-<!-- 잔디 css 끝 -->
-
-  <!-- 공통 스타일 -->
+    <!-- 공통 스타일 -->
     <jsp:include page="../common/top.jsp"/>
   <!-- 페이지 스타일 -->
   <link rel="stylesheet" href="/style/board_review.css">
-    <link rel="stylesheet" href="/style/board_total.css">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-<jsp:include page="../common/top_t.jsp"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  
 </head>
-
 <body>
+    <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
+    <jsp:include page="../common/header.jsp"/>
+    
+    <!-- 구분선 -->
+    <div class="line"></div>
+    
+    <!-- 본문 시작 -> 여기서 작업하세요 -->
+    <main>
+    
+      <!-- 팝업 -->
+        <jsp:include page="../common/popups/popups.jsp"/>
 
-  <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
-  
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
-  	<div class="w-100 h-100 bg-dark" style="position:absolute;
-  	top:0; opacity:.5;"></div>
-  </section><!-- End Hero -->
-  
-  <main id="main">
-  	<section class="portfolio">
-      <div class="container">
-		<!-- 작업공간 시작-->
-	   <!-- 마이 페이지 -->
+    <!-- 타이틀 더미 -->
+        <div class="dummy"></div>
+        
+        <!-- 마이 페이지 -->
         <div class="mypage">
             <!-- 유저정보 좌측 메뉴 정보 -->
             <div class="mypage-left">
@@ -71,14 +57,14 @@
                               
                               <li>
                                     <a class='move' href='<c:out value="${interviewRecord.iRecordId}"/>'>
-                                     <fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/>의 면접 기록
-                                    </a>&nbsp; &nbsp;
+                                     <fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/> 의 면접 기록
+                                    </a>
                                     <a>
                                       <c:choose>
-                                        <c:when test="${interviewRecord.iTypeId eq '1'}"><span class="badge rounded-pill bg-primary type1" style="font-weight: normal;cursor:pointer;">💡일반 모드</span></c:when>
-                                        <c:when test="${interviewRecord.iTypeId eq '2'}"><span class="badge rounded-pill bg-success type2" style="font-weight: normal;cursor:pointer;">✅맞춤 모드</span></c:when>
-                                        <c:when test="${interviewRecord.iTypeId eq '3'}"><span class="badge rounded-pill bg-danger type3" style="font-weight: normal;cursor:pointer;">🚀멘토 모드</span></c:when>
-                                        <c:when test="${interviewRecord.iTypeId eq '4'}"><span class="badge rounded-pill bg-warning text-dark type4" style="font-weight: normal;cursor:pointer;">👔채용공고 모드</span></c:when>
+                                        <c:when test="${interviewRecord.iTypeId eq '1'}"><span class="badge rounded-pill bg-primary type1" >💡일반 모드</span></c:when>
+                                        <c:when test="${interviewRecord.iTypeId eq '2'}"><span class="badge rounded-pill bg-success type2" >✅맞춤 모드</span></c:when>
+                                        <c:when test="${interviewRecord.iTypeId eq '3'}"><span class="badge rounded-pill bg-danger type3" >🚀멘토 모드</span></c:when>
+                                        <c:when test="${interviewRecord.iTypeId eq '4'}"><span class="badge rounded-pill bg-warning text-dark type4" >👔채용공고 모드</span></c:when>
                                       </c:choose>
                                     </a>
                               </li>
@@ -90,7 +76,7 @@
                       </c:if>
                       
                       <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                        <a class= "paginate_button"  href="${num}">[${num}] </a>
+                        <a class= "paginate_button"  href="${num}">${num} </a>
                       </c:forEach>
                       
                       <c:if test="${pageMaker.next}">
@@ -121,23 +107,16 @@
         <input type="hidden" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>'>
      </form>
         
-		<!-- 작업공간 끝-->
-      </div>
-    </section><!-- End Portfolio Section -->
-  </main><!-- End #main -->
+    </main>
 
-  <!-- ======= Footer ======= -->
-  <jsp:include page="../common/footer.jsp"/>
-  
-  <!-- Vendor JS Files -->
-  <jsp:include page="../common/vendor_js.jsp"/>
-  
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
-  
-  
-  
-  <script type="text/javascript">
+    <!-- 꼬리 -->
+    <jsp:include page="../common/footer.jsp"/>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    
+    <script type="text/javascript">
     var actionForm = $("#actionForm");
     /*페이지 번호 클릭했을때 그 페이지로 이동*/
     $(".paginate_button").on("click", function(e) {
@@ -208,8 +187,6 @@
     
     
     </script>
-  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
-
-

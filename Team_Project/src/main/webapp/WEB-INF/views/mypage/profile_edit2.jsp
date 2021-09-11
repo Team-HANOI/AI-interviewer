@@ -1,49 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<!-- 잔디 css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="/style/jandi.css">
-<!-- 잔디 css 끝 -->
-
-  <!-- 공통 스타일 -->
+    <!-- 공통 스타일 -->
     <jsp:include page="../common/top.jsp"/>
   <!-- 페이지 스타일 -->
   <link rel="stylesheet" href="/style/board_review.css">
-    <link rel="stylesheet" href="/style/board_total.css">
-
-
-<jsp:include page="../common/top_t.jsp"/>
+  
 </head>
-
 <body>
+    <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
+    <jsp:include page="../common/header.jsp"/>
+    
+    <!-- 구분선 -->
+    <div class="line"></div>
+    
+    <!-- 본문 시작 -> 여기서 작업하세요 -->
+    <main>
+      <!-- 팝업 -->
+        <jsp:include page="../common/popups/popups.jsp"/>
 
-  <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
-  
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
-  	<div class="w-100 h-100 bg-dark" style="position:absolute;
-  	top:0; opacity:.5;"></div>
-  </section><!-- End Hero -->
-  
-  <main id="main">
-  	<section class="portfolio">
-      <div class="container">
-		<!-- 작업공간 시작-->
-	   <!-- 마이 페이지 -->
+    <!-- 타이틀 더미 -->
+        <div class="dummy"></div>
+        
+        <!-- 마이 페이지 -->
         <div class="mypage">
             <!-- 유저정보 좌측 메뉴 정보 -->
             <div class="mypage-left">
@@ -58,21 +43,18 @@
  
 
  
-                
-                <form id="form" method="POST" action = "/mypage/profile_edit" class="mypage-content" enctype="multipart/form-data">
-                <div class="mypage-content-title">프로필 관리
-                  <a href = "/mypage/">
-                    <button type="button" class="btn btn-warning">취소</button>
-                  </a>
-                  <button id = "submit-btn"  type="submit">저장</button>
-                        &nbsp<a id = "warn"href="#" onclick="javascript:showPwAlert()" style="color:red;display: none;font-weight:normal;" >주요 기술을 한 개 이상 체크해주세요</a>
-                </div> 
-                
+                <div class="mypage-content-title">프로필 관리</div>
+                <a href = "/mypage/">
+                <button class="join-btn btn" >취소</button>
+                </a>
                 
                   <sec:authentication property="principal" var="user"/>
                   
-                  
-                      
+                <form id="form" method="POST" action = "/mypage/profile_edit" class="mypage-content" enctype="multipart/form-data"> 
+                  <button id = "submit-btn" class="join-btn btn" type="submit">저장</button>
+                      <div class="join-text">
+                        <a id = "warn"href="#" onclick="javascript:showPwAlert()" style="color:red;display: none">주요 기술을 한 개 이상 체크해주세요</a>
+                      </div>
                   <div class="line"></div>
                   <!-- 사용자 정보 -->
                     <div class="mypage-content-profile">
@@ -154,24 +136,12 @@
                 </form>
             </div>
         </div>
-        
-		<!-- 작업공간 끝-->
-      </div>
-    </section><!-- End Portfolio Section -->
-  </main><!-- End #main -->
+    </main>
 
-  <!-- ======= Footer ======= -->
-  <jsp:include page="../common/footer.jsp"/>
-  
-  <!-- Vendor JS Files -->
-  <jsp:include page="../common/vendor_js.jsp"/>
-  
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
-  
-  
-  
-  <script type="text/javascript">
+    <!-- 꼬리 -->
+    <jsp:include page="../common/footer.jsp"/>
+    
+    <script type="text/javascript">
      function showMyImage(fileInput) {
          var files = fileInput.files;
          for (var i = 0; i < files.length; i++) {           
@@ -210,8 +180,5 @@
             });
            });
     </script>
-  
 </body>
 </html>
-
-

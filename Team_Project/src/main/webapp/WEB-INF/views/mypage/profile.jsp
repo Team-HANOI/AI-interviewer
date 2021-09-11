@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="/style/jandi.css">
 <!-- 잔디 css 끝 -->
 
+  <!-- 공통 스타일 -->
+    <jsp:include page="../common/top.jsp"/>
+  <!-- 페이지 스타일 -->
+  <link rel="stylesheet" href="/style/board_review.css">
+    <link rel="stylesheet" href="/style/board_total.css">
+
 
 <jsp:include page="../common/top_t.jsp"/>
 </head>
@@ -49,10 +55,12 @@
             <!-- 유저정보 우측 정보 박스 -->
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
-                <div class="mypage-content-title">프로필</div>
+                <div class="mypage-content-title">프로필
                   <a href = "/mypage/profile_edit">
-                    <button class="join-btn btn" >프로필 편집</button>
+                    <button>편집</button>
                   </a>
+                </div>
+                  
                 <div class="line"></div>
                 
                 
@@ -62,6 +70,7 @@
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-profile">
                         <ul>
+                        
                             <li>
                                 <span class="pfText">프로필 </span>
                                 
@@ -120,39 +129,40 @@
                             
                     </div> 
                 </form>
+                        
             </div>
         </div>
-        
         <!-- 잔디 시작 -->
-        <div class="graph">
-			    <ul class="months">
-			      <li>Sep</li>
-			      <li>Oct</li>
-			      <li>Nov</li>
-			      <li>Dec</li>
-			      <li>Jan</li>
-			      <li>Feb</li>
-			      <li>Mar</li>
-			      <li>Apr</li>
-			      <li>May</li>
-			      <li>Jun</li>
-			      <li>Jul</li>
-			      <li>Aug</li>
-			    </ul>
-			    <ul class="days">
-			      <li>Sun</li>
-			      <li>Mon</li>
-			      <li>Tue</li>
-			      <li>Wed</li>
-			      <li>Thu</li>
-			      <li>Fri</li>
-			      <li>Sat</li>
-			    </ul>
-			    <ul class="squares">
-			      <!-- added via javascript -->
-			    </ul>
-			  </div>
-        <!-- 잔디 끝 -->
+                        <div class="graph">
+                          <ul class="months">
+                            <li>Sep</li>
+                            <li>Oct</li>
+                            <li>Nov</li>
+                            <li>Dec</li>
+                            <li>Jan</li>
+                            <li>Feb</li>
+                            <li>Mar</li>
+                            <li>Apr</li>
+                            <li>May</li>
+                            <li>Jun</li>
+                            <li>Jul</li>
+                            <li>Aug</li>
+                          </ul>
+                          <ul class="days">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                          </ul>
+                          <ul class="squares">
+                            <!-- added via javascript -->
+                          </ul>
+                        </div>
+                        <!-- 잔디 끝 -->
+        
         
 		<!-- 작업공간 끝-->
       </div>

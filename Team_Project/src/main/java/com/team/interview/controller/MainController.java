@@ -26,23 +26,29 @@ public class MainController {
   @Autowired
   private MemberService memberService;
 
+  @RequestMapping(value="/test")
+  public ModelAndView test() {
+    ModelAndView mav = new ModelAndView("test");
+    mav.addObject("main", "main");
+    return mav;
+  }
   @RequestMapping(value="/")
   public ModelAndView main() {
     ModelAndView mav = new ModelAndView("main");
     mav.addObject("main", "main");
     return mav;
   }
-  
+
   @RequestMapping(value="/contact")
   public ModelAndView contact() {
-	  ModelAndView mav = new ModelAndView("contact");
-	  return mav;
+    ModelAndView mav = new ModelAndView("contact");
+    return mav;
   }
-  
+
   @RequestMapping(value="/about")
   public ModelAndView about() {
-	  ModelAndView mav = new ModelAndView("about");
-	  return mav;
+    ModelAndView mav = new ModelAndView("about");
+    return mav;
   }
 
   @GetMapping("/jandi")

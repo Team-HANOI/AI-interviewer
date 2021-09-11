@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <jsp:include page="../common/top_t.jsp"/>
+<jsp:include page="../common/top_t.jsp"/>
   <!-- 공통 스타일 -->
     <jsp:include page="../common/top.jsp"/>
   <!-- 페이지 스타일 -->
@@ -13,27 +17,12 @@
     <link rel="stylesheet" href="/style/board_total.css">
 </head>
 <body>
-
-  <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
-  
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
-  	<div class="w-100 h-100 bg-dark" style="position:absolute;
-  	top:0; opacity:.5;"></div>
-  </section><!-- End Hero -->
-  
-  <main id="main">
-  	<section class="portfolio">
-      <div class="container">
-	
-		<!-- 작업공간 시작-->
-		      <div class="login-individual-form">
+        <div class="dummy"></div>
+        
+        <!-- 일반회원 로그인 -->
+        <div class="login-individual-form">
             
-                <h1 class="join-title">MR.ALPACA 로그인</h1>
+                <h1 class="join-title">ALPACA 로그인</h1>
                 <div class="join-sub">
                     <a href="/oauth2/authorization/google">
                       <button class="join-input google" >
@@ -66,6 +55,9 @@
                     <label for="">이메일</label>
                     <input class="join-input holder" type="text" name="username" placeholder="이메일" value = "${joined_email}">
                     <label for="">비밀번호
+                        <span class="pwReset">
+                            <small class="btn pw-search">비밀번호 재설정</small>
+                        </span>
                     </label>
                     <input class="join-input holder" type="text" name="password" placeholder="비밀번호">
                    
@@ -75,7 +67,6 @@
                     </div>
                   
                     <div class="join-confirm">
-                    
                         <input class="join-btn" type="submit" value="이메일 로그인">
                         <div class="cookieCfm">
                             <input type="checkbox" id="term_2">
@@ -85,28 +76,10 @@
                         </div>
                     </div>
                 </div>
+        
                 
             </form>
         </div>
-		
-		
-		
-        
-        <!-- 작업공간 끝-->
-      </div>
-    </section><!-- End Portfolio Section -->
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <jsp:include page="../common/footer.jsp"/>
-  
-  <!-- Vendor JS Files -->
-  <jsp:include page="../common/vendor_js.jsp"/>
-  
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
-  
+    <!-- 꼬리 -->
 </body>
 </html>
-
-

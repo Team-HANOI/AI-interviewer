@@ -11,6 +11,11 @@
 
 <head>
   <jsp:include page="../common/top_t.jsp"/>
+    <!-- 공통 스타일 -->
+    <jsp:include page="../common/top.jsp"/>
+  <!-- 페이지 스타일 -->
+  <link rel="stylesheet" href="/style/board_review.css">
+    <link rel="stylesheet" href="/style/board_total.css">
 
 </head>
 
