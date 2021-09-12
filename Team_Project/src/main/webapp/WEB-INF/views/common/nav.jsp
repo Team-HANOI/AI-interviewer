@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
   <div class="container d-flex justify-content-between align-items-center">
@@ -32,8 +34,13 @@
     </ul>
   </li>
   <li><a href="/recruit/">채용공고</a></li>
-  <li><a href="/userLogin">로그인</a></li>
-  </li><li class="dropdown"><a href="#"><span>회원가입</span> <i class="bi bi-chevron-down"></i></a>
+    <sec:authorize access="isAuthenticated()">
+      <li><a href="/logout">로그아웃</a></li>
+    </sec:authorize>
+    <sec:authorize access="isAnonymous()">
+      <li><a href="/userLogin">로그인</a></li>
+    </sec:authorize>
+  <li class="dropdown"><a href="#"><span>회원가입</span> <i class="bi bi-chevron-down"></i></a>
     <ul>
       <li><a href="/join_indv">일반회원</a></li>
       <li><a href="/join_com">기업회원</a></li>

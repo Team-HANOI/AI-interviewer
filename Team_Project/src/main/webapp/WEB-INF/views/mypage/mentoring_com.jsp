@@ -56,7 +56,8 @@
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title">
-                    <p>멘토링 지원자 리스트</p>
+                    <p style="font-size: x-large;
+    font-weight: normal;">멘토링 지원자 리스트</p>
                 </div> 
 
                 <div class="line"></div>

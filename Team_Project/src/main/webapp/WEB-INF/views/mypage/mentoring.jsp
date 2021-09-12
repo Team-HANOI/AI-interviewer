@@ -55,8 +55,9 @@
             <!-- 유저정보 우측 정보 박스 -->
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
-                <div class="mypage-content-title">
-                    <p>내가 신청한 멘토링</p>
+                <div class="mypage-content-title" >
+                    <p style="font-size: x-large;
+    font-weight: normal;" >내가 신청한 멘토링</p>
                 </div> 
 
                 <div class="line"></div>

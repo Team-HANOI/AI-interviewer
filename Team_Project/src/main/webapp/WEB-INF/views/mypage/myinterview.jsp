@@ -11,9 +11,6 @@
 
 <head>
 
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
 <!-- 잔디 css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="/style/jandi.css">
@@ -61,19 +58,19 @@
                 <!-- 유저정보 제목 -->
                 <sec:authentication property="principal" var="user"/>
                 <div class="mypage-content-title" style="font-size: x-large;
-    font-weight: normal;">🗃️ ${user.name}의 면접 기록</div>
+    font-weight: normal;">${user.name}의 면접 기록</div>
                 <div class="line"></div>
                 
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-list">
-                        <ul> 
+                        <ul style="padding-left:0"> 
                               <c:forEach items="${list}" var="interviewRecord">
                               
-                              <li>
+                              <li style="padding-left:0">
                                     <a class='move' href='<c:out value="${interviewRecord.iRecordId}"/>'>
                                      <fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/>의 면접 기록
-                                    </a>&nbsp; &nbsp;
+                                    </a>&nbsp;
                                     <a>
                                       <c:choose>
                                         <c:when test="${interviewRecord.iTypeId eq '1'}"><span class="badge rounded-pill bg-primary type1" style="font-weight: normal;cursor:pointer;">💡일반 모드</span></c:when>

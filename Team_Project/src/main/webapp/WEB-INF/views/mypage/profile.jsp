@@ -46,19 +46,20 @@
                        
                 <sec:authentication property="principal" var="user"/>
                 <!-- 유저정보 제목 -->
-                <div class="mypage-content-title">프로필
-                  <a href = "/mypage/profile_edit">
-                    <button>편집</button>
+                <div class="mypage-content-title" style="font-size: x-large;
+    font-weight: normal;">프로필
+                  <a style="float: right;"href = "/mypage/profile_edit">
+                    <button type="button" class="btn btn-secondary">편집</button>
                   </a>
                 </div> 
                 
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-profile">
-                        <ul>
+                        <ul style="padding-left:0px;">
                         
                             <li>
-                                <span class="pfText">프로필 </span>
+                                <span class="pfText" >프로필 </span>
                                 
                                 <div class="pfInfoOuter">
                                     <div clas="pfInfoInner">

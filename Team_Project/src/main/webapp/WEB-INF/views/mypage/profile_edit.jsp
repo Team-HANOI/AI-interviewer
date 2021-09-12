@@ -60,13 +60,18 @@
  
                 
                 <form id="form" method="POST" action = "/mypage/profile_edit" class="mypage-content" enctype="multipart/form-data">
-                <div class="mypage-content-title">프로필 관리
-                  <a href = "/mypage/">
-                    <button type="button" class="btn btn-warning">취소</button>
+                <div class="mypage-content-title" style="font-size: x-large;
+    font-weight: normal;">프로필 편집
+                  <div style="float: right;">
+                  <button class="btn btn-secondary" style="float: right;" id = "submit-btn"  type="submit">저장</button>
+                  <a  href = "/mypage/">
+                    <button style="float: right;
+    margin-right: 5px;" type="button" class="btn btn-light" >취소</button>
                   </a>
-                  <button id = "submit-btn"  type="submit">저장</button>
-                        &nbsp<a id = "warn"href="#" onclick="javascript:showPwAlert()" style="color:red;display: none;font-weight:normal;" >주요 기술을 한 개 이상 체크해주세요</a>
-                </div> 
+                  </div>
+                       <a id = "warn"href="#" onclick="javascript:showPwAlert()" style="color:red;display: none;font-weight:normal; font-size: 11px;
+                       " >주요 기술을 한 개 이상 체크해주세요</a>
+                  </div> 
                 
                 
                   <sec:authentication property="principal" var="user"/>
@@ -76,7 +81,7 @@
                   <div class="line"></div>
                   <!-- 사용자 정보 -->
                     <div class="mypage-content-profile">
-                        <ul>
+                        <ul style="padding-left:0px;">
                             <li>
                                 <span class="pfText">프로필 </span>
                                 
@@ -128,15 +133,36 @@
                                 <div style="display: block; margin-top: 10px;">
                                     <div class="tech-component">
                                     
-                                    <c:forEach var="item" items="${kwList}">
-                                      <input type="checkbox" name="kws" value="${item.kw}"
-                                        <c:forEach var="pSkill" items="${pSkillList}">
-                                          <c:if test="${item.kw eq pSkill}">
-                                            checked
-                                          </c:if>
-                                        </c:forEach>
-                                      > <span class="btn lightgrey btnlabel">${item.kw}</span><br>
-                                    </c:forEach>
+                                      <ul class="list-group" style="display: contents;">
+                                        <c:forEach var="item" items="${kwList}">
+																				  <li class="list-group-item" style="border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    user-select: auto;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;">
+																				    <input style="padding: 0 0 0 0 !important;" class="form-check-input me-1" type="checkbox" name="kws" value="${item.kw}" <c:forEach var="pSkill" items="${pSkillList}">
+                                            <c:if test="${item.kw eq pSkill}">
+                                              checked
+                                            </c:if>
+                                          </c:forEach> 
+                                          aria-label="...">
+																				    ${item.kw}
+																				  </li>
+																			   </c:forEach>
+																			</ul>
+                                    
+	                                    <%-- c:forEach var="item" items="${kwList}">
+	                                      <input type="checkbox" name="kws" value="${item.kw}"
+	                                        <c:forEach var="pSkill" items="${pSkillList}">
+	                                          <c:if test="${item.kw eq pSkill}">
+	                                            checked
+	                                          </c:if>
+	                                        </c:forEach>
+	                                      > <span class="btn lightgrey btnlabel">${item.kw}</span><br>
+	                                    </c:forEach> --%>
+	                                    
                                     </div>
                                 </div>
                             </li>

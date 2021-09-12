@@ -28,7 +28,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
+  <jsp:include page="../common/nav.jsp"/>
   
   <!-- ======= Hero Section ======= -->
   <section id="" class="h-100" 
@@ -57,10 +57,10 @@
                 <!-- 유저정보 제목 -->
                 <div class="dateMT"><fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/> 
                   <c:choose>
-                    <c:when test="${interviewRecord.iTypeId eq '1'}">💡일반 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '2'}">✅맞춤 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '3'}">🚀멘토 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '4'}">👔채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '1'}">일반 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '2'}">맞춤 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
                   </c:choose> 면접 기록</div>
                 <div class="line"></div>
                 <!-- 사용자 정보 -->
@@ -82,7 +82,7 @@
                               </tr>
                               <tr>
                                   <td class="mypageTb-01ax">
-                                      <p>${answer.content}</p>
+                                      <p style="text-align: left;">${answer.content}</p>
                                   </td>
                                   <td class="mypageTb-04ax">
                                         <audio controls>
@@ -95,7 +95,7 @@
                   </c:forEach>
                 </c:if>
                   <br>
-                  <h4 style="float: left;">📝메모</h4> <button style="float: right;"type="button" class="btn btn-success">저장</button>
+                  <h4 style="float: left;">✏️메모</h4> <button style="float: right;"type="button" class="btn btn-success">저장</button>
                   <textarea class="form-control" rows="5" cols="100"></textarea>
                   <br>
                   <button data-oper='list' class="btn btn-secondary" >목록으로 돌아가기</button>

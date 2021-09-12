@@ -47,6 +47,7 @@ public class MemberServiceImpl implements MemberService {
     memberVO.setType('M');
 
     File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
+    //    File file = new File("image/default_pf_img.jpg");
     FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
 
 
@@ -103,6 +104,7 @@ public class MemberServiceImpl implements MemberService {
 
     if(logoImg.getSize() == 0) { // 날라온게 없으면 디폴트 이미지로
       File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
+      //      File file = new File("image/default_pf_img.jpg");
       FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
 
 
