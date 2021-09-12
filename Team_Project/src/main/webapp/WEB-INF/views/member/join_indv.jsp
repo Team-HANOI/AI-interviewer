@@ -32,25 +32,27 @@
 		<!-- 작업공간 시작-->
 	
 	   <div class="join-individual-form">
-          <form action="/join_indv" method="POST" enctype="multipart/form-data" class="login join-person">
-              <h1 class="join-title">MR.ALPACA 계정 만들기</h1>
+          <form style = "height: 500px;"action="/join_indv" method="POST" enctype="multipart/form-data" class="login join-person">
+              <h1 style = "margin-bottom: 30px;"class="join-title">MR.ALPACA 계정 만들기</h1>
               <div class="join-holder">    
                   <!-- 구분선 -->
-                  <div class="line"></div> 
                   <div style="clear:both"></div>
-                  <label for="">이름</label>
+                  <label for="">이름<span style="color:red;">*</span></label>
                   <input class="join-input holder" type="text" name="name"placeholder="이름" required>
-                  <label for="">이메일</label>
+                  <label for="">이메일<span style="color:red;">*</span></label>
                   <input class="join-input holder" type="email" name="email" placeholder="이메일" required>
-                  <label for="">비밀번호</label>
+                  <label for="">비밀번호<span style="color:red;">*</span></label>
                   <input class="join-input holder" type="password" name="pw" placeholder="비밀번호" required>
-                  <label for="">비밀번호 확인</label>
+                  <label for="">비밀번호 확인<span style="color:red;">*</span></label>
                   <input class="join-input holder" type="password" placeholder="비밀번호 확인" required>
                   <input type="file" name = "pfImg" style="display:none" src="../image/alpaca.jpg"/>
                   <div class="join-confirm">
                       <!-- <input class="join-btn btn" type="button" value="일반회원 가입하기"> -->
                       <button class="join-btn btn"  type="submit" >일반회원 가입하기</button>
                   </div>
+                  <div style="width:101%;margin-top:15px" class="mkAccCheck">
+                          <span class="mkAccText">기업이신가요?</span><span class="mkAccBtn"><a href="/join_com">기업 계정만들기 ></a></span>
+                      </div>
               </div>
       
           </form>
