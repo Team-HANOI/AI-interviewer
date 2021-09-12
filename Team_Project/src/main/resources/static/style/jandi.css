@@ -71,13 +71,19 @@ body {
 }
 
 .squares li[data-level="1"] {
-  background-color: #c6e48b;
+  background-color: #86FAF2;
 }
 
 .squares li[data-level="2"] {
-  background-color: #7bc96f;
+  background-color: #30E7ED;
 }
 
-.squares li[data-level="10"] {
-  background-color: #196127;
+.squares li[data-level="3"] {
+  background-color: #00A6D7;
+}
+.squares li[data-level="4"] {
+  background-color: #0058B3;
+}
+.squares li[data-level="5"] {
+  background-color: #001B87;
 }

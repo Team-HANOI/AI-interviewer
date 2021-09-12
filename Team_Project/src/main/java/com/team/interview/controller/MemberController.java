@@ -47,7 +47,11 @@ public class MemberController {
 
     ModelAndView mv = new ModelAndView();
     try {
+
+
       memberService.joinIndv(memberVO, pfImg);
+
+
       redirectAttrs.addFlashAttribute("joined_email", memberVO.getEmail());
       if(authMemberDTO == null) {// 비로그인 상태
         mv.setViewName("redirect:/userLogin");
