@@ -19,10 +19,10 @@
   <li><a class="active" href="/">홈</a></li>
   <li class="dropdown"><a href="/interview/"><span>면접하기</span> <i class="bi bi-chevron-down"></i></a>
     <ul>
-      <li><a href="/interview/normal">일반면접</a></li>
-      <li><a href="/interview/recruit">채용공고면접</a></li>
-      <li><a href="/interview/custom">맟춤면접</a></li>
-      <li><a href="/interview/mentor">멘토면접</a></li>
+      <li><a href="/interview/steps_n">일반면접</a></li>
+        <li><a href="/interview/steps_r">채용공고면접</a></li>
+        <li><a href="/interview/steps_k">맟춤면접</a></li>
+        <li><a href="/interview/steps_m">멘토면접</a></li>
     </ul>
   </li><li class="dropdown"><a href="/board/"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
     <ul>

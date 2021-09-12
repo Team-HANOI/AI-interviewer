@@ -524,10 +524,8 @@ public class InterviewController {
       e.printStackTrace();
     }
   }
+  
   // 답변 저장 끝
-  
-  
-  
 
 	//	dummy 
 	//  @GetMapping("/successinterview")
