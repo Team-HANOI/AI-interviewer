@@ -215,6 +215,23 @@ public class MyPageController {
     ModelAndView mav = new ModelAndView("mypage/myinterview");
 
     try {
+      MemberVO member2 = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      ProfileVO profile = profileService.getProfile(member2.getPfId(), authMemberDTO.getEmail());
+      // 잔디 시작
+      String jandi = profile.getJandi();
+      int[] intArr = new int[365];
+      StringTokenizer st = new StringTokenizer(jandi, ",");
+      int i = 0;
+      int test = 0;
+      String test2;
+      int sum = 0;
+      while(st.hasMoreTokens()) {
+        intArr[i] = Integer.parseInt(st.nextToken());
+        sum += intArr[i++];
+      }
+      mav.addObject("sum", sum);
+      mav.addObject("intArr", intArr);
+      // 잔디 끝
       ProfileVO profileForPfImg;
       MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
       profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
@@ -239,6 +256,8 @@ public class MyPageController {
     ModelAndView mav = new ModelAndView("mypage/myinterview_detail");
 
     try {
+
+
       ProfileVO profileForPfImg;
       MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
       profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());

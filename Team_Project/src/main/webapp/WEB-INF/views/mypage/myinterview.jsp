@@ -66,15 +66,47 @@
                 <sec:authentication property="principal" var="user"/>
                 <div class="mypage-content-title" style="font-size: x-large;
     font-weight: normal;">⚡️${user.name}의 면접 기록</div>
-                <div class="line"></div>
+                <div class="line" style="width: 102%;"></div>
                 
+                <div style="font-size: 20px;color: gray;user-select: auto;margin: 30px 0px 10px 0px;"><i class="bi bi-award-fill"></i>1년간 면접 완료 횟수 : ${sum }회</div>
+						     <!-- 잔디 시작 -->
+						        <div class="graph" style="margin: 0; padding-left: 0; padding-right:0px; width: 1117px; ">
+						          <ul class="months"style="margin: 0; color: darkgray;">
+						            <li>Oct</li>
+						            <li>Nov</li>
+						            <li>Dec</li>
+						            <li>Jan</li>
+						            <li>Feb</li>
+						            <li>Mar</li>
+						            <li>Apr</li>
+						            <li>May</li>
+						            <li>Jun</li>
+						            <li>Jul</li>
+						            <li>Aug</li>
+						            <li>Sep</li>
+						          </ul>
+						          <ul class="days" style="padding-left: 1rem;     font-size: 12px; color: darkgray;">
+						            <li>Sun</li>
+						            <li>Mon</li>
+						            <li>Tue</li>
+						            <li>Wed</li>
+						            <li>Thu</li>
+						            <li>Fri</li>
+						            <li>Sat</li>
+						          </ul>
+						          <ul class="squares" style="padding-left: 0;">
+						            <!-- added via javascript -->
+						          </ul>
+						        </div>
+						        <!-- 잔디 끝 -->
+					        <div style="color:darkgray;"><i class="bi bi-exclamation-triangle"></i>날짜는 한국 시간 기준으로 매일 자정에 변경됩니다.</div>
                 <!-- 사용자 정보 -->
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-list">
                         <ul style="padding-left:0"> 
                               <c:forEach items="${list}" var="interviewRecord">
                               
-                              <li style="padding-left:0">
+                              <li style="padding-left:0; width: 102%;">
                                     <a class='move' href='<c:out value="${interviewRecord.iRecordId}"/>'>
                                      <fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/>의 면접 기록
                                     </a>&nbsp;
@@ -135,7 +167,10 @@
                     </div>    
                 </form>
             </div>
+            
         </div>
+        
+        
         
         
       <!-- 검색폼 시작 -->
@@ -242,6 +277,48 @@
     });
     
     
+    </script>
+    
+    <!-- 잔디 -->
+  <script type="text/javascript">
+    var dayArr = new Array();
+    
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+
+    var dateString = year + '-' + month  + '-' + day;
+    dayArr[363] = dateString;
+    
+    for(var i = 362; i >= 0; i--) {
+      today = new Date(today.setDate(today.getDate() - 1));
+      year = today.getFullYear();
+      month = ('0' + (today.getMonth() + 1)).slice(-2);
+      day = ('0' + today.getDate()).slice(-2);
+  
+      dateString = year + '-' + month  + '-' + day;
+      dayArr[i] = dateString;
+    }
+
+      var arr = new Array();
+      <c:forEach items="${intArr}" var="item">        
+              arr.push("${item}");
+      </c:forEach>
+    const squares = document.querySelector('.squares');
+    for (var i = 0; i < 364; i++) {
+      console.log(arr[i]);
+      const level = Math.floor(Math.random() * 3);  
+      squares.insertAdjacentHTML('beforeend', `<li style="border-radius: 3px;" data-level="\${arr[i]}" data-bs-toggle="tooltip" data-bs-placement="top" title="\${dayArr[i]}: 면접 \${arr[i]}번 완료"></li>`);
+    }
+    </script>
+    
+    <!-- 부트스트랩 tooltip -->
+    <script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
     </script>
   
 </body>

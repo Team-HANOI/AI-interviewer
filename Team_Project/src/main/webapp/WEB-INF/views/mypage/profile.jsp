@@ -136,37 +136,6 @@
                         
             </div>
         </div>
-     <!-- 잔디 시작 -->
-        <div class="graph">
-          <ul class="months">
-            <li>Sep</li>
-            <li>Oct</li>
-            <li>Nov</li>
-            <li>Dec</li>
-            <li>Jan</li>
-            <li>Feb</li>
-            <li>Mar</li>
-            <li>Apr</li>
-            <li>May</li>
-            <li>Jun</li>
-            <li>Jul</li>
-            <li>Aug</li>
-          </ul>
-          <ul class="days">
-            <li>Sun</li>
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-          </ul>
-          <ul class="squares">
-            <!-- added via javascript -->
-          </ul>
-        </div>
-        <!-- 잔디 끝 -->
-        
         
 		<!-- 작업공간 끝-->
       </div>
@@ -184,40 +153,6 @@
   
   
   
-  <!-- 잔디 -->
-  <script type="text/javascript">
-    var dayArr = new Array();
-    
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = ('0' + (today.getMonth() + 1)).slice(-2);
-    var day = ('0' + today.getDate()).slice(-2);
-
-    var dateString = year + '-' + month  + '-' + day;
-    dayArr[363] = dateString;
-    
-    for(var i = 362; i >= 0; i--) {
-      today = new Date(today.setDate(today.getDate() - 1));
-      year = today.getFullYear();
-      month = ('0' + (today.getMonth() + 1)).slice(-2);
-      day = ('0' + today.getDate()).slice(-2);
-  
-      dateString = year + '-' + month  + '-' + day;
-      dayArr[i] = dateString;
-    }
-
-      var arr = new Array();
-      <c:forEach items="${intArr}" var="item">        
-              arr.push("${item}");
-      </c:forEach>
-    const squares = document.querySelector('.squares');
-    for (var i = 0; i < 364; i++) {
-      console.log(arr[i]);
-      const level = Math.floor(Math.random() * 3);  
-      squares.insertAdjacentHTML('beforeend', `<li data-level="\${arr[i]}" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="\${dayArr[i]}: 면접 \${arr[i]}번 완료"></li>`);
-    }
-    </script>
-    
     <!-- 부트스트랩 tooltip -->
     <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
