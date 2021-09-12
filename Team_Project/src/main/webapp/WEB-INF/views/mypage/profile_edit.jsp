@@ -90,9 +90,9 @@
                                             
                                             
                                             <!-- 사진을 누르면 파일첨부 창이 뜬다 -->
-                                          <c:set var="len" value="${fn:length(file.fileName)}" />
+                                          <c:set var="len" value="${fn:length(loginUserProfileImageFile.fileName)}" />
                                           <c:set var="filetype"
-                                            value="${fn:toUpperCase(fn:substring(file.fileName, len-4, len))}" />
+                                            value="${fn:toUpperCase(fn:substring(loginUserProfileImageFile.fileName, len-4, len))}" />
                                           <c:choose>
                                             <c:when
                                               test="${(filetype eq '.JPG') or (filetype eq 'JPEG') or (filetype eq '.PNG') or (filetype eq '.GIF')}">
@@ -103,7 +103,7 @@
 	                                              </div>
 	                                               <input type="file" accept="image/*"  name = "pfImg"onchange="showMyImage(this)" id="file" style="display:none"/>
 	                                              <div class = "back" style="float:left;position:absolute;top: 0; right: 0;z-index:-1">
-		                                              <img id="thumbnail" class="profile-img" width="200px" height="200px" src='<c:url value="/mypage/img/${file.fileId}"/>'
+		                                              <img id="thumbnail" class="profile-img" width="200px" height="200px" src='<c:url value="/mypage/img/${loginUserProfileImageFile.fileId}"/>'
 		                                                width="1000" class="img-thumbnail">
 	                                              </div>
                                               </div>
@@ -111,7 +111,7 @@
                                               <br>
                                             </c:when>
                                             <c:otherwise>
-                                              <a href='<c:url value="/mypage/pds/${file.fileId}"/>'>${file.fileName}</a>
+                                              <a href='<c:url value="/mypage/pds/${loginUserProfileImageFile.fileId}"/>'>${loginUserProfileImageFile.fileName}</a>
                                               <br>
                                             </c:otherwise>
                                           </c:choose>

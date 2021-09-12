@@ -64,6 +64,8 @@ public class MyPageController {
     try {
       MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
       profile = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profile.getPfImgId());
+      mv.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
 
       // 잔디 시작
       String jandi = profile.getJandi();
@@ -79,7 +81,6 @@ public class MyPageController {
       // 잔디 끝
 
 
-      FileVO file = profileService.getFile(profile.getPfImgId());
 
       String pSkill = profile.getpSkill();
       ArrayList<String> pSkillList = new ArrayList<>();
@@ -91,7 +92,6 @@ public class MyPageController {
       }
 
       mv.addObject("pSkillList", pSkillList);
-      mv.addObject("file", file);
       mv.addObject("profile", profile);
     } catch (Exception e) {
       e.printStackTrace();
@@ -145,8 +145,10 @@ public class MyPageController {
     ModelAndView mv = new ModelAndView("mypage/profile_edit");
     ProfileVO profile;
     try {
-      profile = profileService.getProfile(authMemberDTO.getPfId(), authMemberDTO.getEmail());
-      FileVO file = profileService.getFile(profile.getPfImgId());
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profile = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profile.getPfImgId());
+      mv.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
 
       String pSkill = profile.getpSkill();
       ArrayList<String> pSkillList = new ArrayList<>();
@@ -159,7 +161,6 @@ public class MyPageController {
 
       mv.addObject("kwList", keywordSevice.keywordList());
       mv.addObject("pSkillList", pSkillList);
-      mv.addObject("file", file);
       mv.addObject("profile", profile);
     } catch (Exception e) {
       e.printStackTrace();
@@ -212,6 +213,19 @@ public class MyPageController {
   @GetMapping(value="/myinterview") // list
   public ModelAndView mypageMyInterview(Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/myinterview");
+
+    try {
+      ProfileVO profileForPfImg;
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profileForPfImg.getPfImgId());
+      mav.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+
+
     cri.setEmail(authMemberDTO.getEmail());
     int total = interviewRecordService.getTotal(cri);
     List<InterviewRecordVO> list = interviewRecordService.getList(cri);
@@ -223,6 +237,20 @@ public class MyPageController {
   @GetMapping(value="/myinterview/detail") // get 1개
   public ModelAndView mypageMyInterviewDetail(@RequestParam("iRecordId") int iRecordId, @ModelAttribute("cri") Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/myinterview_detail");
+
+    try {
+      ProfileVO profileForPfImg;
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profileForPfImg.getPfImgId());
+      mav.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+
+
+
     InterviewRecordVO ir = interviewRecordService.get(iRecordId);
     mav.addObject("interviewRecord", interviewRecordService.get(iRecordId));
     return mav;
@@ -247,6 +275,18 @@ public class MyPageController {
   public ModelAndView mypageMentoring(Criteria cri, @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/mentoring");
 
+
+    try {
+      ProfileVO profileForPfImg;
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profileForPfImg.getPfImgId());
+      mav.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+
     cri.setEmail(authMemberDTO.getEmail());
 
     int total = iservice.getTotal(cri);
@@ -266,6 +306,20 @@ public class MyPageController {
   public ModelAndView mypageMentoringCom(@AuthenticationPrincipal AuthMemberDTO authMemberDTO,@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
     PageInfo pageInfo = new PageInfo();
     ModelAndView mv = new ModelAndView();
+
+    try {
+      ProfileVO profileForPfImg;
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profileForPfImg.getPfImgId());
+      mv.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+
+
+
     try {
       String mentorEmail=authMemberDTO.getEmail();
       System.out.println(mentorEmail);
@@ -286,22 +340,52 @@ public class MyPageController {
   // 이 밑으로 안함
 
   @RequestMapping(value="/myarticle") // 내가쓴글리스트
-  public ModelAndView mypageMyArticle() {
+  public ModelAndView mypageMyArticle(@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/myarticle");
+    try {
+      ProfileVO profileForPfImg;
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profileForPfImg.getPfImgId());
+      mav.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
     mav.addObject("", "");
     return mav;
   }
 
   @RequestMapping(value="/pwchange") // 패스워드 변경
-  public ModelAndView mypagePasswordChange() {
+  public ModelAndView mypagePasswordChange(@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/pwchange");
+    try {
+      ProfileVO profileForPfImg;
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profileForPfImg.getPfImgId());
+      mav.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
     mav.addObject("", "");
     return mav;
   }
 
   @RequestMapping(value="/delete") // 계정 삭제
-  public ModelAndView mypageSession() {
+  public ModelAndView mypageSession(@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
     ModelAndView mav = new ModelAndView("mypage/delete");
+    try {
+      ProfileVO profileForPfImg;
+      MemberVO member = memberService.findByEmail(authMemberDTO.getEmail(), authMemberDTO.isFromSocial());
+      profileForPfImg = profileService.getProfile(member.getPfId(), authMemberDTO.getEmail());
+      FileVO loginUserProfileImageFile = profileService.getFile(profileForPfImg.getPfImgId());
+      mav.addObject("loginUserProfileImageFile", loginUserProfileImageFile);
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
     mav.addObject("", "");
     return mav;
   }

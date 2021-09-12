@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <sec:authentication property="principal" var="user"/>
 <!-- ======= Header ======= -->
@@ -17,6 +21,7 @@
  <nav id="navbar" class="navbar">
 <ul>
   <li><a class="active" href="/">홈</a></li>
+  <li><a href="/contact">Contact Us</a></li>
   <li class="dropdown"><a href="/interview/"><span>면접하기</span> <i class="bi bi-chevron-down"></i></a>
     <ul>
       <li><a href="/interview/steps_n">일반면접</a></li>
@@ -36,21 +41,32 @@
     </ul>
   </li>
   <li><a href="/recruit/">채용공고</a></li>
-    <sec:authorize access="isAuthenticated()">
-      <li><a href="/logout">로그아웃</a></li>
-    </sec:authorize>
+
     <sec:authorize access="isAnonymous()">
+		  <li class="dropdown"><a href="#"><span>회원가입</span> <i class="bi bi-chevron-down"></i></a>
+		    <ul>
+		      <li><a href="/join_indv">일반회원</a></li>
+		      <li><a href="/join_com">기업회원</a></li>
+		    </ul>
+		  </li>
+    </sec:authorize>
+      <sec:authorize access="isAnonymous()">
       <li><a href="/userLogin">로그인</a></li>
     </sec:authorize>
-  <li class="dropdown"><a href="#"><span>회원가입</span> <i class="bi bi-chevron-down"></i></a>
-    <ul>
-      <li><a href="/join_indv">일반회원</a></li>
-      <li><a href="/join_com">기업회원</a></li>
-    </ul>
-  </li>
-  <li><a href="/contact">Contact Us</a></li>
+  <sec:authentication property="principal" var="user"/> 
   <sec:authorize access="isAuthenticated()">
-  <li><a href="/mypage/" class="my-page-link">M</a></li>
+  
+      <li class="dropdown">
+        <a href="#"><span>${user.name}님<c:if test="${fn:contains(user.type, 'C')}">(기업)</c:if></span> 
+          <i class="bi bi-chevron-down"></i>
+        </a>
+        <ul>
+          <li><a href="/profile">프로필</a></li>
+          <li><a href="/mypage/">마이페이지</a></li>
+          <li><a href="/logout">로그아웃</a></li>
+        </ul>
+      </li>
+  
     </sec:authorize>
 </ul>
 <i class="bi bi-list mobile-nav-toggle"></i>

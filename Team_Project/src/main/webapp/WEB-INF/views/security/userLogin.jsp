@@ -26,7 +26,6 @@
             <div class="login-person join">
                 <h1 class="join-title" style="padding-left:144px">MR. ALPACA 로그인</h1>
                 <br>
-                <br>
                 <div class="join-sub">
                     <a href="/oauth2/authorization/google">
                       <button class="join-input google" >
