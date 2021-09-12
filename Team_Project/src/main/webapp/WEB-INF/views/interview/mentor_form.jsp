@@ -61,15 +61,17 @@ $('#sandbox-container input').datepicker({
 							</div>
 
 
+
+
 							<div class="mb-3">
-								<label for="company">회사이름</label> <input id="company"
-									class="login-input" type="text" name="company"
-									placeholder="멘토 회사이름">
+								<label for="company" class="form-label">회사명</label>
+								<textarea class="form-control" id="company" name="company" rows="1"
+									placeholder="멘토 회사이름"></textarea>
 							</div>
 
 
 							<div class="mb-3">
-								<label for="title" class="form-label"> content </label>
+								<label for="title" class="form-label">제목</label>
 								<textarea class="form-control" id="title" name="title" rows="1"
 									placeholder="멘토링 제목"></textarea>
 							</div>
