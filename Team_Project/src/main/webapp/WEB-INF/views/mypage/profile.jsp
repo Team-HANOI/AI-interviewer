@@ -30,9 +30,11 @@
   <main id="main">
   	<section class="portfolio">
       <div class="container">
-		<!-- 작업공간 시작-->
-	   <!-- 마이 페이지 -->
+            <!-- 작업공간 시작-->
+     <!-- 마이 페이지 -->
+
         <div class="mypage">
+        
          
             <!-- 유저정보 좌측 메뉴 정보 -->
             <div class="mypage-left">
@@ -117,7 +119,7 @@
                         
             </div>
         </div>
-        <!-- 잔디 시작 -->
+     <!-- 잔디 시작 -->
         <div class="graph">
           <ul class="months">
             <li>Sep</li>

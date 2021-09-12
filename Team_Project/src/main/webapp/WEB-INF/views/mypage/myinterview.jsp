@@ -36,15 +36,15 @@
   style="background-image: url('/image/i_recruit.jpg');
   background-size:cover; background-position:center;
   position: relative;">
-  	<div class="w-100 h-100 bg-dark" style="position:absolute;
-  	top:0; opacity:.5;"></div>
+    <div class="w-100 h-100 bg-dark" style="position:absolute;
+    top:0; opacity:.5;"></div>
   </section><!-- End Hero -->
   
   <main id="main">
-  	<section class="portfolio">
+    <section class="portfolio">
       <div class="container">
-		<!-- 작업공간 시작-->
-	   <!-- 마이 페이지 -->
+    <!-- 작업공간 시작-->
+     <!-- 마이 페이지 -->
         <div class="mypage">
             <!-- 유저정보 좌측 메뉴 정보 -->
             <div class="mypage-left">
@@ -82,19 +82,49 @@
                               </li>
                               </c:forEach>
                         </ul>
-                    <!-- 페이징 시작 -->
-                      <c:if test="${pageMaker.prev}">
-                        <a class= "paginate_button" href="${pageMaker.startPage-1}">이전</a>
-                      </c:if>
-                      
-                      <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                        <a class= "paginate_button"  href="${num}">[${num}] </a>
-                      </c:forEach>
-                      
-                      <c:if test="${pageMaker.next}">
-                        <a class= "paginate_button" href="${pageMaker.endPage+1}">다음</a>
-                      </c:if>
-                    <!-- 페이징 끝 -->
+                        
+                        <!-- 페이징 시작 -->
+                        <nav aria-label="Page navigation example">
+											  <ul class="pagination">
+											  
+		                      <c:if test="${pageMaker.prev}">
+												    <li class="page-item"style="border-bottom: 0px solid;padding: 0; margin: 0;">
+												      <a class="paginate_button page-link" href="${pageMaker.startPage-1}" aria-label="Previous" style="">
+												        <span aria-hidden="true">&laquo;</span>
+												      </a>
+												    </li>
+		                      </c:if>
+		                      
+		                      
+		                      <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+		                      
+											    <li class="page-item 
+											    
+											     <c:if test="${pageMaker.cri.pageNum == num}">
+											     active
+                          </c:if>
+											    
+											    
+											    " style="border-bottom: 0px solid;padding: 0;margin: 0;">
+											     <a class="page-link paginate_button"  href="${num}">${num}</a>
+											    </li>
+											    
+		                      </c:forEach>
+											    
+		                      <c:if test="${pageMaker.next}">
+			                      <li class="page-item"style="border-bottom: 0px solid;padding: 0;margin: 0;">
+	                            <a class="page-link paginate_button" href="${pageMaker.endPage+1}" aria-label="Next">
+	                              <span aria-hidden="true">&raquo;</span>
+	                            </a>
+	                          </li>
+		                      </c:if>
+											    
+											    
+											    
+											  </ul>
+											</nav>
+                        <!-- 페이징 끝 -->
+                        
                     </div>    
                 </form>
             </div>
@@ -119,7 +149,7 @@
         <input type="hidden" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>'>
      </form>
         
-		<!-- 작업공간 끝-->
+    <!-- 작업공간 끝-->
       </div>
     </section><!-- End Portfolio Section -->
   </main><!-- End #main -->
@@ -209,5 +239,3 @@
   
 </body>
 </html>
-
-

@@ -25,6 +25,8 @@ public class InterviewRecordVO {
   private String type;
   private List<AnswerVO> answerVOList;
 
+  // 메모
+  private String memo;
 
   public InterviewRecordVO() {
   }
@@ -107,6 +109,14 @@ public class InterviewRecordVO {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  public String getMemo() {
+    return memo;
+  }
+
+  public void setMemo(String memo) {
+    this.memo = memo;
   }
 
 
