@@ -34,7 +34,7 @@
 	      <!-- 기업회원가입 팝업 -->
 			<div class="join-business-form">
 			    <form action="/join_com" method="POST" enctype="multipart/form-data" class="login join-business"> 
-			        <h1 class="join-title">기업 회원가입</h1>
+			        <h1 class="join-title" style="font-size: 29px; margin-bottom: 21px;">기업 계정 만들기</h1>
 			        <span style="font-size: small;
     color: darkgray;">로고 이미지</span>
 			        <div class="join-sub">
@@ -69,7 +69,7 @@
 			            </div>
 			        </div>    
 			            
-			        <div class="join-holder">    
+			        <div class="join-holder" style="margin-top: 14px;">    
 			            <!-- 구분선 -->
 			            <div style="clear:both"></div>
 			

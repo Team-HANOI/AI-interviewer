@@ -33,7 +33,9 @@
 	
 	   <div class="join-individual-form">
           <form style = "height: 500px;"action="/join_indv" method="POST" enctype="multipart/form-data" class="login join-person">
-              <h1 style = "margin-bottom: 30px;"class="join-title">MR.ALPACA 계정 만들기</h1>
+              <h1 style = "margin-bottom: 26px;
+    user-select: auto;
+    font-size: 29px;"class="join-title">계정 만들기</h1>
               <div class="join-holder">    
                   <!-- 구분선 -->
                   <div style="clear:both"></div>
