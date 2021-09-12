@@ -63,50 +63,35 @@
 		<!-- 첫행 -->
         <div class="row">
         
-          <a href="/board/" class="col-md-6 col-lg-4 d-flex row align-items-center" data-aos="fade-up">
+          <a href="/board/" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up">
             <div class="icon-box icon-box-pink">
               <div class="icon"><i class="bx bxs-book"></i></div>
               <h4 class="title">전체질문</h4>
-              <p class="description">면접관련 모든 질문</p>
+              <p class="description">알파카의 모든 면접질문 모아보기</p>
             </div>
           </a>
 
-          <a href="/review/board_review" class="col-md-6 col-lg-4 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="100">
+          <a href="/review/board_review" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box icon-box-cyan">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title">면접후기</h4>
-              <p class="description">솔직한 면접후기</p>
+              <p class="description">면접 서비스 후기 보러가기</p>
             </div>
           </a>
 
-          <a href="/board/free" class="col-md-6 col-lg-4 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-green">
-              <div class="icon"><i class="bx bxs-chalkboard"></i></div>
-              <h4 class="title">자유게시판</h4>
-              <p class="description">자유롭게 글 올리는 곳</p>
-            </div>
-          </a>
-        </div>
-		
-		<!-- 두번째 행 -->
-		<div class="row">
-          <a href="/board/recommend" class="col-md-6 col-lg-4 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
+          <a href="/board/recommend" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-blue">
               <div class="icon"><i class="bx bx-message-alt-add"></i></div>
               <h4 class="title">면접질문</h4>
-              <p class="description">면접질문 제안</p>
+              <p class="description">면접에 나올 것 같은 질문 제안하기</p>
             </div>
           </a>
-          
-          <div class="col-md-6 col-lg-4 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
-			
-          </div>
 
-          <a href="/board/best_answers" class="col-md-6 col-lg-4 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
+          <a href="/board/best_answers" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-purple">
               <div class="icon"><i class="bx bx-git-pull-request"></i></div>
               <h4 class="title">모범답안</h4>
-              <p class="description">남들 작성</p>
+              <p class="description">우수한 평가를 받은 질문 모아보기</p>
             </div>
           </a>
 
@@ -130,13 +115,13 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
               <h4 class="title"><a href="/recruit/">채용공고</a></h4>
-              <p class="description">공고보고 지원하기</p>
+              <p class="description">채용공고 확인하기</p>
             </div>
 
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-baidu"></i></div>
               <h4 class="title"><a href="/recruit/form">채용공고 등록</a></h4>
-              <p class="description">기업채용공고 등록</p>
+              <p class="description">기업채용공고 등록하기</p>
             </div>
 
           </div>
@@ -154,44 +139,44 @@
 				<p>다양한 면접모드.</p>
 			</div>
 
-			<a href="/interview/normal" class="btn">
+			<a href="/interview/steps_n" class="btn">
 				<div class="row" data-aos="fade-up">
 					<div class="col-md-5">
 						<img src="assets/img/features-1.svg" class="img-fluid" alt="">
 					</div>
 					<div class="col-md-7 pt-4">
 						<h3>일반면접</h3>
-						<p class="fst-italic">일반적인 면접모드</p>
+						<p class="fst-italic">백엔드 프론트엔드 중 한 분야를 선택하셔 도전하는 일반면접 도전하기</p>
 					</div>
 				</div>
-			</a> <a href="/interview/recruit" class="btn">
+			</a> <a href="/interview/steps_r" class="btn">
 				<div class="row" data-aos="fade-up">
 					<div class="col-md-5 order-1 order-md-2">
 						<img src="assets/img/features-2.svg" class="img-fluid" alt="">
 					</div>
 					<div class="col-md-7 pt-5 order-2 order-md-1">
 						<h3>채용모드</h3>
-						<p class="fst-italic">채용공고 보고</p>
+						<p class="fst-italic">기업이 원하는 스펙에 맞춰서 면접에 도전 하는 채용공고 면접 도전하기</p>
 					</div>
 				</div>
-			</a> <a href="/interview/custom" class="btn">
+			</a> <a href="/interview/steps_k" class="btn">
 				<div class="row" data-aos="fade-up">
 					<div class="col-md-5">
 						<img src="assets/img/features-3.svg" class="img-fluid" alt="">
 					</div>
 					<div class="col-md-7 pt-5">
 						<h3>맟춤모드</h3>
-						<p>키워드 보고</p>
+						<p>알고 싶은 분야만 키워드로 찍어서 풀어보는 키워드 면접 도전하기</p>
 					</div>
 				</div>
-			</a> <a href="/interview/mentor" class="btn">
+			</a> <a href="/interview/steps_m" class="btn">
 				<div class="row" data-aos="fade-up">
 					<div class="col-md-5 order-1 order-md-2">
 						<img src="assets/img/features-4.svg" class="img-fluid" alt="">
 					</div>
 					<div class="col-md-7 pt-5 order-2 order-md-1">
 						<h3>멘토모드</h3>
-						<p class="fst-italic">멘토보고</p>
+						<p class="fst-italic">현업에서 근무 중인 개발자에게 1대1 코칭을 받을 수있는 멘토면접 지원하기</p>
 					</div>
 				</div>
 			</a>

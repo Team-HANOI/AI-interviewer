@@ -113,7 +113,7 @@
               <div class="card-body">
                 <h5 class="card-title">일반면접</h5>
                 <p class="card-text">일반면접하는거</p>
-                <div class="read-more"><a class="fs-6 bg-light" href="/interview/normal"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
+                <div class="read-more"><a class="fs-6 bg-light" href="/interview/steps_n"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
               </div>
             </div>
           </div>
@@ -124,8 +124,8 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">기업맞춤면접</h5>
-                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-                <div class="read-more"><a class="fs-6 bg-light" href="/interview/recruit"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
+                <p class="card-text">가고싶은 기업이 있으신가요? 기업별 자주나오는 면접질문에 도전해 보세요</p>
+                <div class="read-more"><a class="fs-6 bg-light" href="/interview/steps_r"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
               </div>
             </div>
 
@@ -137,8 +137,8 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">키워드면접</h5>
-                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
-                <div class="read-more"><a class="fs-6 bg-light" href="/interview/custom"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
+                <p class="card-text">특정 분야를 집중적으로 풀고 싶으세요? 키워드로 관련 질문만 골라서 도전 해 보세요</p>
+                <div class="read-more"><a class="fs-6 bg-light" href="/interview/steps_k"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
               </div>
             </div>
           </div>
@@ -149,8 +149,8 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">멘토면접</h5>
-                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem. In molestiae earum ab sit esse voluptatem. Eos ipsam cumque ipsum officiis qui nihil aut incidunt aut</p>
-                <div class="read-more"><a class="fs-6 bg-light" href="/interview/mentor"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
+                <p class="card-text">현업에서 근무 중인 개발자의 메토링을 받아보세요</p>
+                <div class="read-more"><a class="fs-6 bg-light" href="/interview/steps_m"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
               </div>
             </div>
           </div>

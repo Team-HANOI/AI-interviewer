@@ -42,10 +42,13 @@ dependencies {
 
   runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
   
-  
+ 
 
-  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
-
+  	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+	
+	// thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
 
 	// security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
