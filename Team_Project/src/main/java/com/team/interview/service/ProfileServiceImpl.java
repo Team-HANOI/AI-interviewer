@@ -58,7 +58,21 @@ public class ProfileServiceImpl implements ProfileService{
       newFile.setFileData(mFile.getBytes());
       profileDAO.selectPfImgNextval();
       profileDAO.insertProfileImage(newFile);
-      profileDAO.insertProfile(null);
+
+
+      // 첫 가입시 잔디 insert
+      // "0,0,0, ... ,0" 을 db에 insert(0 364개 + , 363개 = length : 727)
+      ProfileVO profileVO = new ProfileVO();
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < 364; i++) {
+        if(i == 363) {
+          sb.append(0);
+        } else {
+          sb.append(0).append(",");
+        }
+      }
+      profileVO.setJandi(sb.toString());
+      profileDAO.insertProfile(profileVO);
 
       // member테이블에 pf_id가 null이니까 update해준다
       // 방금 profile 만들었으니까 currval을 사용한다

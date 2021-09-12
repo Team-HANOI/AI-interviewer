@@ -78,7 +78,6 @@ public class MemberServiceImpl implements MemberService {
       }
     }
     profileVO.setJandi(sb.toString());
-
     profileDAO.insertProfile(profileVO);
 
 
