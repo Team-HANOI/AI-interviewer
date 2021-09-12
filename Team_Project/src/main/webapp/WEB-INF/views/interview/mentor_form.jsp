@@ -1,57 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<!-- 공통 스타일  -->
-    <jsp:include page="../common/top.jsp"/>
-	<!-- 페이지 스타일  -->
-	<link rel="stylesheet" href="/style/recruit_list.css">
-    <link rel="stylesheet" href="/style/recruit_form.css">
+  <jsp:include page="../common/top_t.jsp"/>
 </head>
+
 <body>
-    <!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-    <jsp:include page="../common/header.jsp"/>
-    
-    <!-- 본문 시작 -> 여기서 작업하세요 -->
-    <main>
-    	<!-- 태양 -->
-    	<div class="sun">
-            <img src="https://pngimg.com/uploads/sun/sun_PNG13439.png" alt="">
-        </div>
-        
-    	<!-- 팝업 -->
-        <!-- 팝업배경 더미 -->
-        <div class="popup-dummy"></div>
-        
-        <!-- 키워드 카드 팝업 -->
-        <jsp:include page="../common/popups/popup_keyword.jsp"/>
 
-        <!-- 기업회원가입 팝업 -->
-        <jsp:include page="../common/popups/popup_join_com.jsp"/>
-
-        <!-- 일반회원가입 팝업 -->
-        <jsp:include page="../common/popups/popup_join_indv.jsp"/>
-
-        <!-- 일번회원가입 추가입력 폼 팝업 -->
-        <jsp:include page="../common/popups/popup_join_indv_extra.jsp"/>
-
-        <!-- 기업회원 로그인 -->
-        <jsp:include page="../common/popups/popup_login_com.jsp"/>
-
-        <!-- 일반회원 로그인 -->
-        <jsp:include page="../common/popups/popup_login_indv.jsp"/>
-
-        <!-- 신청완료 팝업 -->
-        <jsp:include page="../common/popups/popup_complete.jsp"/>
-
-        <!-- 본문 타이틀 -->
-        <div class="title">
-
-        </div>
-        
-        <!-- 공고 -->
-        <div class="card-box">
+  <!-- ======= Header ======= -->
+  <jsp:include page="../common/nav_main.jsp"/>
+  
+  <!-- ======= Hero Section ======= -->
+  <section id="" class="h-100" 
+  style="background-image: url('/image/i_recruit.jpg');
+  background-size:cover; background-position:center;
+  position: relative;">
+  	<div class="w-100 h-100 bg-dark" style="position:absolute;
+  	top:0; opacity:.5;"></div>
+  </section><!-- End Hero -->
+  
+  <main id="main">
+  	<section class="portfolio">
+      <div class="container">
+		<!-- 작업공간 시작-->
+	
+	  <div class="card-box">
             <!-- 채용공고 -->
             <form action="./mentorform" method="POST" class="mentor-form join">
                 <h1 class="join-title">멘토 등록하기</h1>
@@ -98,17 +74,25 @@
                     <input class="login-btn apply btn" type="submit" value="신청하기">
                 </div>
 
-                <div class="login-text">
-                    <a href=""><small>이용약관</small></a> |
-                    <a href=""><small>개인정보 처리방침</small></a> |
-                    <a href=""><small>FAQ / 문의</small></a>
-                </div>
             </form>
         </div>
-    </main>
+	
+	
+        
+		<!-- 작업공간 끝-->
+      </div>
+    </section><!-- End Portfolio Section -->
+  </main><!-- End #main -->
 
-    <!-- 꼬리 -->
-    <jsp:include page="../common/footer.jsp"/>
+  <!-- ======= Footer ======= -->
+  <jsp:include page="../common/footer.jsp"/>
+  
+  <!-- Vendor JS Files -->
+  <jsp:include page="../common/vendor_js.jsp"/>
+  
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  
 </body>
 </html>
 
