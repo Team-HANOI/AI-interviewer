@@ -146,7 +146,7 @@ public class MemberServiceImpl implements MemberService {
       if(i == 363) {
         sb.append(0);
       } else {
-        sb.append(1).append(",");
+        sb.append(0).append(",");
       }
     }
     profileVO.setJandi(sb.toString());
