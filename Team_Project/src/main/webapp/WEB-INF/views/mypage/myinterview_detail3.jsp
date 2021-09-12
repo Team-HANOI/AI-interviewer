@@ -10,7 +10,6 @@
 <html lang="en">
 
 <head>
-
 <!-- 잔디 css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="/style/jandi.css">
@@ -33,7 +32,7 @@
   
 
   
-<main id="main">
+  <main id="main">
   <section class="breadcrumbs">
       <div class="container">
 
@@ -57,10 +56,10 @@
 
       </div>
     </section>
-    <section class="portfolio">
+  	<section class="portfolio">
       <div class="container">
-    <!-- 작업공간 시작-->
-     <!-- 마이 페이지 -->
+		<!-- 작업공간 시작-->
+	   <!-- 마이 페이지 -->
         <div class="mypage">
             <!-- 유저정보 좌측 메뉴 정보 -->
             <div class="mypage-left">
@@ -134,7 +133,7 @@
             </div>
         </div>
         
-    <!-- 작업공간 끝-->
+		<!-- 작업공간 끝-->
       </div>
     </section><!-- End Portfolio Section -->
   </main><!-- End #main -->
@@ -190,3 +189,5 @@ $(document).ready(function() {
   
 </body>
 </html>
+
+

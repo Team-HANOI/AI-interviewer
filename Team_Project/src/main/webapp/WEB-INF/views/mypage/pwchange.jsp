@@ -38,7 +38,19 @@
   	<div class="w-100 h-100 bg-dark" style="position:absolute;
   	top:0; opacity:.5;"></div>
   </section><!-- End Hero -->
-  
+  <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>비밀번호 변경</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>비밀번호 변경</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
   <main id="main">
   	<section class="portfolio">
       <div class="container">

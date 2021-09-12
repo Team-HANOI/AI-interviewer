@@ -39,6 +39,20 @@
   	top:0; opacity:.5;"></div>
   </section><!-- End Hero -->
   
+  <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>내 멘토링 일정</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>내 멘토링 일정</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+  
   <main id="main">
   	<section class="portfolio">
       <div class="container">
@@ -57,7 +71,7 @@
                 <!-- 유저정보 제목 -->
                 <div class="mypage-content-title" >
                     <p style="font-size: x-large;
-    font-weight: normal;" >내가 신청한 멘토링</p>
+    font-weight: normal;" >내 멘토링 일정</p>
                 </div> 
 
                 <div class="line"></div>

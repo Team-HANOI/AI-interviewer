@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     .and()
     .logout()
     .logoutUrl("/logout")   // 기본 로그아웃 경로는 /logout 이고 로그아웃 된 후에 디폴트 이동경로는 /customLogin?logout이다.
-    .logoutSuccessUrl("/")
+    .logoutSuccessUrl("/userLogin")
     //    .logoutSuccessHandler(null)
     .deleteCookies("JSESSIONID")
     .clearAuthentication(true)

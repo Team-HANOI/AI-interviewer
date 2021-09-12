@@ -28,9 +28,26 @@
   <jsp:include page="../common/nav.jsp"/>
   
   <main id="main">
+  
+  <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>프로필 관리</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>프로필 관리</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+  
+  
   	<section class="portfolio">
       <div class="container">
             <!-- 작업공간 시작-->
+            
      <!-- 마이 페이지 -->
 
         <div class="mypage">

@@ -29,19 +29,26 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
+  <jsp:include page="../common/nav.jsp"/>
   
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
-    <div class="w-100 h-100 bg-dark" style="position:absolute;
-    top:0; opacity:.5;"></div>
-  </section><!-- End Hero -->
+
   
   <main id="main">
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>내 면접 기록</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>내 면접 기록</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
     <section class="portfolio">
+    
       <div class="container">
     <!-- 작업공간 시작-->
      <!-- 마이 페이지 -->
@@ -58,7 +65,7 @@
                 <!-- 유저정보 제목 -->
                 <sec:authentication property="principal" var="user"/>
                 <div class="mypage-content-title" style="font-size: x-large;
-    font-weight: normal;">${user.name}의 면접 기록</div>
+    font-weight: normal;">⚡️${user.name}의 면접 기록</div>
                 <div class="line"></div>
                 
                 <!-- 사용자 정보 -->

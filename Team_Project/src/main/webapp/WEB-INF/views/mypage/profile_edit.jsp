@@ -39,6 +39,20 @@
   	top:0; opacity:.5;"></div>
   </section><!-- End Hero -->
   
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>프로필 편집</h2>
+          <ol>
+            <li><a href="/mypage/">프로필 관리</a></li>
+            <li>프로필 편집</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+  
   <main id="main">
   	<section class="portfolio">
       <div class="container">
