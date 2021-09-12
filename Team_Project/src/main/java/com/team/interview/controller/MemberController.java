@@ -1,10 +1,13 @@
 package com.team.interview.controller;
 
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,15 +15,30 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team.interview.security.dto.AuthMemberDTO;
+import com.team.interview.service.InterviewRecordService;
+import com.team.interview.service.InterviewService;
+import com.team.interview.service.KeywordService;
 import com.team.interview.service.MemberService;
+import com.team.interview.service.ProfileService;
+import com.team.interview.vo.FileVO;
 import com.team.interview.vo.MemberVO;
-import com.team.interview.vo.ReviewVO;
+import com.team.interview.vo.ProfileVO;
 
 @Controller
 public class MemberController {
 
   @Autowired
+  InterviewService iservice;
+
+
+  @Autowired
+  private ProfileService profileService;
+  @Autowired
+  private KeywordService keywordSevice;
+  @Autowired
   private MemberService memberService;
+  @Autowired
+  private InterviewRecordService interviewRecordService;
 
   @RequestMapping("/userLogin")
   public String userLogin(){
@@ -95,8 +113,6 @@ public class MemberController {
     }
     return mv;
   }
-
-
 
   @RequestMapping("/403")
   public String accessDenied(){

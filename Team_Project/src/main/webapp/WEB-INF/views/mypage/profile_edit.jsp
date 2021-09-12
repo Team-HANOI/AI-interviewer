@@ -82,9 +82,7 @@
                   <!-- 사용자 정보 -->
                     <div class="mypage-content-profile">
                         <ul style="padding-left:0px;">
-                            <li>
-                                <span class="pfText">프로필 </span>
-                                
+                            <li style="padding-left: 0;">
                                 <div class="pfInfoOuter">
                                     <div class="pfInfoInner">
                                         <div class="pfInfoInnerLeft">
@@ -98,9 +96,18 @@
                                           <c:choose>
                                             <c:when
                                               test="${(filetype eq '.JPG') or (filetype eq 'JPEG') or (filetype eq '.PNG') or (filetype eq '.GIF')}">
-                                            <input type="file" accept="image/*"  name = "pfImg"onchange="showMyImage(this)" id="file" style="display:none"/>
-                                              <img id="thumbnail" class="profile-img" width="200px" height="200px" src='<c:url value="/mypage/img/${file.fileId}"/>'
-                                                width="1000" class="img-thumbnail">
+                                              
+                                              <div class = "box" style="position:relative;">
+	                                              <div class = "front" style="float:left;position:absolute;top: 0; right: 0;">
+	                                                <img id="what"class="profile-img" width="200px" height="200px" src = "https://user-images.githubusercontent.com/68311318/132971960-7fd53f42-2f85-4c74-bc56-b1b1f9977139.png">
+	                                              </div>
+	                                               <input type="file" accept="image/*"  name = "pfImg"onchange="showMyImage(this)" id="file" style="display:none"/>
+	                                              <div class = "back" style="float:left;position:absolute;top: 0; right: 0;z-index:-1">
+		                                              <img id="thumbnail" class="profile-img" width="200px" height="200px" src='<c:url value="/mypage/img/${file.fileId}"/>'
+		                                                width="1000" class="img-thumbnail">
+	                                              </div>
+                                              </div>
+                                              
                                               <br>
                                             </c:when>
                                             <c:otherwise>
@@ -217,12 +224,24 @@
              reader.readAsDataURL(file);
          }    
      }
+     
      $(function () {
+     $('#what').click(function (e) {
+          e.preventDefault();
+        $('#thumbnail').click();
+       });
+      });
+     
+     $(function () {
+    	 
+
+     
        $('#thumbnail').click(function (e) {
           e.preventDefault();
          $('#file').click();
         });
        });
+       
       function changeValue(obj){
         alert(obj.value);
                    }

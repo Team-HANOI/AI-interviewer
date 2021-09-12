@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<sec:authentication property="principal" var="user"/>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
   <div class="container d-flex justify-content-between align-items-center">
@@ -47,11 +49,13 @@
     </ul>
   </li>
   <li><a href="/contact">Contact Us</a></li>
+  <sec:authorize access="isAuthenticated()">
   <li><a href="/mypage/" class="my-page-link">M</a></li>
+    </sec:authorize>
 </ul>
 <i class="bi bi-list mobile-nav-toggle"></i>
+
 </nav><!-- .navbar -->	  
 
   </div>
 </header><!-- End Header -->
-

@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<sec:authentication property="principal" var="user"/>
+
 
 <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
@@ -52,11 +59,16 @@
     </li>
     <li><a href="/contact">Contact Us</a></li>
     <!-- my page 링크 -->
-    <li><a href="/mypage/" class="my-page-link">M</a></li>
+    <sec:authorize access="isAuthenticated()">
+  <li><a href="/mypage/" class="my-page-link">M</a></li>
+    </sec:authorize>
   </ul>
   <i class="bi bi-list mobile-nav-toggle"></i>
+  
+      
+      
+      
 </nav><!-- .navbar -->	  
 
     </div>
   </header><!-- End Header -->
-

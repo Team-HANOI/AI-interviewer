@@ -35,15 +35,36 @@
 			<div class="join-business-form">
 			    <form action="/join_com" method="POST" enctype="multipart/form-data" class="login join-business"> 
 			        <h1 class="join-title">기업 회원가입</h1>
-			        <span class>로고 이미지</span>
+			        <span style="font-size: small;
+    color: darkgray;">로고 업로드</span>
 			        <div class="join-sub">
 			            <!--로고 이미지-->
 			            <div class="profile-outer">
 			                <div class="profile-inner">
 			                
+			                
+			                
+                              <div class = "box" style="position:relative;width: 59px;">
+                               <div class = "front" style="float:left;position:absolute;top: 0; left: 0;">
+                                 <img id="what"class="profile-img" width="60px" height="60px" src = "https://user-images.githubusercontent.com/68311318/132971960-7fd53f42-2f85-4c74-bc56-b1b1f9977139.png">
+                               </div>
+                                <input type="file" accept="image/*"  name = "pfImg"onchange="showMyImage(this)" id="file" style="display:none"/>
+                               <div class = "back" style="float:left;position:absolute;top: 0; right: 0;z-index:-1">
+                               
+                               </div>
+                             </div>
+			                
+			                
+			                
+			                
 			                <input type="file" accept="image/*"  name = "logoImg"onchange="showMyImage(this)" id="file" style="display:none"/>
 			                <img id="myThumbnail" class="profile-img" width="60px" height="60px" 
 			                 src="https://user-images.githubusercontent.com/68311318/132785291-20570046-88cd-4f46-95df-2d87e2259ce4.png">
+			                 
+			                 
+			                 
+			                 
+			                 
 			                </div>
 			            </div>
 			        </div>    
@@ -94,6 +115,13 @@
                reader.readAsDataURL(file);
            }    
        }
+       
+       $(function () {
+    	     $('#what').click(function (e) {
+    	          e.preventDefault();
+    	        $('#myThumbnail').click();
+    	       });
+    	      });
        
        $(function () {
          $('#myThumbnail').click(function (e) {

@@ -34,13 +34,6 @@
 	   <!-- 마이 페이지 -->
         <div class="mypage">
          
-            <!-- 유저정보 좌측 메뉴 정보 -->
-            <div class="mypage-left">
-
-                <!-- 좌측 메뉴 링크 -->
-                <jsp:include page="mypage_common/mypage_nav.jsp"></jsp:include>
-            </div>
-            
             <!-- 유저정보 우측 정보 박스 -->
             <div class="mypage-right"> 
                        
@@ -59,6 +52,8 @@
                         <ul style="padding-left:0px;">
                         
                             <li>
+                                <span class="pfText" >프로필 </span>
+                                
                                 <div class="pfInfoOuter">
                                     <div clas="pfInfoInner">
                                         <div class="pfInfoInnerLeft">
