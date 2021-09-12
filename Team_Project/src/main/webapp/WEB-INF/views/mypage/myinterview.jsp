@@ -68,7 +68,7 @@
     font-weight: normal;">⚡️${user.name}의 면접 기록</div>
                 <div class="line" style="width: 102%;"></div>
                 
-                <div style="font-size: 20px;color: gray;user-select: auto;margin: 30px 0px 10px 0px;"><i class="bi bi-award-fill"></i>1년간 면접 완료 횟수 : ${sum }회</div>
+                <div style="font-size: 20px;color: gray;user-select: auto;margin: 30px 0px 10px 0px;"><i class="bi bi-award-fill"></i>지난 1년간 완료한 면접 횟수 : ${sum }회</div>
 						     <!-- 잔디 시작 -->
 						        <div class="graph" style="margin: 0; padding-left: 0; padding-right:0px; width: 1117px; ">
 						          <ul class="months"style="margin: 0; color: darkgray;">

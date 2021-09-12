@@ -32,9 +32,7 @@
   
   <!-- ======= Hero Section ======= -->
   <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
+  style="background-image: url('/image/i_recruit.jpg'); background-size:cover; background-position:center; position: relative;">
   	<div class="w-100 h-100 bg-dark" style="position:absolute;
   	top:0; opacity:.5;"></div>
   </section><!-- End Hero -->
@@ -54,7 +52,7 @@
     </section>
   
   <main id="main">
-  	<section class="portfolio">
+  	<section class="portfolio" style="padding-top: 10px;">
       <div class="container">
 		<!-- 작업공간 시작-->
 	   <!-- 마이 페이지 -->
@@ -92,13 +90,12 @@
                   
                   
                       
-                  <div class="line"></div>
                   <!-- 사용자 정보 -->
                     <div class="mypage-content-profile">
                         <ul style="padding-left:0px;">
-                            <li style="padding-left: 0;">
+                            <li>
                                 <div class="pfInfoOuter">
-                                    <div class="pfInfoInner">
+                                    <div clas="pfInfoInner">
                                         <div class="pfInfoInnerLeft">
                                             <!-- <img id="thumbnail" class="profile-img" width="200px" height="200px" src="../image/alpaca.jpg"> -->
                                             
