@@ -59,9 +59,9 @@ p {
 						<c:forEach var="article" items="${articleList}">
 							<div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
 								<div class="portfolio-item">
-									
+
 									<c:choose>
-										<c:when test="${article.applEmail=null}">
+										<c:when test="${article.applEmail==null}">
 											<ul class="mentor-box">
 												<li class="mentor">
 													<div class="mentor-item">
@@ -73,9 +73,10 @@ p {
 															<p class="mentor-date">${article.mentorDate}날에!</p>
 															<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
 														</div>
-														<a href="./apply?mentorEmail=${article.mentorEmail}">
-															<button class="btn apply-mentee-btn">신청하기📝</button>
-														</a>
+														<%-- <a href="./apply?mentorEmail=${article.mentorEmail}"> --%>
+														<button type="button" class="btn btn-success"
+															onClick="alert('신청완료')">신청하기📝</button>
+														<!-- </a> -->
 														<!-- <img src="image/teampic.png" class="img-fluid" alt=""> -->
 													</div>
 												</li>
@@ -89,10 +90,11 @@ p {
 														<div class="mentor-info">
 															<p class="mentor-title">[${article.company}]기업에서
 																[${article.field}]면접 지도</p>
-															<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
+															<%-- 	<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
 															<p class="mentor-date">${article.mentorDate}날에!</p>
-															<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
-															<button class="btn apply-mentee-btn">🚧마감🚧</button>
+															<p class="mentor-email">문의사항: ${article.mentorEmail}</p> --%>
+															<a class="btn btn-outline-secondary disabled" aria-disabled="true"
+																role="button" data-bs-toggle="button">🚧종료된 일정입니다.🚧</a>
 														</div>
 													</div>
 												</li>
