@@ -40,6 +40,10 @@ public class MemberTests {
   @Autowired
   private DataSource ds;
 
+  public void testInsertDefaultPfImg() {
+
+  }
+
 
   //  @Test
   public void insertDummies() {

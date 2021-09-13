@@ -40,17 +40,17 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>${interviewRecord.regdate}<c:choose>
                     <c:when test="${interviewRecord.iTypeId eq '1'}">일반 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '2'}">맞춤 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '2'}">채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '3'}">맞춤 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '4'}">멘토 모드</c:when>
                   </c:choose> </h2>
           <ol>
             <li><a href="/">Home</a></li>
             <li>${interviewRecord.regdate}<c:choose>
                     <c:when test="${interviewRecord.iTypeId eq '1'}">일반 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '2'}">맞춤 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '2'}">채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '3'}">맞춤 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '4'}">멘토 모드</c:when>
                   </c:choose> </li>
           </ol>
         </div>
@@ -75,9 +75,9 @@
                 <div class="dateMT"><fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/> 
                   <c:choose>
                     <c:when test="${interviewRecord.iTypeId eq '1'}">일반 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '2'}">맞춤 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '3'}">멘토 모드</c:when>
-                    <c:when test="${interviewRecord.iTypeId eq '4'}">채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '2'}">채용공고 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '3'}">맞춤 모드</c:when>
+                    <c:when test="${interviewRecord.iTypeId eq '4'}">멘토 모드</c:when>
                   </c:choose> 면접 기록</div>
                 <div class="line"></div>
                 <!-- 사용자 정보 -->

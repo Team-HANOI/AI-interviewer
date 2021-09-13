@@ -35,6 +35,16 @@ public class ProfileTests {
     return jandi;
   }
 
+
+  // pfId 
+  //  jiyoung@alpaca.com  10
+  //  changu@alpaca.com   11
+  //  hyunguk@alpaca.com  12
+  //  kwangjin@alpaca.com 13
+  //  hayoon@alpaca.com   14
+  //  yeonju@alpaca.com   15
+
+
   // 자정에
   // db에서 String 가져와서 newDay() 호출 후 return 받은 String을 db에 업데이트
   //  @Test
@@ -56,6 +66,7 @@ public class ProfileTests {
 
   }
 
+  // 
   @Test
   public void testInterviewComplete() {
     int total = profileDAO.getMaxNumOfPfId();

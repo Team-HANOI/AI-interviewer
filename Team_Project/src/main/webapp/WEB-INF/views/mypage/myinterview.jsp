@@ -68,7 +68,7 @@
     font-weight: normal;">⚡️${user.name}의 면접 기록</div>
                 <div class="line" style="width: 102%;"></div>
                 
-                <div style="font-size: 20px;color: gray;user-select: auto;margin: 30px 0px 10px 0px;"><i class="bi bi-award-fill"></i>지난 1년간 완료한 면접 횟수 : ${sum }회</div>
+                <div style="font-size: 20px;color: gray;user-select: auto;margin: 30px 0px 10px 0px;"><i class="bi bi-award-fill"></i> 총 ${sum }회</div>
 						     <!-- 잔디 시작 -->
 						        <div class="graph" style="margin: 0; padding-left: 0; padding-right:0px; width: 1117px; ">
 						          <ul class="months"style="margin: 0; color: darkgray;">
@@ -113,9 +113,9 @@
                                     <a>
                                       <c:choose>
                                         <c:when test="${interviewRecord.iTypeId eq '1'}"><span class="badge rounded-pill bg-primary type1" style="font-weight: normal;cursor:pointer;">💡일반 모드</span></c:when>
-                                        <c:when test="${interviewRecord.iTypeId eq '2'}"><span class="badge rounded-pill bg-success type2" style="font-weight: normal;cursor:pointer;">✅맞춤 모드</span></c:when>
-                                        <c:when test="${interviewRecord.iTypeId eq '3'}"><span class="badge rounded-pill bg-danger type3" style="font-weight: normal;cursor:pointer;">🚀멘토 모드</span></c:when>
-                                        <c:when test="${interviewRecord.iTypeId eq '4'}"><span class="badge rounded-pill bg-warning text-dark type4" style="font-weight: normal;cursor:pointer;">👔채용공고 모드</span></c:when>
+                                        <c:when test="${interviewRecord.iTypeId eq '2'}"><span class="badge rounded-pill bg-warning text-dark type2" style="font-weight: normal;cursor:pointer;">👔채용공고 모드</span></c:when>
+                                        <c:when test="${interviewRecord.iTypeId eq '3'}"><span class="badge rounded-pill bg-success type3" style="font-weight: normal;cursor:pointer;">✅맞춤 모드</span></c:when>
+                                        <c:when test="${interviewRecord.iTypeId eq '4'}"><span class="badge rounded-pill bg-danger type4" style="font-weight: normal;cursor:pointer;">🚀멘토 모드</span></c:when>
                                       </c:choose>
                                     </a>
                               </li>

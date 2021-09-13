@@ -80,7 +80,5 @@ cName : ${user.cName} <br>
 <c:out value = "${SPRING_SECURITY_403_EXCEPTION.getMessage()}"/> 
 
 
-
-
 </body>
 </html>

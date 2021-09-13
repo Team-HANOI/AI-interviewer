@@ -53,7 +53,7 @@
       </div>
     </section>
   
-  <main id="main">
+  <main id="main" style="margin-top:0;">
   	<section class="portfolio">
       <div class="container">
 		<!-- 작업공간 시작-->
@@ -69,9 +69,10 @@
             <!-- 유저정보 우측 정보 박스 -->
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
-                <div class="mypage-content-title" >
-                    <p style="font-size: x-large;
-    font-weight: normal;" >내 멘토링 일정</p>
+                <sec:authentication property="principal" var="user"/>
+                <div class="mypage-content-title" style="font-size: x-large;
+    font-weight: normal;" >
+                    👥${user.name}의 멘토링 일정
                 </div> 
 
                 <div class="line"></div>
@@ -81,6 +82,10 @@
                     
                           <!-- <span class="dateMT">2021-08-17</span> -->
                         <table class="mypageTb">
+                        <c:if test="${empty list}">
+                          아직 업네
+                        </c:if>
+                        <c:if test="${!empty list}">
                            <c:forEach items="${list}" var="mentorMode">
                               <a class='move' href='<c:out value="${mentorMode.mentorId}"/>'>
                               </a>
@@ -111,6 +116,7 @@
                                   </td>
                               </tr>
                             </c:forEach>
+                        </c:if>
                         </table> 
                     </div>  
                     
