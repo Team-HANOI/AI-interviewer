@@ -112,7 +112,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">일반면접</h5>
-                <p class="card-text">일반면접하는거</p>
+                <p class="card-text">프론트엔드 또는 백엔드를 선택하여 풀어보는 일반면접모드 도전 해 보세요</p>
                 <div class="read-more"><a class="fs-6 bg-light" href="/interview/steps_n"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
               </div>
             </div>
@@ -124,7 +124,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">기업맞춤면접</h5>
-                <p class="card-text">가고싶은 기업이 있으신가요? 기업별 자주나오는 면접질문에 도전해 보세요</p>
+                <p class="card-text">가고싶은 기업이 있으신가요? 기업별 자주나오는 면접질문에 도전 해 보세요</p>
                 <div class="read-more"><a class="fs-6 bg-light" href="/interview/steps_r"><i class="bi bi-arrow-right"></i> 시작하기</a></div>
               </div>
             </div>
