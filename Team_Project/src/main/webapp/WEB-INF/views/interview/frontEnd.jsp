@@ -95,7 +95,7 @@
     
     	if (xhr.status === 200) {// HTTP가 잘 동작되었다는 뜻.
 			console.log("response:"+xhr.response);
-    		location.href="/review/best_answers";
+    		location.href="/mypage/myinterview";
     		     
     	}                 
     }
