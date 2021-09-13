@@ -48,7 +48,6 @@
 					<div class="board mypage-right">
 						<!-- 페이지 타이틀 -->
 
-
 						<!-- 구분선 -->
 						<div align="center">
 							<c:choose>
@@ -62,10 +61,10 @@
 													<td><a href="./totaldetail?q_id=${article.qId}">${article.content}
 													</a></td>
 													<td><span class="badge rounded-pill bg-secondary">${article.qtype }(${article.kwlist })</span></td>
-
-
 												</tr>
 											</c:forEach>
+											
+	
 										</table>
 									</section>
 
@@ -79,15 +78,7 @@
 											</h1>
 										</form>
 									</div>
-
-									<!-- 	<div class="input-group mb-3">
-								
-  <input type="file" class="form-control" id="inputGroupFile02">
-  
-  <label class="input-group-text" for="inputGroupFile02">Upload</label>
-  
-</div> -->
-
+									
 									<section id="pageList">
 										<c:choose>
 											<c:when test="${pageInfo.page<=1}">

@@ -76,7 +76,7 @@
 						</ul></li>
 
 				</sec:authorize>
-				<li><a href="/contact">GitHub</a></li>
+				<li><a href="/contact">Contact us</a></li>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 
