@@ -83,7 +83,14 @@
                           <!-- <span class="dateMT">2021-08-17</span> -->
                         <table class="mypageTb">
                         <c:if test="${empty list}">
-                          아직 업네
+                          <div style = "text-align: center; color: darkgray;    margin-top: 108px;">
+	                          현재 134명의 멘토가 활동 중입니다.<br>
+	                          멘토면접을 하러 가볼까요?<br>
+	                          <br>
+	                          <a href = "/interview/mentor">
+	                           <button type="button" class="btn btn-outline-danger">🚀멘토면접 하러가기</button>
+	                          </a>
+                          </div>                        
                         </c:if>
                         <c:if test="${!empty list}">
                            <c:forEach items="${list}" var="mentorMode">

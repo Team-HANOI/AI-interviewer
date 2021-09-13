@@ -43,11 +43,7 @@ p {
 				</div>
 
 				<sec:authorize access="hasRole('COMPANY')">
-					<div class="post">
-						<a href="/interview/mentor/register">
-							<button class="post-btn">멘토 등록하기</button>
-						</a>
-					</div>
+
 				</sec:authorize>
 
 

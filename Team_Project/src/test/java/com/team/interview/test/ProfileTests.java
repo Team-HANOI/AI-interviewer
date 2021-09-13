@@ -47,7 +47,7 @@ public class ProfileTests {
 
   // 자정에
   // db에서 String 가져와서 newDay() 호출 후 return 받은 String을 db에 업데이트
-  //  @Test
+  @Test
   public void testUpdateNewDayJandiForEachProfile() {
 
     int total = profileDAO.getMaxNumOfPfId();
@@ -67,7 +67,7 @@ public class ProfileTests {
   }
 
   // 
-  @Test
+  //  @Test
   public void testInterviewComplete() {
     int total = profileDAO.getMaxNumOfPfId();
 

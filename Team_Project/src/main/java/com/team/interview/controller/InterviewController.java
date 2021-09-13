@@ -120,7 +120,7 @@ public class InterviewController {
       //      String mentorDateString = transFormat1.format(mentor.getMentorDate());
 
 
-    mentor.setMentorName(authMemberDTO.getName());
+      mentor.setMentorName(authMemberDTO.getName());
       mentor.setMentorEmail(authMemberDTO.getEmail());
       interviewService.regMentor(mentor);
       mav.setViewName("/main");
@@ -132,7 +132,7 @@ public class InterviewController {
     return mav;
 
   }
-  
+
   @RequestMapping(value = "/apply", method = RequestMethod.GET)
   public ModelAndView applyPage(@ModelAttribute("mentor") MentormodeVO mentor, @RequestParam(value="mentorEmail") String mentorEmail,@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
 
@@ -144,7 +144,7 @@ public class InterviewController {
       System.out.println(mentor.getApplEmail());
       System.out.println(mentor.getMentorEmail());
       interviewService.appMentor(mentor);
-      mav.setViewName("/main");
+      mav.setViewName("redirect:/interview/mentor");
     } catch (Exception e) {
       e.printStackTrace();
       mav.setViewName("err");
@@ -154,20 +154,20 @@ public class InterviewController {
 
   }
 
-  
+
 
   //	일반모드, 회사별 모드, 맞춤모드 컨트롤러
-  
-  
-  
-	//	일반모드 : 백앤드,프론트앤드로 분기 하여 면접 진행 
+
+
+
+  //	일반모드 : 백앤드,프론트앤드로 분기 하여 면접 진행 
   @RequestMapping(value = "/normal") 
   public ModelAndView normallinterview() {	 //	백앤드,프론트 분기컨트롤러
     ModelAndView mav = new ModelAndView("interview/normal");
     mav.addObject("board-total", "");
     return mav;
   }
-  
+
   // 일반모드 => backEnd 포지션
   @RequestMapping(value = "/backEnd")
   public ModelAndView backEndQ() {	 // backEnd
@@ -214,12 +214,12 @@ public class InterviewController {
 
   }
   //	일반모드 끝
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   // 회사별 모드 : 크롤링하여 저장한 기업채용공고를 이용하여 면접을 진행시켜줌.
   @RequestMapping(value = "/recruit", method = RequestMethod.GET)
   public ModelAndView interviewRecruit(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
@@ -251,27 +251,27 @@ public class InterviewController {
     }
     mav.addObject("voList", voList);
     mav.addObject("pageInfo", pageInfo);
-	mav.addObject("type",2);
+    mav.addObject("type",2);
     return mav;
   }
 
   //	받아온 정보를 면접페이지로(customMode를 같이사용) 넘긴다
-	@RequestMapping(value = "/recruitMode" )
-	public ModelAndView recruitMode(@RequestParam(value="kwList") List<String> kwList) {
-	
-		ModelAndView mav = new ModelAndView("interview/customMode");	//	받아온 정보를 면접페이지로(customMode를 같이사용) 넘긴다
-		return mav;
-		
-	}
-	// 회사별 모드 끝
-  
-	
-	
-	
-	
-	
-	
-//	맞춤모드 : 질문에 포함되는 기술 스택 keyword를 선택하여 면접을 진행시켜줌
+  @RequestMapping(value = "/recruitMode" )
+  public ModelAndView recruitMode(@RequestParam(value="kwList") List<String> kwList) {
+
+    ModelAndView mav = new ModelAndView("interview/customMode");	//	받아온 정보를 면접페이지로(customMode를 같이사용) 넘긴다
+    return mav;
+
+  }
+  // 회사별 모드 끝
+
+
+
+
+
+
+
+  //	맞춤모드 : 질문에 포함되는 기술 스택 keyword를 선택하여 면접을 진행시켜줌
   @RequestMapping(value = "/custom")
   public ModelAndView custom() {
 
@@ -284,7 +284,7 @@ public class InterviewController {
       System.out.println(keywordList);	//	키워드 잘 받아와지나?
 
       mav.addObject("keywordList", keywordList);
-	  mav.addObject("type",3);
+      mav.addObject("type",3);
     } catch (Exception e) {
 
       e.printStackTrace();
@@ -295,7 +295,7 @@ public class InterviewController {
 
   @RequestMapping(value = "/customMode" )
   public ModelAndView customMode(@RequestParam(value="keyword") String[] keyword,
-		  						 @RequestParam(value="type") int type) {
+      @RequestParam(value="type") int type) {
 
     ModelAndView mav = new ModelAndView("interview/customMode");
     ArrayList<QuestionVO> questions;
@@ -314,8 +314,8 @@ public class InterviewController {
       }
       System.out.println(str);
       mav.addObject("keyword",str);
-	  mav.addObject("type",type);	//	타입 받아오기
-		
+      mav.addObject("type",type);	//	타입 받아오기
+
     } catch (Exception e) {
 
       e.printStackTrace();
@@ -326,10 +326,10 @@ public class InterviewController {
 
   }
   //	맞춤모드 끝
-	
-  
-  
-	
+
+
+
+
 
 
 
@@ -388,10 +388,10 @@ public class InterviewController {
     }
   }
   //	tts끝
-  
-  
 
-  
+
+
+
   // 답변 text로 내보내기
   @ResponseBody
   @PostMapping("/answertext")
@@ -457,7 +457,7 @@ public class InterviewController {
     return response.toString();
   }
   //	stt끝
-  
+
 
 
   // 답변 저장
@@ -524,24 +524,24 @@ public class InterviewController {
       e.printStackTrace();
     }
   }
-  
+
   // 답변 저장 끝
 
-	//	dummy 
-	//  @GetMapping("/successinterview")
-	//  public String successInterview() {
-	//    return "success";
-	//  }
-  
-	//  @RequestMapping(value = "/result")
-	//  public ModelAndView interviewResult() {
-	//
-	//    ModelAndView mav = new ModelAndView("interview/result");
-	//
-	//
-	//    mav.addObject("board-total", "");
-	//    return mav;
-	//
-	//  }
+  //	dummy 
+  //  @GetMapping("/successinterview")
+  //  public String successInterview() {
+  //    return "success";
+  //  }
+
+  //  @RequestMapping(value = "/result")
+  //  public ModelAndView interviewResult() {
+  //
+  //    ModelAndView mav = new ModelAndView("interview/result");
+  //
+  //
+  //    mav.addObject("board-total", "");
+  //    return mav;
+  //
+  //  }
 
 }

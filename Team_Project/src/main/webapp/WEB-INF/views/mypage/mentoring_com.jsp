@@ -43,6 +43,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <h2>멘토링 지원자 리스트</h2>
+          
           <ol>
             <li><a href="/">Home</a></li>
             <li>멘토링 지원자 리스트</li>
@@ -67,10 +68,14 @@
             <!-- 유저정보 우측 정보 박스 -->
             <div class="mypage-right">
                 <!-- 유저정보 제목 -->
-                <div class="mypage-content-title">
-                    <p style="font-size: x-large;
-    font-weight: normal;">멘토링 지원자 리스트</p>
-                </div> 
+                <div class="mypage-content-title" style="font-size: x-large;
+    font-weight: normal;">
+                    👥멘토링 지원자 리스트
+                    
+            <a href="/interview/mentor/register" style="float: right;">
+            <button type="button" class="btn btn-secondary">멘토 등록하기</button>
+            </a>
+                </div>
 
                 <div class="line"></div>
         <!-- 사용자 정보 -->
@@ -78,7 +83,20 @@
           <div class="dialyMT">
             <table class="mypageTb">
             
-           <c:forEach items="${articleList}" var="mentorMode">
+            <c:if test="${empty list}">
+            
+              <div style = "text-align: center; color: darkgray;    margin-top: 108px;">
+                지원자가 아직 없습니다.
+                <br>
+                <br>
+                <a href = "/interview/mentor/register">
+                 <button type="button" class="btn btn-outline-secondary">👥멘토 등록 하러가기</button>
+                </a>
+              </div>  
+             
+            </c:if>
+            <c:if test="${!empty articleList}">
+             <c:forEach items="${articleList}" var="mentorMode">
               <tr>
                <td class="mypageTb-0lax">
                   <a class='move' href='<c:out value="${mentorMode.mentorId}"/>'>
@@ -97,6 +115,10 @@
                 </td>
               </tr>
               </c:forEach>
+            </c:if>
+            
+            
+           
               
             </table>
           </div>
