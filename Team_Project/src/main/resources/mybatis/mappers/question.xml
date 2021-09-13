@@ -93,10 +93,11 @@
 
 	<select id="Querykw" resultType="QuestionVO">
 		<![CDATA[
-	select q_id as qId,content from (select row_number() over (order by q_id asc) num, A.* from tbl_q A order by q_id asc)
-		where KW_LIST like '%'||#{kw}||'%' and num between #{startrow} and #{startrow}+10 and r_cnt>=10
+	select q_id as qId,content from (select row_number() over (order by q_id asc) num, A.* from tbl_q A  where KW_LIST like '%'||#{kw}||'%' order by q_id asc)
+		where num between #{startrow} and #{startrow}+10 and r_cnt>=10
 		]]>
 	</select>
+
 
 	<update id="UpdateRCnt">
 	<![CDATA[
@@ -131,16 +132,22 @@
 	<select id="SelectAnswer" resultType="AnswerVO">
 	<![CDATA[
 		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
-		 from (select row_number() over (order by regdate desc) num, A.* from tbl_answer A order by regdate desc) 
-		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
+		 from (select row_number() over (order by regdate desc) num, A.* from tbl_answer A where q_id=#{q_id} order by regdate desc) 
+		where num between #{startrow} and #{startrow}+10 
 		]]>
 	</select>
+
+<!-- 	select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
+		 from (select row_number() over (order by regdate desc) num, A.* from tbl_answer A WHERE q_id=1 order by regdate DESC) 
+		where num between 1 and 10 -->
+
+
 
 	<select id="SelectAnswerRCnt" resultType="AnswerVO">
 	<![CDATA[
 		select answer_id as answerId,content, i_record_id as iRecordId,r_cnt as rCnt, regdate
-		 from (select row_number() over (order by r_cnt desc) num, A.* from tbl_answer A order by r_cnt desc) 
-		where q_id=#{q_id} and num between #{startrow} and #{startrow}+10 
+		 from (select row_number() over (order by r_cnt desc) num, A.* from tbl_answer A where q_id=#{q_id} order by r_cnt desc) 
+		where num between #{startrow} and #{startrow}+10 
 		]]>
 	</select>
 
@@ -153,7 +160,7 @@
 	file_size as "fileSize",
 	file_content_type as "fileContentType",
 	file_data as "fileData"
-	from tbl_pf_imgh
+	from tbl_pf_img
 	where pf_img_id=#{fileId}
 	]]>
 

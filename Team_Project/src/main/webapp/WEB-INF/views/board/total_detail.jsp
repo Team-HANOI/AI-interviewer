@@ -6,12 +6,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script
+	src="https://code.jquery.com/jquery-latest.min.js"></script>
 <!-- 공통 스타일 -->
 <jsp:include page="../common/top.jsp" />
 <!-- 페이지 스타일 -->
 <link rel="stylesheet" href="/style/board_review.css">
 <link rel="stylesheet" href="/style/interview_result.css">
-</head>
 <script>
 
         function recommend(answerId) {
@@ -38,6 +39,8 @@
 
 
 </script>
+</head>
+
 <body>
 	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
 	<jsp:include page="../common/header.jsp" />

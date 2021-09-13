@@ -106,6 +106,7 @@ public class AllServiceImpl implements AllService {
 			System.out.println(a.getiRecordId());
 			ProfileVO pf = qdao.SelectProfile(a.getiRecordId());
 			System.out.println(pf);
+			a.setqContent(qdao.SelectQContent(q_id));
 			a.setPfImgId(pf.getPfImgId());
 			a.setMemberName(pf.getName());
 			a.setQ_id(q_id);
