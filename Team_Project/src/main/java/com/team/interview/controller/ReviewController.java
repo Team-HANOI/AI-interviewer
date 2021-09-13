@@ -2,12 +2,14 @@ package com.team.interview.controller;
 
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.team.interview.security.dto.AuthMemberDTO;
 import com.team.interview.vo.RCommVO;
 import com.team.interview.vo.ReviewVO;
 
@@ -51,7 +53,8 @@ public interface ReviewController {
   // 댓글
   ModelAndView addRComm(@ModelAttribute RCommVO rComm);
 
-  ModelAndView addCommChild(@ModelAttribute RCommVO rComm);
+  ModelAndView addCommChild(@ModelAttribute RCommVO rComm,
+      @AuthenticationPrincipal AuthMemberDTO authMemberDTO);
 
   ResponseEntity<byte[]> getcommImg(@PathVariable String email) throws Exception;
 

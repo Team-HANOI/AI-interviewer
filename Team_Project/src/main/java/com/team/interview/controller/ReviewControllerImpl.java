@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team.interview.dao.ReviewDAO;
+import com.team.interview.security.dto.AuthMemberDTO;
 import com.team.interview.service.ReviewService;
 import com.team.interview.vo.FileVO;
 import com.team.interview.vo.PageInfo;
@@ -337,11 +339,14 @@ public class ReviewControllerImpl implements ReviewController {
   // 대댓글 달기
   @Override
   @RequestMapping(value = "/addCommChild", method = RequestMethod.POST)
-  public ModelAndView addCommChild(@ModelAttribute RCommVO rComm) {
-    System.out.println(rComm.getEmail());
+  public ModelAndView addCommChild(@ModelAttribute RCommVO rComm,
+      @AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
+    System.out.println("email:" + authMemberDTO.getEmail());
+
     ModelAndView mv = new ModelAndView();
 
     try {
+      rComm.setEmail(authMemberDTO.getEmail());
       reviewService.addRCommChild(rComm);
       mv.setViewName("redirect:/review/board_review_detail?reviewId=" + rComm.getReviewId());
 
