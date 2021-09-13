@@ -5,11 +5,10 @@
 <html lang="en">
 
 <head>
-  <jsp:include page="../common/top_t.jsp"/>
-  <script
-	src="https://code.jquery.com/jquery-latest.min.js"></script>
-	
-	<script>
+<jsp:include page="../common/top_t.jsp" />
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
 
         function recommend(answerId) {
           
@@ -35,96 +34,140 @@
 
 
 </script>
-	
+<style>
+.totalHead {
+	color: gray;
+	background: white;
+}
+
+.div1 {
+	border: 1px solid black;
+}
+
+.div2 {
+	border: 1px solid black;
+	text-align: left;
+}
+
+#span1 {
+	font-size: 13px;
+}
+</style>
+
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <jsp:include page="../common/nav_main.jsp"/>
-  
-  <!-- ======= Hero Section ======= -->
-  <section id="" class="h-100" 
-  style="background-image: url('/image/i_recruit.jpg');
-  background-size:cover; background-position:center;
-  position: relative;">
-  	<div class="w-100 h-100 bg-dark" style="position:absolute;
-  	top:0; opacity:.5;"></div>
-  </section><!-- End Hero -->
-  
-  <main id="main">
-  	<section class="portfolio">
-      <div class="container">
-		<!-- 작업공간 시작-->
-	
-	 					<div class="board mypage-right">
-				<!-- 페이지 타이틀 -->
-				<div class="board-edit">
-					<h1 class="page-title-left">전체질문 상세보기</h1>
-					<a href="/board/best_answers">
-						<button class="btn total-btn">모범답안</button>
-					</a>
-				</div>
+	<!-- ======= Header ======= -->
+	<jsp:include page="../common/nav_main.jsp" />
 
-				<!-- 구분선 -->
-				<div class="line"></div>
+	<!-- ======= Hero Section ======= -->
+	<section id="" class="h-100"
+		style="background-image: url('/image/i_recruit.jpg'); background-size: cover; background-position: center; position: relative;">
+		<div class="w-100 h-100 bg-dark"
+			style="position: absolute; top: 0; opacity: .5;"></div>
+	</section>
+	<!-- End Hero -->
 
-				<div class="q">
-					질문 <span>${articleList[0].q_id}.
-					${articleList[0].qContent}</span>
-				</div>
-				
+	<main id="main">
+		<section class="portfolio">
+			<div class="container">
+				<!-- 작업공간 시작-->
 
-				<div class="detail-row result-btn-box">
-					<a href="/board/totaldetail?q_id=${articleList[0].q_id }">
-					<button class="btn">최신순</button>
-					</a>
-					<a href="/board/detailRCnt?q_id=${articleList[0].q_id}">
-					<button class="btn">추천순</button>
-					</a>
-				</div>
-				<c:forEach var="article" items="${articleList}">                  
-					<div class="detail-row">
-						<div>
-							<img class="recommendations-user_icon"
-								src="img/${article.pfImgId}" width="40px" height="40px"> <small>${article.memberName}</small>
-						</div>
-						<%--  <p class="item">ID: <span>${article.memberName}</span></p> --%>
-						<p class="answer item">
-							답: <span>${article.content} </span>
-						</p>
-
-						<button class="btn" id="${article.answerId}" class="recommend"
-							data-bs-toggle="modal"
-							onClick="javascript:recommend(${article.answerId});">좋아요:
-							${article.rCnt}</button>
-
-						<p>
-							작성일: <span>${article.regdate}</span>
-						</p>
-						<br>
-						<br> <br>
+				<div align="center">
+					<!-- 페이지 타이틀 -->
+					<div>
+						<h1 class="totalHead">전체질문 상세보기</h1>
 					</div>
 
-				</c:forEach>
-			</div>
-	
-	
-        
-		<!-- 작업공간 끝-->
-      </div>
-    </section><!-- End Portfolio Section -->
-  </main><!-- End #main -->
+					<!-- 구분선 -->
+					<div class="line"></div>
 
-  <!-- ======= Footer ======= -->
-  <jsp:include page="../common/footer.jsp"/>
-  
-  <!-- Vendor JS Files -->
-  <jsp:include page="../common/vendor_js.jsp"/>
-  
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
-  
+					<div class="q">
+
+						<span class="badge rounded-pill bg-secondary">질문]${articleList[0].q_id}.
+							${articleList[0].qContent}</span>
+
+					</div>
+
+					<!-- <div class="card" style="width: 18rem;">
+
+						<img src="..." class="card-img-top" alt="...">
+
+						<div class="card-body">
+
+							<h5 class="card-title">Card title</h5>
+
+							<p class="card-text">Some quick example text to build on the
+								card title and make up the bulk of the card's content.</p>
+
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+
+						</div>
+					</div> -->
+
+
+					<div>
+						<span></span> <a
+							href="/board/totaldetail?q_id=${articleList[0].q_id }">
+							<button type="button" class="badge rounded-pill bg-secondary">최신순</button>
+						</a> <span>&nbsp;</span> <a
+							href="/board/detailRCnt?q_id=${articleList[0].q_id}">
+							<button type="button" class="badge rounded-pill bg-secondary">추천순</button>
+						</a> <span>&nbsp;</span>
+					</div>
+
+					<!-- disabled <button type="button" class="btn btn-outline-secondary">-->
+
+
+					<span> &nbsp;</span>
+					<c:forEach var="article" items="${articleList}">
+
+						<div class="div1">
+							<div class="div2">
+								<img class="recommendations-user_icon"
+									src="img/${article.pfImgId}" width="80px" height="80px">
+								<small>${article.memberName}</small>
+							</div>
+							<%--  <p class="item">ID: <span>${article.memberName}</span></p> --%>
+
+
+							<button type="button" class="btn btn-outline-secondary" disabled>답:
+								${article.content}</button>
+
+							<button class="btn btn-outline-secondary"
+								id="${article.answerId}" class="recommend"
+								data-bs-toggle="modal"
+								onClick="javascript:recommend(${article.answerId});">좋아요:
+								${article.rCnt}</button>
+
+							<p>
+								<span id="span1">작성일: ${article.regdate}</span>
+							</p>
+
+						</div>
+
+					</c:forEach>
+				</div>
+
+
+
+				<!-- 작업공간 끝-->
+			</div>
+		</section>
+		<!-- End Portfolio Section -->
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<jsp:include page="../common/footer.jsp" />
+
+	<!-- Vendor JS Files -->
+	<jsp:include page="../common/vendor_js.jsp" />
+
+	<!-- Template Main JS File -->
+	<script src="../assets/js/main.js"></script>
+
 </body>
 </html>
 
