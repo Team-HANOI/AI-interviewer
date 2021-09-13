@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 
@@ -70,7 +71,11 @@ p {
 															<p class="mentor-title">[${article.company}]기업에서
 																[${article.field}]면접 지도</p>
 															<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
+															
+															<fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/>
 															<p class="mentor-date">${article.mentorDate}날에!</p>
+															
+															
 															<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
 														</div>
 														<a href="./apply?mentorEmail=${article.mentorEmail}">
