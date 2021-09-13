@@ -123,7 +123,7 @@ public class InterviewController {
     mentor.setMentorName(authMemberDTO.getName());
       mentor.setMentorEmail(authMemberDTO.getEmail());
       interviewService.regMentor(mentor);
-      mav.setViewName("/mypage/mentoring");
+      mav.setViewName("/main");
     } catch (Exception e) {
       e.printStackTrace();
       mav.setViewName("err");
@@ -144,7 +144,7 @@ public class InterviewController {
       System.out.println(mentor.getApplEmail());
       System.out.println(mentor.getMentorEmail());
       interviewService.appMentor(mentor);
-      mav.setViewName("interview/mentor");
+      mav.setViewName("/main");
     } catch (Exception e) {
       e.printStackTrace();
       mav.setViewName("err");
