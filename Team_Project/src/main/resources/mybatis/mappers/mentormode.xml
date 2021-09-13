@@ -96,7 +96,7 @@
 		parameterType="int">
 		<![CDATA[
 		   		select mentor_id as mentorId, startdate as startDate, enddate as endDate,content, title,company, bio, field, mentordate as mentorDate, mentor_email as mentorEmail,appl_email as applEmail
-			from (select row_number() over (order by mentor_id) num, A.* from tbl_mentor A order by mentor_id) 
+			from (select row_number() over (order by mentor_id) num, A.* from tbl_mentor A order by mentorDate desc) 
 			where num between #{startrow} and #{startrow}+10 
 			]]>
 
