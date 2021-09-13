@@ -13,7 +13,6 @@ public interface MemberService {
 
   void joinIndv(MemberVO memberVO, MultipartFile pfImg) throws IOException, Exception;
 
-
   void updateMypageProfile(MemberVO memberVO, ProfileVO profileVO, MultipartFile pfImg) throws Exception;
 
 }
