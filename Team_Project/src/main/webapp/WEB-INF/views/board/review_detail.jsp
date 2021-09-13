@@ -165,7 +165,7 @@
 	<div id="comments">
 		<!-- 댓글목록 -->
 
-		<div class="comments-h2">
+	<div class="comments-h2">
 			<h2>댓글</h2>
 		</div>
 		<div class="comments-container">
