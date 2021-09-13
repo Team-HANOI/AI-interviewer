@@ -73,10 +73,10 @@ p {
 															<p class="mentor-date">${article.mentorDate}날에!</p>
 															<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
 														</div>
-														<%-- <a href="./apply?mentorEmail=${article.mentorEmail}"> --%>
+														<a href="./apply?mentorEmail=${article.mentorEmail}">
 														<button type="button" class="btn btn-success"
 															onClick="alert('신청완료')">신청하기📝</button>
-														<!-- </a> -->
+														</a>
 														<!-- <img src="image/teampic.png" class="img-fluid" alt=""> -->
 													</div>
 												</li>

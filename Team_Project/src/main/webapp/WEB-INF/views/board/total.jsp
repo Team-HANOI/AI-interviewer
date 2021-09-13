@@ -6,8 +6,17 @@
 
 <head>
 <jsp:include page="../common/top_t.jsp" />
-<script
-	src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<style>
+#inline {
+	display: inline-block;
+	text-align:center;
+	height: 40px;
+	width: 350px;
+}
+</style>
+
 </head>
 
 <body>
@@ -38,85 +47,77 @@
 					<!-- 게시판 -->
 					<div class="board mypage-right">
 						<!-- 페이지 타이틀 -->
-						<div class="board-edit">
-							<h1 class="page-title-left">전체질문</h1>
-							<form action="/board/allkwlist" method="post">
-								<input type="text" name="kw"> <input type="submit"
-									value="키워드 검색">
-							</form>
-						</div>
 
 						<!-- 구분선 -->
-						<c:choose>
-							<c:when test="${articleList!=null && pageInfo.listCount>0 }">
-								<section id="listForm">
-									<table>
+						<div align="center">
+							<c:choose>
+								<c:when test="${articleList!=null && pageInfo.listCount>0 }">
+									<section id="listForm">
+										<table>
 
-										<c:forEach var="article" items="${articleList}">
-											<tr>
-												<td><span class="badge rounded-pill bg-secondary">질문[${article.qId }]</span></td>
-												<td><a href="./totaldetail?q_id=${article.qId}">${article.content} </a></td>
-												<td><span class="badge rounded-pill bg-secondary">${article.qtype }(${article.kwlist })</span></td>
+											<c:forEach var="article" items="${articleList}">
+												<tr>
+													<td><span class="badge rounded-pill bg-secondary">질문[${article.qId }]</span></td>
+													<td><a href="./totaldetail?q_id=${article.qId}">${article.content}
+													</a></td>
+													<td><span class="badge rounded-pill bg-secondary">${article.qtype }(${article.kwlist })</span></td>
+												</tr>
+											</c:forEach>
+											
+	
+										</table>
+									</section>
 
 
-											</tr>
-										</c:forEach>
-									</table>
-								</section>
-								<section id="pageList">
-									<c:choose>
-										<c:when test="${pageInfo.page<=1}">
+									<div>
+										<form action="/board/allkwlist" method="post">
+											<h1>
+												<input id="inline" type="text" name="kw"
+													class="form-control"> <input id="inline"
+													type="submit" class="form-control" value="키워드 검색">
+											</h1>
+										</form>
+									</div>
+									
+									<section id="pageList">
+										<c:choose>
+											<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp;
 				</c:when>
-										<c:otherwise>
-											<a href="allqlist?page=${pageInfo.page-1}">[이전]</a>&nbsp;
-				</c:otherwise>
-									</c:choose>
-									<c:forEach var="i" begin="${pageInfo.startPage }"
-										end="${pageInfo.endPage }">
-										<c:choose>
-											<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 											<c:otherwise>
-												<a href="allqlist?page=${i}">[${i }]</a>
-											</c:otherwise>
+												<a href="allqlist?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				</c:otherwise>
 										</c:choose>
-									</c:forEach>
-									<c:choose>
-										<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+										<c:forEach var="i" begin="${pageInfo.startPage }"
+											end="${pageInfo.endPage }">
+											<c:choose>
+												<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+												<c:otherwise>
+													<a href="allqlist?page=${i}">[${i }]</a>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+										<c:choose>
+											<c:when test="${pageInfo.page>=pageInfo.maxPage }">
 					[다음]
 				</c:when>
-										<c:otherwise>
-											<a href="allqlist?page=${pageInfo.page+1}">[다음]</a>
-										</c:otherwise>
-									</c:choose>
-								</section>
-							</c:when>
-							<c:otherwise>
-								<section id="emptyArea">등록된 글이 없습니다.</section>
-							</c:otherwise>
-						</c:choose>
-						<div class="line"></div>
+											<c:otherwise>
+												<a href="allqlist?page=${pageInfo.page+1}">[다음]</a>
+											</c:otherwise>
+										</c:choose>
+									</section>
+								</c:when>
+								<c:otherwise>
+									<section id="emptyArea">등록된 글이 없습니다.</section>
+								</c:otherwise>
+							</c:choose>
+							<div class="line"></div>
 
-						<div class="board-table detail-row">
-							<div>
-								<a href="/board/total_detail" title="클릭 시 상세 페이지로 이동합니다.">
-									<p>
-										질문 <span>1.</span> <span>Lorem ipsum dolor sit amet
-											consectetur adipisicing elit. Ratione, fugit?</span>
-									</p>
-								</a>
 
-								<div>
-									<button class="btn">전체답안</button>
-									<button class="btn">모범답안</button>
-								</div>
-							</div>
+
 						</div>
-
-
 					</div>
 				</div>
-
 				<!-- 작업공간 끝-->
 			</div>
 		</section>

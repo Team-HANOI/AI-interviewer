@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
-<%@ page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <script
-	src="https://code.jquery.com/jquery-latest.min.js"></script>
-<!-- 공통 스타일 -->
-<jsp:include page="../common/top.jsp" />
-<!-- 페이지 스타일 -->
-<link rel="stylesheet" href="/style/board_review.css">
-<link rel="stylesheet" href="/style/interview_result.css">
+<jsp:include page="../common/top_t.jsp" />
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 <script>
 
         function recommend(answerId) {
@@ -39,104 +34,140 @@
 
 
 </script>
+<style>
+.totalHead {
+	color: gray;
+	background: white;
+}
+
+.div1 {
+	border: 1px solid black;
+}
+
+.div2 {
+	border: 1px solid black;
+	text-align: left;
+}
+
+#span1 {
+	font-size: 13px;
+}
+</style>
+
 </head>
 
 <body>
-	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-	<jsp:include page="../common/header.jsp" />
 
-	<!-- 구분선 -->
-	<div class="line"></div>
+	<!-- ======= Header ======= -->
+	<jsp:include page="../common/nav_main.jsp" />
 
-	<!-- 본문 시작 -> 여기서 작업하세요 -->
-	<main>
-		<!-- 팝업 -->
-		<!-- 팝업배경 더미 -->
-		<div class="popup-dummy"></div>
+	<!-- ======= Hero Section ======= -->
+	<section id="" class="h-100"
+		style="background-image: url('/image/i_recruit.jpg'); background-size: cover; background-position: center; position: relative;">
+		<div class="w-100 h-100 bg-dark"
+			style="position: absolute; top: 0; opacity: .5;"></div>
+	</section>
+	<!-- End Hero -->
 
-		<!-- 키워드 카드 팝업 -->
-		<jsp:include page="../common/popups/popup_keyword.jsp" />
+	<main id="main">
+		<section class="portfolio">
+			<div class="container">
+				<!-- 작업공간 시작-->
 
-		<!-- 기업회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_com.jsp" />
-
-		<!-- 일반회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv.jsp" />
-
-		<!-- 일번회원가입 추가입력 폼 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv_extra.jsp" />
-
-		<!-- 기업회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_com.jsp" />
-
-		<!-- 일반회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_indv.jsp" />
-
-		<!-- 타이틀 더미 -->
-		<div class="dummy"></div>
-
-		<!-- 메인화면 게시판 -->
-		<div class="board-total mypage">
-			<!-- 게시판 메뉴 -->
-			<jsp:include page="board_common/board_nav.jsp" />
-
-			<!-- 질문 상세 -->
-			<div class="board mypage-right">
-				<!-- 페이지 타이틀 -->
-				<div class="board-edit">
-					<h1 class="page-title-left">전체질문 상세보기</h1>
-					<a href="/board/best_answers">
-						<button class="btn total-btn">모범답안</button>
-					</a>
-				</div>
-
-				<!-- 구분선 -->
-				<div class="line"></div>
-
-				<div class="q">
-					질문 <span>${articleList[0].q_id}.
-					${articleList[0].qContent}</span>
-				</div>
-				
-
-				<div class="detail-row result-btn-box">
-					<a href="/board/totaldetail?q_id=${articleList[0].q_id }">
-					<button class="btn">최신순</button>
-					</a>
-					<a href="/board/detailRCnt?q_id=${articleList[0].q_id}">
-					<button class="btn">추천순</button>
-					</a>
-				</div>
-				<c:forEach var="article" items="${articleList}">                  
-					<div class="detail-row">
-						<div>
-							<img class="recommendations-user_icon"
-								src="img/${article.pfImgId}"> <small>${article.memberName}</small>
-						</div>
-						<%--  <p class="item">ID: <span>${article.memberName}</span></p> --%>
-						<p class="answer item">
-							답: <span>${article.content} </span>
-						</p>
-
-						<button class="btn" id="${article.answerId}" class="recommend"
-							data-bs-toggle="modal"
-							onClick="javascript:recommend(${article.answerId});">좋아요:
-							${article.rCnt}</button>
-
-						<p>
-							작성일: <span>${article.regdate}</span>
-						</p>
-						<br>
-						<br> <br>
+				<div align="center">
+					<!-- 페이지 타이틀 -->
+					<div>
+						<h1 class="totalHead">전체질문 상세보기</h1>
 					</div>
 
-				</c:forEach>
-			</div>
-		</div>
-	</main>
+					<!-- 구분선 -->
+					<div class="line"></div>
 
-	<!-- 꼬리 -->
+					<div class="q">
+
+						<span class="badge rounded-pill bg-secondary">질문]${articleList[0].q_id}.
+							${articleList[0].qContent}</span>
+
+					</div>
+
+					<!-- <div class="card" style="width: 18rem;">
+
+						<img src="..." class="card-img-top" alt="...">
+
+						<div class="card-body">
+
+							<h5 class="card-title">Card title</h5>
+
+							<p class="card-text">Some quick example text to build on the
+								card title and make up the bulk of the card's content.</p>
+
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+
+						</div>
+					</div> -->
+
+
+					<div>
+						<span></span> <a
+							href="/board/totaldetail?q_id=${articleList[0].q_id }">
+							<button type="button" class="badge rounded-pill bg-secondary">최신순</button>
+						</a> <span>&nbsp;</span> <a
+							href="/board/detailRCnt?q_id=${articleList[0].q_id}">
+							<button type="button" class="badge rounded-pill bg-secondary">추천순</button>
+						</a> <span>&nbsp;</span>
+					</div>
+
+					<!-- disabled <button type="button" class="btn btn-outline-secondary">-->
+
+
+					<span> &nbsp;</span>
+					<c:forEach var="article" items="${articleList}">
+
+						<div class="div1">
+							<div class="div2">
+								<img class="recommendations-user_icon"
+									src="img/${article.pfImgId}" width="80px" height="80px">
+								<small>${article.memberName}</small>
+							</div>
+							<%--  <p class="item">ID: <span>${article.memberName}</span></p> --%>
+
+
+							<button type="button" class="btn btn-outline-secondary" disabled>답:
+								${article.content}</button>
+
+							<button class="btn btn-outline-secondary"
+								id="${article.answerId}" class="recommend"
+								data-bs-toggle="modal"
+								onClick="javascript:recommend(${article.answerId});">좋아요:
+								${article.rCnt}</button>
+
+							<p>
+								<span id="span1">작성일: ${article.regdate}</span>
+							</p>
+
+						</div>
+
+					</c:forEach>
+				</div>
+
+
+
+				<!-- 작업공간 끝-->
+			</div>
+		</section>
+		<!-- End Portfolio Section -->
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
 	<jsp:include page="../common/footer.jsp" />
+
+	<!-- Vendor JS Files -->
+	<jsp:include page="../common/vendor_js.jsp" />
+
+	<!-- Template Main JS File -->
+	<script src="../assets/js/main.js"></script>
+
 </body>
 </html>
 

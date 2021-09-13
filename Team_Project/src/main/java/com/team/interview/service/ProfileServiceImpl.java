@@ -39,8 +39,8 @@ public class ProfileServiceImpl implements ProfileService{
 
     // 프로필이 없으면 프로필, 프로필 이미지를 insert해준다.
     if(profile == null) {
-      File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
-      //      File file = new File("/image/default_pf_img.jpg");
+       File file = new File(new File("").getAbsolutePath() + "/src/main/resources/static/image/default_pf_img.jpg");
+//      File file = new File("/image/default_pf_img.jpg");
       FileItem fileItem = new DiskFileItem("originFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
 
       InputStream input = new FileInputStream(file);

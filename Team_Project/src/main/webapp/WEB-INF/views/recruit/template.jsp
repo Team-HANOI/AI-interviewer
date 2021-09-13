@@ -8,6 +8,34 @@
   <jsp:include page="../common/top_t.jsp"/>
   <script
 	src="https://code.jquery.com/jquery-latest.min.js"></script>
+	
+	<script>
+
+        function recommend(answerId) {
+          
+            $.ajax({
+                  type: "POST",
+                  url: "./recommend", //요청 URL 
+                  data: { answerId : answerId  }, //요청과 함께 서버에 보내는 string 또는 json
+                  // 서버에서 내려온 data 형식. ( default : xml, json, script, text, html )
+                  success: function(data, textStatus) { // 요청에 성공하면 함수 실행 data는 응답 데이터가 들어간다
+           
+                        if (textStatus == 'success') {
+                          $("#"+answerId).text('좋아요: '+ data);
+                      };
+                  },
+                  error: function(response, textStatus) { // 에러가 났을 경우의 작업
+                     alert("오류가 발생했습니다.");
+                  }
+              });
+              return false; // 페이지 리로딩을 막는다. 
+        };
+        
+
+
+
+</script>
+	
 </head>
 
 <body>
@@ -29,7 +57,7 @@
       <div class="container">
 		<!-- 작업공간 시작-->
 	
-	 			<div class="board mypage-right">
+	 					<div class="board mypage-right">
 				<!-- 페이지 타이틀 -->
 				<div class="board-edit">
 					<h1 class="page-title-left">전체질문 상세보기</h1>
