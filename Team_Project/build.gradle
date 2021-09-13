@@ -38,9 +38,9 @@ dependencies {
 
   // jdbc버전
 
-  //implementation group: 'com.oracle.ojdbc', name: 'ojdbc10', version: '19.3.0.0'
+  implementation group: 'com.oracle.ojdbc', name: 'ojdbc10', version: '19.3.0.0'
 
-  runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+ // runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
   
  
 

@@ -4,13 +4,15 @@
 
 <mapper namespace="com.team.interview.dao.InterviewAnswerDAO">
 
-	<insert id="insertInterviewAnswer" parameterType="InterviewAnswerVO">
+	<insert id="insertInterviewAnswer"
+		parameterType="InterviewAnswerVO">
 		<![CDATA[
 			insert into tbl_answer values(#{answerId},#{voiceNum},#{iRecordId},#{qId},#{content},#{rCnt},sysdate,sysdate)
 		]]>
 	</insert>
 
-	<insert id="insertInterviewRecord" parameterType="InterviewRecordVO">
+	<insert id="insertInterviewRecord"
+		parameterType="InterviewRecordVO">
 		<![CDATA[
 			insert into TBL_I_RECORD values(#{iRecordId},#{mentorEmail},#{email},#{iTypeId},#{chosenKw},#{chosenPos},sysdate,sysdate)
 		]]>
@@ -22,24 +24,23 @@
 			insert into TBL_VOICE values(#{fileId},#{fileName},#{fileSize},#{fileContentType},current_timestamp,#{fileData},sysdate,sysdate)
 		]]>
 	</insert>
-	
+
 	<select id="voiceNextNum" resultType="int">
 		<![CDATA[
 			select voice_sq.nextval from dual
 		]]>
 	</select>
-	
+
 	<select id="interviewRecordNextNum" resultType="int">
 		<![CDATA[
 			select i_record_sq.nextval from dual
 		]]>
 	</select>
-	
-		<select id="answerNextNum" resultType="int">
+
+	<select id="answerNextNum" resultType="int">
 		<![CDATA[
 			select answer_sq.nextval from dual
 		]]>
 	</select>
-	
-	
+
 </mapper>

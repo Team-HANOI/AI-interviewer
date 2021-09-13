@@ -123,7 +123,7 @@ public class InterviewController {
     mentor.setMentorName(authMemberDTO.getName());
       mentor.setMentorEmail(authMemberDTO.getEmail());
       interviewService.regMentor(mentor);
-      mav.setViewName("interview");
+      mav.setViewName("/mypage/mentoring");
     } catch (Exception e) {
       e.printStackTrace();
       mav.setViewName("err");
