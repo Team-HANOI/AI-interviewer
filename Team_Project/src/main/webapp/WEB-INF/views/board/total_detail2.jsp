@@ -6,9 +6,7 @@
 
 <head>
 <jsp:include page="../common/top_t.jsp" />
-<link rel="stylesheet" href="/style/total_detail_comment.css">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
 <script>
 
         function recommend(answerId) {
@@ -78,23 +76,35 @@
 				<div align="center">
 					<!-- 페이지 타이틀 -->
 					<div>
-						<h1 class="totalHead">질  문</h1>
+						<h1 class="totalHead">전체질문 상세보기</h1>
 					</div>
 
 					<!-- 구분선 -->
 					<div class="line"></div>
 
-		<section id="banner">
-        <div id="intro">
-        <h1>
-    	<span>${articleList[0].q_id}.
+					<div class="q">
+
+						<span class="badge rounded-pill bg-secondary">질문]${articleList[0].q_id}.
 							${articleList[0].qContent}</span>
-		</h1>
-        </div>
-        <img src="https://images.unsplash.com/photo-1514454529242-9e4677563e7b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" width="900" />
-		</section>
-					
-					
+
+					</div>
+
+					<!-- <div class="card" style="width: 18rem;">
+
+						<img src="..." class="card-img-top" alt="...">
+
+						<div class="card-body">
+
+							<h5 class="card-title">Card title</h5>
+
+							<p class="card-text">Some quick example text to build on the
+								card title and make up the bulk of the card's content.</p>
+
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+
+						</div>
+					</div> -->
+
 
 					<div>
 						<span></span> <a
@@ -106,52 +116,41 @@
 						</a> <span>&nbsp;</span>
 					</div>
 
-	<div id="comments">
-		<!-- 댓글목록 -->
+					<!-- disabled <button type="button" class="btn btn-outline-secondary">-->
 
-	<div class="comments-h2">
-			<h2>댓글</h2>
-		</div>
-		<div class="comments-container">
-			<c:forEach var="article" items="${articleList}">
 
-<!-- 본댓글 시작-->
+					<span> &nbsp;</span>
+					<c:forEach var="article" items="${articleList}">
 
-				<ul id="comments-list" class="comments-list">
-					<li>
-								<div class="comment-main-level">
-
-									<div class="comment-avatar">
-									<img class="recommendations-user_icon"
+						<div class="div1">
+							<div class="div2">
+								<img class="recommendations-user_icon"
 									src="img/${article.pfImgId}" width="80px" height="80px">
-									</div>
+								<small>${article.memberName}</small>
+							</div>
+							<%--  <p class="item">ID: <span>${article.memberName}</span></p> --%>
 
-									<div class="comment-box">
-										<div class="comment-head reply-head">
-											<div class="comment-head-left">
-												<h6 class="comment-name">
-													<a>${article.memberName}</a>
-												</h6>
-												<span>${article.regdate}</span>
-											</div>
-											<div class="comment-head-right">
-													
-												<button class="btn btn-outline-secondary"
+
+							<button type="button" class="btn btn-outline-secondary" disabled>답:
+								${article.content}</button>
+
+							<button class="btn btn-outline-secondary"
 								id="${article.answerId}" class="recommend"
 								data-bs-toggle="modal"
 								onClick="javascript:recommend(${article.answerId});">좋아요:
 								${article.rCnt}</button>
 
-											</div>
-										</div>
-										<div class="reply-content">${article.content}</div>
-									</div>
-								</div>
-								</li>
-								</ul>
-								</c:forEach>
-								</div>
-								</div>
+							<p>
+								<span id="span1">작성일: ${article.regdate}</span>
+							</p>
+
+						</div>
+
+					</c:forEach>
+				</div>
+
+
+
 				<!-- 작업공간 끝-->
 			</div>
 		</section>
