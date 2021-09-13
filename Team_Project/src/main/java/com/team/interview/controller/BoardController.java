@@ -91,7 +91,7 @@ public class BoardController {
 	@RequestMapping(value = "/best_answers")
 	public ModelAndView boardBestAnswers() {
 		ModelAndView mav = new ModelAndView("board/best_answers");
-		mav.addObject("best_answers", "board/best_answers");
+		mav.addObject("best_answers", "board/	");
 		return mav;
 	}
 
@@ -184,6 +184,7 @@ public class BoardController {
 		PageInfo pageInfo = new PageInfo();
 		ModelAndView mv = new ModelAndView();
 		System.out.println("aa");
+		
 		try {
 			List<QuestionVO> articleList = allService.getkwQList(kw, page, pageInfo);
 			mv.addObject("pageInfo", pageInfo);
