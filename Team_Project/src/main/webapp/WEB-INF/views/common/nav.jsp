@@ -21,7 +21,6 @@
  <nav id="navbar" class="navbar">
 <ul>
   <li><a class="active" href="/">홈</a></li>
-  <li><a href="/contact">Contact Us</a></li>
   <li class="dropdown"><a href="/interview/"><span>면접하기</span> <i class="bi bi-chevron-down"></i></a>
     <ul>
       <li><a href="/interview/steps_n">일반면접</a></li>
@@ -36,11 +35,12 @@
       <!-- 삭제  
       <li><a href="/board/free">자유게시판</a></li>
       -->
-      <li><a href="/board/recommend">면접질문</a></li>
-      <li><a href="/board/best_answers">모범답안</a></li>
+     <!--  <li><a href="/board/recommend">면접질문</a></li>
+      <li><a href="/board/best_answers">모범답안</a></li> -->
     </ul>
   </li>
-  <li><a href="/recruit/">채용공고</a></li>
+  
+  <!-- <li><a href="/recruit/">채용공고</a></li> -->
 
     <sec:authorize access="isAnonymous()">
 		  <li class="dropdown"><a href="#"><span>회원가입</span> <i class="bi bi-chevron-down"></i></a>
@@ -67,6 +67,7 @@
       </li>
   
     </sec:authorize>
+    <li><a href="/contact">GitHub</a></li>
 </ul>
 <i class="bi bi-list mobile-nav-toggle"></i>
 

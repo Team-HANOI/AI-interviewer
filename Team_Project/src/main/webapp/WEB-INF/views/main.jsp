@@ -79,7 +79,7 @@
             </div>
           </a>
 
-          <a href="/board/recommend" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
+         <!--  <a href="/board/recommend" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-blue">
               <div class="icon"><i class="bx bx-message-alt-add"></i></div>
               <h4 class="title">면접질문</h4>
@@ -93,7 +93,7 @@
               <h4 class="title">모범답안</h4>
               <p class="description">우수한 평가를 받은 질문 모아보기</p>
             </div>
-          </a>
+          </a> -->
 
         </div>
 
