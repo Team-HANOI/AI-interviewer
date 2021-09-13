@@ -1,19 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
-<%@ page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <jsp:include page="../common/top_t.jsp"/>
   <script
 	src="https://code.jquery.com/jquery-latest.min.js"></script>
-<!-- 공통 스타일 -->
-<jsp:include page="../common/top.jsp" />
-<!-- 페이지 스타일 -->
-<link rel="stylesheet" href="/style/board_review.css">
-<link rel="stylesheet" href="/style/interview_result.css">
-<script>
+	
+	<script>
 
         function recommend(answerId) {
           
@@ -39,49 +35,29 @@
 
 
 </script>
+	
 </head>
 
 <body>
-	<!-- 머리말: 앱 타이틀, 네비메뉴, 마이페이지 -->
-	<jsp:include page="../common/header.jsp" />
 
-	<!-- 구분선 -->
-	<div class="line"></div>
-
-	<!-- 본문 시작 -> 여기서 작업하세요 -->
-	<main>
-		<!-- 팝업 -->
-		<!-- 팝업배경 더미 -->
-		<div class="popup-dummy"></div>
-
-		<!-- 키워드 카드 팝업 -->
-		<jsp:include page="../common/popups/popup_keyword.jsp" />
-
-		<!-- 기업회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_com.jsp" />
-
-		<!-- 일반회원가입 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv.jsp" />
-
-		<!-- 일번회원가입 추가입력 폼 팝업 -->
-		<jsp:include page="../common/popups/popup_join_indv_extra.jsp" />
-
-		<!-- 기업회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_com.jsp" />
-
-		<!-- 일반회원 로그인 -->
-		<jsp:include page="../common/popups/popup_login_indv.jsp" />
-
-		<!-- 타이틀 더미 -->
-		<div class="dummy"></div>
-
-		<!-- 메인화면 게시판 -->
-		<div class="board-total mypage">
-			<!-- 게시판 메뉴 -->
-			<jsp:include page="board_common/board_nav.jsp" />
-
-			<!-- 질문 상세 -->
-			<div class="board mypage-right">
+  <!-- ======= Header ======= -->
+  <jsp:include page="../common/nav_main.jsp"/>
+  
+  <!-- ======= Hero Section ======= -->
+  <section id="" class="h-100" 
+  style="background-image: url('/image/i_recruit.jpg');
+  background-size:cover; background-position:center;
+  position: relative;">
+  	<div class="w-100 h-100 bg-dark" style="position:absolute;
+  	top:0; opacity:.5;"></div>
+  </section><!-- End Hero -->
+  
+  <main id="main">
+  	<section class="portfolio">
+      <div class="container">
+		<!-- 작업공간 시작-->
+	
+	 					<div class="board mypage-right">
 				<!-- 페이지 타이틀 -->
 				<div class="board-edit">
 					<h1 class="page-title-left">전체질문 상세보기</h1>
@@ -111,7 +87,7 @@
 					<div class="detail-row">
 						<div>
 							<img class="recommendations-user_icon"
-								src="img/${article.pfImgId}"> <small>${article.memberName}</small>
+								src="img/${article.pfImgId}" width="40px" height="40px"> <small>${article.memberName}</small>
 						</div>
 						<%--  <p class="item">ID: <span>${article.memberName}</span></p> --%>
 						<p class="answer item">
@@ -132,11 +108,23 @@
 
 				</c:forEach>
 			</div>
-		</div>
-	</main>
+	
+	
+        
+		<!-- 작업공간 끝-->
+      </div>
+    </section><!-- End Portfolio Section -->
+  </main><!-- End #main -->
 
-	<!-- 꼬리 -->
-	<jsp:include page="../common/footer.jsp" />
+  <!-- ======= Footer ======= -->
+  <jsp:include page="../common/footer.jsp"/>
+  
+  <!-- Vendor JS Files -->
+  <jsp:include page="../common/vendor_js.jsp"/>
+  
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  
 </body>
 </html>
 
