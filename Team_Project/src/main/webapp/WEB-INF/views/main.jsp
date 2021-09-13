@@ -64,7 +64,8 @@
 				<div class="carousel-container">
 
 					<h2 class="animate__animated animate__fadeInDown">맞춤 모드</h2>
-					<p class="animate__animated animate__fadeInUp">모든 기술 스택에 대한 맞춤형 커스텀 면접</p>
+					<p class="animate__animated animate__fadeInUp">모든 기술 스택에 대한 맞춤형
+						커스텀 면접</p>
 					<img src="/image/custom_slide.png" width="600" height="230">
 					<!--           <a href="#service" class="btn-get-started animate__animated animate__fadeInUp">Read More</a> -->
 
@@ -76,7 +77,8 @@
 				<div class="carousel-container">
 
 					<h2 class="animate__animated animate__fadeInDown">멘토링 모드</h2>
-					<p class="animate__animated animate__fadeInUp">기업 회원이 직접 지도해주는 맞춤 면접</p>
+					<p class="animate__animated animate__fadeInUp">기업 회원이 직접
+						지도해드립니다.</p>
 					<img src="/image/mentor_slide.png" width="600" height="230">
 					<!--           <a href="#service" class="btn-get-started animate__animated animate__fadeInUp">Read More</a> -->
 
@@ -97,13 +99,14 @@
 	</section>
 	<!-- End Hero -->
 
+
 	<main id="main">
 
 		<!-- ======= Services Section ======= -->
-		<section class="services" id="service">
+		<!-- <section class="services" id="service">
 			<div class="container">
 
-				<!-- 첫행 -->
+				첫행
 				<div class="row">
 
 					<a href="/board/"
@@ -128,7 +131,7 @@
 						</div>
 					</a>
 
-					<!--  <a href="/board/recommend" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
+					 <a href="/board/recommend" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-blue">
               <div class="icon"><i class="bx bx-message-alt-add"></i></div>
               <h4 class="title">면접질문</h4>
@@ -142,16 +145,17 @@
               <h4 class="title">모범답안</h4>
               <p class="description">우수한 평가를 받은 질문 모아보기</p>
             </div>
-          </a> -->
+          </a>
 
 				</div>
 
 			</div>
-		</section>
+		</section> -->
+
 		<!-- End Services Section -->
 
-		<!-- ======= Why Us Section ======= -->
-		<section class="why-us section-bg" data-aos="fade-up"
+		<!-- 	<!-- ======= Why Us Section ======= -->
+		<!-- <section class="why-us section-bg" data-aos="fade-up"
 			date-aos-delay="200">
 			<div class="container">
 
@@ -190,8 +194,8 @@
 				</div>
 
 			</div>
-		</section>
-		<!-- End Why Us Section -->
+		</section> -->
+
 
 		<!-- ======= Features Section ======= -->
 		<section class="features" id="features">
@@ -247,6 +251,56 @@
 			</div>
 		</section>
 		<!-- End Features Section -->
+
+		<!-- ======= Services Section ======= -->
+		<section class="services" id="service">
+			<div class="container">
+
+				<!-- 첫행 -->
+				<div class="row">
+
+					<a href="/board/"
+						class="col-md-6 col-lg-3 d-flex row align-items-center"
+						data-aos="fade-up">
+						<div class="icon-box icon-box-pink">
+							<div class="icon">
+								<i class="bx bxs-book"></i>
+							</div>
+							<h4 class="title">전체질문</h4>
+							<p class="description">알파카의 모든 면접질문 모아보기</p>
+						</div>
+					</a> <a href="/review/board_review"
+						class="col-md-6 col-lg-3 d-flex row align-items-center"
+						data-aos="fade-up" data-aos-delay="100">
+						<div class="icon-box icon-box-cyan">
+							<div class="icon">
+								<i class="bx bx-file"></i>
+							</div>
+							<h4 class="title">면접후기</h4>
+							<p class="description">면접 서비스 후기 보러가기</p>
+						</div>
+					</a>
+
+					<!--  <a href="/board/recommend" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box icon-box-blue">
+              <div class="icon"><i class="bx bx-message-alt-add"></i></div>
+              <h4 class="title">면접질문</h4>
+              <p class="description">면접에 나올 것 같은 질문 제안하기</p>
+            </div>
+          </a>
+
+          <a href="/board/best_answers" class="col-md-6 col-lg-3 d-flex row align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box icon-box-purple">
+              <div class="icon"><i class="bx bx-git-pull-request"></i></div>
+              <h4 class="title">모범답안</h4>
+              <p class="description">우수한 평가를 받은 질문 모아보기</p>
+            </div>
+          </a> -->
+
+				</div>
+
+			</div>
+		</section>
 
 	</main>
 	<!-- End #main -->
