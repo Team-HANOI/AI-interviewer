@@ -154,12 +154,12 @@
                                       <ul class="list-group" style="display: contents;">
                                         <c:forEach var="item" items="${kwList}">
 																				  <li class="list-group-item" style="border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    user-select: auto;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;">
+												    border-top-right-radius: 0;
+												    padding: 0.5rem 1rem;
+												    border: 1px solid rgba(0, 0, 0, 0.125);
+												    user-select: auto;
+												    border-bottom-right-radius: 0;
+												    border-bottom-left-radius: 0;">
 																				    <input style="padding: 0 0 0 0 !important;" class="form-check-input me-1" type="checkbox" name="kws" value="${item.kw}" <c:forEach var="pSkill" items="${pSkillList}">
                                             <c:if test="${item.kw eq pSkill}">
                                               checked

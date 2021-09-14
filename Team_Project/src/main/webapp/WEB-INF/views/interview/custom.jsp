@@ -39,17 +39,25 @@
 <body>
 
 	<!-- ======= Header ======= -->
-	<jsp:include page="../common/nav_main.jsp" />
+	<jsp:include page="../common/nav.jsp" />
 
-	<!-- ======= Hero Section ======= -->
-	<section id="" class="h-100"
-		style="background-image: url('/image/i_recruit.jpg'); background-size: cover; background-position: center; position: relative;">
-		<div class="w-100 h-100 bg-dark"
-			style="position: absolute; top: 0; opacity: .5;"></div>
-	</section>
-	<!-- End Hero -->
 
 	<main id="main">
+	
+	<section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>맞춤면접</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>맞춤면접</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+	
 		<section class="portfolio">
 			<div class="container">
 				<!-- 작업공간 시작-->
@@ -59,29 +67,48 @@
 					<div class="dummy"></div>
 
 					<div class="keyword-box" align="center">
-						<h2 class="popup-text">키워드를 선택하세요</h2>
-
+						<h2 class="popup-text">키워드를 선택해주세요✅</h2>
+          <br>
 						<!-- 구분선 -->
 						<div class="line"></div>
 
-						<div>
-
-							<c:forEach items="${keywordList}" var="keywordList"
-								varStatus="idx">
-
-								<input class="form-check-input" id="kw${idx.count }"
+						<div style="margin-left: 260px">
+								<%-- <input class="form-check-input" 
 									type="checkbox" name="keyword" value="${keywordList.kw }">
 								<label class="form-check-label" for="kw${idx.count }"><button
-										type="button" class="btn btn-secondary btn-sm" disabled>${keywordList.kw }</button></label>				
-				
-				</c:forEach>
-
+										type="button" class="btn btn-secondary btn-sm" disabled>${keywordList.kw }</button></label>		 --%>
+										
+								<ul class="list-group list-group-horizontal">
+								<c:forEach items="${keywordList}" var="keywordList"
+									varStatus="idx" begin="0" end="6" >
+									  <li class="list-group-item"><input class="form-check-input me-1" type="checkbox" name="keyword" value="${keywordList.kw }" aria-label="...">${keywordList.kw }</li>
+					      </c:forEach>
+								</ul>
+								<ul class="list-group list-group-horizontal-sm">
+								<c:forEach items="${keywordList}" var="keywordList"
+									varStatus="idx" begin="7" end="13" >
+									  <li class="list-group-item"><input class="form-check-input me-1" type="checkbox" name="keyword" value="${keywordList.kw }" aria-label="...">${keywordList.kw }</li>
+					      </c:forEach>
+								</ul>
+								<ul class="list-group list-group-horizontal-md">
+	              <c:forEach items="${keywordList}" var="keywordList"
+	                varStatus="idx" begin="14" end="19" >
+	                  <li class="list-group-item"><input class="form-check-input me-1" type="checkbox" name="keyword" value="${keywordList.kw }" aria-label="...">${keywordList.kw }</li>
+	              </c:forEach>
+								</ul>
+								<ul class="list-group list-group-horizontal-lg">
+	              <c:forEach items="${keywordList}" var="keywordList"
+	                varStatus="idx" begin="20" end="27" >
+	                  <li class="list-group-item"><input class="form-check-input me-1" type="checkbox" name="keyword" value="${keywordList.kw }" aria-label="...">${keywordList.kw }</li>
+	              </c:forEach>
+								</ul>
 						</div>
+						<br>
 						<!-- 구분선 -->
 						<div class="line"></div>
 						<input type="hidden" name="type" value="${type }">
 						<!-- 400에러가 이거 없어서 -->
-						<button type="submit" class="btn btn-outline-secondary btn-sm">확인</button>
+						<button type="submit" class="btn btn-outline-secondary btn-sm">다 골랐어요</button>
 
 					</div>
 				</form>
