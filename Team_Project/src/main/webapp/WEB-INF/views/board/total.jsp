@@ -162,7 +162,7 @@
 <!-- 임시저장 글 목록 보기 끝 -->--%>
 
 							<!-- 글쓰기기능 -->
-						<%-- 	<sec:authorize access="isAuthenticated()">
+							<%-- 	<sec:authorize access="isAuthenticated()">
 								<h3 class="sidebar-title">
 									<a href="./write_review">글쓰기</a>
 								</h3>
@@ -177,15 +177,16 @@
 							<h2 class="sidebar-title">키워드 검색</h2>
 							<div class="sidebar-item search-form">
 
-								<form action="/board/allkwlist" method="post" class="board_review_key" name="board_review_key">
-									
+								<form action="/board/allkwlist" method="post"
+									class="board_review_key" name="board_review_key">
 
-										<input id="inline" type="text" name="kw" required="required" />
 
-										<button type="submit">
-											<i class="bi bi-search"></i>
-										</button>
-								
+									<input id="inline" type="text" name="kw" required="required" />
+
+									<button type="submit">
+										<i class="bi bi-search"></i>
+									</button>
+
 								</form>
 							</div>
 
@@ -201,17 +202,11 @@
 							<h3 class="sidebar-title">Tags</h3>
 							<div class="sidebar-item tags">
 								<ul>
-									<li><a href="#">app</a></li>
-									<li><a href="#">IT</a></li>
-									<li><a href="#">java</a></li>
-									<li><a href="#">Spring</a></li>
-									<li><a href="#">javascript</a></li>
-									<li><a href="#">Oracle</a></li>
-									<li><a href="#">CodingTest</a></li>
-									<li><a href="#">web</a></li>
-									<li><a href="#">css</a></li>
-									<li><a href="#">tips</a></li>
-									<li><a href="#">react</a></li>
+
+									<c:forEach items="${keywordList }" var="keywordList">
+
+										<li><a href="#">${keywordList.kw }</a></li>
+									</c:forEach>
 								</ul>
 							</div>
 							<!-- End sidebar tags-->
