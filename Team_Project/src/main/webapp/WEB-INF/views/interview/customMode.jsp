@@ -35,7 +35,7 @@ var step=qIds.length;
 $(function() {
 	$("#question").text(contents[idx]);
 	$("#speaker").click(function() {
-		alert($("#question").text());
+
 		requestVoice($("#question").text());
 	});
 	$("#nextBtn").click(function() {

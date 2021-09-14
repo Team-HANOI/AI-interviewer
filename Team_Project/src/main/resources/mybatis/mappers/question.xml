@@ -53,7 +53,7 @@
 	</select>
 	
 
-	<select id="customQuestion" resultType="QuestionVO" parameterType="java.util.List">
+	<!-- <select id="customQuestion" resultType="QuestionVO" parameterType="java.util.List">
 			select q_id as "qId" ,content ,kw_list as "kwlist" from (
 
 			select q_id ,content ,kw_list from tbl_q 
@@ -64,17 +64,17 @@
 			</foreach>
 			ORDER BY DBMS_RANDOM.RANDOM
 			)<![CDATA[where rownum < 7]]>
-	</select>
+	</select> -->
 	
 	
 	<!-- 시연용 customQuestion 쿼리문 -->
-	<!-- 
+
 	
 	<select id="customQuestion" resultType="QuestionVO" parameterType="java.util.List">
 		select q_id as "qId" ,content ,kw_list as "kwlist" from tbl_q where q_id=1
 	</select> 
 	
-	-->
+
 	
 	
 	
