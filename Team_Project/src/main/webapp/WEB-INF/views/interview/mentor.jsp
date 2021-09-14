@@ -66,11 +66,10 @@ p {
 														<div class="mentor-info">
 															<p class="mentor-title">[${article.company}]기업에서
 																[${article.field}]면접 지도</p>
-															<p class="mentor-time">${article.startDate}부터${article.endDate}까지</p>
+															<p class="mentor-time">${article.mentorDate}일 ${article.startDate}부터${article.endDate}까지</p>
 															
 															<fmt:formatDate pattern="yyyy-MM-dd a hh:mm" value="${interviewRecord.regdate}"/>
-															<p class="mentor-date">${article.mentorDate}날에!</p>
-															
+								
 															
 															<p class="mentor-email">문의사항: ${article.mentorEmail}</p>
 														</div>
