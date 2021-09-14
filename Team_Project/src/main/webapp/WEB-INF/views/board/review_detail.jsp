@@ -45,12 +45,13 @@
 
 
 			<div class="profile-main">
-				<img src='<c:url value="/review/pfImg/${pfId}"/>'width="100" class="profile-main">
+				<img src='<c:url value="/review/pfImg/${pfId}"/>' width="100"
+					class="profile-main">
 
 			</div>
 		</div>
-		<h3 class="review-name">${review.name}| ${review.regdate}</h3>
-		<h1>${review.pos}| ${review.company} | ${review.title}</h1>
+		<h3 class="review-name">${review.name}|${review.regdate}</h3>
+		<h1>${review.pos}|${review.company} | ${review.title}</h1>
 
 
 
@@ -106,10 +107,9 @@
 	<article>
 
 		<main>
-			<h2 class="context-h2">${review.pos}| ${review.company} |
+			<h2 class="context-h2">${review.pos}|${review.company} |
 				${review.title}</h2>
-			<p class="context-p">${review.content}
-			</p>
+			<p class="context-p">${review.content}</p>
 
 			<!-- 구분선 -->
 			<br>
@@ -136,8 +136,10 @@
 			<!-- 첨부파일 끝-->
 			<details open>
 				<summary>AI면접관 서비스란 ?</summary>
-				내 관심사, 더 공부해야 할 키워드를 선택하여 AI면접관과 함께 맞춤 면접을 진행해보세요!<br>
-				내가 면접 본 음성파일을 마이페이지에서 확인하여 스스로 실력을 향상시킬 수도 있고, 면접 본 텍스트를 커뮤니티에 공유하여 사람들에게 피드백을 받을 수도 있습니다^^ 추천을 많이 받은 모범답안만 공부해도 면접 프리패스 완성! 지금 당장 시작해보세요. 취업에 성공하는 그날까지 AI면접관이 당신과 함께 합니다. 잘될 당신을 응원합니다^^
+				내 관심사, 더 공부해야 할 키워드를 선택하여 AI면접관과 함께 맞춤 면접을 진행해보세요!
+				<br> 내가 면접 본 음성파일을 마이페이지에서 확인하여 스스로 실력을 향상시킬 수도 있고, 면접 본 텍스트를
+				커뮤니티에 공유하여 사람들에게 피드백을 받을 수도 있습니다^^ 추천을 많이 받은 모범답안만 공부해도 면접 프리패스 완성!
+				지금 당장 시작해보세요. 취업에 성공하는 그날까지 AI면접관이 당신과 함께 합니다. 잘될 당신을 응원합니다^^
 			</details>
 
 
@@ -151,25 +153,21 @@
 	<div id="comments">
 		<!-- 댓글목록 -->
 
-	<div class="comments-h2">
+		<div class="comments-h2">
 			<h2>댓글</h2>
 		</div>
 		<div class="comments-container">
 			<c:forEach items="${commList}" var="comm" varStatus="status">
 
-<!-- 본댓글 시작-->
+				<!-- 본댓글 시작-->
 
 				<ul id="comments-list" class="comments-list">
 					<li><c:choose>
 							<c:when test="${comm.lev==0}">
-
-
 								<div class="comment-main-level">
-
 									<div class="comment-avatar">
 										<img src='<c:url value="/review/commImg/${comm.email}"/>'>
 									</div>
-
 									<div class="comment-box">
 										<div class="comment-head reply-head">
 											<div class="comment-head-left">
@@ -178,39 +176,39 @@
 												</h6>
 												<span>${comm.regdate}</span>
 											</div>
+											
 											<div class="comment-head-right">
-
 												<c:set var="commEmail" value="${comm.email}" />
 												<c:set var="userEmail" value="${user.username}" />
 												<c:if test="${commEmail eq userEmail}">
 													<div class="comment-head-right-btn">
-													<a href="/review/boardcommdelete?reviewId=${review.reviewId}">
-														<button>수정</button>
-													</a>	
+														<a
+															href="/review/boardcommdelete?reviewId=${review.reviewId}">
+															<button>수정</button>
+														</a>
 													</div>
-													
-													
-						
 													<div class="comment-head-right-btn">
-														<a href="/review/boardcommdelete?reviewId=${review.reviewId}&comId=${comm.comId}">
-														<button>삭제</button>
+														<a
+															href="/review/boardcommdelete?reviewId=${review.reviewId}&comId=${comm.comId}">
+															<button>삭제</button>
 														</a>
 													</div>
 												</c:if>
-<%-- <!-- 본댓글의 답글달기버튼 시작-->--%>
+												<%-- <!-- 본댓글의 답글달기버튼 시작-->--%>
 												<div class="comment-head-right-btn">
 													<a>
-													<button class="btn-commChildFn" onclick="commentChildFn()">답글 달기</button>
+														<button class="btn-commChildFn" onclick="commentChildFn()">답글
+															달기</button>
 													</a>
 												</div>
-<%--<!-- 본댓글의 답글달기버튼 끝 -->--%>
+												<%--<!-- 본댓글의 답글달기버튼 끝 -->--%>
 											</div>
 										</div>
 										<div class="reply-content">${comm.content}</div>
 									</div>
 								</div>
-
-<%-- <!-- 본댓글의 답글달기박스 시작--> --%>
+								
+								<%-- <!-- 본댓글의 답글달기박스 시작--> --%>
 								<div id="comm" class="comm">
 									<form class="commChildForm" name="${comm.comId}"
 										id="commentChild-form" action="/review/addCommChild"
@@ -225,52 +223,52 @@
 										<button type="submit" class="comment-btn">댓글달기</button>
 									</form>
 								</div>
-<%--<!-- 본댓글의 답글달기박스 끝-->--%>
+								<%--<!-- 본댓글의 답글달기박스 끝-->--%>
 
 							</c:when>
-<%--<!-- 본댓글 끝 --> --%>
+							<%--<!-- 본댓글 끝 --> --%>
 
 
-<%--<!-- 대댓글 시작--> --%>
+							<%--<!-- 대댓글 시작--> --%>
 							<c:otherwise>
 								<ul class="comments-list reply-list">
 									<li>
 										<div class="comment-avatar">
-										<img src='<c:url value="/review/commImg/${comm.email}"/>'>
+											<img src='<c:url value="/review/commImg/${comm.email}"/>'>
 										</div>
 										<div class="comment-box">
 											<div class="comment-head rereply-head">
 												<div class="comment-head-left">
 
 													<h6 class="comment-name">
-													<a href="http://creaticode.com/blog">${comm.name}</a>
-												</h6>
-												<span>${comm.regdate}</span>
+														<a href="http://creaticode.com/blog">${comm.name}</a>
+													</h6>
+													<span>${comm.regdate}</span>
 												</div>
 												<div class="comment-head-right">
-
+													<c:set var="commEmail" value="${comm.email}" />
+													<c:set var="userEmail" value="${user.username}" />
 													<c:if test="${commEmail eq userEmail}">
+														<div class="comment-head-right-btn">
+															<a
+																href="/review/boardcommdelete?reviewId=${review.reviewId}">
+																<button>수정</button>
+															</a>
+														</div>
+														<div class="comment-head-right-btn">
+															<a href="/review/boardcommdelete?comId=${comm.comId}">
+																<button>삭제</button>
+															</a>
+														</div>
+													</c:if>
+													<%--<!-- 대댓글의 답글달기버튼 시작 --> --%>
 													<div class="comment-head-right-btn">
-													<a href="/review/boardcommdelete?reviewId=${review.reviewId}">
-														<button>수정</button>
-													</a>	
-													</div>
-													
-													
-						
-													<div class="comment-head-right-btn">
-														<a href="/review/boardcommdelete?comId=${comm.comId}">
-														<button>삭제</button>
+														<a>
+															<button class="btn-reCommChildFn"
+																onclick="commentChildFn">답글 달기</button>
 														</a>
 													</div>
-												</c:if>
-<%--<!-- 대댓글의 답글달기버튼 시작 --> --%>
-												<div class="comment-head-right-btn">
-													<a>
-													<button class="btn-reCommChildFn" onclick="commentChildFn">답글 달기</button>
-													</a>
-												</div>
-<%--<!-- 대댓글의 답글달기버튼 끝 --> --%>
+													<%--<!-- 대댓글의 답글달기버튼 끝 --> --%>
 
 												</div>
 											</div>
@@ -278,9 +276,9 @@
 										</div>
 									</li>
 								</ul>
-								
-								
-<%-- <!-- 대댓글의 답글달기박스 시작--> --%>
+
+
+								<%-- <!-- 대댓글의 답글달기박스 시작--> --%>
 								<div id="recomm" class="recomm">
 									<form class="commChildForm" name="${comm.comId}"
 										id="commentChild-form" action="/review/addCommChild"
@@ -295,12 +293,12 @@
 										<button type="submit" class="comment-btn">댓글달기</button>
 									</form>
 								</div>
-<%--<!-- 대댓글의 답글달기박스 끝-->--%>
-								
-								
+								<%--<!-- 대댓글의 답글달기박스 끝-->--%>
+
+
 							</c:otherwise>
 						</c:choose></li>
-<!-- 대댓글 끝-->						
+					<!-- 대댓글 끝-->
 				</ul>
 
 			</c:forEach>

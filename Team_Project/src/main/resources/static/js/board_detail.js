@@ -57,7 +57,7 @@ function commentChildFn() {
 }
 
 
-//대댓글의 답글달기
+//대댓글 입력창 나타나기
 let recomms = document.querySelectorAll('.recomm')
 const btnReCommFns = document.querySelectorAll('.btn-reCommChildFn')
 btnReCommFns.forEach((btn, idx) => {
@@ -75,7 +75,7 @@ recomms.forEach((recomm, idx) => {
 }
 
 
-//대댓글 인서트
+
 function addCommentChild(reviewId, prtComId) {
 	alert(reviewId);
 	alert($("#"+prtComId).val());
@@ -89,6 +89,7 @@ function addCommentChild(reviewId, prtComId) {
 
 }
 
+//대댓글 인서트
 $(function() {
 	$('.commChildForm').submit(function(event) {
 		var value = $(this).find('.commentChild')[0].value;		
