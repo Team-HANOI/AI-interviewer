@@ -52,10 +52,9 @@
 		]]>
 	</select>
 	
-		<select id="customQuestion" resultType="QuestionVO" parameterType="java.util.List">
 
+	<select id="customQuestion" resultType="QuestionVO" parameterType="java.util.List">
 			select q_id as "qId" ,content ,kw_list as "kwlist" from (
-
 
 			select q_id ,content ,kw_list from tbl_q 
 			where 
@@ -65,8 +64,20 @@
 			</foreach>
 			ORDER BY DBMS_RANDOM.RANDOM
 			)<![CDATA[where rownum < 7]]>
-
 	</select>
+	
+	
+	<!-- 시연용 customQuestion 쿼리문 -->
+	<!-- 
+	
+	<select id="customQuestion" resultType="QuestionVO" parameterType="java.util.List">
+		select q_id as "qId" ,content ,kw_list as "kwlist" from tbl_q where q_id=1
+	</select> 
+	
+	-->
+	
+	
+	
 	
 
 	<!-- 전체질문 목록 추천수 10이상만 보이게 해야하는데... -->
