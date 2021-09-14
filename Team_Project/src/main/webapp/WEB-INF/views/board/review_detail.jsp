@@ -44,22 +44,8 @@
 		<div class="wrap-profile">
 
 
-			<style>
-			.profile-main {
-				display: flex;
-				height: 100px;
-				width: 100px;
-				border-radius: 50%;
-				text-align: center;
-				overflow: hidden;
-				margin: 0 auto;
-				background-image: url(/review/pfImg/${pfId});
-				background-size: cover;
-			}
-			</style>
-
 			<div class="profile-main">
-				<%-- <img src='<c:url value="/review/pfImg/${pfId}"/>'width="100" class="img-thumbnail"> --%>
+				<img src='<c:url value="/review/pfImg/${pfId}"/>'width="100" class="profile-main">
 
 			</div>
 		</div>
@@ -179,27 +165,9 @@
 
 
 								<div class="comment-main-level">
-<style>
-.comments-list .comment-avatar {
-	width: 65px;
-	height: 65px;
-	position: relative;
-	z-index: 99;
-	float: left;
-	border: 3px solid #fff;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	overflow: hidden;
-	background-image: url(/review/commImg/${comm.email});
-	background-size: cover;
-}
-</style>
+
 									<div class="comment-avatar">
-										<%-- <img src="/review/commImg/${comm.email}"> --%>
+										<img src='<c:url value="/review/commImg/${comm.email}"/>'>
 									</div>
 
 									<div class="comment-box">
@@ -268,6 +236,7 @@
 								<ul class="comments-list reply-list">
 									<li>
 										<div class="comment-avatar">
+										<img src='<c:url value="/review/commImg/${comm.email}"/>'>
 										</div>
 										<div class="comment-box">
 											<div class="comment-head rereply-head">

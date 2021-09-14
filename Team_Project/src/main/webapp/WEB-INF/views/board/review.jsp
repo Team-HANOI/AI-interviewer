@@ -180,12 +180,12 @@
               <h3 class="sidebar-title">회사별 모아보기</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href="#">네이버<span>(25)</span></a></li>
-                  <li><a href="#">카카오<span>(12)</span></a></li>
-                  <li><a href="#">구글<span>(5)</span></a></li>
-                  <li><a href="#">쿠팡<span>(22)</span></a></li>
-                  <li><a href="#">배달의민족<span>(8)</span></a></li>
-                  <li><a href="#">라인<span>(14)</span></a></li>
+                  <li><a href="#">네이버<span>(2)</span></a></li>
+                  <li><a href="#">카카오<span>(3)</span></a></li>
+                  <li><a href="#">구글<span>(2)</span></a></li>
+                  <li><a href="#">쿠팡<span>(3)</span></a></li>
+                  <li><a href="#">배달의민족<span>(3)</span></a></li>
+                  <li><a href="#">라인<span>(2)</span></a></li>
                 </ul>
               </div><!-- End sidebar categories-->
 
