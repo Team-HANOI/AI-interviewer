@@ -183,11 +183,14 @@ public class BoardController {
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 		PageInfo pageInfo = new PageInfo();
 		ModelAndView mv = new ModelAndView();
+		ArrayList<KeywordVO> keywordList;
+		keywordList = keywordService.keywordList();
 		System.out.println("aa");
 		
 		try {
 			List<QuestionVO> articleList = allService.getkwQList(kw, page, pageInfo);
 			mv.addObject("pageInfo", pageInfo);
+			mv.addObject("keywordList", keywordList);
 			mv.addObject("articleList", articleList);
 			// mv.addObject("page","Qlistform");
 			mv.setViewName("board/total");
