@@ -162,12 +162,12 @@
 <!-- 임시저장 글 목록 보기 끝 -->--%>
 
 							<!-- 글쓰기기능 -->
-							<sec:authorize access="isAuthenticated()">
+						<%-- 	<sec:authorize access="isAuthenticated()">
 								<h3 class="sidebar-title">
 									<a href="./write_review">글쓰기</a>
 								</h3>
 								<br>
-							</sec:authorize>
+							</sec:authorize> --%>
 							<!-- 글쓰기기능 -->
 
 							<!-- 키워드검색기능 -->
