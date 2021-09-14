@@ -1,4 +1,17 @@
 /* 게시판 상세내역 */
+
+.profile-main {
+				display: flex;
+				height: 100px;
+				width: 100px;
+				border-radius: 50%;
+				text-align: center;
+				overflow: hidden;
+				margin: 0 auto;
+/* 				background-image: url(/review/pfImg/${pfId});
+				background-size: cover; */
+			}
+
 .board-detail {
     width: 90%;
     display: flex;
