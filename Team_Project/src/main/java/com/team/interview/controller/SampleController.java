@@ -50,44 +50,4 @@ public class SampleController {
   public void exAdmin(){
     System.out.println("exAdmin..........");
   }
-
-  //  @GetMapping("/accessError")
-  //  public void accessDenied(Authentication auth, Model model) {
-  //
-  //    System.out.println("access Denied : " + auth);
-  //
-  //    model.addAttribute("msg", "Access Denied");
-  //  }
-  //
-  //  @GetMapping("/customLogin")
-  //  public String loginInput(String error, String logout, Model model) {
-  //    // 에러 메시지와 로그아웃 메시지를 파라미터로 사용할 수 있다
-  //    System.out.println("error: " + error);
-  //    System.out.println("logout: " + logout);
-  //
-  //    if (error != null) {
-  //      model.addAttribute("error", "Login Error Check Your Account");
-  //    }
-  //
-  //    if (logout != null) {
-  //      model.addAttribute("logout", "Logout!!");
-  //    }
-  //    return "/security/customLogin";
-  //  }
-  //
-  //  @GetMapping("/customLogout")
-  //  public String logoutGET() {
-  //    System.out.println("custom logout");
-  //    return "/security/customLogout";
-  //  }
-  //  @GetMapping("/member")
-  //  public void exMember(@AuthenticationPrincipal ClubAuthMemberDTO clubAuthMember){
-  //
-  //    log.info("exMember..........");
-  //
-  //    log.info("-------------------------------");
-  //    log.info(clubAuthMember);
-  //
-  //  }
-
 }

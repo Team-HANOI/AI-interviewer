@@ -83,7 +83,7 @@
           <div class="dialyMT">
             <table class="mypageTb">
             
-            <c:if test="${empty list}">
+            <c:if test="${empty articleList}">
             
               <div style = "text-align: center; color: darkgray;    margin-top: 108px;">
                 지원자가 아직 없습니다.

@@ -53,12 +53,12 @@
     <!-- 작업공간 시작-->
      <!-- 마이 페이지 -->
         <div class="mypage">
-            <!-- 유저정보 좌측 메뉴 정보 -->
+            <%-- <!-- 유저정보 좌측 메뉴 정보 -->
             <div class="mypage-left">
 
                 <!-- 좌측 메뉴 링크 -->
                 <jsp:include page="mypage_common/mypage_nav.jsp"></jsp:include>
-            </div>
+            </div> --%>
             
             <!-- 유저정보 우측 정보 박스 -->
             <div class="mypage-right">
@@ -87,12 +87,12 @@
 						          </ul>
 						          <ul class="days" style="padding-left: 1rem;     font-size: 12px; color: darkgray;">
 						            <li>Sun</li>
+						            <li>Mon</li>
+						            <li>Tue</li>
+						            <li>Wed</li>
 						            <li>Thu</li>
 						            <li>Fri</li>
 						            <li>Sat</li>
-						            <li>Sun</li>
-						            <li>Mon</li>
-						            <li>Tue</li>
 						          </ul>
 						          <ul class="squares" style="padding-left: 0;">
 						            <!-- added via javascript -->
@@ -104,11 +104,6 @@
                 <form action="" method="POST" class="mypage-content">
                     <div class="mypage-content-list">
                         <ul style="padding-left:0"> 
-                        <c:if test="${pageMaker.cri.keyword != null}">
-	                        <a href="/mypage/myinterview">
-	                        <span class="badge rounded-pill bg-secondary" style="font-weight:normal;">전체 보기</span>
-	                        </a>
-                        </c:if>
                               <c:forEach items="${list}" var="interviewRecord">
                               
                               <li style="padding-left:0; width: 102%;">
