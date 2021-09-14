@@ -25,7 +25,7 @@
 					<h2 class="animate__animated animate__fadeInDown">
 						Welcome to <span>Alpaca</span>
 					</h2>
-					<p class="animate__animated animate__fadeInUp">청년실업 약31명 시대
+					<p class="animate__animated animate__fadeInUp">청년실업 약31만명 시대
 						차별화된 알파카의 면접기능과 함께라면 함께 극복해 낼 수 있습니다.</p>
 					<img src="/image/step1.png">
 
