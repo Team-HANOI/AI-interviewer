@@ -1,7 +1,7 @@
 # AI-interviewer
 ## 1. 서비스 소개
 AI-interviewer는 취준생을 위한 음성인식 기반 모의면접 제공 서비스입니다.  
-[기술 블로그 구경가기](https://team-hanoi.github.io/)
+[팀 블로그 링크](https://team-hanoi.github.io/)
 
 ## 2. 핵심 기능
 - 구글 로그인을 하고
