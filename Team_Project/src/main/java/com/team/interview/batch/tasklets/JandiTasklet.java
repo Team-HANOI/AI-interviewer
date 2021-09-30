@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.team.interview.dao.ProfileDAO;
 import com.team.interview.vo.ProfileVO;
 
-//@Component
+@Component
 public class JandiTasklet implements Tasklet{
 
   @Autowired
@@ -32,12 +32,10 @@ public class JandiTasklet implements Tasklet{
       profileDAO.updateNewDayJandi(profileVO);
     }
 
-    System.out.println("executed jandi!!");
+    System.out.println("executed jandi..........");
 
     return RepeatStatus.FINISHED;
   }
-
-
 
   static String newDay(String jandi) {
     StringBuilder sb = new StringBuilder(jandi);
